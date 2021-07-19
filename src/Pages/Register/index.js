@@ -28,9 +28,21 @@ const Register = ()=>{
                                 <form action="" method="get">
                                     <div className="relative w-full mb-3">
                                         <label style={{color:"rgb(71,85,105)"}} className="block uppercase text-xs font-bold mb-2" for="grid-password">
+                                            Full Name
+                                        </label>
+                                        <input style={{color:"rgb(71,85,105)"}} type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Full Name" />
+                                    </div>
+                                    <div className="relative w-full mb-3">
+                                        <label style={{color:"rgb(71,85,105)"}} className="block uppercase text-xs font-bold mb-2" for="grid-password">
                                             Email
                                         </label>
                                         <input style={{color:"rgb(71,85,105)"}} type="email" className="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Email" />
+                                    </div>
+                                    <div className="relative w-full mb-3">
+                                        <label style={{color:"rgb(71,85,105)"}} className="block uppercase text-xs font-bold mb-2" for="grid-password">
+                                            Institute / University
+                                        </label>
+                                        <input style={{color:"rgb(71,85,105)"}} type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Institute/University" />
                                     </div>
                                     <div className="relative w-full mb-3">
                                         <label style={{color:"rgb(71,85,105)"}} className="block uppercase text-xs font-bold mb-2" for="grid-password">
@@ -40,9 +52,9 @@ const Register = ()=>{
                                     </div>
                                     <div className="relative w-full mb-3">
                                         <label style={{color:"rgb(71,85,105)"}} className="block uppercase text-xs font-bold mb-2" for="grid-password">
-                                            Repeat Password
+                                            Confirm Password
                                         </label>
-                                        <input style={{color:"rgb(71,85,105)"}} type="password" className="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Repeat Password" />
+                                        <input style={{color:"rgb(71,85,105)"}} type="password" className="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Confirm Password" />
                                     </div>
                                     <div className="text-center mt-6">
                                         <button style={{backgroundColor:"rgb(30,41,59)"}} className="text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150" type="button">
