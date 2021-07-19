@@ -34,9 +34,8 @@ function App() {
         <Route path="/register">
           <Register />
         </Route>
-        <Route path="/dashboard">
-          <Dashboard />
-        </Route>
+        <Route path="/dashboard/:page" children={<Dashboard />} />  
+        <Route path="/dashboard" children={<Dashboard />} />          
         <Route path="*">
           <h1 className="text-7xl">404</h1>
         </Route>
