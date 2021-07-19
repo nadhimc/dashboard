@@ -9,6 +9,7 @@ import {
 import Login from './Pages/Login';
 import Register from './Pages/Register';
 import Dashboard from './Pages/Dashboard';
+import GamasurfRegister from './Pages/GamasurfRegister';
 
 function App() {
   return (
@@ -34,7 +35,10 @@ function App() {
           <Register />
         </Route>
         <Route path="/dashboard/:page" children={<Dashboard />} />  
-        <Route path="/dashboard" children={<Dashboard />} />          
+        <Route path="/dashboard" children={<Dashboard />} /> 
+        <Route path="/gamasurf">
+          <GamasurfRegister />
+        </Route>         
         <Route path="*">
           <h1 className="text-7xl">404</h1>
         </Route>
