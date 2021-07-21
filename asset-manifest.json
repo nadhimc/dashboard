@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/dashboard/static/css/main.1afaf4e5.chunk.css",
-    "main.js": "/dashboard/static/js/main.06245adf.chunk.js",
-    "main.js.map": "/dashboard/static/js/main.06245adf.chunk.js.map",
-    "runtime-main.js": "/dashboard/static/js/runtime-main.af5bb74d.js",
-    "runtime-main.js.map": "/dashboard/static/js/runtime-main.af5bb74d.js.map",
-    "static/js/2.ff095586.chunk.js": "/dashboard/static/js/2.ff095586.chunk.js",
-    "static/js/2.ff095586.chunk.js.map": "/dashboard/static/js/2.ff095586.chunk.js.map",
-    "static/js/3.2efec0f2.chunk.js": "/dashboard/static/js/3.2efec0f2.chunk.js",
-    "static/js/3.2efec0f2.chunk.js.map": "/dashboard/static/js/3.2efec0f2.chunk.js.map",
+    "main.css": "/dashboard/static/css/main.7734137a.chunk.css",
+    "main.js": "/dashboard/static/js/main.91b8a866.chunk.js",
+    "main.js.map": "/dashboard/static/js/main.91b8a866.chunk.js.map",
+    "runtime-main.js": "/dashboard/static/js/runtime-main.df2429d4.js",
+    "runtime-main.js.map": "/dashboard/static/js/runtime-main.df2429d4.js.map",
+    "static/js/2.f566a7c2.chunk.js": "/dashboard/static/js/2.f566a7c2.chunk.js",
+    "static/js/2.f566a7c2.chunk.js.map": "/dashboard/static/js/2.f566a7c2.chunk.js.map",
+    "static/js/3.ae1faf46.chunk.js": "/dashboard/static/js/3.ae1faf46.chunk.js",
+    "static/js/3.ae1faf46.chunk.js.map": "/dashboard/static/js/3.ae1faf46.chunk.js.map",
     "index.html": "/dashboard/index.html",
-    "static/css/main.1afaf4e5.chunk.css.map": "/dashboard/static/css/main.1afaf4e5.chunk.css.map",
-    "static/js/2.ff095586.chunk.js.LICENSE.txt": "/dashboard/static/js/2.ff095586.chunk.js.LICENSE.txt",
+    "static/css/main.7734137a.chunk.css.map": "/dashboard/static/css/main.7734137a.chunk.css.map",
+    "static/js/2.f566a7c2.chunk.js.LICENSE.txt": "/dashboard/static/js/2.f566a7c2.chunk.js.LICENSE.txt",
     "static/media/gamasurf.1549eac7.svg": "/dashboard/static/media/gamasurf.1549eac7.svg",
     "static/media/logo.de3d2f70.png": "/dashboard/static/media/logo.de3d2f70.png",
     "static/media/nasec.7cd81120.svg": "/dashboard/static/media/nasec.7cd81120.svg",
     "static/media/sent.3e1a6fe3.svg": "/dashboard/static/media/sent.3e1a6fe3.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.af5bb74d.js",
-    "static/js/2.ff095586.chunk.js",
-    "static/css/main.1afaf4e5.chunk.css",
-    "static/js/main.06245adf.chunk.js"
+    "static/js/runtime-main.df2429d4.js",
+    "static/js/2.f566a7c2.chunk.js",
+    "static/css/main.7734137a.chunk.css",
+    "static/js/main.91b8a866.chunk.js"
   ]
 }
