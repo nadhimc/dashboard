@@ -113,7 +113,7 @@ const Dashboard = ()=>{
                             </Link>
                         </div>
                         <div className="mt-5 pt-5 border-t-2">
-                            <Link className="text-lg pr-3 pl-6 py-2 text-gray-500 hover:text-blue-400 hover:border-blue-400 border-l-4">
+                            <Link to="/logout" className="text-lg pr-3 pl-6 py-2 text-gray-500 hover:text-blue-400 hover:border-blue-400 border-l-4">
                                 <FontAwesomeIcon icon={faSignOutAlt} className="mr-5" />
                                 Logout
                             </Link>
