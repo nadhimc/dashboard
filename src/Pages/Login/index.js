@@ -40,7 +40,8 @@ const Login = ()=>{
                   }else{
                       setIsError(true)
                       console.log('Error');
-                      return Promise.reject(res);  
+                      return res.json();
+                    //   return Promise.reject(res);  
                   }
               }).then(
                   (res)=>{

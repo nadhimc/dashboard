@@ -1,6 +1,6 @@
 import { faBars, faUser, faCalendar, faHome, faIdCard, faSignOutAlt, faTimes } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { Link, useParams } from "react-router-dom"
+import { Link, Redirect, useParams } from "react-router-dom"
 import React, { useState } from "react"
 import Logo from "../../Images/logo.png"
 import DashHome from "../../Component/Dashboard/DashHome"
@@ -8,13 +8,23 @@ import DashProfile from "../../Component/Dashboard/DashProfile"
 import DashEvents from "../../Component/Dashboard/DashEvents"
 
 const Dashboard = ()=>{
+
     let { page } = useParams();
     const [nav, setNav] = useState(false)
+    const [profNav, setProfNav] = useState(false)
     let active = "";
     if(page === "profile" || page === "events"){
         active = page
     }else{
         active = "home"
+    }
+
+    if(localStorage.getItem("key") && localStorage.getItem("id")  && localStorage.getItem("user")){
+        console.log("Loged in")
+    }else{
+        return(
+            <Redirect to="/login" />
+        )
     }
 
     function activePage(page){
@@ -51,12 +61,24 @@ const Dashboard = ()=>{
                         </div>
 
                         {/* Profile */}
-                        <div className="md:-mr-2 -my-2 flex items-center md:space-x-4 order-3">
+                        <div className="md:-mr-2 -my-2 flex items-center md:space-x-4 order-3 relative">
                             <p className="hidden md:block text-gray-400 font-bold">Nadhim</p>
-                            <button type="button" className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" aria-expanded="false">
+                            <button onClick={()=>setProfNav(!profNav)} type="button" className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" aria-expanded="false">
                                 <span className="sr-only">Open menu</span>
                                 <FontAwesomeIcon icon={faUser} size="lg" />
                             </button>
+                            <div style={{minWidth: 200}} className={
+                                profNav?
+                                "bg-white absolute transition-all rounded-md bottom-0 right-0 translate-y-full transform p-4 border flex flex-col space-y-2"
+                                :"bg-white absolute transition-all rounded-md bottom-0 right-0 translate-y-full transform p-4 border flex flex-col space-y-2 scale-0"
+                                }>
+                                <Link to="/dashboard/profile" className="text-gray-500 hover:text-gray-400 text-base">
+                                    My Profile
+                                </Link>
+                                <Link to="/logout" className="text-gray-500 hover:text-gray-400 text-base">
+                                    Logout
+                                </Link>
+                            </div>
                         </div>
 
                     </div>
