@@ -46,10 +46,10 @@ const Dashboard = ()=>{
                     <div className="flex items-center py-6">
                         {/* Logo */}
                         <div className="flex md:justify-start justify-center flex-1 order-2 md:order-1">
-                            <a href="#">
+                            <Link to="/dashboard">
                                 <span className="sr-only">Workflow</span>
                                 <img className="h-8 w-auto" src={Logo} alt="" />
-                            </a>
+                            </Link>
                         </div>
 
                         {/* Hamburger Button */}

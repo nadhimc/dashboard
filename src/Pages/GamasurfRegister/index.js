@@ -42,7 +42,7 @@ const GamasurfRegister = ()=>{
                     <div className="w-full lg:w-4/12 px-4 py-4 md:py-0">
                         <div style={{backgroundColor:"#e2e8f0"}} className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg border-0">
                             <div className="flex justify-center items-center py-4">
-                                <img src={Gamasurf} />
+                                <img alt="Gamasurf" src={Gamasurf} />
                             </div>
                             <div className="flex justify-center items-center mb-4 relative">
                                 <button onClick={()=>{setForm(1)}} className="p-2 bg-green-400 text-white rounded-md">1</button>
@@ -208,9 +208,9 @@ const GamasurfRegister = ()=>{
                                                 Prev
                                             </button>
                                         </div>
-                                        <div className={form==1?"w-full text-center":"text-center"}>
+                                        <div className={form===1?"w-full text-center":"text-center"}>
                                             <button onClick={()=>{if(form<3){setForm(form+1)}}} style={{backgroundColor:"rgb(30,41,59)"}} className="text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150" type="button">
-                                                {form==3?"Submit":"Next"}
+                                                {form===3?"Submit":"Next"}
                                             </button>
                                         </div>
                                     </div>

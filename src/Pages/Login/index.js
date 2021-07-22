@@ -46,7 +46,7 @@ const Login = ()=>{
               }).then(
                   (res)=>{
                       console.log(res);
-                      if(res.meta.code!=200){
+                      if(res.meta.code!==200){
                           // error
                           setIsError(true)
                           console.log("login error")

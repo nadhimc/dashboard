@@ -46,7 +46,7 @@ const Register = ()=>{
     const onSignUp = (e)=>{
         e.preventDefault()
 
-        if(validator.isEmail(email) && validator.isStrongPassword(password,passRequirement) && password === confirmPassword && name!="" && university!=""){
+        if(validator.isEmail(email) && validator.isStrongPassword(password,passRequirement) && password === confirmPassword && name!=="" && university!==""){
             setIsError(false)
             setIsLoading(true)
             setErrorMsg("Please check the form again")
@@ -76,7 +76,7 @@ const Register = ()=>{
               }).then(
                   (res)=>{
                       console.log(res);
-                      if(res.meta.code!=200){
+                      if(res.meta.code!==200){
                           // error
                           setIsError(true)
                           if(res.errors.email.length>0){
