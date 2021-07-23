@@ -3,7 +3,7 @@ import Gamasurf from "../../Images/gamasurf.svg"
 import validator from 'validator';
 import { Link, Redirect } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
+import { faCheckCircle, faTimes } from "@fortawesome/free-solid-svg-icons";
 
 const GamasurfRegister = ()=>{
 
@@ -14,6 +14,8 @@ const GamasurfRegister = ()=>{
     const [isUploading, setIsUploading] = useState(false)
     const [selesai, setSelesai] = useState(false)
     const [keDash, setKeDash] = useState(false)
+    const [isErrorList, setIsErrorList] = useState(false)
+    const [errorList, setErrorList] = useState([])
 
     // Form Page 1
     const [fullname, setfullname] = useState("")
@@ -88,6 +90,11 @@ const GamasurfRegister = ()=>{
                 }else{
                     console.log("fase 1 error")
                     setIsUploading(false)
+                    setErrorList([...errorList,res.meta.message])
+                    for(let k in res.errors){
+                        setErrorList([...errorList,...res.errors[k]])
+                    }
+                    setIsErrorList(true)
                 }
             },
             (err)=>{
@@ -121,18 +128,22 @@ const GamasurfRegister = ()=>{
         })
         .then(
             (res)=>{
+                console.log(res)
                 if(res.meta.code===200){
                     // Sukses Fase 2
                     console.log("sukses fase 2")
                     sendFirstForm()
-                    // setIsUploading(false)
-                    // setSelesai(true)
                 }else{
                     // gagal
                     setIsUploading(false)
+                    for(let k in res.errors){
+                        setErrorList([...errorList,...res.errors[k]])
+                    }
+                    setIsErrorList(true)
                     console.log("fase 2 gagal")
                 }
             },(err)=>{
+                console.log("fase 2 gagal")
                 setIsUploading(false)
                 console.log(err)
             }
@@ -145,6 +156,7 @@ const GamasurfRegister = ()=>{
         if(!isUploading){
             if(form === 3){
                 setErrorMsg("Tolong cek formnya kembali")
+                setErrorList([])
                 // Cek Form 1
                 if( 
                     fullname !== "" // fullname
@@ -178,6 +190,11 @@ const GamasurfRegister = ()=>{
                                 && (orisinal.current.files[0].type==="application/pdf")        // orisinal
                                 && (ktm.current.files[0].type==="image/jpeg" || ktm.current.files[0].type==="image/jpg")         // ktm
                                 && (ide.current.files[0].type==="application/pdf")        // ide
+                                // filesize
+                                && twibbon.current.files[0].size/1024 <= 512
+                                && orisinal.current.files[0].size/1024/1024 <=3
+                                && ktm.current.files[0].size/1024 <= 512
+                                && ide.current.files[0].size/1024/1024 <=5
                             ){
                                 console.log("Lolos semua")
                                 setIsError(false)
@@ -185,7 +202,7 @@ const GamasurfRegister = ()=>{
                             }else{
                                 // Form 3 tidak Lolos
                                 setIsError(true)
-                                setErrorMsg("pastikan semua file sesuai format")
+                                setErrorMsg("pastikan semua file sesuai memenuhi syarat")
                             }
                         }else{
                             // Form 3 tidak Lolos
@@ -222,6 +239,28 @@ const GamasurfRegister = ()=>{
                         Kamu akan diarahkan ke Dashboard, atau klik link ini jika tidak berhasil diarahkan
                         </Link>
                     </h3>
+                </div>
+            </div>
+
+            <div style={{backgroundColor:"rgba(0,0,0,.3)"}} className={isErrorList?"absolute w-full h-full inset-0 z-50 flex justify-center items-center transition-all transform duration-500":"absolute w-full h-full inset-0 z-50 flex justify-center items-center transition-all transform duration-500 scale-0 translate-y-full"}>
+                <div className="w-10/12 max-w-lg bg-white rounded-md p-5 pt-3">
+                    <div className="flex justify-end">
+                        <button onClick={()=>{setIsErrorList(false)}} className="block px-2 pt-0 hover:opacity-40 transform translate-x-1/2">
+                            <FontAwesomeIcon className="text-xl" icon={faTimes} />
+                        </button>
+                    </div>
+                    <h5 className="text-xl text-center mb-4">Error List</h5>
+                    <div className="flex flex-col space-y-3">
+                    {
+                        errorList.map((item)=>{
+                            return(
+                                <div className="bg-red-400 text-white p-3 rounded-md">
+                                    <p>{item}</p>
+                                </div>
+                            )
+                        })
+                    }
+                    </div>
                 </div>
             </div>
 
@@ -363,6 +402,9 @@ const GamasurfRegister = ()=>{
                                                 <input disabled value={twibbonVal} style={{color:"rgb(71,85,105)"}} type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded-l text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Upload files..." />
                                                 <button type="button" className="bg-blue-500 rounded-r-md px-3 py-3 font-bold text-white text-sm">Upload</button>
                                             </div>
+                                            <small style={{color:"rgb(71,85,105)"}} className="text-sm font-semibold text-blueGray-600">
+                                                ekstensi jpg/jpeg, max 512kb
+                                            </small>
                                         </div>
                                         <div className="relative w-full mb-3">
                                             <label style={{color:"rgb(71,85,105)"}} className="block uppercase text-xs font-bold mb-2">
@@ -373,6 +415,9 @@ const GamasurfRegister = ()=>{
                                                 <input value={orisinalVal} disabled style={{color:"rgb(71,85,105)"}} type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded-l text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Upload files..." />
                                                 <button type="button" className="bg-blue-500 rounded-r-md px-3 py-3 font-bold text-white text-sm">Upload</button>
                                             </div>
+                                            <small style={{color:"rgb(71,85,105)"}} className="text-sm font-semibold text-blueGray-600">
+                                                ekstensi pdf, max 3Mb
+                                            </small>
                                         </div>
                                         <div className="relative w-full mb-3">
                                             <label style={{color:"rgb(71,85,105)"}} className="block uppercase text-xs font-bold mb-2">
@@ -383,6 +428,9 @@ const GamasurfRegister = ()=>{
                                                 <input value={ktmVal} disabled style={{color:"rgb(71,85,105)"}} type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded-l text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Upload files..." />
                                                 <button type="button" className="bg-blue-500 rounded-r-md px-3 py-3 font-bold text-white text-sm">Upload</button>
                                             </div>
+                                            <small style={{color:"rgb(71,85,105)"}} className="text-sm font-semibold text-blueGray-600">
+                                                ekstensi jpg/jpeg, max 512kb
+                                            </small>
                                         </div>
                                         <div className="relative w-full mb-3">
                                             <label style={{color:"rgb(71,85,105)"}} className="block uppercase text-xs font-bold mb-2">
@@ -393,6 +441,9 @@ const GamasurfRegister = ()=>{
                                                 <input value={ideVal} disabled style={{color:"rgb(71,85,105)"}} type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded-l text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Upload files..." />
                                                 <button type="button" className="bg-blue-500 rounded-r-md px-3 py-3 font-bold text-white text-sm">Upload</button>
                                             </div>
+                                            <small style={{color:"rgb(71,85,105)"}} className="text-sm font-semibold text-blueGray-600">
+                                                ekstensi pdf, max 5Mb
+                                            </small>
                                         </div>
                                     </div>
 
