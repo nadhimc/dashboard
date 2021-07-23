@@ -17,7 +17,7 @@ const DashHome = ()=>{
         .then(
             (res)=>{
                 console.log(res)
-                if(res.meta!==200){
+                if(res.meta.code!==200){
                     console.log("error")
                     setPengumumanLoading(false)
                 }else{

@@ -12,7 +12,7 @@ const DashEvents = ()=>{
                     <div className="flex-1 flex justify-center items-center">
                         <img alt="Nasec" className="w-48" src={Nasec} />
                     </div>
-                    <Link to="/gamasurf" className="text-center bg-white w-full py-2 font-bold text-lg rounded-lg" style={{color:"#92F8D9"}}>
+                    <Link className="text-center bg-white w-full py-2 font-bold text-lg rounded-lg" style={{color:"#92F8D9"}}>
                         Join
                     </Link>
                 </div>
@@ -20,7 +20,7 @@ const DashEvents = ()=>{
                     <div className="flex-1 flex justify-center items-center">
                         <img alt="Gamasurf" className="w-48" src={Gamasurf} />
                     </div>
-                    <Link className="text-center bg-white w-full py-2 font-bold text-lg rounded-lg" style={{color:"#F5DF7E"}}>
+                    <Link to="/gamasurf" className="text-center bg-white w-full py-2 font-bold text-lg rounded-lg" style={{color:"#F5DF7E"}}>
                         Join
                     </Link>
                 </div>
