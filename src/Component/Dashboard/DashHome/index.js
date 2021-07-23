@@ -1,5 +1,5 @@
 import DashEvents from "../DashEvents"
-import { useState } from "react"
+import { useState,useEffect } from "react"
 
 const DashHome = ()=>{
 
@@ -31,8 +31,9 @@ const DashHome = ()=>{
             }
         )
     }
-    updatePengumuman()
-
+    useEffect(() => {
+        updatePengumuman()
+    }, [])
     const renderPengumuman = (item)=>{
         return(
             <div className="bg-white rounded-md p-4">
