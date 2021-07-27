@@ -23,6 +23,7 @@ const DashEvents = ()=>{
                 if(res.meta.code===200){
                     if(res.data!==false){
                         setIsRegistered(true)
+                        setRegisterOn(res.data)
                     }
                 }
             },

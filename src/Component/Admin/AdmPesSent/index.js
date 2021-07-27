@@ -41,10 +41,6 @@ const AdmPesSent = ()=>{
         getPeserta()
     }, [])
 
-    const detailPeserta = (det)=>{
-        console.log(peserta.find(({id})=>{return id===parseInt(det)}))
-    }
-
     const renderTable = (item, index)=>{
         if(index >= ((page-1)*itemsInPage) && index <=(page*itemsInPage)-1){
             return(

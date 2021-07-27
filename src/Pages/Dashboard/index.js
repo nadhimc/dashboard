@@ -12,7 +12,6 @@ const Dashboard = ()=>{
     let { page } = useParams();
     const [nav, setNav] = useState(false)
     const [profNav, setProfNav] = useState(false)
-    const [registered, setRegistered] = useState("")
     const [isAuth, setIsAuth] = useState(true)
     let active = "";
     if(page === "profile" || page === "events"){

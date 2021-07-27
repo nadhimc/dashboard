@@ -10,7 +10,9 @@ const AdmPesNasec = ()=>{
 
     const itemsInPage = 2;
 
-    const [peserta, setPeserta] = useState([])
+    const peserta = []
+
+    // const [peserta, setPeserta] = useState([])
 
     const getPeserta = ()=>{
         // fetch(`${process.env.REACT_APP_APIURL}/gamasurf`,{

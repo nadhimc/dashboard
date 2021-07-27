@@ -80,10 +80,6 @@ const AdmPengumuman = ()=>{
         getUser()
     }, [])
 
-    const detailPeserta = (det)=>{
-        console.log(peserta.find(({id})=>{return id===parseInt(det)}))
-    }
-
     const renderTable = (item, index)=>{
         if(index >= ((page-1)*itemsInPage) && index <=(page*itemsInPage)-1){
             return(
@@ -92,11 +88,6 @@ const AdmPengumuman = ()=>{
                     <td className="py-3 px-6 text-center">{item.user.email}</td>
                     <td className="py-3 px-6 text-center">{item.judul}</td>
                     <td className="py-3 px-6 text-center">{item.isi}</td>
-                    {/* <td className="py-3 px-6 text-center">
-                        <button value={item.id} onClick={(item)=>detailPeserta(item.target.value)} className="rounded-md bg-blue-500 hover:bg-blue-300 px-3 py-2 text-white">
-                            Detail
-                        </button>
-                    </td> */}
                 </tr>
             )
         }
@@ -145,6 +136,8 @@ const AdmPengumuman = ()=>{
     const userFilter = (item)=>{
         if(item.email.toLowerCase().includes(userSearch.toLowerCase()) && !modalUser.find(({id})=>{return id===parseInt(item.id)})){
             return item
+        }else{
+            return null
         }
     }
 
@@ -204,7 +197,7 @@ const AdmPengumuman = ()=>{
                         <div className={modalData.type==="user"?"flex flex-col space-y-2":"hidden"}>
                             <label className={modalUser.length>0?"":"hidden"}>Users</label>
                             <div className="flex flex-wrap">
-                                {modalUser.map((item,index)=>{return(<span key={index} onClick={()=>{setModalUser(modalUser.filter((filt)=>{if(filt.id!==item.id){return(filt)}}))}} className="cursor-pointer p-2 bg-green-300 rounded-md m-1">{item.email}</span>)})}
+                                {modalUser.map((item,index)=>{return(<span key={index} onClick={()=>{setModalUser(modalUser.filter((filt)=>{if(filt.id!==item.id){return(filt)}else{return null}}))}} className="cursor-pointer p-2 bg-green-300 rounded-md m-1">{item.email}</span>)})}
                             </div>
                             <div className="flex flex-col space-y-2">
                                 <label>Email</label>
