@@ -11,6 +11,8 @@ import Register from './Pages/Register';
 import Dashboard from './Pages/Dashboard';
 import GamasurfRegister from './Pages/GamasurfRegister';
 import Logout from './Pages/Logout';
+import Admin from './Pages/Admin';
+import SentRegister from './Pages/SentRegister';
 
 function App() {
   return (
@@ -40,9 +42,14 @@ function App() {
         </Route>
         <Route path="/dashboard/:page" children={<Dashboard />} />  
         <Route path="/dashboard" children={<Dashboard />} /> 
+        <Route path="/admin/:page" children={<Admin />} />  
+        <Route path="/admin" children={<Admin />} /> 
         <Route path="/gamasurf">
           <GamasurfRegister />
-        </Route> 
+        </Route>
+        <Route path="/sent">
+          <SentRegister />
+        </Route>
         <Route path="*">
           <h1 className="text-7xl">404</h1>
         </Route>

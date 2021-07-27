@@ -55,6 +55,8 @@ const Login = ()=>{
                           localStorage.setItem("user",res.data.email);
                           localStorage.setItem("id",res.data.id);
                           localStorage.setItem("key",res.data.token);
+                          localStorage.setItem("name",res.data.name);
+                          localStorage.setItem("role",res.data.role_id);
                       }
                       setIsLoading(false)
                   },

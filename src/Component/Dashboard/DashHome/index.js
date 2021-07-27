@@ -5,6 +5,7 @@ const DashHome = ()=>{
 
     const [pengumuman, setPengumuman] = useState([])
     const [pengumumanLoading, setPengumumanLoading] = useState(true)
+    const [isRegistered, setIsRegistered] = useState(true)
 
     function updatePengumuman(){
         fetch(`${process.env.REACT_APP_APIURL}/users/${localStorage.getItem("id")}/pengumuman`,{
@@ -34,15 +35,44 @@ const DashHome = ()=>{
     useEffect(() => {
         updatePengumuman()
     }, [])
-    const renderPengumuman = (item)=>{
+
+    const renderPengumuman = (item,index)=>{
         return(
-            <div className="bg-white rounded-md p-4">
+            <div key={index} className="bg-white rounded-md p-4">
                 <p className="text-lg">{item.judul}</p>
                 <p className="text-xs text-gray-400">12/07/2021</p>
                 <p className="text-sm mt-2">{item.isi}</p>
             </div>
         )
     }
+
+    const cekRegistered = ()=>{
+        fetch(`${process.env.REACT_APP_APIURL}/users/${localStorage.getItem("id")}/isregistered`,{
+            headers:{
+                'Content-Type': 'application/json',
+                'Authorization' : `Bearer ${localStorage.getItem("key")}`
+            }
+        }).then(res=>res.json())
+        .then(
+            (res)=>{
+                console.log(res)
+                if(res.meta.code===200){
+                    if(res.data !== false){
+                        setIsRegistered(true)
+                    }else{
+                        setIsRegistered(false)
+                    }
+                }
+            },
+            (err)=>{
+                console.log(err)
+            }
+        )
+    }
+
+    useEffect(()=>{
+        cekRegistered()
+    },[])
 
 
     return (
@@ -61,7 +91,9 @@ const DashHome = ()=>{
                     {pengumuman.map(renderPengumuman)}
                 </div>
             </div>
-            <DashEvents />
+            <div className={isRegistered?"hidden":"a"}>
+                <DashEvents />
+            </div>
         </div>
     )
 }
