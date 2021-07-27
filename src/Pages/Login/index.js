@@ -72,9 +72,15 @@ const Login = ()=>{
     }
 
     if(localStorage.getItem("key")){
-        return(
-            <Redirect to="/dashboard" />
-        )
+        if(parseInt(localStorage.getItem("role"))===1){
+            return(
+                <Redirect to="/admin" />
+            )
+        }else{
+            return(
+                <Redirect to="/dashboard" />
+            )
+        }
     }
 
     return(

@@ -72,7 +72,7 @@ const Admin = ()=>{
 
                         {/* Profile */}
                         <div className="md:-mr-2 -my-2 flex items-center md:space-x-4 order-3 relative">
-                            <p className="hidden md:block text-gray-400 font-bold">Nadhim</p>
+                            <p className="hidden md:block text-gray-400 font-bold">{localStorage.getItem("name")?localStorage.getItem("name"):"Anonymous"}</p>
                             <button onClick={()=>setProfNav(!profNav)} type="button" className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" aria-expanded="false">
                                 <span className="sr-only">Open menu</span>
                                 <FontAwesomeIcon icon={faUser} size="lg" />
