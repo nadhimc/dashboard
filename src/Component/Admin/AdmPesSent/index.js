@@ -50,11 +50,7 @@ const AdmPesSent = ()=>{
                     <td className="py-3 px-6 text-center">{item.email}</td>
                     <td className="py-3 px-6 text-center">{item.asal_institusi}</td>
                     <td className="py-3 px-6 text-center">{item.status}</td>
-                    {/* <td className="py-3 px-6 text-center">
-                        <button value={item.id} onClick={(item)=>detailPeserta(item.target.value)} className="rounded-md bg-blue-500 hover:bg-blue-300 px-3 py-2 text-white">
-                            Detail
-                        </button>
-                    </td> */}
+                    <td className="py-3 px-6 text-center">{item.info}</td>
                 </tr>
             )
         }
@@ -66,8 +62,9 @@ const AdmPesSent = ()=>{
         }else if(
             item.nama_lengkap.toLowerCase().includes(search.toLowerCase())
             || item.email.toLowerCase().includes(search.toLowerCase())
-            || item.asal_univ.toLowerCase().includes(search.toLowerCase())
-            || item.asal_daerah.toLowerCase().includes(search.toLowerCase())
+            || item.asal_institusi.toLowerCase().includes(search.toLowerCase())
+            || item.status.toLowerCase().includes(search.toLowerCase())
+            || item.info.toLowerCase().includes(search.toLowerCase())
         ){
             return item
         }
@@ -88,6 +85,7 @@ const AdmPesSent = ()=>{
                             <th className="py-3 px-6 text-center">Email</th>
                             <th className="py-3 px-6 text-center">Universitas</th>
                             <th className="py-3 px-6 text-center">Status</th>
+                            <th className="py-3 px-6 text-center">Info</th>
                         </tr>
                     </thead>
                     <tbody className="text-gray-600 text-sm font-light">

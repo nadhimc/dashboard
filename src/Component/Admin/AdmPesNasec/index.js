@@ -1,4 +1,4 @@
-import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons"
+import { faChevronLeft, faChevronRight, faTimes } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useState, useEffect } from "react"
 
@@ -6,36 +6,40 @@ const AdmPesNasec = ()=>{
 
     const [search, setSearch] = useState("")
 
+    const [modal, setModal] = useState(false)
+
+    const [modalData, setModalData] = useState(
+        {"id":1,"user_id":18,"nama_team":"Team Tutur","nama_sekolah":"MAN Insan Cendekia Serpong","alamat_sekolah":"Serpong Jaya","nama_pembimbing":"Pak Asep","no_pembimbing":"081224212953","komitmen":"Sangat Berkomitmen","info":"instagram","is_paid":0,"created_at":"2021-07-27T12:11:26.000000Z","updated_at":"2021-07-27T12:11:26.000000Z","member":[{"id":1,"team_id":1,"nama":"Rizkal","jenis_kelamin":"Laki-Laki","kelas":"10","email":"rizkal@gmail.com","no":"082424112212","kartu_pelajar":"peserta/ktm/1_1.jpg","twibbon":"peserta/twibbon/1_1.jpg","is_leader":1,"created_at":"2021-07-27T12:11:26.000000Z","updated_at":"2021-07-27T12:11:26.000000Z"},{"id":2,"team_id":1,"nama":"Ruka","jenis_kelamin":"Perempuan","kelas":"12","email":"ruka@gmail.com","no":"0812312312","kartu_pelajar":"peserta/ktm/1_2.jpg","twibbon":"peserta/twibbon/1_2.jpg","is_leader":0,"created_at":"2021-07-27T12:11:29.000000Z","updated_at":"2021-07-27T12:11:29.000000Z"},{"id":3,"team_id":1,"nama":"Mizuhara","jenis_kelamin":"Perempuan","kelas":"11","email":"mizuzu@gmail.com","no":"081232124124","kartu_pelajar":"peserta/ktm/1_3.jpg","twibbon":"peserta/twibbon/1_3.jpg","is_leader":0,"created_at":"2021-07-27T12:11:29.000000Z","updated_at":"2021-07-27T12:11:29.000000Z"}]}
+    )
+
     const [page, setPage] = useState(1)
 
     const itemsInPage = 2;
 
-    const peserta = []
-
-    // const [peserta, setPeserta] = useState([])
+    const [peserta, setPeserta] = useState([])
 
     const getPeserta = ()=>{
-        // fetch(`${process.env.REACT_APP_APIURL}/gamasurf`,{
-        //     headers:{
-        //         'Content-Type': 'application/json',
-        //         'Authorization' : `Bearer ${localStorage.getItem("key")}`
-        //     }
-        // })
-        // .then(res=>res.json())
-        // .then(
-        //     (res)=>{
-        //         console.log(res)
-        //         if(res.meta.code!==200){
-        //             console.log("error")
-        //         }else{
-        //             setPeserta(res.data)
+        fetch(`${process.env.REACT_APP_APIURL}/nasec`,{
+            headers:{
+                'Content-Type': 'application/json',
+                'Authorization' : `Bearer ${localStorage.getItem("key")}`
+            }
+        })
+        .then(res=>res.json())
+        .then(
+            (res)=>{
+                console.log(res)
+                if(res.meta.code!==200){
+                    console.log("error")
+                }else{
+                    setPeserta(res.data)
 
-        //         }
-        //     },
-        //     (err)=>{
-        //         console.log(err)
-        //     }
-        // )
+                }
+            },
+            (err)=>{
+                console.log(err)
+            }
+        )
     }
 
     useEffect(() => {
@@ -44,7 +48,8 @@ const AdmPesNasec = ()=>{
     }, [])
 
     const detailPeserta = (det)=>{
-        console.log(peserta.find(({id})=>{return id===parseInt(det)}))
+        setModalData(peserta.find(({id})=>{return id===parseInt(det)}))
+        setModal(true)
     }
 
     const renderTable = (item, index)=>{
@@ -52,10 +57,9 @@ const AdmPesNasec = ()=>{
             return(
                 <tr key={item.id} className="border-b border-gray-200 hover:bg-gray-100">
                     <td className="py-3 px-6 text-center">{index+1}</td>
-                    <td className="py-3 px-6 text-center">{item.nama_lengkap}</td>
-                    <td className="py-3 px-6 text-center">{item.email}</td>
-                    <td className="py-3 px-6 text-center">{item.asal_univ}</td>
-                    <td className="py-3 px-6 text-center">{item.asal_daerah}</td>
+                    <td className="py-3 px-6 text-center">{item.nama_team}</td>
+                    <td className="py-3 px-6 text-center">{item.nama_sekolah}</td>
+                    <td className="py-3 px-6 text-center">{item.nama_pembimbing}</td>
                     <td className="py-3 px-6 text-center">
                         <button value={item.id} onClick={(item)=>detailPeserta(item.target.value)} className="rounded-md bg-blue-500 hover:bg-blue-300 px-3 py-2 text-white">
                             Detail
@@ -70,10 +74,9 @@ const AdmPesNasec = ()=>{
         if(search === ""){
             return item
         }else if(
-            item.nama_lengkap.toLowerCase().includes(search.toLowerCase())
-            || item.email.toLowerCase().includes(search.toLowerCase())
-            || item.asal_univ.toLowerCase().includes(search.toLowerCase())
-            || item.asal_daerah.toLowerCase().includes(search.toLowerCase())
+            item.nama_team.toLowerCase().includes(search.toLowerCase())
+            || item.nama_sekolah.toLowerCase().includes(search.toLowerCase())
+            || item.nama_pembimbing.toLowerCase().includes(search.toLowerCase())
         ){
             return item
         }
@@ -81,6 +84,97 @@ const AdmPesNasec = ()=>{
 
     return(
         <div>
+
+
+            {/* Modal */}
+            <div onClick={(e)=>{if(e.target.dataset.modal==="bg"){document.body.classList.remove("overflow-y-auto");setModal(false)}}} data-modal="bg" style={{backgroundColor:"rgba(0,0,0,.3)"}} className={modal?"w-full overflow-y-auto h-screen inset-0 absolute z-50 flex justify-center items-center transition-all duration-500 transform":"w-full h-screen inset-0 absolute z-50 flex justify-center items-center transition-all duration-500 transform scale-0 translate-x-full opacity-0"}>
+                <div className="bg-white rounded-md p-5 w-11/12 max-w-2xl relative" style={{maxHeight:"90vh"}}>
+                    {/* Header */}
+                    <button onClick={()=>{document.body.classList.remove("overflow-y-auto");setModal(false)}} type="button" className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 absolute top-0.5 right-0.5">
+                        <span className="sr-only">Close menu</span>
+                        <FontAwesomeIcon icon={faTimes} />
+                    </button>
+                    <div className="flex items-center">
+                        <h3 className="text-center flex-1 text-lg">Detail</h3>
+                    </div>
+                    {/* Body */}
+                    <div style={{maxHeight:"80vh"}} className="overflow-y-auto py-2">
+                        <table className="min-w-max w-full table-auto">
+                            <tbody>
+                                <tr className="border-b border-gray-200 hover:bg-gray-100">
+                                    <td className="py-3 px-6">Nama Team</td>
+                                    <td className="py-3 px-6">: {modalData.nama_team}</td>
+                                </tr>
+                                <tr className="border-b border-gray-200 hover:bg-gray-100">
+                                    <td className="py-3 px-6">Nama Sekolah</td>
+                                    <td className="py-3 px-6">: {modalData.nama_sekolah}</td>
+                                </tr>
+                                <tr className="border-b border-gray-200 hover:bg-gray-100">
+                                    <td className="py-3 px-6">Alamat Sekolah</td>
+                                    <td className="py-3 px-6">: {modalData.alamat_sekolah}</td>
+                                </tr>
+                                <tr className="border-b border-gray-200 hover:bg-gray-100">
+                                    <td className="py-3 px-6">Nama Pembimbing</td>
+                                    <td className="py-3 px-6">: {modalData.nama_pembimbing}</td>
+                                </tr>
+                                <tr className="border-b border-gray-200 hover:bg-gray-100">
+                                    <td className="py-3 px-6">No Pembimbing</td>
+                                    <td className="py-3 px-6">: {modalData.no_pembimbing}</td>
+                                </tr>
+                                <tr className="border-b border-gray-200 hover:bg-gray-100">
+                                    <td className="py-3 px-6">Komitmen</td>
+                                    <td className="py-3 px-6">: {modalData.komitmen}</td>
+                                </tr>
+                                <tr className="border-b border-gray-200 hover:bg-gray-100">
+                                    <td className="py-3 px-6">Info Nasec</td>
+                                    <td className="py-3 px-6">: {modalData.info}</td>
+                                </tr>
+                                <tr className="border-b border-gray-200 hover:bg-gray-100">
+                                    <td className="py-3 px-6">Member 1</td>
+                                    <td className="py-3 px-6">
+                                        <p className={modalData.member[0].is_leader===1?"font-bold":"hidden"}>Ketua</p>
+                                        <p>{modalData.member[0].nama}</p>
+                                        <p>{modalData.member[0].email}</p>
+                                        <p>{modalData.member[0].jenis_kelamin}</p>
+                                        <p>Kelas {modalData.member[0].kelas}</p>
+                                        <p>{modalData.member[0].no}</p>
+                                        <p><a href={modalData.member[0].kartu_pelajar}>Link Ktm</a></p>
+                                        <p><a href={modalData.member[0].twibbon}>Link Twibbon</a></p>
+                                    </td>
+                                </tr>
+                                <tr className="border-b border-gray-200 hover:bg-gray-100">
+                                    <td className="py-3 px-6">Member 2</td>
+                                    <td className="py-3 px-6">
+                                        <p className={modalData.member[1].is_leader===1?"font-bold":"hidden"}>Ketua</p>
+                                        <p>{modalData.member[1].nama}</p>
+                                        <p>{modalData.member[1].email}</p>
+                                        <p>{modalData.member[1].jenis_kelamin}</p>
+                                        <p>Kelas {modalData.member[1].kelas}</p>
+                                        <p>{modalData.member[1].no}</p>
+                                        <p><a href={modalData.member[1].kartu_pelajar}>Link Ktm</a></p>
+                                        <p><a href={modalData.member[1].twibbon}>Link Twibbon</a></p>
+                                    </td>
+                                </tr>
+                                <tr className="border-b border-gray-200 hover:bg-gray-100">
+                                    <td className="py-3 px-6">Member 3</td>
+                                    <td className="py-3 px-6">
+                                        <p className={modalData.member[2].is_leader===1?"font-bold":"hidden"}>Ketua</p>
+                                        <p>{modalData.member[2].nama}</p>
+                                        <p>{modalData.member[2].email}</p>
+                                        <p>{modalData.member[2].jenis_kelamin}</p>
+                                        <p>Kelas {modalData.member[2].kelas}</p>
+                                        <p>{modalData.member[2].no}</p>
+                                        <p><a href={modalData.member[2].kartu_pelajar}>Link Ktm</a></p>
+                                        <p><a href={modalData.member[2].twibbon}>Link Twibbon</a></p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+
             <h1 className="text-2xl mb-4">Peserta Nasec</h1>
             <div className="flex justify-end mb-3">
                 <input value={search} onChange={(e)=>{setPage(1);setSearch(e.target.value)}} type="text" placeholder="Search..." className="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring ease-linear transition-all duration-150" />
@@ -90,10 +184,9 @@ const AdmPesNasec = ()=>{
                     <thead>
                         <tr className="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
                             <th className="py-3 px-6 text-center">No</th>
-                            <th className="py-3 px-6 text-center">Nama</th>
-                            <th className="py-3 px-6 text-center">Email</th>
-                            <th className="py-3 px-6 text-center">Universitas</th>
-                            <th className="py-3 px-6 text-center">Asal Daerah</th>
+                            <th className="py-3 px-6 text-center">Team</th>
+                            <th className="py-3 px-6 text-center">Sekolah</th>
+                            <th className="py-3 px-6 text-center">Pembimbing</th>
                             <th className="py-3 px-6 text-center"></th>
                         </tr>
                     </thead>

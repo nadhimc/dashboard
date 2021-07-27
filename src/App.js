@@ -13,6 +13,7 @@ import GamasurfRegister from './Pages/GamasurfRegister';
 import Logout from './Pages/Logout';
 import Admin from './Pages/Admin';
 import SentRegister from './Pages/SentRegister';
+import NasecRegister from './Pages/NasecRegister';
 
 function App() {
   return (
@@ -44,6 +45,9 @@ function App() {
         <Route path="/dashboard" children={<Dashboard />} /> 
         <Route path="/admin/:page" children={<Admin />} />  
         <Route path="/admin" children={<Admin />} /> 
+        <Route path="/nasec">
+          <NasecRegister />
+        </Route>
         <Route path="/gamasurf">
           <GamasurfRegister />
         </Route>
