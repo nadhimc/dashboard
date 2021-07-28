@@ -36,13 +36,81 @@ const GamasurfRegister = ()=>{
 
     // Form Page 3
     const [twibbonVal, setTwibbonVal] = useState("")
+    const [twibbonErr, setTwibbonErr] = useState("")
     let twibbon = createRef();
     const [orisinalVal, setOrisinalVal] = useState("")
+    const [orisinalErr, setOrisinalErr] = useState("")
     let orisinal = createRef();
     const [ktmVal, setKtmVal] = useState("")
+    const [ktmErr, setKtmErr] = useState("")
     let ktm = createRef();
     const [ideVal, setIdeVal] = useState("")
+    const [ideErr, setIdeErr] = useState("")
     let ide = createRef();
+
+    useEffect(()=>{
+        if(twibbon.current.files.length !== 0){
+            if(twibbon.current.files[0].type==="image/jpeg" || twibbon.current.files[0].type==="image/jpg"){
+                if(twibbon.current.files[0].size/1024 <= 512){
+                    setTwibbonErr("")
+                }else{
+                    setTwibbonErr("Maksimum ukuran file adalah 512kb")
+                }
+            }else{
+                setTwibbonErr("Ekstensi yang didukung adalah jpeg atau jpg")
+            }
+        }else{
+            setTwibbonErr("")
+        }
+    },[twibbon,twibbonVal])
+
+    useEffect(()=>{
+        if(orisinal.current.files.length !== 0){
+            if(orisinal.current.files[0].type==="application/pdf"){
+                if(orisinal.current.files[0].size/1024/1024 <=3){
+                    setOrisinalErr("")
+                }else{
+                    setOrisinalErr("Maksimum ukuran file adalah 3Mb")
+                }
+            }else{
+                setOrisinalErr("Ekstensi yang didukung adalah PDF")
+            }
+        }else{
+            setOrisinalErr("")
+        }
+    },[orisinal,orisinalVal])
+
+    useEffect(()=>{
+        if(ktm.current.files.length !== 0){
+            if(ktm.current.files[0].type==="image/jpeg" || ktm.current.files[0].type==="image/jpg"){
+                if(ktm.current.files[0].size/1024 <= 512){
+                    setKtmErr("")
+                }else{
+                    setKtmErr("Maksimum ukuran file adalah 512kb")
+                }
+            }else{
+                setKtmErr("Ekstensi yang didukung adalah jpeg atau jpg")
+            }
+        }else{
+            setKtmErr("")
+        }
+    },[ktm,ktmVal])
+
+    useEffect(()=>{
+        if(ide.current.files.length !== 0){
+            if(ide.current.files[0].type==="application/pdf"){
+                if(ide.current.files[0].size/1024/1024 <= 5){
+                    setIdeErr("")
+                }else{
+                    setIdeErr("Maksimum ukuran file adalah 5Mb")
+                }
+            }else{
+                setIdeErr("Ekstensi yang didukung adalah PDF")
+            }
+        }else{
+            setIdeErr("")
+        }
+    },[ide,ideVal])
 
     const cekRegistered = ()=>{
         fetch(`${process.env.REACT_APP_APIURL}/users/${localStorage.getItem("id")}/isregistered`,{
@@ -432,8 +500,8 @@ const GamasurfRegister = ()=>{
                                                 <input disabled value={twibbonVal} style={{color:"rgb(71,85,105)"}} type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded-l text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Upload files..." />
                                                 <button type="button" className="bg-blue-500 rounded-r-md px-3 py-3 font-bold text-white text-sm">Upload</button>
                                             </div>
-                                            <small style={{color:"rgb(71,85,105)"}} className="text-sm font-semibold text-blueGray-600">
-                                                ekstensi jpg/jpeg, max 512kb
+                                            <small style={{color:"rgb(71,85,105)"}} className={twibbonErr===""?"hidden":"text-sm font-semibold text-blueGray-600"}>
+                                                {twibbonErr}
                                             </small>
                                         </div>
                                         <div className="relative w-full mb-3">
@@ -445,8 +513,8 @@ const GamasurfRegister = ()=>{
                                                 <input value={orisinalVal} disabled style={{color:"rgb(71,85,105)"}} type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded-l text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Upload files..." />
                                                 <button type="button" className="bg-blue-500 rounded-r-md px-3 py-3 font-bold text-white text-sm">Upload</button>
                                             </div>
-                                            <small style={{color:"rgb(71,85,105)"}} className="text-sm font-semibold text-blueGray-600">
-                                                ekstensi pdf, max 3Mb
+                                            <small style={{color:"rgb(71,85,105)"}} className={orisinalErr===""?"hidden":"text-sm font-semibold text-blueGray-600"}>
+                                                {orisinalErr}
                                             </small>
                                         </div>
                                         <div className="relative w-full mb-3">
@@ -458,8 +526,8 @@ const GamasurfRegister = ()=>{
                                                 <input value={ktmVal} disabled style={{color:"rgb(71,85,105)"}} type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded-l text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Upload files..." />
                                                 <button type="button" className="bg-blue-500 rounded-r-md px-3 py-3 font-bold text-white text-sm">Upload</button>
                                             </div>
-                                            <small style={{color:"rgb(71,85,105)"}} className="text-sm font-semibold text-blueGray-600">
-                                                ekstensi jpg/jpeg, max 512kb
+                                            <small style={{color:"rgb(71,85,105)"}} className={ktmErr===""?"hidden":"text-sm font-semibold text-blueGray-600"}>
+                                                {ktmErr}
                                             </small>
                                         </div>
                                         <div className="relative w-full mb-3">
@@ -471,8 +539,8 @@ const GamasurfRegister = ()=>{
                                                 <input value={ideVal} disabled style={{color:"rgb(71,85,105)"}} type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded-l text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Upload files..." />
                                                 <button type="button" className="bg-blue-500 rounded-r-md px-3 py-3 font-bold text-white text-sm">Upload</button>
                                             </div>
-                                            <small style={{color:"rgb(71,85,105)"}} className="text-sm font-semibold text-blueGray-600">
-                                                ekstensi pdf, max 5Mb
+                                            <small style={{color:"rgb(71,85,105)"}} className={ideErr===""?"hidden":"text-sm font-semibold text-blueGray-600"}>
+                                                {ideErr}
                                             </small>
                                         </div>
                                     </div>

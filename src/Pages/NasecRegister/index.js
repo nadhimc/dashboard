@@ -26,9 +26,43 @@ const NasecRegister = ()=>{
     const [firstEmail, setFirstEmail] = useState("")
     const [firstNomor, setFirstNomor] = useState("")
     const [firstTwibbonVal, setFirstTwibbonVal] = useState("")
+    const [firstTwibbonErr, setFirstTwibbonErr] = useState("")
     let firstTwibbon = createRef();
     const [firstKtmVal, setFirstKtmVal] = useState("")
+    const [firstKtmErr, setFirstKtmErr] = useState("")
     let firstKtm = createRef();
+
+    useEffect(()=>{
+        if(firstTwibbon.current.files.length !== 0){
+            if(firstTwibbon.current.files[0].type==="image/jpeg" || firstTwibbon.current.files[0].type==="image/jpg"){
+                if(firstTwibbon.current.files[0].size/1024 <= 512){
+                    setFirstTwibbonErr("")
+                }else{
+                    setFirstTwibbonErr("Maksimum ukuran file adalah 512kb")
+                }
+            }else{
+                setFirstTwibbonErr("Ekstensi yang didukung adalah jpeg atau jpg")
+            }
+        }else{
+            setFirstTwibbonErr("")
+        }
+    },[firstTwibbon,firstTwibbonVal])
+
+    useEffect(()=>{
+        if(firstKtm.current.files.length !== 0){
+            if(firstKtm.current.files[0].type==="image/jpeg" || firstKtm.current.files[0].type==="image/jpg"){
+                if(firstKtm.current.files[0].size/1024 <= 512){
+                    setFirstKtmErr("")
+                }else{
+                    setFirstKtmErr("Maksimum ukuran file adalah 512kb")
+                }
+            }else{
+                setFirstKtmErr("Ekstensi yang didukung adalah jpeg atau jpg")
+            }
+        }else{
+            setFirstKtmErr("")
+        }
+    },[firstKtm,firstKtmVal])
 
     // Peserta2
     const [secondLeader, setSecondLeader] = useState(false)
@@ -38,9 +72,43 @@ const NasecRegister = ()=>{
     const [secondEmail, setSecondEmail] = useState("")
     const [secondNomor, setSecondNomor] = useState("")
     const [secondTwibbonVal, setSecondTwibbonVal] = useState("")
+    const [secondTwibbonErr, setSecondTwibbonErr] = useState("")
     let secondTwibbon = createRef();
     const [secondKtmVal, setSecondKtmVal] = useState("")
+    const [secondKtmErr, setSecondKtmErr] = useState("")
     let secondKtm = createRef();
+
+    useEffect(()=>{
+        if(secondTwibbon.current.files.length !== 0){
+            if(secondTwibbon.current.files[0].type==="image/jpeg" || secondTwibbon.current.files[0].type==="image/jpg"){
+                if(secondTwibbon.current.files[0].size/1024 <= 512){
+                    setSecondTwibbonErr("")
+                }else{
+                    setSecondTwibbonErr("Maksimum ukuran file adalah 512kb")
+                }
+            }else{
+                setSecondTwibbonErr("Ekstensi yang didukung adalah jpeg atau jpg")
+            }
+        }else{
+            setSecondTwibbonErr("")
+        }
+    },[secondTwibbon,secondTwibbonVal])
+
+    useEffect(()=>{
+        if(secondKtm.current.files.length !== 0){
+            if(secondKtm.current.files[0].type==="image/jpeg" || secondKtm.current.files[0].type==="image/jpg"){
+                if(secondKtm.current.files[0].size/1024 <= 512){
+                    setSecondKtmErr("")
+                }else{
+                    setSecondKtmErr("Maksimum ukuran file adalah 512kb")
+                }
+            }else{
+                setSecondKtmErr("Ekstensi yang didukung adalah jpeg atau jpg")
+            }
+        }else{
+            setSecondKtmErr("")
+        }
+    },[secondKtm,secondKtmVal])
 
     // Peserta3
     const [thirdLeader, setThirdLeader] = useState(false)
@@ -50,9 +118,43 @@ const NasecRegister = ()=>{
     const [thirdEmail, setThirdEmail] = useState("")
     const [thirdNomor, setThirdNomor] = useState("")
     const [thirdTwibbonVal, setThirdTwibbonVal] = useState("")
+    const [thirdTwibbonErr, setThirdTwibbonErr] = useState("")
     let thirdTwibbon = createRef();
     const [thirdKtmVal, setThirdKtmVal] = useState("")
+    const [thirdKtmErr, setThirdKtmErr] = useState("")
     let thirdKtm = createRef();
+
+    useEffect(()=>{
+        if(thirdTwibbon.current.files.length !== 0){
+            if(thirdTwibbon.current.files[0].type==="image/jpeg" || thirdTwibbon.current.files[0].type==="image/jpg"){
+                if(thirdTwibbon.current.files[0].size/1024 <= 512){
+                    setThirdTwibbonErr("")
+                }else{
+                    setThirdTwibbonErr("Maksimum ukuran file adalah 512kb")
+                }
+            }else{
+                setThirdTwibbonErr("Ekstensi yang didukung adalah jpeg atau jpg")
+            }
+        }else{
+            setThirdTwibbonErr("")
+        }
+    },[thirdTwibbon,thirdTwibbonVal])
+
+    useEffect(()=>{
+        if(thirdKtm.current.files.length !== 0){
+            if(thirdKtm.current.files[0].type==="image/jpeg" || thirdKtm.current.files[0].type==="image/jpg"){
+                if(thirdKtm.current.files[0].size/1024 <= 512){
+                    setThirdKtmErr("")
+                }else{
+                    setThirdKtmErr("Maksimum ukuran file adalah 512kb")
+                }
+            }else{
+                setThirdKtmErr("Ekstensi yang didukung adalah jpeg atau jpg")
+            }
+        }else{
+            setThirdKtmErr("")
+        }
+    },[thirdKtm,thirdKtmVal])
 
 
     const [page, setPage] = useState(1)
@@ -435,7 +537,7 @@ const NasecRegister = ()=>{
                                             firstNomor==="" || validator.isMobilePhone(firstNomor,"id-ID") || firstNomor==="-"?
                                             "hidden":
                                             "text-sm font-semibold text-blueGray-600"
-                                            }>Diisi dengan no HP, jika tidak ada tulis -</small>
+                                            }>Diisi dengan no HP</small>
                                             </div>
                                             <div className="relative w-full mb-3">
                                                 <label style={{color:"rgb(71,85,105)"}} className="block uppercase text-xs font-bold mb-2">
@@ -446,8 +548,8 @@ const NasecRegister = ()=>{
                                                     <input disabled value={firstTwibbonVal} style={{color:"rgb(71,85,105)"}} type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded-l text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Upload files..." />
                                                     <button type="button" className="bg-blue-500 rounded-r-md px-3 py-3 font-bold text-white text-sm">Upload</button>
                                                 </div>
-                                                <small style={{color:"rgb(71,85,105)"}} className="text-sm font-semibold text-blueGray-600">
-                                                    ekstensi jpg/jpeg, max 512kb
+                                                <small style={{color:"rgb(71,85,105)"}} className={firstTwibbonErr===""?"hidden":"text-sm font-semibold text-blueGray-600"}>
+                                                    {firstTwibbonErr}
                                                 </small>
                                             </div>
                                             <div className="relative w-full mb-3">
@@ -459,8 +561,8 @@ const NasecRegister = ()=>{
                                                     <input value={firstKtmVal} disabled style={{color:"rgb(71,85,105)"}} type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded-l text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Upload files..." />
                                                     <button type="button" className="bg-blue-500 rounded-r-md px-3 py-3 font-bold text-white text-sm">Upload</button>
                                                 </div>
-                                                <small style={{color:"rgb(71,85,105)"}} className="text-sm font-semibold text-blueGray-600">
-                                                    ekstensi jpg/jpeg, max 512kb
+                                                <small style={{color:"rgb(71,85,105)"}} className={firstKtmErr===""?"hidden":"text-sm font-semibold text-blueGray-600"}>
+                                                    {firstKtmErr}
                                                 </small>
                                             </div>
                                         </div>
@@ -534,7 +636,7 @@ const NasecRegister = ()=>{
                                             secondNomor==="" || validator.isMobilePhone(secondNomor,"id-ID") || secondNomor==="-"?
                                             "hidden":
                                             "text-sm font-semibold text-blueGray-600"
-                                            }>Diisi dengan no HP, jika tidak ada tulis -</small>
+                                            }>Diisi dengan no HP</small>
                                             </div>
                                             <div className="relative w-full mb-3">
                                                 <label style={{color:"rgb(71,85,105)"}} className="block uppercase text-xs font-bold mb-2">
@@ -545,8 +647,8 @@ const NasecRegister = ()=>{
                                                     <input disabled value={secondTwibbonVal} style={{color:"rgb(71,85,105)"}} type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded-l text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Upload files..." />
                                                     <button type="button" className="bg-blue-500 rounded-r-md px-3 py-3 font-bold text-white text-sm">Upload</button>
                                                 </div>
-                                                <small style={{color:"rgb(71,85,105)"}} className="text-sm font-semibold text-blueGray-600">
-                                                    ekstensi jpg/jpeg, max 512kb
+                                                <small style={{color:"rgb(71,85,105)"}} className={secondTwibbonErr===""?"hidden":"text-sm font-semibold text-blueGray-600"}>
+                                                    {secondTwibbonErr}
                                                 </small>
                                             </div>
                                             <div className="relative w-full mb-3">
@@ -558,8 +660,8 @@ const NasecRegister = ()=>{
                                                     <input value={secondKtmVal} disabled style={{color:"rgb(71,85,105)"}} type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded-l text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Upload files..." />
                                                     <button type="button" className="bg-blue-500 rounded-r-md px-3 py-3 font-bold text-white text-sm">Upload</button>
                                                 </div>
-                                                <small style={{color:"rgb(71,85,105)"}} className="text-sm font-semibold text-blueGray-600">
-                                                    ekstensi jpg/jpeg, max 512kb
+                                                <small style={{color:"rgb(71,85,105)"}} className={secondKtmErr===""?"hidden":"text-sm font-semibold text-blueGray-600"}>
+                                                    {secondKtmErr}
                                                 </small>
                                             </div>
                                         </div>
@@ -633,7 +735,7 @@ const NasecRegister = ()=>{
                                             thirdNomor==="" || validator.isMobilePhone(thirdNomor,"id-ID") || thirdNomor==="-"?
                                             "hidden":
                                             "text-sm font-semibold text-blueGray-600"
-                                            }>Diisi dengan no HP, jika tidak ada tulis -</small>
+                                            }>Diisi dengan no HP</small>
                                             </div>
                                             <div className="relative w-full mb-3">
                                                 <label style={{color:"rgb(71,85,105)"}} className="block uppercase text-xs font-bold mb-2">
@@ -644,8 +746,8 @@ const NasecRegister = ()=>{
                                                     <input disabled value={thirdTwibbonVal} style={{color:"rgb(71,85,105)"}} type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded-l text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Upload files..." />
                                                     <button type="button" className="bg-blue-500 rounded-r-md px-3 py-3 font-bold text-white text-sm">Upload</button>
                                                 </div>
-                                                <small style={{color:"rgb(71,85,105)"}} className="text-sm font-semibold text-blueGray-600">
-                                                    ekstensi jpg/jpeg, max 512kb
+                                                <small style={{color:"rgb(71,85,105)"}} className={thirdTwibbonErr===""?"hidden":"text-sm font-semibold text-blueGray-600"}>
+                                                    {thirdTwibbonErr}
                                                 </small>
                                             </div>
                                             <div className="relative w-full mb-3">
@@ -657,8 +759,8 @@ const NasecRegister = ()=>{
                                                     <input value={thirdKtmVal} disabled style={{color:"rgb(71,85,105)"}} type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded-l text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Upload files..." />
                                                     <button type="button" className="bg-blue-500 rounded-r-md px-3 py-3 font-bold text-white text-sm">Upload</button>
                                                 </div>
-                                                <small style={{color:"rgb(71,85,105)"}} className="text-sm font-semibold text-blueGray-600">
-                                                    ekstensi jpg/jpeg, max 512kb
+                                                <small style={{color:"rgb(71,85,105)"}} className={thirdKtmErr===""?"hidden":"text-sm font-semibold text-blueGray-600"}>
+                                                    {thirdKtmErr}
                                                 </small>
                                             </div>
                                         </div>
