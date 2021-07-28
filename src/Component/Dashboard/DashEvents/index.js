@@ -7,6 +7,7 @@ import { useState, useEffect } from "react"
 const DashEvents = ()=>{
 
     const [isRegistered, setIsRegistered] = useState(false)
+    const [isLoading, setIsLoading] = useState(true)
     const [registerOn, setRegisterOn] = useState("Gamasurf")
     
 
@@ -22,9 +23,11 @@ const DashEvents = ()=>{
                 console.log(res)
                 if(res.meta.code===200){
                     if(res.data!==false){
+                        setIsLoading(false)
                         setIsRegistered(true)
                         setRegisterOn(res.data)
                     }else{
+                        setIsLoading(false)
                         setIsRegistered(false)
                         setRegisterOn("")
                     }
@@ -43,17 +46,17 @@ const DashEvents = ()=>{
     return (
         <>
             <h1 className="text-2xl mb-4">Events</h1>
-            <div className={isRegistered?"":"hidden"}>
-                <div className="rounded-md shadow-md p-8 flex justify-between items-center flex-col space-y-4" style={{backgroundColor:"#92F8D9"}}>
+            <div className={isLoading?"hidden":isRegistered?"":"hidden"}>
+                <div className="rounded-md shadow-md p-8 flex justify-between items-center flex-col space-y-4 max-w-md" style={{backgroundColor:"#92F8D9"}}>
                     <div className="flex-1 flex justify-center items-center">
                         <img alt={registerOn} className="w-48" src={registerOn.toLowerCase()==="nasec"?Nasec:registerOn.toLowerCase()==="gamasurf"?Gamasurf:Sent} />
                     </div>
-                    <Link className="text-center bg-white w-full py-2 font-bold text-lg rounded-lg" style={{color:"#92F8D9"}}>
+                    <Link className="text-center bg-white w-full py-2 font-bold text-lg rounded-lg hidden" style={{color:"#92F8D9"}}>
                         Check
                     </Link>
                 </div>
             </div>
-            <div className={isRegistered?"hidden":"flex md:space-x-6 flex-col md:flex-row space-y-6 md:space-y-0"}>
+            <div className={isLoading?"hidden":isRegistered?"hidden":"flex md:space-x-6 flex-col md:flex-row space-y-6 md:space-y-0"}>
                 <div className="rounded-md shadow-md p-8 flex justify-between items-center flex-col space-y-4" style={{backgroundColor:"#92F8D9"}}>
                     <div className="flex-1 flex justify-center items-center">
                         <img alt="Nasec" className="w-48" src={Nasec} />

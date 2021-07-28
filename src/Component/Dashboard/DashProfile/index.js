@@ -72,7 +72,7 @@ const DashProfile = ()=>{
                     <img alt="Nasec" className={registered==="nasec"?"w-48":"hidden"} src={Nasec} />
                     <img alt="Sent" className={registered==="sent"?"w-48":"hidden"} src={Sent} />
                 </div>
-                <Link className="text-center bg-white w-full py-2 font-bold text-lg rounded-lg" style={{color:"#92F8D9"}}>
+                <Link className="text-center bg-white w-full py-2 font-bold text-lg rounded-lg hidden" style={{color:"#92F8D9"}}>
                     Check
                 </Link>
             </div>
