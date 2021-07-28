@@ -94,7 +94,7 @@ const Register = ()=>{
                   (err)=>{
                       setIsError(true)
                       setIsLoading(false)
-                      console.log(err);
+                      console.log(err)
                   }
               )
         }else{

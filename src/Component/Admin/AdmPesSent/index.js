@@ -8,7 +8,7 @@ const AdmPesSent = ()=>{
 
     const [page, setPage] = useState(1)
 
-    const itemsInPage = 2;
+    const itemsInPage = 10;
 
     const [peserta, setPeserta] = useState([])
 

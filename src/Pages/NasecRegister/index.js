@@ -254,6 +254,12 @@ const NasecRegister = ()=>{
     }
 
     useEffect(()=>{
+        if(localStorage.getItem("key") && localStorage.getItem("id")  && localStorage.getItem("user") && localStorage.getItem("role")){
+            console.log("Loged in")
+        }else{
+            setSelesai(true)
+            setKeDash(true)
+        }
         cekRegistered()
     },[])
 

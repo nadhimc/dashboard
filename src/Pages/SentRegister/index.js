@@ -7,7 +7,7 @@ import Sent from "../../Images/sent.svg"
 
 const SentRegister = ()=>{
 
-    const [email, setEmail] = useState("")
+    const [email, setEmail] = useState(localStorage.getItem("user")?localStorage.getItem("user"):"")
     const [univ, setUniv] = useState("")
     const [fullname, setFullname] = useState("")
     const [status, setStatus] = useState("Siswa")
@@ -79,6 +79,12 @@ const SentRegister = ()=>{
     }
 
     useEffect(()=>{
+        if(localStorage.getItem("key") && localStorage.getItem("id")  && localStorage.getItem("user") && localStorage.getItem("role")){
+            console.log("Loged in")
+        }else{
+            setSelesai(true)
+            setKeDash(true)
+        }
         cekRegistered()
     },[])
 
@@ -127,7 +133,7 @@ const SentRegister = ()=>{
                                         <label style={{color:"rgb(71,85,105)"}} className="block uppercase text-xs font-bold mb-2">
                                             Email
                                         </label>
-                                        <input value={email} onChange={(e)=>setEmail(e.target.value)} style={{color:"rgb(71,85,105)"}} type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Email" />
+                                        <input disabled={localStorage.getItem("user")?true:false} value={email} onChange={(e)=>setEmail(e.target.value)} style={{color:"rgb(71,85,105)"}} type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Email" />
                                         <small style={{color:"rgb(71,85,105)"}} className={
                                             (email==="" || validator.isEmail(email))?
                                             "hidden":

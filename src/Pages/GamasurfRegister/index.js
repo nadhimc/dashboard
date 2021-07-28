@@ -20,7 +20,7 @@ const GamasurfRegister = ()=>{
     // Form Page 1
     const [fullname, setfullname] = useState("")
     const [nickname, setnickname] = useState("")
-    const [email, setemail] = useState("")
+    const [email, setemail] = useState(localStorage.getItem("user")?localStorage.getItem("user"):"")
     const [univ, setuniv] = useState("")
     const [region, setregion] = useState("")
     const [phone, setphone] = useState("")
@@ -65,6 +65,12 @@ const GamasurfRegister = ()=>{
     }
 
     useEffect(()=>{
+        if(localStorage.getItem("key") && localStorage.getItem("id")  && localStorage.getItem("user") && localStorage.getItem("role")){
+            console.log("Loged in")
+        }else{
+            setSelesai(true)
+            setKeDash(true)
+        }
         cekRegistered()
     },[])
 
@@ -327,7 +333,7 @@ const GamasurfRegister = ()=>{
                                             <label style={{color:"rgb(71,85,105)"}} className="block uppercase text-xs font-bold mb-2">
                                                 Email
                                             </label>
-                                            <input onChange={(e)=>setemail(e.target.value)} value={email} name="email" style={{color:"rgb(71,85,105)"}} type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Email" />
+                                            <input disabled={localStorage.getItem("user")?true:false} onChange={(e)=>setemail(e.target.value)} value={email} name="email" style={{color:"rgb(71,85,105)"}} type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Email" />
                                             <small style={{color:"rgb(71,85,105)"}} className={
                                             (email==="" || validator.isEmail(email))?
                                             "hidden":

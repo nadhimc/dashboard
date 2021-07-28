@@ -14,7 +14,7 @@ const AdmPesNasec = ()=>{
 
     const [page, setPage] = useState(1)
 
-    const itemsInPage = 2;
+    const itemsInPage = 10;
 
     const [peserta, setPeserta] = useState([])
 
@@ -60,6 +60,7 @@ const AdmPesNasec = ()=>{
                     <td className="py-3 px-6 text-center">{item.nama_team}</td>
                     <td className="py-3 px-6 text-center">{item.nama_sekolah}</td>
                     <td className="py-3 px-6 text-center">{item.nama_pembimbing}</td>
+                    <td className="py-3 px-6 text-center"></td>
                     <td className="py-3 px-6 text-center">
                         <button value={item.id} onClick={(item)=>detailPeserta(item.target.value)} className="rounded-md bg-blue-500 hover:bg-blue-300 px-3 py-2 text-white">
                             Detail
@@ -187,6 +188,7 @@ const AdmPesNasec = ()=>{
                             <th className="py-3 px-6 text-center">Team</th>
                             <th className="py-3 px-6 text-center">Sekolah</th>
                             <th className="py-3 px-6 text-center">Pembimbing</th>
+                            <th className="py-3 px-6 text-center">Paid</th>
                             <th className="py-3 px-6 text-center"></th>
                         </tr>
                     </thead>
