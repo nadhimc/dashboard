@@ -1,6 +1,6 @@
-import { faCheckCircle, faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useState, createRef } from 'react';
+import { useState, createRef, useEffect } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import validator from 'validator';
 import Nasec from "../../Images/nasec.svg"
@@ -61,10 +61,201 @@ const NasecRegister = ()=>{
     const [selesai, setSelesai] = useState(false)
     const [keDash, setKeDash] = useState(false)
 
+    const uploadData = ()=>{
+        console.log("start Upload Data")
+        setIsLoading(true)
+        let data = new FormData()
+        // form 1
+        data.append("nama_team",team)
+        data.append("nama_sekolah",school)
+        data.append("alamat_sekolah",schoolAddress)
+        data.append("nama_pembimbing",pembimbing)
+        data.append("no_pembimbing",noPembimbing)
+        data.append("komitmen",komitmen?"Iya":"Tidak")
+        data.append("info",info)
+
+        // form 2
+        data.append("nama_1",firstName)
+        data.append("jenis_kelamin_1",firstJK)
+        data.append("kelas_1",firstKelas)
+        data.append("email_1",firstEmail)
+        data.append("no_1",firstNomor)
+        data.append("kartu_pelajar_1",firstKtm.current.files[0])
+        data.append("twibbon_1",firstTwibbon.current.files[0])
+        data.append("is_leader_1",firstLeader?"1":"0")
+
+        // form 3
+        data.append("nama_2",secondName)
+        data.append("jenis_kelamin_2",secondJK)
+        data.append("kelas_2",secondKelas)
+        data.append("email_2",secondEmail)
+        data.append("no_2",secondNomor)
+        data.append("kartu_pelajar_2",secondKtm.current.files[0])
+        data.append("twibbon_2",secondTwibbon.current.files[0])
+        data.append("is_leader_2",secondLeader?"1":"0")
+
+        // form 4
+        data.append("nama_3",thirdName)
+        data.append("jenis_kelamin_3",thirdJK)
+        data.append("kelas_3",thirdKelas)
+        data.append("email_3",thirdEmail)
+        data.append("no_3",thirdNomor)
+        data.append("kartu_pelajar_3",thirdKtm.current.files[0])
+        data.append("twibbon_3",thirdTwibbon.current.files[0])
+        data.append("is_leader_3",thirdLeader?"1":"0")
+
+        // console.log(data.get("twibbon_1"))
+
+        fetch(`${process.env.REACT_APP_APIURL}/users/${localStorage.getItem("id")}/nasec`,{
+            method:"POST",
+            headers:{
+                'Authorization' : `Bearer ${localStorage.getItem("key")}`
+            },
+            body: data
+        }).then(res=>res.json())
+        .then(
+            (res)=>{
+                console.log(res)
+                if(res.meta.code === 201){
+                    setSelesai(true)
+                }else{
+                    setIsError(true)
+                }
+                setIsLoading(false)
+            },
+            (err)=>{
+                console.log(err)
+                setIsError(true)
+                setIsLoading(false)
+            }
+        )
+    }
+
     const onSubmit = (e)=>{
         e.preventDefault()
-        
+        setIsError(false)
+        if(
+            team !== ""
+            && school !== ""
+            && schoolAddress !== ""
+            && pembimbing !== ""
+            && noPembimbing !== "" && validator.isMobilePhone(noPembimbing,"id-ID")
+            && komitmen
+            && info !== ""
+        ){
+            console.log("lolos 1")
+            // Lolos Page 1
+            if(
+                firstName !== ""
+                && firstKelas !== ""
+                && firstEmail !== "" && validator.isEmail(firstEmail)
+                && firstNomor !== "" && (validator.isMobilePhone(firstNomor,"id-ID") || firstNomor === "-")
+                && firstTwibbon.current.files.length > 0
+                && firstKtm.current.files.length > 0
+            ){
+                // Lolos setengah Page 2
+                if(
+                    (firstTwibbon.current.files[0].type==="image/jpeg" || firstTwibbon.current.files[0].type==="image/jpg")
+                    && firstTwibbon.current.files[0].size/1024 < 512
+                    && (firstKtm.current.files[0].type==="image/jpeg" || firstKtm.current.files[0].type==="image/jpg")
+                    && firstKtm.current.files[0].size/1024 < 512
+                ){
+                    console.log("lolos 2")
+                    // Lolos Page 2
+                    if(
+                        secondName !== ""
+                        && secondKelas !== ""
+                        && secondEmail !== "" && validator.isEmail(secondEmail)
+                        && secondNomor !== "" && (validator.isMobilePhone(secondNomor,"id-ID") || secondNomor==="-" )
+                        && secondTwibbon.current.files.length > 0
+                        && secondKtm.current.files.length > 0
+                    ){
+                        // Lolos setengah Page 3
+                        if(
+                            (secondTwibbon.current.files[0].type==="image/jpeg" || secondTwibbon.current.files[0].type==="image/jpg")
+                            && secondTwibbon.current.files[0].size/1024 < 512
+                            && (secondKtm.current.files[0].type==="image/jpeg" || secondKtm.current.files[0].type==="image/jpg")
+                            && firstKtm.current.files[0].size/1024 < 512
+                        ){
+                            console.log("lolos 3")
+                            // Lolos Page 3
+                            if(
+                                thirdName !== ""
+                                && thirdKelas !== ""
+                                && thirdEmail !== "" && validator.isEmail(thirdEmail)
+                                && thirdNomor !== "" && (validator.isMobilePhone(thirdNomor,"id-ID") || thirdNomor==="-")
+                                && thirdTwibbon.current.files.length > 0
+                                && thirdKtm.current.files.length > 0
+                            ){
+                                // Lolos setengah Page 4
+                                if(
+                                    (thirdTwibbon.current.files[0].type==="image/jpeg" || thirdTwibbon.current.files[0].type==="image/jpg")
+                                    && thirdTwibbon.current.files[0].size/1024 < 512
+                                    && (thirdKtm.current.files[0].type==="image/jpeg" || thirdKtm.current.files[0].type==="image/jpg")
+                                    && thirdKtm.current.files[0].size/1024 < 512
+                                ){
+                                    // Lolos Page 4
+                                    if(!isLoading){
+                                        uploadData()
+                                    }
+                                }else{
+                                    setPage(4)
+                                    setIsError(true)
+                                }
+                            }else{
+                                // Gagal uji page 2 pertama
+                                setPage(4)
+                                setIsError(true)
+                            }
+                        }else{
+                            // Gagal uji page 3
+                            setPage(3)
+                            setIsError(true)
+                        }
+                    }else{
+                        // Gagal uji page 3 pertama
+                        setPage(3)
+                        setIsError(true)
+                    }
+                }else{
+                    setPage(2)
+                    setIsError(true)
+                }
+            }else{
+                // Gagal uji page 2 pertama
+                setPage(2)
+                setIsError(true)
+            }
+        }else{
+            // Gagal Page 1
+            setPage(1)
+            setIsError(true)
+        }
     }
+
+    const cekRegistered = ()=>{
+        fetch(`${process.env.REACT_APP_APIURL}/users/${localStorage.getItem("id")}/isregistered`,{
+            headers:{
+                'Content-Type': 'application/json',
+                'Authorization' : `Bearer ${localStorage.getItem("key")}`
+            }
+        }).then(res=>res.json())
+        .then(
+            (res)=>{
+                console.log(res)
+                if(res.meta.code===401 || (res.meta.code===200 && res.data!==false)){
+                    setSelesai(true)
+                }
+            },
+            (err)=>{
+                console.log(err)
+            }
+        )
+    }
+
+    useEffect(()=>{
+        cekRegistered()
+    },[])
 
     if(selesai){
         setTimeout(()=>{setKeDash(true)},5000)
@@ -80,7 +271,7 @@ const NasecRegister = ()=>{
             {/* Modal */}
             <div style={{backgroundColor:"rgba(0,0,0,.3)"}} className={selesai?"absolute w-full h-full inset-0 z-50 flex justify-center items-center transition-all transform duration-500":"absolute w-full h-full inset-0 z-50 flex justify-center items-center transition-all transform duration-500 scale-0 translate-y-full"}>
                 <div className="w-10/12 max-w-lg bg-white rounded-md p-5">
-                    <h3 style={{color:"rgb(71,85,105)"}} className="text-lg font-bold text-center">Terima kasih sudah mendaftar Gamasurf</h3>
+                    <h3 style={{color:"rgb(71,85,105)"}} className="text-lg font-bold text-center">Terima kasih sudah mendaftar Nasec</h3>
                     <FontAwesomeIcon icon={faCheckCircle} className="text-7xl text-green-400 text-center block mx-auto my-8" />
                     <h3 style={{color:"rgb(71,85,105)"}} className="text-lg font-bold text-center">
                         <Link to="/dashboard">

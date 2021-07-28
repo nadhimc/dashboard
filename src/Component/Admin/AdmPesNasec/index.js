@@ -151,8 +151,8 @@ const AdmPesNasec = ()=>{
                                         <p>{modalData.member[1].jenis_kelamin}</p>
                                         <p>Kelas {modalData.member[1].kelas}</p>
                                         <p>{modalData.member[1].no}</p>
-                                        <p><a href={modalData.member[1].kartu_pelajar}>Link Ktm</a></p>
-                                        <p><a href={modalData.member[1].twibbon}>Link Twibbon</a></p>
+                                        <p><a href={`https://sensation.smartsoft.co.id/sensation/storage/app/`+modalData.member[1].kartu_pelajar}>Link Ktm</a></p>
+                                        <p><a href={`https://sensation.smartsoft.co.id/sensation/storage/app/`+modalData.member[1].twibbon}>Link Twibbon</a></p>
                                     </td>
                                 </tr>
                                 <tr className="border-b border-gray-200 hover:bg-gray-100">
@@ -164,8 +164,8 @@ const AdmPesNasec = ()=>{
                                         <p>{modalData.member[2].jenis_kelamin}</p>
                                         <p>Kelas {modalData.member[2].kelas}</p>
                                         <p>{modalData.member[2].no}</p>
-                                        <p><a href={modalData.member[2].kartu_pelajar}>Link Ktm</a></p>
-                                        <p><a href={modalData.member[2].twibbon}>Link Twibbon</a></p>
+                                        <p><a href={`https://sensation.smartsoft.co.id/sensation/storage/app/`+modalData.member[2].kartu_pelajar}>Link Ktm</a></p>
+                                        <p><a href={`https://sensation.smartsoft.co.id/sensation/storage/app/`+modalData.member[2].twibbon}>Link Twibbon</a></p>
                                     </td>
                                 </tr>
                             </tbody>

@@ -1,6 +1,6 @@
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import validator from 'validator';
 import Sent from "../../Images/sent.svg"
@@ -58,6 +58,30 @@ const SentRegister = ()=>{
         }
     }
 
+    const cekRegistered = ()=>{
+        fetch(`${process.env.REACT_APP_APIURL}/users/${localStorage.getItem("id")}/isregistered`,{
+            headers:{
+                'Content-Type': 'application/json',
+                'Authorization' : `Bearer ${localStorage.getItem("key")}`
+            }
+        }).then(res=>res.json())
+        .then(
+            (res)=>{
+                console.log(res)
+                if(res.meta.code===401 || (res.meta.code===200 && res.data!==false)){
+                    setSelesai(true)
+                }
+            },
+            (err)=>{
+                console.log(err)
+            }
+        )
+    }
+
+    useEffect(()=>{
+        cekRegistered()
+    },[])
+
     if(selesai){
         setTimeout(()=>{setKeDash(true)},5000)
         if(keDash){
@@ -72,7 +96,7 @@ const SentRegister = ()=>{
             {/* Modal */}
             <div style={{backgroundColor:"rgba(0,0,0,.3)"}} className={selesai?"absolute w-full h-full inset-0 z-50 flex justify-center items-center transition-all transform duration-500":"absolute w-full h-full inset-0 z-50 flex justify-center items-center transition-all transform duration-500 scale-0 translate-y-full"}>
                 <div className="w-10/12 max-w-lg bg-white rounded-md p-5">
-                    <h3 style={{color:"rgb(71,85,105)"}} className="text-lg font-bold text-center">Terima kasih sudah mendaftar Gamasurf</h3>
+                    <h3 style={{color:"rgb(71,85,105)"}} className="text-lg font-bold text-center">Terima kasih sudah mendaftar Sent</h3>
                     <FontAwesomeIcon icon={faCheckCircle} className="text-7xl text-green-400 text-center block mx-auto my-8" />
                     <h3 style={{color:"rgb(71,85,105)"}} className="text-lg font-bold text-center">
                         <Link to="/dashboard">

@@ -1,4 +1,4 @@
-import { createRef, useState } from "react"
+import { createRef, useState, useEffect } from "react"
 import Gamasurf from "../../Images/gamasurf.svg"
 import validator from 'validator';
 import { Link, Redirect } from "react-router-dom";
@@ -43,6 +43,30 @@ const GamasurfRegister = ()=>{
     let ktm = createRef();
     const [ideVal, setIdeVal] = useState("")
     let ide = createRef();
+
+    const cekRegistered = ()=>{
+        fetch(`${process.env.REACT_APP_APIURL}/users/${localStorage.getItem("id")}/isregistered`,{
+            headers:{
+                'Content-Type': 'application/json',
+                'Authorization' : `Bearer ${localStorage.getItem("key")}`
+            }
+        }).then(res=>res.json())
+        .then(
+            (res)=>{
+                console.log(res)
+                if(res.meta.code===401 || (res.meta.code===200 && res.data!==false)){
+                    setSelesai(true)
+                }
+            },
+            (err)=>{
+                console.log(err)
+            }
+        )
+    }
+
+    useEffect(()=>{
+        cekRegistered()
+    },[])
 
     if(selesai){
         setTimeout(()=>{setKeDash(true)},5000)

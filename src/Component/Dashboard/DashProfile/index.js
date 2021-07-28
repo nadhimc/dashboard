@@ -38,7 +38,7 @@ const DashProfile = ()=>{
         <div>
             <h1 className="text-2xl mb-4">My Profile</h1>
             <div className="w-full rounded-md p-5 border border-gray-300 shadow-md flex flex-col md:flex-row md:space-x-6 md:space-y-0 space-y-6 max-w-3xl">
-                <div className="">
+                <div className="hidden">
                     <div className="w-48 h-48 bg-gray-300 rounded-md mx-auto">
                         
                     </div>
