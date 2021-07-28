@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Redirect } from "react-router-dom"
+import { Redirect, Link } from "react-router-dom"
 import validator from 'validator';
 
 
@@ -189,6 +189,9 @@ const Register = ()=>{
                                         </button>
                                     </div>
                                 </form>
+                                <div style={{color:"rgb(100,116,139)"}} className="text-center mt-2 font-bold">
+                                    <small>Have already an Account? <Link className="hover:opacity-80" to="/login">Login Now!</Link></small>
+                                </div>
                             </div>
                         </div>
                     </div>
