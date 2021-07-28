@@ -202,7 +202,7 @@ const AdmPesGamasurf = ()=>{
 
             {/* Image Modal */}
 
-            <div style={{backgroundColor:"rgba(0,0,0,.3)"}} className={!modalImg?"hidden":"absolute w-full h-full z-50 inset-0 min-w-screen min-h-screen flex justify-center items-center"}>
+            <div onClick={(e)=>{if(e.target.dataset.modal==="img"){setModalImg("")}}} data-modal="img" style={{backgroundColor:"rgba(0,0,0,.3)"}} className={!modalImg?"hidden":"absolute w-full h-full z-50 inset-0 min-w-screen min-h-screen flex justify-center items-center"}>
                 <div className="relative">
                     <button data-modal="img" onClick={()=>{setModalImg("")}} type="button" className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 -top-0.5 right-0.5 -translate-y-full transform translate-x-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 absolute">
                         <span className="sr-only">Close menu</span>

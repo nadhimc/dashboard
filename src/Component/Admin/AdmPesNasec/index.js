@@ -8,6 +8,8 @@ const AdmPesNasec = ()=>{
 
     const [modal, setModal] = useState(false)
 
+    const [modalImg, setModalImg] = useState("")
+
     const [modalData, setModalData] = useState(
         {"id":1,"user_id":18,"nama_team":"Team Tutur","nama_sekolah":"MAN Insan Cendekia Serpong","alamat_sekolah":"Serpong Jaya","nama_pembimbing":"Pak Asep","no_pembimbing":"081224212953","komitmen":"Sangat Berkomitmen","info":"instagram","is_paid":0,"created_at":"2021-07-27T12:11:26.000000Z","updated_at":"2021-07-27T12:11:26.000000Z","member":[{"id":1,"team_id":1,"nama":"Rizkal","jenis_kelamin":"Laki-Laki","kelas":"10","email":"rizkal@gmail.com","no":"082424112212","kartu_pelajar":"peserta/ktm/1_1.jpg","twibbon":"peserta/twibbon/1_1.jpg","is_leader":1,"created_at":"2021-07-27T12:11:26.000000Z","updated_at":"2021-07-27T12:11:26.000000Z"},{"id":2,"team_id":1,"nama":"Ruka","jenis_kelamin":"Perempuan","kelas":"12","email":"ruka@gmail.com","no":"0812312312","kartu_pelajar":"peserta/ktm/1_2.jpg","twibbon":"peserta/twibbon/1_2.jpg","is_leader":0,"created_at":"2021-07-27T12:11:29.000000Z","updated_at":"2021-07-27T12:11:29.000000Z"},{"id":3,"team_id":1,"nama":"Mizuhara","jenis_kelamin":"Perempuan","kelas":"11","email":"mizuzu@gmail.com","no":"081232124124","kartu_pelajar":"peserta/ktm/1_3.jpg","twibbon":"peserta/twibbon/1_3.jpg","is_leader":0,"created_at":"2021-07-27T12:11:29.000000Z","updated_at":"2021-07-27T12:11:29.000000Z"}]}
     )
@@ -165,8 +167,12 @@ const AdmPesNasec = ()=>{
                                         <p>{modalData.member[0].jenis_kelamin}</p>
                                         <p>Kelas {modalData.member[0].kelas}</p>
                                         <p>{modalData.member[0].no}</p>
-                                        <p><a href={modalData.member[0].kartu_pelajar}>Link Ktm</a></p>
-                                        <p><a href={modalData.member[0].twibbon}>Link Twibbon</a></p>
+                                        <p className="mb-1">
+                                        <img onClick={()=>{setModalImg(`https://sensation.smartsoft.co.id/sensation/storage/app/`+modalData.member[0].kartu_pelajar)}} className="max-w-full w-24 cursor-pointer" alt="ktm" src={`https://sensation.smartsoft.co.id/sensation/storage/app/`+modalData.member[0].kartu_pelajar} />
+                                        </p>
+                                        <p>
+                                        <img onClick={()=>{setModalImg(`https://sensation.smartsoft.co.id/sensation/storage/app/`+modalData.member[0].twibbon)}} className="max-w-full w-24 cursor-pointer" alt="ktm" src={`https://sensation.smartsoft.co.id/sensation/storage/app/`+modalData.member[0].twibbon} />
+                                        </p>
                                     </td>
                                 </tr>
                                 <tr className="border-b border-gray-200 hover:bg-gray-100">
@@ -178,8 +184,12 @@ const AdmPesNasec = ()=>{
                                         <p>{modalData.member[1].jenis_kelamin}</p>
                                         <p>Kelas {modalData.member[1].kelas}</p>
                                         <p>{modalData.member[1].no}</p>
-                                        <p><a href={`https://sensation.smartsoft.co.id/sensation/storage/app/`+modalData.member[1].kartu_pelajar}>Link Ktm</a></p>
-                                        <p><a href={`https://sensation.smartsoft.co.id/sensation/storage/app/`+modalData.member[1].twibbon}>Link Twibbon</a></p>
+                                        <p className="mb-1">
+                                        <img onClick={()=>{setModalImg(`https://sensation.smartsoft.co.id/sensation/storage/app/`+modalData.member[1].kartu_pelajar)}} className="max-w-full w-24 cursor-pointer" alt="ktm" src={`https://sensation.smartsoft.co.id/sensation/storage/app/`+modalData.member[1].kartu_pelajar} />
+                                        </p>
+                                        <p>
+                                        <img onClick={()=>{setModalImg(`https://sensation.smartsoft.co.id/sensation/storage/app/`+modalData.member[1].twibbon)}} className="max-w-full w-24 cursor-pointer" alt="ktm" src={`https://sensation.smartsoft.co.id/sensation/storage/app/`+modalData.member[1].twibbon} />
+                                        </p>
                                     </td>
                                 </tr>
                                 <tr className="border-b border-gray-200 hover:bg-gray-100">
@@ -191,13 +201,29 @@ const AdmPesNasec = ()=>{
                                         <p>{modalData.member[2].jenis_kelamin}</p>
                                         <p>Kelas {modalData.member[2].kelas}</p>
                                         <p>{modalData.member[2].no}</p>
-                                        <p><a href={`https://sensation.smartsoft.co.id/sensation/storage/app/`+modalData.member[2].kartu_pelajar}>Link Ktm</a></p>
-                                        <p><a href={`https://sensation.smartsoft.co.id/sensation/storage/app/`+modalData.member[2].twibbon}>Link Twibbon</a></p>
+                                        <p className="mb-1">
+                                        <img onClick={()=>{setModalImg(`https://sensation.smartsoft.co.id/sensation/storage/app/`+modalData.member[2].kartu_pelajar)}} className="max-w-full w-24 cursor-pointer" alt="ktm" src={`https://sensation.smartsoft.co.id/sensation/storage/app/`+modalData.member[2].kartu_pelajar} />
+                                        </p>
+                                        <p>
+                                        <img onClick={()=>{setModalImg(`https://sensation.smartsoft.co.id/sensation/storage/app/`+modalData.member[2].twibbon)}} className="max-w-full w-24 cursor-pointer" alt="ktm" src={`https://sensation.smartsoft.co.id/sensation/storage/app/`+modalData.member[2].twibbon} />
+                                        </p>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
+                </div>
+            </div>
+
+            {/* Image Modal */}
+
+            <div onClick={(e)=>{if(e.target.dataset.modal==="img"){setModalImg("")}}} data-modal="img" style={{backgroundColor:"rgba(0,0,0,.3)"}} className={!modalImg?"hidden":"absolute w-full h-full z-50 inset-0 min-w-screen min-h-screen flex justify-center items-center"}>
+                <div className="relative">
+                    <button data-modal="img" onClick={()=>{setModalImg("")}} type="button" className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 -top-0.5 right-0.5 -translate-y-full transform translate-x-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 absolute">
+                        <span className="sr-only">Close menu</span>
+                        <FontAwesomeIcon icon={faTimes} />
+                    </button>
+                    <img style={{maxWidth:"80vw", maxHeight:"80vh"}} src={modalImg!==""?modalImg:null} />
                 </div>
             </div>
 
