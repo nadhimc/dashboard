@@ -60,6 +60,19 @@ const AdmPesNasec = ()=>{
                     <td className="py-3 px-6 text-center">{item.nama_team}</td>
                     <td className="py-3 px-6 text-center">{item.nama_sekolah}</td>
                     <td className="py-3 px-6 text-center">{item.nama_pembimbing}</td>
+                    <td className="py-3 px-6 text-center">{item.no_pembimbing}</td>
+                    <td className={parseInt(item.member[0].is_leader)===1?"py-3 px-6 text-center font-bold":"py-3 px-6 text-center"}>{item.member[0].nama} ({item.member[0].jenis_kelamin.toLowerCase()==="laki-laki"?"L":"P"})</td>
+                    <td className="py-3 px-6 text-center">{item.member[0].email}</td>
+                    <td className="py-3 px-6 text-center">{item.member[0].kelas}</td>
+                    <td className="py-3 px-6 text-center">{item.member[0].no}</td>
+                    <td className={parseInt(item.member[1].is_leader)===1?"py-3 px-6 text-center font-bold":"py-3 px-6 text-center"}>{item.member[1].nama} ({item.member[1].jenis_kelamin.toLowerCase()==="laki-laki"?"L":"P"})</td>
+                    <td className="py-3 px-6 text-center">{item.member[1].email}</td>
+                    <td className="py-3 px-6 text-center">{item.member[1].kelas}</td>
+                    <td className="py-3 px-6 text-center">{item.member[1].no}</td>
+                    <td className={parseInt(item.member[2].is_leader)===1?"py-3 px-6 text-center font-bold":"py-3 px-6 text-center"}>{item.member[2].nama} ({item.member[2].jenis_kelamin.toLowerCase()==="laki-laki"?"L":"P"})</td>
+                    <td className="py-3 px-6 text-center">{item.member[2].email}</td>
+                    <td className="py-3 px-6 text-center">{item.member[2].kelas}</td>
+                    <td className="py-3 px-6 text-center">{item.member[2].no}</td>
                     <td className="py-3 px-6 text-center"></td>
                     <td className="py-3 px-6 text-center">
                         <button value={item.id} onClick={(item)=>detailPeserta(item.target.value)} className="rounded-md bg-blue-500 hover:bg-blue-300 px-3 py-2 text-white">
@@ -78,6 +91,19 @@ const AdmPesNasec = ()=>{
             item.nama_team.toLowerCase().includes(search.toLowerCase())
             || item.nama_sekolah.toLowerCase().includes(search.toLowerCase())
             || item.nama_pembimbing.toLowerCase().includes(search.toLowerCase())
+            || item.no_pembimbing.toLowerCase().includes(search.toLowerCase())
+            || item.member[0].nama.toLowerCase().includes(search.toLowerCase())
+            || item.member[0].email.toLowerCase().includes(search.toLowerCase())
+            || item.member[0].kelas.toLowerCase().includes(search.toLowerCase())
+            || item.member[0].no.toLowerCase().includes(search.toLowerCase())
+            || item.member[1].nama.toLowerCase().includes(search.toLowerCase())
+            || item.member[1].email.toLowerCase().includes(search.toLowerCase())
+            || item.member[1].kelas.toLowerCase().includes(search.toLowerCase())
+            || item.member[1].no.toLowerCase().includes(search.toLowerCase())
+            || item.member[2].nama.toLowerCase().includes(search.toLowerCase())
+            || item.member[2].email.toLowerCase().includes(search.toLowerCase())
+            || item.member[2].kelas.toLowerCase().includes(search.toLowerCase())
+            || item.member[2].no.toLowerCase().includes(search.toLowerCase())
         ){
             return item
         }
@@ -133,7 +159,7 @@ const AdmPesNasec = ()=>{
                                 <tr className="border-b border-gray-200 hover:bg-gray-100">
                                     <td className="py-3 px-6">Member 1</td>
                                     <td className="py-3 px-6">
-                                        <p className={modalData.member[0].is_leader===1?"font-bold":"hidden"}>Ketua</p>
+                                        <p className={parseInt(modalData.member[0].is_leader)===1?"font-bold":"hidden"}>Ketua</p>
                                         <p>{modalData.member[0].nama}</p>
                                         <p>{modalData.member[0].email}</p>
                                         <p>{modalData.member[0].jenis_kelamin}</p>
@@ -146,7 +172,7 @@ const AdmPesNasec = ()=>{
                                 <tr className="border-b border-gray-200 hover:bg-gray-100">
                                     <td className="py-3 px-6">Member 2</td>
                                     <td className="py-3 px-6">
-                                        <p className={modalData.member[1].is_leader===1?"font-bold":"hidden"}>Ketua</p>
+                                        <p className={parseInt(modalData.member[1].is_leader)===1?"font-bold":"hidden"}>Ketua</p>
                                         <p>{modalData.member[1].nama}</p>
                                         <p>{modalData.member[1].email}</p>
                                         <p>{modalData.member[1].jenis_kelamin}</p>
@@ -159,7 +185,7 @@ const AdmPesNasec = ()=>{
                                 <tr className="border-b border-gray-200 hover:bg-gray-100">
                                     <td className="py-3 px-6">Member 3</td>
                                     <td className="py-3 px-6">
-                                        <p className={modalData.member[2].is_leader===1?"font-bold":"hidden"}>Ketua</p>
+                                        <p className={parseInt(modalData.member[2].is_leader)===1?"font-bold":"hidden"}>Ketua</p>
                                         <p>{modalData.member[2].nama}</p>
                                         <p>{modalData.member[2].email}</p>
                                         <p>{modalData.member[2].jenis_kelamin}</p>
@@ -188,6 +214,19 @@ const AdmPesNasec = ()=>{
                             <th className="py-3 px-6 text-center">Team</th>
                             <th className="py-3 px-6 text-center">Sekolah</th>
                             <th className="py-3 px-6 text-center">Pembimbing</th>
+                            <th className="py-3 px-6 text-center">No Pembimbing</th>
+                            <th className="py-3 px-6 text-center">Nama 1</th>
+                            <th className="py-3 px-6 text-center">Email 1</th>
+                            <th className="py-3 px-6 text-center">Kelas 1</th>
+                            <th className="py-3 px-6 text-center">No 1</th>
+                            <th className="py-3 px-6 text-center">Nama 2</th>
+                            <th className="py-3 px-6 text-center">Email 2</th>
+                            <th className="py-3 px-6 text-center">Kelas 2</th>
+                            <th className="py-3 px-6 text-center">No 2</th>
+                            <th className="py-3 px-6 text-center">Nama 3</th>
+                            <th className="py-3 px-6 text-center">Email 3</th>
+                            <th className="py-3 px-6 text-center">Kelas 3</th>
+                            <th className="py-3 px-6 text-center">No 3</th>
                             <th className="py-3 px-6 text-center">Paid</th>
                             <th className="py-3 px-6 text-center"></th>
                         </tr>

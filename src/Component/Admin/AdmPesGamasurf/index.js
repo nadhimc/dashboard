@@ -8,6 +8,8 @@ const AdmPesGamasurf = ()=>{
 
     const [page, setPage] = useState(1)
 
+    const [modalImg, setModalImg] = useState("")
+    
     const [modal, setModal] = useState(false)
 
     const [modalData, setModalData] = useState({      
@@ -81,6 +83,7 @@ const AdmPesGamasurf = ()=>{
                     <td className="py-3 px-6 text-center">{item.email}</td>
                     <td className="py-3 px-6 text-center">{item.asal_univ}</td>
                     <td className="py-3 px-6 text-center">{item.asal_daerah}</td>
+                    <td className="py-3 px-6 text-center">{item.no_wa}</td>
                     <td className="py-3 px-6 text-center">
                         <button value={item.id} onClick={(item)=>detailPeserta(item.target.value)} className="rounded-md bg-blue-500 hover:bg-blue-300 px-3 py-2 text-white">
                             Detail
@@ -99,6 +102,7 @@ const AdmPesGamasurf = ()=>{
             || item.email.toLowerCase().includes(search.toLowerCase())
             || item.asal_univ.toLowerCase().includes(search.toLowerCase())
             || item.asal_daerah.toLowerCase().includes(search.toLowerCase())
+            || item.no_wa.toLowerCase().includes(search.toLowerCase())
         ){
             return item
         }
@@ -165,17 +169,13 @@ const AdmPesGamasurf = ()=>{
                                 <tr className="border-b border-gray-200 hover:bg-gray-100">
                                     <td className="py-3 px-6">KTM</td>
                                     <td className="py-3 px-6">
-                                        <a href={modalData.ktm}>
-                                            <img className="max-w-full w-24" alt="ktm" src={modalData.ktm} />
-                                        </a>
+                                        <img onClick={()=>{setModalImg(modalData.ktm)}} className="max-w-full w-24 cursor-pointer" alt="ktm" src={modalData.ktm} />
                                     </td>
                                 </tr>
                                 <tr className="border-b border-gray-200 hover:bg-gray-100">
                                     <td className="py-3 px-6">Twibbon</td>
                                     <td className="py-3 px-6">
-                                        <a href={modalData.twibbon}>
-                                            <img className="max-w-full w-24" alt="ktm" src={modalData.twibbon} />
-                                        </a>
+                                        <img onClick={()=>{setModalImg(modalData.twibbon)}} className="max-w-full w-24 cursor-pointer" alt="twibbon" src={modalData.twibbon} />
                                     </td>
                                 </tr>
                                 <tr className="border-b border-gray-200 hover:bg-gray-100">
@@ -200,6 +200,18 @@ const AdmPesGamasurf = ()=>{
                 </div>
             </div>
 
+            {/* Image Modal */}
+
+            <div style={{backgroundColor:"rgba(0,0,0,.3)"}} className={!modalImg?"hidden":"absolute w-full h-full z-50 inset-0 min-w-screen min-h-screen flex justify-center items-center"}>
+                <div className="relative">
+                    <button data-modal="img" onClick={()=>{setModalImg("")}} type="button" className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 -top-0.5 right-0.5 -translate-y-full transform translate-x-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 absolute">
+                        <span className="sr-only">Close menu</span>
+                        <FontAwesomeIcon icon={faTimes} />
+                    </button>
+                    <img style={{maxWidth:"80vw", maxHeight:"80vh"}} src={modalImg!==""?modalImg:null} />
+                </div>
+            </div>
+
 
             <h1 className="text-2xl mb-4">Peserta Gamasurf</h1>
             <div className="flex justify-end mb-3">
@@ -214,6 +226,7 @@ const AdmPesGamasurf = ()=>{
                             <th className="py-3 px-6 text-center">Email</th>
                             <th className="py-3 px-6 text-center">Universitas</th>
                             <th className="py-3 px-6 text-center">Asal Daerah</th>
+                            <th className="py-3 px-6 text-center">No Wa</th>
                             <th className="py-3 px-6 text-center"></th>
                         </tr>
                     </thead>
