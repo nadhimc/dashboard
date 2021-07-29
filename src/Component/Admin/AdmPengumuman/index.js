@@ -85,7 +85,7 @@ const AdmPengumuman = ()=>{
             return(
                 <tr key={item.id} className="border-b border-gray-200 hover:bg-gray-100">
                     <td className="py-3 px-6 text-center">{index+1}</td>
-                    <td className="py-3 px-6 text-center">{item.user.email}</td>
+                    <td className="py-3 px-6 text-center">{item.user?item.user.email?item.user.email:"":""}</td>
                     <td className="py-3 px-6 text-center">{item.judul}</td>
                     <td className="py-3 px-6 text-center">{item.isi}</td>
                 </tr>

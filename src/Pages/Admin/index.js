@@ -119,42 +119,51 @@ const Admin = ()=>{
                     </div>
                     <div className="flex h-full flex-col flex-1 pt-5">
                         <div className="flex flex-col">
-                            <Link to="/admin" className={
+                            <Link onClick={()=>{document.querySelector(".peserta").classList.remove("on")}} to="/admin" className={
                             active==="home"?
                             "text-lg pr-3 pl-6 py-2 text-blue-500 border-l-4 border-blue-500"
                             :"text-lg pr-3 pl-6 py-2 text-gray-500 hover:text-blue-400 hover:border-blue-400 border-l-4"
                             }>
                                 Home
                             </Link>
-                            <Link to="/admin/pesnasec" className={
-                                active==="pesnasec"?
+                            <button onClick={()=>{document.querySelector(".peserta").classList.toggle("on")}} className={
+                            active==="pesnasec"||active==="pesgamasurf"||active==="pessent"?
+                            "text-lg text-left pr-3 pl-6 py-2 text-blue-500 border-l-4 border-blue-500"
+                            :"text-lg text-left pr-3 pl-6 py-2 text-gray-500 hover:text-blue-400 hover:border-blue-400 border-l-4"
+                            }>
+                                Peserta
+                            </button>
+                            <div className="flex flex-col pl-3 overflow-y-hidden transition-all duration-500 peserta">
+                                <Link to="/admin/pesnasec" className={
+                                    active==="pesnasec"?
+                                    "text-lg pr-3 pl-6 py-2 text-blue-500 border-l-4 border-blue-500"
+                                    :"text-lg pr-3 pl-6 py-2 text-gray-500 hover:text-blue-400 hover:border-blue-400 border-l-4"
+                                }>
+                                    Peserta Nasec
+                                </Link>
+                                <Link to="/admin/pesgamasurf" className={
+                                active==="pesgamasurf"?
                                 "text-lg pr-3 pl-6 py-2 text-blue-500 border-l-4 border-blue-500"
                                 :"text-lg pr-3 pl-6 py-2 text-gray-500 hover:text-blue-400 hover:border-blue-400 border-l-4"
-                            }>
-                                Peserta Nasec
-                            </Link>
-                            <Link to="/admin/pesgamasurf" className={
-                            active==="pesgamasurf"?
-                            "text-lg pr-3 pl-6 py-2 text-blue-500 border-l-4 border-blue-500"
-                            :"text-lg pr-3 pl-6 py-2 text-gray-500 hover:text-blue-400 hover:border-blue-400 border-l-4"
-                            }>
-                                Peserta Gamasurf
-                            </Link>
-                            <Link to="/admin/pessent" className={
-                            active==="pessent"?
-                            "text-lg pr-3 pl-6 py-2 text-blue-500 border-l-4 border-blue-500"
-                            :"text-lg pr-3 pl-6 py-2 text-gray-500 hover:text-blue-400 hover:border-blue-400 border-l-4"
-                            }>
-                                Peserta Sent
-                            </Link>
-                            <Link to="/admin/user" className={
+                                }>
+                                    Peserta Gamasurf
+                                </Link>
+                                <Link to="/admin/pessent" className={
+                                active==="pessent"?
+                                "text-lg pr-3 pl-6 py-2 text-blue-500 border-l-4 border-blue-500"
+                                :"text-lg pr-3 pl-6 py-2 text-gray-500 hover:text-blue-400 hover:border-blue-400 border-l-4"
+                                }>
+                                    Peserta Sent
+                                </Link>
+                            </div>
+                            <Link onClick={()=>{document.querySelector(".peserta").classList.remove("on")}} to="/admin/user" className={
                                 active==="user"?
                                 "text-lg pr-3 pl-6 py-2 text-blue-500 border-l-4 border-blue-500"
                                 :"text-lg pr-3 pl-6 py-2 text-gray-500 hover:text-blue-400 hover:border-blue-400 border-l-4"
                             }>
                                 User
                             </Link>
-                            <Link to="/admin/pengumuman" className={
+                            <Link onClick={()=>{document.querySelector(".peserta").classList.remove("on")}} to="/admin/pengumuman" className={
                                 active==="pengumuman"?
                                 "text-lg pr-3 pl-6 py-2 text-blue-500 border-l-4 border-blue-500"
                                 :"text-lg pr-3 pl-6 py-2 text-gray-500 hover:text-blue-400 hover:border-blue-400 border-l-4"
