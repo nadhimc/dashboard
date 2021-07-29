@@ -114,13 +114,13 @@ const DashProfile = ()=>{
             <h1 className={registered===""?"hidden":"text-2xl my-4 "}>Event Registered</h1>
             <h1 className={eventLoad?"hidden":"rounded-md text-2xl my-4 bg-gray-200 text-gray-200 animate-pulse w-full md:w-48"}>E</h1>
             <div className={eventLoad?"hidden":"rounded-md w-full md:w-56 h-36 bg-gray-200 animate-pulse"} />
-            <div className={registered===""?"hidden":"rounded-md md:max-w-xs shadow-md p-8 flex justify-between items-center flex-col space-y-4"} style={{backgroundColor:"#92F8D9"}}>
+            <div className={registered===""?"hidden":"rounded-md md:max-w-xs shadow-md p-8 flex justify-between items-center flex-col space-y-4"} style={{backgroundColor:registered==="nasec"?"#92F8D9":registered==="gamasurf"?"#F5DF7E":"#4DDBEB"}}>
                 <div className="flex-1 flex justify-center items-center">
                     <img alt="Gamasurf" className={registered==="gamasurf"?"w-48":"hidden"} src={Gamasurf} />
                     <img alt="Nasec" className={registered==="nasec"?"w-48":"hidden"} src={Nasec} />
                     <img alt="Sent" className={registered==="sent"?"w-48":"hidden"} src={Sent} />
                 </div>
-                <Link className="text-center bg-white w-full py-2 font-bold text-lg rounded-lg hidden" style={{color:"#92F8D9"}}>
+                <Link to="/dashboard/register" className="text-center bg-white w-full py-2 font-bold text-lg rounded-lg hover:opacity-80" style={{color:registered==="nasec"?"#92F8D9":registered==="gamasurf"?"#F5DF7E":"#4DDBEB"}}>
                     Check
                 </Link>
             </div>

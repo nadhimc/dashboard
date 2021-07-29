@@ -9,6 +9,7 @@ import DashEvents from "../../Component/Dashboard/DashEvents"
 import DashNasec from "../../Component/Dashboard/DashNasec"
 import DashGamasurf from "../../Component/Dashboard/DashGamasurf"
 import DashSent from "../../Component/Dashboard/DashSent"
+import DashDaftar from "../../Component/Dashboard/DashDaftar"
 
 const Dashboard = ()=>{
 
@@ -17,7 +18,7 @@ const Dashboard = ()=>{
     const [profNav, setProfNav] = useState(false)
     const [isAuth, setIsAuth] = useState(true)
     let active = "";
-    if(page === "profile" || page === "events" || page === "nasec" || page === "gamasurf" || page === "sent"){
+    if(page === "profile" || page === "events" || page === "nasec" || page === "gamasurf" || page === "sent" || page === "register"){
         active = page
     }else{
         active = "home"
@@ -67,6 +68,8 @@ const Dashboard = ()=>{
                 return (<DashGamasurf />)
             case "sent" :
                 return (<DashSent />)
+            case "register" :
+                return (<DashDaftar />)
             default:
                 return (<DashHome />)
         }
@@ -152,7 +155,7 @@ const Dashboard = ()=>{
                                 Home
                             </Link>
                             <Link onClick={()=>{setNav(false)}} to="/dashboard/profile" className={
-                            active==="profile"?
+                            active==="profile" || active==="register"?
                             "text-lg pr-3 pl-6 py-2 text-blue-500 border-l-4 border-blue-500"
                             :"text-lg pr-3 pl-6 py-2 text-gray-500 hover:text-blue-400 hover:border-blue-400 border-l-4"
                             }>

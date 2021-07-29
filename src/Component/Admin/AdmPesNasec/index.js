@@ -124,7 +124,7 @@ const AdmPesNasec = ()=>{
 
 
             {/* Modal */}
-            <div onClick={(e)=>{if(e.target.dataset.modal==="bg"){document.body.classList.remove("overflow-y-auto");setModal(false)}}} data-modal="bg" style={{backgroundColor:"rgba(0,0,0,.3)"}} className={modal?"w-full overflow-y-auto h-screen inset-0 absolute z-50 flex justify-center items-center transition-all duration-500 transform":"w-full h-screen inset-0 absolute z-50 flex justify-center items-center transition-all duration-500 transform scale-0 translate-x-full opacity-0"}>
+            <div onClick={(e)=>{if(e.target.dataset.modal==="bg"){document.body.classList.remove("overflow-y-auto");setModal(false)}}} data-modal="bg" style={{backgroundColor:"rgba(0,0,0,.3)"}} className={modal?"w-full overflow-y-auto h-screen inset-0 fixed z-50 flex justify-center items-center transition-all duration-500 transform":"w-full h-screen inset-0 absolute z-50 flex justify-center items-center transition-all duration-500 transform scale-0 translate-x-full opacity-0"}>
                 <div className="bg-white rounded-md p-5 w-11/12 max-w-2xl relative" style={{maxHeight:"90vh"}}>
                     {/* Header */}
                     <button onClick={()=>{document.body.classList.remove("overflow-y-auto");setModal(false)}} type="button" className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 absolute top-0.5 right-0.5">

@@ -42,7 +42,7 @@ const DashHome = ()=>{
         return(
             <div key={index} className="bg-white rounded-md p-2 flex flex-col">
                 <div className="flex items-center justify-between">
-                    <p className="text-lg">{item.judul}</p>
+                    <p className="">{item.judul}</p>
                     <div className="flex items-center">
                         <p className="text-xs text-gray-400 mr-2">12/07/2021</p>
                         <button>
@@ -53,7 +53,7 @@ const DashHome = ()=>{
                         </button>
                     </div>
                 </div>
-                <div className={"overflow-y-hidden descpeng transition-all ease-in-out duration-1000 pengdesc"+index}>
+                <div className={"overflow-y-hidden descpeng transition-all ease-out duration-1000 pengdesc"+index}>
                     <p className="text-sm mt-2">{item.isi}</p>
                 </div>
             </div>
@@ -66,10 +66,14 @@ const DashHome = ()=>{
             <div style={{backgroundColor:"#C4C4C4"}} className="rounded-lg shadow-md p-4 w-full max-w-3xl mb-8">
                 <p className="text-lg">Pengumuman</p>
                 <div className={pengumumanLoading?"mt-4 flex flex-col space-y-3":"hidden"}>
-                    <div className="bg-white rounded-md p-4">
-                        <p className="animate-pulse text-lg bg-gray-300 text-gray-300 w-1/3">Ini Title</p>
-                        <span className="animate-pulse text-xs text-gray-300 bg-gray-300">12/07/2021</span>
-                        <p className="animate-pulse text-sm mt-2 w-full h-12 bg-gray-300"></p>
+                    <div className="bg-white animate-pulse rounded-md p-2">
+                        <p className="bg-white text-white w-full">Ini Title</p>
+                    </div>
+                    <div className="bg-white animate-pulse rounded-md p-2">
+                        <p className="bg-white text-white w-full">Ini Title</p>
+                    </div>
+                    <div className="bg-white animate-pulse rounded-md p-2">
+                        <p className="bg-white text-white w-full">Ini Title</p>
                     </div>
                 </div>
                 <div className={pengumumanLoading?"hidden":"mt-4 flex flex-col space-y-3"}>
