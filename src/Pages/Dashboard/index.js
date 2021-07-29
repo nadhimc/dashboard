@@ -6,6 +6,9 @@ import Logo from "../../Images/logo.png"
 import DashHome from "../../Component/Dashboard/DashHome"
 import DashProfile from "../../Component/Dashboard/DashProfile"
 import DashEvents from "../../Component/Dashboard/DashEvents"
+import DashNasec from "../../Component/Dashboard/DashNasec"
+import DashGamasurf from "../../Component/Dashboard/DashGamasurf"
+import DashSent from "../../Component/Dashboard/DashSent"
 
 const Dashboard = ()=>{
 
@@ -14,7 +17,7 @@ const Dashboard = ()=>{
     const [profNav, setProfNav] = useState(false)
     const [isAuth, setIsAuth] = useState(true)
     let active = "";
-    if(page === "profile" || page === "events"){
+    if(page === "profile" || page === "events" || page === "nasec" || page === "gamasurf" || page === "sent"){
         active = page
     }else{
         active = "home"
@@ -58,6 +61,12 @@ const Dashboard = ()=>{
                 return (<DashProfile />)
             case "events":
                 return (<DashEvents />)
+            case "nasec" :
+                return (<DashNasec />)
+            case "gamasurf" :
+                return (<DashGamasurf />)
+            case "sent" :
+                return (<DashSent />)
             default:
                 return (<DashHome />)
         }
@@ -134,7 +143,7 @@ const Dashboard = ()=>{
                     </div>
                     <div className="flex h-full flex-col flex-1 pt-5">
                         <div className="flex flex-col">
-                            <Link to="/dashboard" className={
+                            <Link onClick={()=>{setNav(false)}} to="/dashboard" className={
                             active==="home"?
                             "text-lg pr-3 pl-6 py-2 text-blue-500 border-l-4 border-blue-500"
                             :"text-lg pr-3 pl-6 py-2 text-gray-500 hover:text-blue-400 hover:border-blue-400 border-l-4"
@@ -142,7 +151,7 @@ const Dashboard = ()=>{
                                 <FontAwesomeIcon icon={faHome} className="mr-5" />
                                 Home
                             </Link>
-                            <Link to="/dashboard/profile" className={
+                            <Link onClick={()=>{setNav(false)}} to="/dashboard/profile" className={
                             active==="profile"?
                             "text-lg pr-3 pl-6 py-2 text-blue-500 border-l-4 border-blue-500"
                             :"text-lg pr-3 pl-6 py-2 text-gray-500 hover:text-blue-400 hover:border-blue-400 border-l-4"
@@ -150,8 +159,8 @@ const Dashboard = ()=>{
                                 <FontAwesomeIcon icon={faIdCard} className="mr-5" />
                                 My Profile
                             </Link>
-                            <Link to="/dashboard/events" className={
-                            active==="events"?
+                            <Link onClick={()=>{setNav(false)}} to="/dashboard/events" className={
+                            active==="events" || active==="nasec" || active==="gamasurf" || active==="sent"?
                             "text-lg pr-3 pl-6 py-2 text-blue-500 border-l-4 border-blue-500"
                             :"text-lg pr-3 pl-6 py-2 text-gray-500 hover:text-blue-400 hover:border-blue-400 border-l-4"
                             }>

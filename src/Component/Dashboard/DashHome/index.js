@@ -1,11 +1,13 @@
 import DashEvents from "../DashEvents"
 import { useState,useEffect } from "react"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faChevronCircleDown } from "@fortawesome/free-solid-svg-icons"
+import "./index.css"
 
 const DashHome = ()=>{
 
     const [pengumuman, setPengumuman] = useState([])
     const [pengumumanLoading, setPengumumanLoading] = useState(true)
-    const [isRegistered, setIsRegistered] = useState(true)
 
     function updatePengumuman(){
         fetch(`${process.env.REACT_APP_APIURL}/users/${localStorage.getItem("id")}/pengumuman`,{
@@ -38,42 +40,25 @@ const DashHome = ()=>{
 
     const renderPengumuman = (item,index)=>{
         return(
-            <div key={index} className="bg-white rounded-md p-4">
-                <p className="text-lg">{item.judul}</p>
-                <p className="text-xs text-gray-400">12/07/2021</p>
-                <p className="text-sm mt-2">{item.isi}</p>
+            <div key={index} className="bg-white rounded-md p-2 flex flex-col">
+                <div className="flex items-center justify-between">
+                    <p className="text-lg">{item.judul}</p>
+                    <div className="flex items-center">
+                        <p className="text-xs text-gray-400 mr-2">12/07/2021</p>
+                        <button>
+                            <FontAwesomeIcon onClick={()=>{
+                                document.querySelector(`.pengdesc${index}`).classList.toggle("on")
+                                document.querySelector(`.chevron${index}`).classList.toggle("rotate-180")
+                            }} className={"text-gray-500 hover:text-gray-400 text-lg transform chevron"+index} icon={faChevronCircleDown} />
+                        </button>
+                    </div>
+                </div>
+                <div className={"overflow-y-hidden descpeng transition-all ease-in-out duration-1000 pengdesc"+index}>
+                    <p className="text-sm mt-2">{item.isi}</p>
+                </div>
             </div>
         )
     }
-
-    const cekRegistered = ()=>{
-        fetch(`${process.env.REACT_APP_APIURL}/users/${localStorage.getItem("id")}/isregistered`,{
-            headers:{
-                'Content-Type': 'application/json',
-                'Authorization' : `Bearer ${localStorage.getItem("key")}`
-            }
-        }).then(res=>res.json())
-        .then(
-            (res)=>{
-                console.log(res)
-                if(res.meta.code===200){
-                    if(res.data !== false){
-                        setIsRegistered(true)
-                    }else{
-                        setIsRegistered(false)
-                    }
-                }
-            },
-            (err)=>{
-                console.log(err)
-            }
-        )
-    }
-
-    useEffect(()=>{
-        cekRegistered()
-    },[])
-
 
     return (
         <div>
@@ -91,7 +76,7 @@ const DashHome = ()=>{
                     {pengumuman.map(renderPengumuman)}
                 </div>
             </div>
-            <div className={isRegistered?"hidden":"a"}>
+            <div>
                 <DashEvents />
             </div>
         </div>

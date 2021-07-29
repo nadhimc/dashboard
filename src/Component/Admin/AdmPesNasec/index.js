@@ -260,7 +260,7 @@ const AdmPesNasec = ()=>{
                     <tbody className="text-gray-600 text-sm font-light">
                         {peserta.filter(filterFunc).map(renderTable)}
                         <tr className={peserta.filter(filterFunc).length<=0?"w-full":"hidden"}>
-                            <td colSpan="6" className="py-5 text-center bg-gray-100 font-bold">
+                            <td colSpan="11" className="py-5 text-center bg-gray-100 font-bold">
                                 Tidak ada data
                             </td>
                         </tr>

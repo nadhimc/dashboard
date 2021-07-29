@@ -89,21 +89,21 @@ const DashProfile = ()=>{
                             <tr>
                                 <td>Nama</td>
                                 <td className={profileLoad?"hidden":"w-full"}>
-                                    <span className="animate-pulse bg-gray-200 text-gray-200 w-full block">a</span>
+                                    <span className="animate-pulse bg-gray-200 text-gray-200 w-full max-w-xs block rounded-md">a</span>
                                 </td>
                                 <td className={profileLoad?"":"hidden"}>: {profile.name}</td>
                             </tr>
                             <tr>
                                 <td>Email</td>
                                 <td className={profileLoad?"hidden":"w-full py-1"}>
-                                    <span className="animate-pulse bg-gray-200 text-gray-200 w-full block">a</span>
+                                    <span className="animate-pulse bg-gray-200 text-gray-200 w-full max-w-xs block rounded-md">a</span>
                                 </td>
                                 <td className={profileLoad?"":"hidden"}>: {profile.email}</td>
                             </tr>
                             <tr>
                                 <td style={{minWidth: 150}}>Asal Institusi</td>
                                 <td className={profileLoad?"hidden":"w-full"}>
-                                    <span className="animate-pulse bg-gray-200 text-gray-200 w-full block">a</span>
+                                    <span className="animate-pulse bg-gray-200 text-gray-200 w-full max-w-xs block rounded-md">a</span>
                                 </td>
                                 <td className={profileLoad?"":"hidden"}>: {profile.asal_kampus}</td>
                             </tr>
@@ -112,8 +112,8 @@ const DashProfile = ()=>{
                 </div>
             </div>
             <h1 className={registered===""?"hidden":"text-2xl my-4 "}>Event Registered</h1>
-            <h1 className={eventLoad?"hidden":"text-2xl my-4 bg-gray-200 text-gray-200 animate-pulse w-full md:w-48"}>E</h1>
-            <div className={eventLoad?"hidden":"w-full md:w-56 h-36 bg-gray-200 animate-pulse"} />
+            <h1 className={eventLoad?"hidden":"rounded-md text-2xl my-4 bg-gray-200 text-gray-200 animate-pulse w-full md:w-48"}>E</h1>
+            <div className={eventLoad?"hidden":"rounded-md w-full md:w-56 h-36 bg-gray-200 animate-pulse"} />
             <div className={registered===""?"hidden":"rounded-md md:max-w-xs shadow-md p-8 flex justify-between items-center flex-col space-y-4"} style={{backgroundColor:"#92F8D9"}}>
                 <div className="flex-1 flex justify-center items-center">
                     <img alt="Gamasurf" className={registered==="gamasurf"?"w-48":"hidden"} src={Gamasurf} />

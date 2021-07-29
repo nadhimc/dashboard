@@ -1,0 +1,7 @@
+.descpeng {
+    max-height: 0;
+}
+
+.descpeng.on{
+    max-height: 1000px;
+}
