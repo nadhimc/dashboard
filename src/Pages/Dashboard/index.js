@@ -52,7 +52,7 @@ const Dashboard = ()=>{
         console.log("Loged in")
     }else{
         return(
-            <Redirect to="/login" />
+            <Redirect to="/logout" />
         )
     }
 

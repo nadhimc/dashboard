@@ -83,32 +83,28 @@ const DashProfile = ()=>{
                         Edit Avatar
                     </button>
                 </div>
-                <div className="flex-1">
-                    <table>
-                        <tbody>
-                            <tr>
-                                <td>Nama</td>
-                                <td className={profileLoad?"hidden":"w-full"}>
-                                    <span className="animate-pulse bg-gray-200 text-gray-200 w-full max-w-xs block rounded-md">a</span>
-                                </td>
-                                <td className={profileLoad?"":"hidden"}>: {profile.name}</td>
-                            </tr>
-                            <tr>
-                                <td>Email</td>
-                                <td className={profileLoad?"hidden":"w-full py-1"}>
-                                    <span className="animate-pulse bg-gray-200 text-gray-200 w-full max-w-xs block rounded-md">a</span>
-                                </td>
-                                <td className={profileLoad?"":"hidden"}>: {profile.email}</td>
-                            </tr>
-                            <tr>
-                                <td style={{minWidth: 150}}>Asal Institusi</td>
-                                <td className={profileLoad?"hidden":"w-full"}>
-                                    <span className="animate-pulse bg-gray-200 text-gray-200 w-full max-w-xs block rounded-md">a</span>
-                                </td>
-                                <td className={profileLoad?"":"hidden"}>: {profile.asal_kampus}</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div className="flex-1 flex flex-col space-y-4">
+                    <div className="flex flex-col md:flex-row">
+                        <p className="md:w-1/3 text-lg md:text-base font-bold text-gray-900">Nama</p>
+                        <div className={profileLoad?"hidden":"w-full"}>
+                            <span className="animate-pulse bg-gray-200 text-gray-200 w-full max-w-xs block rounded-md">a</span>
+                        </div>
+                        <p className={profileLoad?"":"hidden"}>{profile.name}</p>
+                    </div>
+                    <div className="flex flex-col md:flex-row">
+                        <p className="md:w-1/3 text-lg md:text-base font-bold text-gray-900">Email</p>
+                        <div className={profileLoad?"hidden":"w-full"}>
+                            <span className="animate-pulse bg-gray-200 text-gray-200 w-full max-w-xs block rounded-md">a</span>
+                        </div>
+                        <p className={profileLoad?"":"hidden"}>{profile.email}</p>
+                    </div>
+                    <div className="flex flex-col md:flex-row">
+                        <p className="md:w-1/3 text-lg md:text-base font-bold text-gray-900">Asal Institusi</p>
+                        <div className={profileLoad?"hidden":"w-full"}>
+                            <span className="animate-pulse bg-gray-200 text-gray-200 w-full max-w-xs block rounded-md">a</span>
+                        </div>
+                        <p className={profileLoad?"":"hidden"}>{profile.asal_kampus}</p>
+                    </div>
                 </div>
             </div>
             <h1 className={registered===""?"hidden":"text-2xl my-4 "}>Event Registered</h1>
