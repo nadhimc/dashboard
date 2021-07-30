@@ -1,20 +1,25 @@
-import { faChevronLeft, faTimes } from "@fortawesome/free-solid-svg-icons"
+import { faChevronLeft, faExclamationCircle, faTimes, faCog } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useState, useEffect } from "react"
 import { Link, Redirect } from "react-router-dom"
+import validator from 'validator';
+
 
 const DashDaftar = () => {
 
     const [isLoading, setIsLoading] = useState(true)
 
-    const [selesai, setSelesai] = useState(false)
+    const [edit, setEdit] = useState(false)
 
+    const [uploading, setUploading] = useState(false)
+
+    const [selesai, setSelesai] = useState(false)
+    
     const [modalImg, setModalImg] = useState("")
 
     const [event, setEvent] = useState("")
 
-    // const [gamasurf, setGamasurf] = useState({      
-    const gamasurf = {      
+    const [gamasurf, setGamasurf] = useState({      
         "id":0,
         "user_id":0,
         "nama_lengkap":"",
@@ -34,22 +39,58 @@ const DashDaftar = () => {
         "ide":"",
         "created_at":"2021-07-26T12:27:47.000000Z",
         "updated_at":"2021-07-26T12:34:50.000000Z"
-    }
-    // })
+    })
 
-    // const [nasec, setNasec] = useState(
-        const nasec = {"id":1,"user_id":18,"nama_team":"Team Tutur","nama_sekolah":"MAN Insan Cendekia Serpong","alamat_sekolah":"Serpong Jaya","nama_pembimbing":"Pak Asep","no_pembimbing":"081224212953","komitmen":"Sangat Berkomitmen","info":"instagram","is_paid":0,"created_at":"2021-07-27T12:11:26.000000Z","updated_at":"2021-07-27T12:11:26.000000Z","member":[{"id":1,"team_id":1,"nama":"Rizkal","jenis_kelamin":"Laki-Laki","kelas":"10","email":"rizkal@gmail.com","no":"082424112212","kartu_pelajar":"peserta/ktm/1_1.jpg","twibbon":"peserta/twibbon/1_1.jpg","is_leader":1,"created_at":"2021-07-27T12:11:26.000000Z","updated_at":"2021-07-27T12:11:26.000000Z"},{"id":2,"team_id":1,"nama":"Ruka","jenis_kelamin":"Perempuan","kelas":"12","email":"ruka@gmail.com","no":"0812312312","kartu_pelajar":"peserta/ktm/1_2.jpg","twibbon":"peserta/twibbon/1_2.jpg","is_leader":0,"created_at":"2021-07-27T12:11:29.000000Z","updated_at":"2021-07-27T12:11:29.000000Z"},{"id":3,"team_id":1,"nama":"Mizuhara","jenis_kelamin":"Perempuan","kelas":"11","email":"mizuzu@gmail.com","no":"081232124124","kartu_pelajar":"peserta/ktm/1_3.jpg","twibbon":"peserta/twibbon/1_3.jpg","is_leader":0,"created_at":"2021-07-27T12:11:29.000000Z","updated_at":"2021-07-27T12:11:29.000000Z"}]}
-    // )
+    const [nasec, setNasec] = useState(
+        {"id":1,"user_id":18,"nama_team":"Team Tutur","nama_sekolah":"MAN Insan Cendekia Serpong","alamat_sekolah":"Serpong Jaya","nama_pembimbing":"Pak Asep","no_pembimbing":"081224212953","komitmen":"Sangat Berkomitmen","info":"instagram","is_paid":0,"created_at":"2021-07-27T12:11:26.000000Z","updated_at":"2021-07-27T12:11:26.000000Z","member":[{"id":1,"team_id":1,"nama":"Rizkal","jenis_kelamin":"Laki-Laki","kelas":"10","email":"rizkal@gmail.com","no":"082424112212","kartu_pelajar":"peserta/ktm/1_1.jpg","twibbon":"peserta/twibbon/1_1.jpg","is_leader":1,"created_at":"2021-07-27T12:11:26.000000Z","updated_at":"2021-07-27T12:11:26.000000Z"},{"id":2,"team_id":1,"nama":"Ruka","jenis_kelamin":"Perempuan","kelas":"12","email":"ruka@gmail.com","no":"0812312312","kartu_pelajar":"peserta/ktm/1_2.jpg","twibbon":"peserta/twibbon/1_2.jpg","is_leader":0,"created_at":"2021-07-27T12:11:29.000000Z","updated_at":"2021-07-27T12:11:29.000000Z"},{"id":3,"team_id":1,"nama":"Mizuhara","jenis_kelamin":"Perempuan","kelas":"11","email":"mizuzu@gmail.com","no":"081232124124","kartu_pelajar":"peserta/ktm/1_3.jpg","twibbon":"peserta/twibbon/1_3.jpg","is_leader":0,"created_at":"2021-07-27T12:11:29.000000Z","updated_at":"2021-07-27T12:11:29.000000Z"}]}
+    )
 
-    // const [sent, setSent] = useState({
-    const sent ={
+    const [sent, setSent] = useState({
         nama_lengkap:"",
         email:"",
         asal_institusi:"",
         status:"",
         info:""
+    })
+
+    // sent update
+    const [sentUpdate, setSentUpdate] = useState({
+        nama_lengkap:"",
+        email:"",
+        asal_institusi:"",
+        status:"",
+        info:""
+    })
+
+    const updatingSent = ()=>{
+        console.log(JSON.stringify(sentUpdate))
+        if(
+            sentUpdate.nama_lengkap!==""
+            && validator.isEmail(sentUpdate.email)
+            && sentUpdate.email!==""
+            && sentUpdate.asal_institusi!==""
+            && sentUpdate.status!==""
+            && sentUpdate.info!==""
+        ){
+            setUploading(true)
+            fetch(`${process.env.REACT_APP_APIURL}/users/${localStorage.getItem("id")}/sent`,{
+                method: "PUT",
+                headers:{
+                    'Content-Type': 'application/json',
+                    'Authorization' : `Bearer ${localStorage.getItem("key")}`
+                },
+                body: JSON.stringify(sentUpdate)
+            }).then(res=>res.json())
+            .then(
+                (res)=>{
+                    console.log(res)
+                    getMySent(true)
+                },(err)=>{
+                    console.log(err)
+                }
+            )
+        }
     }
-    // })
 
     const cekRegistered = ()=>{
         fetch(`${process.env.REACT_APP_APIURL}/users/${localStorage.getItem("id")}/isregistered`,{
@@ -66,7 +107,6 @@ const DashDaftar = () => {
                     // atasi error sementara
                 }else{
                     setEvent(res.data)
-                    setIsLoading(false)
                 }
             },
             (err)=>{
@@ -74,6 +114,124 @@ const DashDaftar = () => {
             }
         )
     }
+
+    const getMyNasec = ()=>{
+        if(event==="nasec"){
+            console.log("get my nasec")
+            fetch(`${process.env.REACT_APP_APIURL}/users/${localStorage.getItem("id")}/nasec`,{
+                headers:{
+                    'Content-Type': 'application/json',
+                    'Authorization' : `Bearer ${localStorage.getItem("key")}`
+                }
+            }).then(res=>res.json())
+            .then(
+                (res)=>{
+                    console.log(res)
+                    setNasec({
+                        "id":res.data.id,
+                        "user_id":res.data.user_id,
+                        "nama_team":res.data.nama_team,
+                        "nama_sekolah":res.data.nama_sekolah,
+                        "alamat_sekolah":res.data.alamat_sekolah,
+                        "nama_pembimbing":res.data.nama_pembimbing,
+                        "no_pembimbing":res.data.no_pembimbing,
+                        "komitmen":res.data.komitmen,
+                        "info":res.data.info,
+                        "is_paid":res.data.is_paid,
+                        "created_at":res.data.created_at,
+                        "updated_at":res.data.updated_at,
+                        "member": res.data.member
+                    })
+                    setIsLoading(false)
+                },(err)=>{
+                    console.log(err)
+                }
+            )
+        }
+    }
+
+    const getMyGamasurf = ()=>{
+        if(event==="gamasurf"){
+            console.log("get my gamasurf")
+            fetch(`${process.env.REACT_APP_APIURL}/users/${localStorage.getItem("id")}/gamasurf`,{
+                headers:{
+                    'Content-Type': 'application/json',
+                    'Authorization' : `Bearer ${localStorage.getItem("key")}`
+                }
+            }).then(res=>res.json())
+            .then(
+                (res)=>{
+                    console.log(res)
+                    setGamasurf({
+                        "id":res.data.id,
+                        "user_id":res.data.user_id,
+                        "nama_lengkap":res.data.nama_lengkap,
+                        "nama_panggilan":res.data.nama_panggilan,
+                        "email":res.data.email,
+                        "asal_univ":res.data.asal_univ,
+                        "asal_daerah":res.data.asal_daerah,
+                        "no_wa":res.data.no_wa,
+                        "motivasi":res.data.motivasi,
+                        "ekspetasi":res.data.ekspetasi,
+                        "pengalaman":res.data.pengalaman,
+                        "komitmen":res.data.komitmen,
+                        "info":res.data.info,
+                        "twibbon":res.data.twibbon,
+                        "orisinalitas":res.data.orisinalitas,
+                        "ktm":res.data.ktm,
+                        "ide":res.data.ide,
+                        "created_at":res.data.created_at,
+                        "updated_at":res.data.updated_at
+                    })
+                    setIsLoading(false)
+                },(err)=>{
+                    console.log(err)
+                }
+            )
+        }
+    }
+
+    const getMySent = (afteredit=false)=>{
+        if(event==="sent"){
+            console.log("get my sent")
+            fetch(`${process.env.REACT_APP_APIURL}/users/${localStorage.getItem("id")}/sent`,{
+                headers:{
+                    'Content-Type': 'application/json',
+                    'Authorization' : `Bearer ${localStorage.getItem("key")}`
+                }
+            }).then(res=>res.json())
+            .then(
+                (res)=>{
+                    console.log(res)
+                    setSent({
+                        nama_lengkap: res.data.nama_lengkap,
+                        email: res.data.email,
+                        asal_institusi: res.data.asal_institusi,
+                        status: res.data.status,
+                        info: res.data.info,
+                    })
+                    setSentUpdate({
+                        nama_lengkap: res.data.nama_lengkap,
+                        email: res.data.email,
+                        asal_institusi: res.data.asal_institusi,
+                        status: res.data.status,
+                        info: res.data.info,
+                    })
+                    setIsLoading(false)
+                    if(afteredit){
+                        setUploading(false)
+                        setEdit(false)
+                    }
+                },(err)=>{
+                    console.log(err)
+                }
+            )
+        }
+    }
+
+    useEffect(getMyGamasurf,[event])
+    useEffect(getMySent,[event])
+    useEffect(getMyNasec,[event])
 
     useEffect(() => {
         cekRegistered()
@@ -122,202 +280,197 @@ const DashDaftar = () => {
                 <div className="w-full bg-gray-400 h-96 mx-auto rounded-md animate-pulse mt-4" />
             </div>
             {/* Gamasurf */}
-            <div className={event==="gamasurf"?"border rounded-md p-4":"hidden"}>
+            <div className={event==="gamasurf"&&!isLoading?"border rounded-md p-4":"hidden"}>
                 <h1 className="text-center text-xl font-bold">Gamasurf</h1>
+                <button className="py-2 w-full max-w-xs mx-auto block my-2 rounded-md bg-blue-600 text-white hover:bg-blue-500">Edit Document</button>
                 <div>
-                    <table className="min-w-max w-full table-auto">
-                        <tbody>
-                            <tr className="border-b border-gray-200 hover:bg-gray-100">
-                                <td className="py-3 px-6">Nama Lengkap</td>
-                                <td className="py-3 px-6 w-3/4">: {gamasurf.nama_lengkap}</td>
-                            </tr>
-                            <tr className="border-b border-gray-200 hover:bg-gray-100">
-                                <td className="py-3 px-6">Nama Panggilan</td>
-                                <td className="py-3 px-6">: {gamasurf.nama_panggilan}</td>
-                            </tr>
-                            <tr className="border-b border-gray-200 hover:bg-gray-100">
-                                <td className="py-3 px-6">Email</td>
-                                <td className="py-3 px-6">: {gamasurf.email}</td>
-                            </tr>
-                            <tr className="border-b border-gray-200 hover:bg-gray-100">
-                                <td className="py-3 px-6">Asal Universitas</td>
-                                <td className="py-3 px-6">: {gamasurf.asal_univ}</td>
-                            </tr>
-                            <tr className="border-b border-gray-200 hover:bg-gray-100">
-                                <td className="py-3 px-6">Asal Daerah</td>
-                                <td className="py-3 px-6">: {gamasurf.asal_daerah}</td>
-                            </tr>
-                            <tr className="border-b border-gray-200 hover:bg-gray-100">
-                                <td className="py-3 px-6">No Handphone</td>
-                                <td className="py-3 px-6">: {gamasurf.no_wa}</td>
-                            </tr>
-                            <tr className="border-b border-gray-200 hover:bg-gray-100">
-                                <td className="py-3 px-6">Motivasi</td>
-                                <td className="py-3 px-6">: {gamasurf.motivasi}</td>
-                            </tr>
-                            <tr className="border-b border-gray-200 hover:bg-gray-100">
-                                <td className="py-3 px-6">Ekspetasi</td>
-                                <td className="py-3 px-6">: {gamasurf.ekspetasi}</td>
-                            </tr>
-                            <tr className="border-b border-gray-200 hover:bg-gray-100">
-                                <td className="py-3 px-6">pengalaman</td>
-                                <td className="py-3 px-6">: {gamasurf.pengalaman}</td>
-                            </tr>
-                            <tr className="border-b border-gray-200 hover:bg-gray-100">
-                                <td className="py-3 px-6">Info tentang Gamasurf</td>
-                                <td className="py-3 px-6">: {gamasurf.info}</td>
-                            </tr>
-                            <tr className="border-b border-gray-200 hover:bg-gray-100">
-                                <td className="py-3 px-6">KTM</td>
-                                <td className="py-3 px-6">
-                                    <img onClick={()=>{changeImg(gamasurf.ktm)}} className="max-w-full w-24 cursor-pointer" alt="ktm" src={gamasurf.ktm} />
-                                </td>
-                            </tr>
-                            <tr className="border-b border-gray-200 hover:bg-gray-100">
-                                <td className="py-3 px-6">Twibbon</td>
-                                <td className="py-3 px-6">
-                                    <img onClick={()=>{changeImg(gamasurf.twibbon)}} className="max-w-full w-24 cursor-pointer" alt="twibbon" src={gamasurf.twibbon} />
-                                </td>
-                            </tr>
-                            <tr className="border-b border-gray-200 hover:bg-gray-100">
-                                <td className="py-3 px-6">File ide</td>
-                                <td className="py-3 px-6">
-                                    <a className="hover:text-blue-400" href={gamasurf.ide}>
-                                        Klik disini
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr className="border-b border-gray-200 hover:bg-gray-100">
-                                <td className="py-3 px-6">File orisinalitas</td>
-                                <td className="py-3 px-6">
-                                    <a className="hover:text-blue-400" href={gamasurf.orisinalitas}>
-                                        Klik disini
-                                    </a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div className="flex-1 flex flex-col space-y-4 mt-3">
+                        <div className="flex flex-col md:flex-row">
+                            <p className="md:w-1/3 text-lg md:text-base text-gray-900">Nama Lengkap</p>
+                            <p>{gamasurf.nama_lengkap}</p>
+                        </div>
+                        <div className="flex flex-col md:flex-row">
+                            <p className="md:w-1/3 text-lg md:text-base text-gray-900">Nama Panggilan</p>
+                            <p>{gamasurf.nama_panggilan}</p>
+                        </div>
+                        <div className="flex flex-col md:flex-row">
+                            <p className="md:w-1/3 text-lg md:text-base text-gray-900">Email</p>
+                            <p>{gamasurf.email}</p>
+                        </div>
+                        <div className="flex flex-col md:flex-row">
+                            <p className="md:w-1/3 text-lg md:text-base text-gray-900">Asal Universitas</p>
+                            <p>{gamasurf.asal_univ}</p>
+                        </div>
+                        <div className="flex flex-col md:flex-row">
+                            <p className="md:w-1/3 text-lg md:text-base text-gray-900">Asal Daerah</p>
+                            <p>{gamasurf.asal_daerah}</p>
+                        </div>
+                        <div className="flex flex-col md:flex-row">
+                            <p className="md:w-1/3 text-lg md:text-base text-gray-900">No Handphone</p>
+                            <p>{gamasurf.no_wa}</p>
+                        </div>
+                        <div className="flex flex-col md:flex-row">
+                            <p className="md:w-1/3 text-lg md:text-base text-gray-900">Motivasi</p>
+                            <p>{gamasurf.motivasi}</p>
+                        </div>
+                        <div className="flex flex-col md:flex-row">
+                            <p className="md:w-1/3 text-lg md:text-base text-gray-900">Ekspetasi</p>
+                            <p>{gamasurf.ekspetasi}</p>
+                        </div>
+                        <div className="flex flex-col md:flex-row">
+                            <p className="md:w-1/3 text-lg md:text-base text-gray-900">Pengalaman</p>
+                            <p>{gamasurf.pengalaman}</p>
+                        </div>
+                        <div className="flex flex-col md:flex-row">
+                            <p className="md:w-1/3 text-lg md:text-base text-gray-900">Info tentang Gamasurf</p>
+                            <p>{gamasurf.info}</p>
+                        </div>
+                        <div className="flex flex-col md:flex-row">
+                            <p className="md:w-1/3 text-lg md:text-base text-gray-900">KTM</p>
+                            <img onClick={()=>{changeImg(gamasurf.ktm)}} className="max-w-full w-24 cursor-pointer" alt="ktm" src={gamasurf.ktm} />
+                        </div>
+                        <div className="flex flex-col md:flex-row">
+                            <p className="md:w-1/3 text-lg md:text-base text-gray-900">Twibbon</p>
+                            <img onClick={()=>{changeImg(gamasurf.twibbon)}} className="max-w-full w-24 cursor-pointer" alt="twibbon" src={gamasurf.twibbon} />
+                        </div>
+                        <div className="flex flex-col md:flex-row">
+                            <p className="md:w-1/3 text-lg md:text-base text-gray-900">Ide</p>
+                            <a className="hover:text-blue-400" href={gamasurf.ide}>
+                                Klik disini
+                            </a>
+                        </div>
+                        <div className="flex flex-col md:flex-row">
+                            <p className="md:w-1/3 text-lg md:text-base text-gray-900">File Orisinalitas</p>
+                            <a className="hover:text-blue-400" href={gamasurf.orisinalitas}>
+                                Klik disini
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             {/* Nasec */}
-            <div className={event==="nasec"?"border rounded-md p-4":"hidden"}>
+            <div className={event==="nasec"&&!isLoading?"border rounded-md p-4":"hidden"}>
                 <h1 className="text-center text-xl font-bold">Nasec</h1>
+                <button className="py-2 w-full max-w-xs mx-auto block my-2 rounded-md bg-blue-600 text-white hover:bg-blue-500">Edit Document</button>
                 <div>
-                    <table className="min-w-max w-full table-auto">
-                        <tbody>
-                            <tr className="border-b border-gray-200 hover:bg-gray-100">
-                                <td className="py-3 px-6">Nama Team</td>
-                                <td className="py-3 px-6 w-3/4">: {nasec.nama_team}</td>
-                            </tr>
-                            <tr className="border-b border-gray-200 hover:bg-gray-100">
-                                <td className="py-3 px-6">Nama Sekolah</td>
-                                <td className="py-3 px-6">: {nasec.nama_sekolah}</td>
-                            </tr>
-                            <tr className="border-b border-gray-200 hover:bg-gray-100">
-                                <td className="py-3 px-6">Alamat Sekolah</td>
-                                <td className="py-3 px-6">: {nasec.alamat_sekolah}</td>
-                            </tr>
-                            <tr className="border-b border-gray-200 hover:bg-gray-100">
-                                <td className="py-3 px-6">Nama Pembimbing</td>
-                                <td className="py-3 px-6">: {nasec.nama_pembimbing}</td>
-                            </tr>
-                            <tr className="border-b border-gray-200 hover:bg-gray-100">
-                                <td className="py-3 px-6">No Pembimbing</td>
-                                <td className="py-3 px-6">: {nasec.no_pembimbing}</td>
-                            </tr>
-                            <tr className="border-b border-gray-200 hover:bg-gray-100">
-                                <td className="py-3 px-6">Komitmen</td>
-                                <td className="py-3 px-6">: {nasec.komitmen}</td>
-                            </tr>
-                            <tr className="border-b border-gray-200 hover:bg-gray-100">
-                                <td className="py-3 px-6">Info Nasec</td>
-                                <td className="py-3 px-6">: {nasec.info}</td>
-                            </tr>
-                            <tr className="border-b border-gray-200 hover:bg-gray-100">
-                                <td className="py-3 px-6">Member 1</td>
-                                <td className="py-3 px-6">
-                                    <p className={parseInt(nasec.member[0].is_leader)===1?"font-bold":"hidden"}>Ketua</p>
-                                    <p>{nasec.member[0].nama}</p>
-                                    <p>{nasec.member[0].email}</p>
-                                    <p>{nasec.member[0].jenis_kelamin}</p>
-                                    <p>Kelas {nasec.member[0].kelas}</p>
-                                    <p>{nasec.member[0].no}</p>
-                                    <p className="mb-1">
+                    <div className="flex-1 flex flex-col space-y-4">
+                        <div className="flex flex-col md:flex-row">
+                            <p className="md:w-1/3 text-lg md:text-base text-gray-900">Nama Team</p>
+                            <p>{nasec.nama_team}</p>
+                        </div>
+                        <div className="flex flex-col md:flex-row">
+                            <p className="md:w-1/3 text-lg md:text-base text-gray-900">Nama Sekolah</p>
+                            <p>{nasec.nama_sekolah}</p>
+                        </div>
+                        <div className="flex flex-col md:flex-row">
+                            <p className="md:w-1/3 text-lg md:text-base text-gray-900">Alamat Sekolah</p>
+                            <p>{nasec.alamat_sekolah}</p>
+                        </div>
+                        <div className="flex flex-col md:flex-row">
+                            <p className="md:w-1/3 text-lg md:text-base text-gray-900">Nama Pembimbing</p>
+                            <p>{nasec.nama_pembimbing}</p>
+                        </div>
+                        <div className="flex flex-col md:flex-row">
+                            <p className="md:w-1/3 text-lg md:text-base text-gray-900">No Pembimbing</p>
+                            <p>{nasec.no_pembimbing}</p>
+                        </div>
+                        <div className="flex flex-col md:flex-row">
+                            <p className="md:w-1/3 text-lg md:text-base text-gray-900">Anggota Pertama{parseInt(nasec.member[0].is_leader)===1?" (Ketua)":""}</p>
+                            <div>
+                                <p>{nasec.member[0].nama}</p>
+                                <p>{nasec.member[0].email}</p>
+                                <p>{nasec.member[0].jenis_kelamin}</p>
+                                <p>Kelas {nasec.member[0].kelas}</p>
+                                <p>{nasec.member[0].no}</p>
+                                <p className="mb-1">
                                     <img onClick={()=>{changeImg(`https://sensation.smartsoft.co.id/sensation/storage/app/`+nasec.member[0].kartu_pelajar)}} className="max-w-full w-24 cursor-pointer" alt="ktm" src={`https://sensation.smartsoft.co.id/sensation/storage/app/`+nasec.member[0].kartu_pelajar} />
-                                    </p>
-                                    <p>
+                                </p>
+                                <p>
                                     <img onClick={()=>{changeImg(`https://sensation.smartsoft.co.id/sensation/storage/app/`+nasec.member[0].twibbon)}} className="max-w-full w-24 cursor-pointer" alt="ktm" src={`https://sensation.smartsoft.co.id/sensation/storage/app/`+nasec.member[0].twibbon} />
-                                    </p>
-                                </td>
-                            </tr>
-                            <tr className="border-b border-gray-200 hover:bg-gray-100">
-                                <td className="py-3 px-6">Member 2</td>
-                                <td className="py-3 px-6">
-                                    <p className={parseInt(nasec.member[1].is_leader)===1?"font-bold":"hidden"}>Ketua</p>
-                                    <p>{nasec.member[1].nama}</p>
-                                    <p>{nasec.member[1].email}</p>
-                                    <p>{nasec.member[1].jenis_kelamin}</p>
-                                    <p>Kelas {nasec.member[1].kelas}</p>
-                                    <p>{nasec.member[1].no}</p>
-                                    <p className="mb-1">
+                                </p>
+                            </div>
+                        </div>
+                        <div className="flex flex-col md:flex-row">
+                            <p className="md:w-1/3 text-lg md:text-base text-gray-900">Anggota Kedua{parseInt(nasec.member[1].is_leader)===1?" (Ketua)":""}</p>
+                            <div>
+                                <p>{nasec.member[1].nama}</p>
+                                <p>{nasec.member[1].email}</p>
+                                <p>{nasec.member[1].jenis_kelamin}</p>
+                                <p>Kelas {nasec.member[1].kelas}</p>
+                                <p>{nasec.member[1].no}</p>
+                                <p className="mb-1">
                                     <img onClick={()=>{changeImg(`https://sensation.smartsoft.co.id/sensation/storage/app/`+nasec.member[1].kartu_pelajar)}} className="max-w-full w-24 cursor-pointer" alt="ktm" src={`https://sensation.smartsoft.co.id/sensation/storage/app/`+nasec.member[1].kartu_pelajar} />
-                                    </p>
-                                    <p>
+                                </p>
+                                <p>
                                     <img onClick={()=>{changeImg(`https://sensation.smartsoft.co.id/sensation/storage/app/`+nasec.member[1].twibbon)}} className="max-w-full w-24 cursor-pointer" alt="ktm" src={`https://sensation.smartsoft.co.id/sensation/storage/app/`+nasec.member[1].twibbon} />
-                                    </p>
-                                </td>
-                            </tr>
-                            <tr className="border-b border-gray-200 hover:bg-gray-100">
-                                <td className="py-3 px-6">Member 3</td>
-                                <td className="py-3 px-6">
-                                    <p className={parseInt(nasec.member[2].is_leader)===1?"font-bold":"hidden"}>Ketua</p>
-                                    <p>{nasec.member[2].nama}</p>
-                                    <p>{nasec.member[2].email}</p>
-                                    <p>{nasec.member[2].jenis_kelamin}</p>
-                                    <p>Kelas {nasec.member[2].kelas}</p>
-                                    <p>{nasec.member[2].no}</p>
-                                    <p className="mb-1">
+                                </p>
+                            </div>
+                        </div>
+                        <div className="flex flex-col md:flex-row">
+                            <p className="md:w-1/3 text-lg md:text-base text-gray-900">Anggota Ketiga{parseInt(nasec.member[2].is_leader)===1?" (Ketua)":""}</p>
+                            <div>
+                                <p>{nasec.member[2].nama}</p>
+                                <p>{nasec.member[2].email}</p>
+                                <p>{nasec.member[2].jenis_kelamin}</p>
+                                <p>Kelas {nasec.member[2].kelas}</p>
+                                <p>{nasec.member[2].no}</p>
+                                <p className="mb-1">
                                     <img onClick={()=>{changeImg(`https://sensation.smartsoft.co.id/sensation/storage/app/`+nasec.member[2].kartu_pelajar)}} className="max-w-full w-24 cursor-pointer" alt="ktm" src={`https://sensation.smartsoft.co.id/sensation/storage/app/`+nasec.member[2].kartu_pelajar} />
-                                    </p>
-                                    <p>
+                                </p>
+                                <p>
                                     <img onClick={()=>{changeImg(`https://sensation.smartsoft.co.id/sensation/storage/app/`+nasec.member[2].twibbon)}} className="max-w-full w-24 cursor-pointer" alt="ktm" src={`https://sensation.smartsoft.co.id/sensation/storage/app/`+nasec.member[2].twibbon} />
-                                    </p>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             {/* Sent */}
-            <div className={event==="sent"?"border rounded-md p-4":"hidden"}>
+            <div className={event==="sent"&&!isLoading?"border rounded-md p-4 relative":"hidden relative"}>
+                <div style={{backgroundColor:"rgba(255,255,255,.4)"}} className={uploading?"absolute w-full h-full z-10 flex flex-col space-y-3 items-center justify-center":"hidden"}>
+                    <FontAwesomeIcon className="animate-spin text-6xl" style={{animationDuration:"3s"}} icon={faCog} />
+                    <p className="text-xl font-bold animate-bounce">Uploading</p>
+                </div>
                 <h1 className="text-center text-xl font-bold">Sent</h1>
+                <button onClick={()=>{if(!edit){setEdit(!edit)}else{setSentUpdate(sent);setEdit(!edit)}}} className={edit?"py-2 w-full max-w-xs mx-auto block mt-3 mb-6 rounded-md bg-red-600 text-white hover:bg-red-500":"py-2 w-full max-w-xs mx-auto block mt-3 mb-6 rounded-md bg-blue-600 text-white hover:bg-blue-500"}>
+                    {edit?"Cancel Edit":"Edit Document"}
+                </button>
                 <div>
-                    <table className="min-w-max w-full table-auto">
-                        <tbody>
-                            <tr className="border-b border-gray-200 hover:bg-gray-100">
-                                <td className="py-3 px-6">Nama Lengkap</td>
-                                <td className="py-3 px-6">{sent.nama_lengkap}</td>
-                            </tr>
-                            <tr className="border-b border-gray-200 hover:bg-gray-100">
-                                <td className="py-3 px-6">Email</td>
-                                <td className="py-3 px-6">{sent.email}</td>
-                            </tr>
-                            <tr className="border-b border-gray-200 hover:bg-gray-100">
-                                <td className="py-3 px-6">Asal Institusi</td>
-                                <td className="py-3 px-6">{sent.asal_institusi}</td>
-                            </tr>
-                            <tr className="border-b border-gray-200 hover:bg-gray-100">
-                                <td className="py-3 px-6">Statuts</td>
-                                <td className="py-3 px-6">{sent.status}</td>
-                            </tr>
-                            <tr className="border-b border-gray-200 hover:bg-gray-100">
-                                <td className="py-3 px-6">Info</td>
-                                <td className="py-3 px-6">{sent.info}</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div className="flex-1 flex flex-col space-y-4">
+                        <div className="flex flex-col items-center md:flex-row relative">
+                            <p className="md:w-1/3 text-lg md:text-base text-gray-900">Nama Lengkap</p>
+                            <p className={edit?"hidden":""}>{sent.nama_lengkap}</p>
+                            <input value={sentUpdate.nama_lengkap} onChange={(e)=>{setSentUpdate({...sentUpdate,nama_lengkap:e.target.value})}} type="text" className={!edit?"hidden":"border-0 px-3 py-1 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150 relative"} />
+                            <FontAwesomeIcon className={edit&&sentUpdate.nama_lengkap===""?"text-red-600 absolute right-0.5":"hidden"} icon={faExclamationCircle} />
+                        </div>
+                        <div className="flex flex-col items-center md:flex-row relative">
+                            <p className="md:w-1/3 text-lg md:text-base text-gray-900">Email</p>
+                            <p className={edit?"hidden":""}>{sent.email}</p>
+                            <input value={sentUpdate.email} onChange={(e)=>{setSentUpdate({...sentUpdate,email:e.target.value})}} type="text" className={!edit?"hidden":"border-0 px-3 py-1 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"} />
+                            <FontAwesomeIcon className={edit&&(sentUpdate.email===""||!validator.isEmail(sentUpdate.email))?"text-red-600 absolute right-0.5":"hidden"} icon={faExclamationCircle} />
+                        </div>
+                        <div className="flex flex-col items-center md:flex-row relative">
+                            <p className="md:w-1/3 text-lg md:text-base text-gray-900">Asal Institusi</p>
+                            <p className={edit?"hidden":""}>{sent.asal_institusi}</p>
+                            <input value={sentUpdate.asal_institusi} onChange={(e)=>{setSentUpdate({...sentUpdate,asal_institusi:e.target.value})}} type="text" className={!edit?"hidden":"border-0 px-3 py-1 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"} />
+                            <FontAwesomeIcon className={edit&&sentUpdate.asal_institusi===""?"text-red-600 absolute right-0.5":"hidden"} icon={faExclamationCircle} />
+                        </div>
+                        <div className="flex flex-col items-center md:flex-row relative">
+                            <p className="md:w-1/3 text-lg md:text-base text-gray-900">Status</p>
+                            <p className={edit?"hidden":""}>{sent.status}</p>
+                            <select value={sentUpdate.status} onChange={(e)=>{setSentUpdate({...sentUpdate,status:e.target.value})}} type="text" className={!edit?"hidden":"border-0 px-3 py-1 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"}>
+                                <option value="Siswa">Siswa</option>
+                                <option value="Mahasiswa">Mahasiswa</option>
+                                <option value="Pekerja">Pekerja</option>
+                                <option value="Lain-lain">Lain-lain</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button onClick={updatingSent} className={!edit?"hidden":"w-full max-w-xs rounded-md py-2 bg-blue-600 text-white mx-auto mt-7 block hover:bg-blue-500"}>
+                            Submit
+                    </button>
                 </div>
             </div>
 
