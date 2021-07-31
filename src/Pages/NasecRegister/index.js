@@ -33,34 +33,38 @@ const NasecRegister = ()=>{
     let firstKtm = createRef();
 
     useEffect(()=>{
-        if(firstTwibbon.current.files.length !== 0){
-            if(firstTwibbon.current.files[0].type==="image/jpeg" || firstTwibbon.current.files[0].type==="image/jpg"){
-                if(firstTwibbon.current.files[0].size/1024 <= 512){
-                    setFirstTwibbonErr("")
+        if(firstTwibbon.current){
+            if(firstTwibbon.current.files.length !== 0){
+                if(firstTwibbon.current.files[0].type==="image/jpeg" || firstTwibbon.current.files[0].type==="image/jpg"){
+                    if(firstTwibbon.current.files[0].size/1024 <= 512){
+                        setFirstTwibbonErr("")
+                    }else{
+                        setFirstTwibbonErr("Maksimum ukuran file adalah 512kb")
+                    }
                 }else{
-                    setFirstTwibbonErr("Maksimum ukuran file adalah 512kb")
+                    setFirstTwibbonErr("Ekstensi yang didukung adalah jpeg atau jpg")
                 }
             }else{
-                setFirstTwibbonErr("Ekstensi yang didukung adalah jpeg atau jpg")
+                setFirstTwibbonErr("")
             }
-        }else{
-            setFirstTwibbonErr("")
         }
     },[firstTwibbon,firstTwibbonVal])
 
     useEffect(()=>{
-        if(firstKtm.current.files.length !== 0){
-            if(firstKtm.current.files[0].type==="image/jpeg" || firstKtm.current.files[0].type==="image/jpg"){
-                if(firstKtm.current.files[0].size/1024 <= 512){
-                    setFirstKtmErr("")
+        if(firstKtm.current){
+            if(firstKtm.current.files.length !== 0){
+                if(firstKtm.current.files[0].type==="image/jpeg" || firstKtm.current.files[0].type==="image/jpg"){
+                    if(firstKtm.current.files[0].size/1024 <= 512){
+                        setFirstKtmErr("")
+                    }else{
+                        setFirstKtmErr("Maksimum ukuran file adalah 512kb")
+                    }
                 }else{
-                    setFirstKtmErr("Maksimum ukuran file adalah 512kb")
+                    setFirstKtmErr("Ekstensi yang didukung adalah jpeg atau jpg")
                 }
             }else{
-                setFirstKtmErr("Ekstensi yang didukung adalah jpeg atau jpg")
+                setFirstKtmErr("")
             }
-        }else{
-            setFirstKtmErr("")
         }
     },[firstKtm,firstKtmVal])
 
@@ -79,34 +83,38 @@ const NasecRegister = ()=>{
     let secondKtm = createRef();
 
     useEffect(()=>{
-        if(secondTwibbon.current.files.length !== 0){
-            if(secondTwibbon.current.files[0].type==="image/jpeg" || secondTwibbon.current.files[0].type==="image/jpg"){
-                if(secondTwibbon.current.files[0].size/1024 <= 512){
-                    setSecondTwibbonErr("")
+        if(secondTwibbon.current){
+            if(secondTwibbon.current.files.length !== 0){
+                if(secondTwibbon.current.files[0].type==="image/jpeg" || secondTwibbon.current.files[0].type==="image/jpg"){
+                    if(secondTwibbon.current.files[0].size/1024 <= 512){
+                        setSecondTwibbonErr("")
+                    }else{
+                        setSecondTwibbonErr("Maksimum ukuran file adalah 512kb")
+                    }
                 }else{
-                    setSecondTwibbonErr("Maksimum ukuran file adalah 512kb")
+                    setSecondTwibbonErr("Ekstensi yang didukung adalah jpeg atau jpg")
                 }
             }else{
-                setSecondTwibbonErr("Ekstensi yang didukung adalah jpeg atau jpg")
+                setSecondTwibbonErr("")
             }
-        }else{
-            setSecondTwibbonErr("")
         }
     },[secondTwibbon,secondTwibbonVal])
 
     useEffect(()=>{
-        if(secondKtm.current.files.length !== 0){
-            if(secondKtm.current.files[0].type==="image/jpeg" || secondKtm.current.files[0].type==="image/jpg"){
-                if(secondKtm.current.files[0].size/1024 <= 512){
-                    setSecondKtmErr("")
+        if(secondKtm.current){
+            if(secondKtm.current.files.length !== 0){
+                if(secondKtm.current.files[0].type==="image/jpeg" || secondKtm.current.files[0].type==="image/jpg"){
+                    if(secondKtm.current.files[0].size/1024 <= 512){
+                        setSecondKtmErr("")
+                    }else{
+                        setSecondKtmErr("Maksimum ukuran file adalah 512kb")
+                    }
                 }else{
-                    setSecondKtmErr("Maksimum ukuran file adalah 512kb")
+                    setSecondKtmErr("Ekstensi yang didukung adalah jpeg atau jpg")
                 }
             }else{
-                setSecondKtmErr("Ekstensi yang didukung adalah jpeg atau jpg")
+                setSecondKtmErr("")
             }
-        }else{
-            setSecondKtmErr("")
         }
     },[secondKtm,secondKtmVal])
 
@@ -125,34 +133,38 @@ const NasecRegister = ()=>{
     let thirdKtm = createRef();
 
     useEffect(()=>{
-        if(thirdTwibbon.current.files.length !== 0){
-            if(thirdTwibbon.current.files[0].type==="image/jpeg" || thirdTwibbon.current.files[0].type==="image/jpg"){
-                if(thirdTwibbon.current.files[0].size/1024 <= 512){
-                    setThirdTwibbonErr("")
+        if(thirdTwibbon.current){
+            if(thirdTwibbon.current.files.length !== 0){
+                if(thirdTwibbon.current.files[0].type==="image/jpeg" || thirdTwibbon.current.files[0].type==="image/jpg"){
+                    if(thirdTwibbon.current.files[0].size/1024 <= 512){
+                        setThirdTwibbonErr("")
+                    }else{
+                        setThirdTwibbonErr("Maksimum ukuran file adalah 512kb")
+                    }
                 }else{
-                    setThirdTwibbonErr("Maksimum ukuran file adalah 512kb")
+                    setThirdTwibbonErr("Ekstensi yang didukung adalah jpeg atau jpg")
                 }
             }else{
-                setThirdTwibbonErr("Ekstensi yang didukung adalah jpeg atau jpg")
+                setThirdTwibbonErr("")
             }
-        }else{
-            setThirdTwibbonErr("")
         }
     },[thirdTwibbon,thirdTwibbonVal])
 
     useEffect(()=>{
-        if(thirdKtm.current.files.length !== 0){
-            if(thirdKtm.current.files[0].type==="image/jpeg" || thirdKtm.current.files[0].type==="image/jpg"){
-                if(thirdKtm.current.files[0].size/1024 <= 512){
-                    setThirdKtmErr("")
+        if(thirdKtm.current){
+            if(thirdKtm.current.files.length !== 0){
+                if(thirdKtm.current.files[0].type==="image/jpeg" || thirdKtm.current.files[0].type==="image/jpg"){
+                    if(thirdKtm.current.files[0].size/1024 <= 512){
+                        setThirdKtmErr("")
+                    }else{
+                        setThirdKtmErr("Maksimum ukuran file adalah 512kb")
+                    }
                 }else{
-                    setThirdKtmErr("Maksimum ukuran file adalah 512kb")
+                    setThirdKtmErr("Ekstensi yang didukung adalah jpeg atau jpg")
                 }
             }else{
-                setThirdKtmErr("Ekstensi yang didukung adalah jpeg atau jpg")
+                setThirdKtmErr("")
             }
-        }else{
-            setThirdKtmErr("")
         }
     },[thirdKtm,thirdKtmVal])
 

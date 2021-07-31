@@ -1,6 +1,6 @@
 import { faChevronLeft, faExclamationCircle, faTimes, faCog } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { useState, useEffect } from "react"
+import { useState, useEffect, createRef } from "react"
 import { Link, Redirect } from "react-router-dom"
 import validator from 'validator';
 
@@ -14,6 +14,8 @@ const DashDaftar = () => {
     const [uploading, setUploading] = useState(false)
 
     const [selesai, setSelesai] = useState(false)
+
+    const [update, setUpdate] = useState(Date.now())
     
     const [modalImg, setModalImg] = useState("")
 
@@ -40,6 +42,232 @@ const DashDaftar = () => {
         "created_at":"2021-07-26T12:27:47.000000Z",
         "updated_at":"2021-07-26T12:34:50.000000Z"
     })
+
+    const gamasurfUpdateTwibbon = createRef()
+    const [gamasurfUpdateTwibbonVal, setGamasurfUpdateTwibbonVal] = useState("")
+    const [gamasurfUpdateTwibbonErr, setGamasurfUpdateTwibbonErr] = useState("")
+    useEffect(() => {
+        if(gamasurfUpdateTwibbon.current){
+            if(gamasurfUpdateTwibbon.current.files.length !== 0){
+                if(gamasurfUpdateTwibbon.current.files[0].type==="image/jpeg" || gamasurfUpdateTwibbon.current.files[0].type==="image/jpg"){
+                    if(gamasurfUpdateTwibbon.current.files[0].size/1024 <= 512){
+                        setGamasurfUpdateTwibbonErr("")
+                    }else{
+                        setGamasurfUpdateTwibbonErr("Maksimum ukuran file adalah 512kb")
+                    }
+                }else{
+                    setGamasurfUpdateTwibbonErr("Ekstensi yang didukung adalah jpeg atau jpg")
+                }
+            }else{
+                setGamasurfUpdateTwibbonErr("")
+            }
+        }
+    }, [gamasurfUpdateTwibbon,gamasurfUpdateTwibbonVal])
+
+    const gamasurfUpdateKtm = createRef()
+    const [gamasurfUpdateKtmVal, setGamasurfUpdateKtmVal] = useState("")
+    const [gamasurfUpdateKtmErr, setGamasurfUpdateKtmErr] = useState("")
+    useEffect(() => {
+        if(gamasurfUpdateKtm.current){
+            if(gamasurfUpdateKtm.current.files.length !== 0){
+                if(gamasurfUpdateKtm.current.files[0].type==="image/jpeg" || gamasurfUpdateKtm.current.files[0].type==="image/jpg"){
+                    if(gamasurfUpdateKtm.current.files[0].size/1024 <= 512){
+                        setGamasurfUpdateKtmErr("")
+                    }else{
+                        setGamasurfUpdateKtmErr("Maksimum ukuran file adalah 512kb")
+                    }
+                }else{
+                    setGamasurfUpdateKtmErr("Ekstensi yang didukung adalah jpeg atau jpg")
+                }
+            }else{
+                setGamasurfUpdateKtmErr("")
+            }
+        }
+    }, [gamasurfUpdateKtm,gamasurfUpdateKtmVal])
+
+    const gamasurfUpdateIde = createRef()
+    const [gamasurfUpdateIdeVal, setGamasurfUpdateIdeVal] = useState("")
+    const [gamasurfUpdateIdeErr, setGamasurfUpdateIdeErr] = useState("")
+    useEffect(() => {
+        if(gamasurfUpdateIde.current){
+            if(gamasurfUpdateIde.current.files.length !== 0){
+                if(gamasurfUpdateIde.current.files[0].type==="application/pdf"){
+                    if(gamasurfUpdateIde.current.files[0].size/1024/1024 <= 5){
+                        setGamasurfUpdateIdeErr("")
+                    }else{
+                        setGamasurfUpdateIdeErr("Maksimum ukuran file adalah 5Mb")
+                    }
+                }else{
+                    setGamasurfUpdateIdeErr("Ekstensi yang didukung adalah PDF")
+                }
+            }else{
+                setGamasurfUpdateIdeErr("")
+            }
+        }
+    }, [gamasurfUpdateIde,gamasurfUpdateIdeVal])
+
+    const gamasurfUpdateOri = createRef()
+    const [gamasurfUpdateOriVal, setGamasurfUpdateOriVal] = useState("")
+    const [gamasurfUpdateOriErr, setGamasurfUpdateOriErr] = useState("")
+    useEffect(() => {
+        if(gamasurfUpdateOri.current){
+            if(gamasurfUpdateOri.current.files.length !== 0){
+                if(gamasurfUpdateOri.current.files[0].type==="application/pdf"){
+                    if(gamasurfUpdateOri.current.files[0].size/1024/1024 <= 3){
+                        setGamasurfUpdateOriErr("")
+                    }else{
+                        setGamasurfUpdateOriErr("Maksimum ukuran file adalah 3Mb")
+                    }
+                }else{
+                    setGamasurfUpdateOriErr("Ekstensi yang didukung adalah PDF")
+                }
+            }else{
+                setGamasurfUpdateOriErr("")
+            }
+        }
+    }, [gamasurfUpdateOri,gamasurfUpdateOriVal])
+
+    const [gamasurfUpdate, setGamasurfUpdate] = useState({      
+        "id":0,
+        "user_id":0,
+        "nama_lengkap":"",
+        "nama_panggilan":"",
+        "email":"",
+        "asal_univ":"",
+        "asal_daerah":"",
+        "no_wa":"",
+        "motivasi":"",
+        "ekspetasi":"",
+        "pengalaman":"",
+        "komitmen":"",
+        "info":"",
+        "twibbon":"",
+        "orisinalitas":"",
+        "ktm":"",
+        "ide":"",
+        "created_at":"",
+        "updated_at":""
+    })
+
+    // gamasurf Update
+
+    const updatingGamasurf = ()=>{
+        let data = new FormData()
+        let error = false
+        if(gamasurfUpdate.nama_lengkap!==""){
+            data.append("nama_lengkap",gamasurfUpdate.nama_lengkap)
+        }else{
+            error = true
+        }
+        if(gamasurfUpdate.nama_panggilan!==""){
+            data.append("nama_panggilan",gamasurfUpdate.nama_panggilan)
+        }else{
+            error = true
+        }
+        if(gamasurfUpdate.email!=="" && validator.isEmail(gamasurfUpdate.email)){
+            data.append("email",gamasurfUpdate.email)
+        }else{
+            error = true
+        }
+        if(gamasurfUpdate.asal_univ!==""){
+            data.append("asal_univ",gamasurfUpdate.asal_univ)
+        }else{
+            error = true
+        }
+        if(gamasurfUpdate.asal_daerah!==""){
+            data.append("asal_daerah",gamasurfUpdate.asal_daerah)
+        }else{
+            error = true
+        }
+        if(gamasurfUpdate.no_wa!=="" && validator.isMobilePhone(gamasurfUpdate.no_wa,"id-ID")){
+            data.append("no_wa",gamasurfUpdate.no_wa)
+        }else{
+            error = true
+        }
+        if(gamasurfUpdateTwibbon.current){
+            if(gamasurfUpdateTwibbon.current.files.length !== 0){
+                if(gamasurfUpdateTwibbon.current.files[0].type==="image/jpeg" || gamasurfUpdateTwibbon.current.files[0].type==="image/jpg"){
+                    if(gamasurfUpdateTwibbon.current.files[0].size/1024 <= 512){
+                        data.append("twibbon",gamasurfUpdateTwibbon.current.files[0])
+                    }else{
+                        error = true
+                    }
+                }else{
+                    error = true
+                }
+            }
+        }
+        if(gamasurfUpdateKtm.current){
+            if(gamasurfUpdateKtm.current.files.length !== 0){
+                if(gamasurfUpdateKtm.current.files[0].type==="image/jpeg" || gamasurfUpdateKtm.current.files[0].type==="image/jpg"){
+                    if(gamasurfUpdateKtm.current.files[0].size/1024 <= 512){
+                        data.append("ktm",gamasurfUpdateKtm.current.files[0])
+                    }else{
+                        error = true
+                    }
+                }else{
+                    error = true
+                }
+            }
+        }
+        if(gamasurfUpdateIde.current){
+            if(gamasurfUpdateIde.current.files.length !== 0){
+                if(gamasurfUpdateIde.current.files[0].type==="application/pdf"){
+                    if(gamasurfUpdateIde.current.files[0].size/1024/1024 <= 5){
+                        data.append("ide",gamasurfUpdateIde.current.files[0])
+                    }else{
+                        error = true
+                    }
+                }else{
+                    error = true
+                }
+            }
+        }
+
+        if(gamasurfUpdateOri.current){
+            if(gamasurfUpdateOri.current.files.length !== 0){
+                if(gamasurfUpdateOri.current.files[0].type==="application/pdf"){
+                    if(gamasurfUpdateOri.current.files[0].size/1024/1024 <= 3){
+                        data.append("orisinalitas",gamasurfUpdateOri.current.files[0])
+                    }else{
+                        error = true
+                    }
+                }else{
+                    error = true
+                }
+            }
+        }
+
+        if(!error){
+            setUploading(true)
+            setGamasurfUpdateTwibbonVal("")
+            gamasurfUpdateTwibbon.current = null
+            setGamasurfUpdateTwibbonErr("")
+            setGamasurfUpdateKtmVal("")
+            gamasurfUpdateKtm.current = null
+            setGamasurfUpdateKtmErr("")
+            setGamasurfUpdateIdeVal("")
+            gamasurfUpdateIde.current = null
+            setGamasurfUpdateIdeErr("")
+            setGamasurfUpdateOriVal("")
+            gamasurfUpdateOri.current = null
+            fetch(`${process.env.REACT_APP_APIURL}/users/${localStorage.getItem("id")}/gamasurf?_method=put`,{
+                method: "POST",
+                headers:{
+                    'Authorization' : `Bearer ${localStorage.getItem("key")}`
+                },
+                body: data
+            }).then(res=>res.json())
+            .then(
+                (res)=>{
+                    console.log(res)
+                    getMyGamasurf(true)
+                },(err)=>{
+                    console.log(err)
+                }
+            )
+        }
+    }
 
     const [nasec, setNasec] = useState(
         {"id":1,"user_id":18,"nama_team":"Team Tutur","nama_sekolah":"MAN Insan Cendekia Serpong","alamat_sekolah":"Serpong Jaya","nama_pembimbing":"Pak Asep","no_pembimbing":"081224212953","komitmen":"Sangat Berkomitmen","info":"instagram","is_paid":0,"created_at":"2021-07-27T12:11:26.000000Z","updated_at":"2021-07-27T12:11:26.000000Z","member":[{"id":1,"team_id":1,"nama":"Rizkal","jenis_kelamin":"Laki-Laki","kelas":"10","email":"rizkal@gmail.com","no":"082424112212","kartu_pelajar":"peserta/ktm/1_1.jpg","twibbon":"peserta/twibbon/1_1.jpg","is_leader":1,"created_at":"2021-07-27T12:11:26.000000Z","updated_at":"2021-07-27T12:11:26.000000Z"},{"id":2,"team_id":1,"nama":"Ruka","jenis_kelamin":"Perempuan","kelas":"12","email":"ruka@gmail.com","no":"0812312312","kartu_pelajar":"peserta/ktm/1_2.jpg","twibbon":"peserta/twibbon/1_2.jpg","is_leader":0,"created_at":"2021-07-27T12:11:29.000000Z","updated_at":"2021-07-27T12:11:29.000000Z"},{"id":3,"team_id":1,"nama":"Mizuhara","jenis_kelamin":"Perempuan","kelas":"11","email":"mizuzu@gmail.com","no":"081232124124","kartu_pelajar":"peserta/ktm/1_3.jpg","twibbon":"peserta/twibbon/1_3.jpg","is_leader":0,"created_at":"2021-07-27T12:11:29.000000Z","updated_at":"2021-07-27T12:11:29.000000Z"}]}
@@ -150,7 +378,7 @@ const DashDaftar = () => {
         }
     }
 
-    const getMyGamasurf = ()=>{
+    const getMyGamasurf = (afteredit=false)=>{
         if(event==="gamasurf"){
             console.log("get my gamasurf")
             fetch(`${process.env.REACT_APP_APIURL}/users/${localStorage.getItem("id")}/gamasurf`,{
@@ -183,7 +411,33 @@ const DashDaftar = () => {
                         "created_at":res.data.created_at,
                         "updated_at":res.data.updated_at
                     })
+                    setGamasurfUpdate({
+                        "id":res.data.id,
+                        "user_id":res.data.user_id,
+                        "nama_lengkap":res.data.nama_lengkap,
+                        "nama_panggilan":res.data.nama_panggilan,
+                        "email":res.data.email,
+                        "asal_univ":res.data.asal_univ,
+                        "asal_daerah":res.data.asal_daerah,
+                        "no_wa":res.data.no_wa,
+                        "motivasi":res.data.motivasi,
+                        "ekspetasi":res.data.ekspetasi,
+                        "pengalaman":res.data.pengalaman,
+                        "komitmen":res.data.komitmen,
+                        "info":res.data.info,
+                        "twibbon":res.data.twibbon,
+                        "orisinalitas":res.data.orisinalitas,
+                        "ktm":res.data.ktm,
+                        "ide":res.data.ide,
+                        "created_at":res.data.created_at,
+                        "updated_at":res.data.updated_at
+                    })
                     setIsLoading(false)
+                    setUpdate(Date.now())
+                    if(afteredit){
+                        setUploading(false)
+                        setEdit(false)
+                    }
                 },(err)=>{
                     console.log(err)
                 }
@@ -280,72 +534,162 @@ const DashDaftar = () => {
                 <div className="w-full bg-gray-400 h-96 mx-auto rounded-md animate-pulse mt-4" />
             </div>
             {/* Gamasurf */}
-            <div className={event==="gamasurf"&&!isLoading?"border rounded-md p-4":"hidden"}>
+            <div className={event==="gamasurf"&&!isLoading?"border rounded-md p-4 relative":"hidden"}>
+                <div style={{backgroundColor:"rgba(255,255,255,.4)"}} className={uploading?"absolute w-full h-full z-10 flex flex-col space-y-3 items-center justify-center":"hidden"}>
+                    <FontAwesomeIcon className="animate-spin text-6xl" style={{animationDuration:"3s"}} icon={faCog} />
+                    <p className="text-xl font-bold animate-bounce">Uploading</p>
+                </div>
                 <h1 className="text-center text-xl font-bold">Gamasurf</h1>
-                <button className="py-2 w-full max-w-xs mx-auto block my-2 rounded-md bg-blue-600 text-white hover:bg-blue-500">Edit Document</button>
+                <button onClick={()=>
+                    {if(!edit)
+                    {setEdit(!edit)}
+                    else{
+                        setEdit(!edit)
+                        setGamasurfUpdateTwibbonVal("")
+                        gamasurfUpdateTwibbon.current = null
+                        setGamasurfUpdateTwibbonErr("")
+                        setGamasurfUpdateKtmVal("")
+                        gamasurfUpdateKtm.current = null
+                        setGamasurfUpdateKtmErr("")
+                        setGamasurfUpdateIdeVal("")
+                        gamasurfUpdateIde.current = null
+                        setGamasurfUpdateIdeErr("")
+                        setGamasurfUpdateOriVal("")
+                        gamasurfUpdateOri.current = null
+                        setGamasurfUpdateOriErr("")
+                    }}} className={edit?"py-2 w-full max-w-xs mx-auto block mt-3 mb-6 rounded-md bg-red-600 text-white hover:bg-red-500":"py-2 w-full max-w-xs mx-auto block mt-3 mb-6 rounded-md bg-blue-600 text-white hover:bg-blue-500"}>
+                    {edit?"Cancel Edit":"Edit Document"}
+                </button>
                 <div>
                     <div className="flex-1 flex flex-col space-y-4 mt-3">
-                        <div className="flex flex-col md:flex-row">
+                        <div className="flex flex-col md:flex-row relative">
                             <p className="md:w-1/3 text-lg md:text-base text-gray-900">Nama Lengkap</p>
-                            <p>{gamasurf.nama_lengkap}</p>
+                            <p className={edit?"hidden":""}>{gamasurf.nama_lengkap}</p>
+                            <input value={gamasurfUpdate.nama_lengkap} onChange={(e)=>{setGamasurfUpdate({...gamasurfUpdate,nama_lengkap:e.target.value})}} type="text" className={!edit?"hidden":"border-0 px-3 py-1 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring flex-1 ease-linear transition-all duration-150 relative"} />
+                            <div className={edit&&gamasurfUpdate.nama_lengkap===""?"text-red-600 absolute right-0.5 h-full flex justify-center items-center":"hidden"}>
+                            <FontAwesomeIcon icon={faExclamationCircle} />
+                            </div>
                         </div>
-                        <div className="flex flex-col md:flex-row">
+                        <div className="flex flex-col md:flex-row relative">
                             <p className="md:w-1/3 text-lg md:text-base text-gray-900">Nama Panggilan</p>
-                            <p>{gamasurf.nama_panggilan}</p>
+                            <p className={edit?"hidden":""}>{gamasurf.nama_panggilan}</p>
+                            <input value={gamasurfUpdate.nama_panggilan} onChange={(e)=>{setGamasurfUpdate({...gamasurfUpdate,nama_panggilan:e.target.value})}} type="text" className={!edit?"hidden":"border-0 px-3 py-1 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring flex-1 ease-linear transition-all duration-150 relative"} />
+                            <div className={edit&&gamasurfUpdate.nama_panggilan===""?"text-red-600 absolute right-0.5 h-full flex justify-center items-center":"hidden"}>
+                                <FontAwesomeIcon icon={faExclamationCircle} />
+                            </div>
                         </div>
-                        <div className="flex flex-col md:flex-row">
+                        <div className="flex flex-col md:flex-row relative">
                             <p className="md:w-1/3 text-lg md:text-base text-gray-900">Email</p>
-                            <p>{gamasurf.email}</p>
+                            <p className={edit?"hidden":""}>{gamasurf.email}</p>
+                            <input value={gamasurfUpdate.email} onChange={(e)=>{setGamasurfUpdate({...gamasurfUpdate,email:e.target.value})}} type="text" className={!edit?"hidden":"border-0 px-3 py-1 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring flex-1 ease-linear transition-all duration-150 relative"} />
+                            <div className={edit&&(gamasurfUpdate.email===""||!validator.isEmail(gamasurfUpdate.email))?"text-red-600 absolute right-0.5 h-full flex justify-center items-center":"hidden"}>
+                                <FontAwesomeIcon icon={faExclamationCircle} />
+                            </div>
                         </div>
-                        <div className="flex flex-col md:flex-row">
+                        <div className="flex flex-col md:flex-row relative">
                             <p className="md:w-1/3 text-lg md:text-base text-gray-900">Asal Universitas</p>
-                            <p>{gamasurf.asal_univ}</p>
+                            <p className={edit?"hidden":""}>{gamasurf.asal_univ}</p>
+                            <input value={gamasurfUpdate.asal_univ} onChange={(e)=>{setGamasurfUpdate({...gamasurfUpdate,asal_univ:e.target.value})}} type="text" className={!edit?"hidden":"border-0 px-3 py-1 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring flex-1 ease-linear transition-all duration-150 relative"} />
+                            <div className={edit&&gamasurfUpdate.asal_univ===""?"text-red-600 absolute right-0.5 h-full flex justify-center items-center":"hidden"}>
+                                <FontAwesomeIcon icon={faExclamationCircle} />
+                            </div>
                         </div>
-                        <div className="flex flex-col md:flex-row">
+                        <div className="flex flex-col md:flex-row relative">
                             <p className="md:w-1/3 text-lg md:text-base text-gray-900">Asal Daerah</p>
-                            <p>{gamasurf.asal_daerah}</p>
+                            <p className={edit?"hidden":""}>{gamasurf.asal_daerah}</p>
+                            <input value={gamasurfUpdate.asal_daerah} onChange={(e)=>{setGamasurfUpdate({...gamasurfUpdate,asal_daerah:e.target.value})}} type="text" className={!edit?"hidden":"border-0 px-3 py-1 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring flex-1 ease-linear transition-all duration-150 relative"} />
+                            <div className={edit&&gamasurfUpdate.asal_daerah===""?"text-red-600 absolute right-0.5 h-full flex justify-center items-center":"hidden"}>
+                                <FontAwesomeIcon className={edit&&gamasurfUpdate.asal_daerah===""?"text-red-600 absolute right-0.5":"hidden"} icon={faExclamationCircle} />
+                            </div>
                         </div>
-                        <div className="flex flex-col md:flex-row">
+                        <div className="flex flex-col md:flex-row relative">
                             <p className="md:w-1/3 text-lg md:text-base text-gray-900">No Handphone</p>
-                            <p>{gamasurf.no_wa}</p>
+                            <p className={edit?"hidden":""}>{gamasurf.no_wa}</p>
+                            <input value={gamasurfUpdate.no_wa} onChange={(e)=>{setGamasurfUpdate({...gamasurfUpdate,no_wa:e.target.value})}} type="text" className={!edit?"hidden":"border-0 px-3 py-1 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring flex-1 ease-linear transition-all duration-150 relative"} />
+                            <div className={edit&&(gamasurfUpdate.no_wa===""||!validator.isMobilePhone(gamasurfUpdate.no_wa,"id-ID"))?"text-red-600 absolute right-0.5 h-full flex justify-center items-center":"hidden"}>
+                                <FontAwesomeIcon icon={faExclamationCircle} />
+                            </div>
                         </div>
-                        <div className="flex flex-col md:flex-row">
+                        <div className="flex flex-col md:flex-row relative">
                             <p className="md:w-1/3 text-lg md:text-base text-gray-900">Motivasi</p>
-                            <p>{gamasurf.motivasi}</p>
+                            <p className={edit?"hidden":""}>{gamasurf.motivasi}</p>
+                            <input value={gamasurfUpdate.motivasi} onChange={(e)=>{setGamasurfUpdate({...gamasurfUpdate,motivasi:e.target.value})}} type="text" className={!edit?"hidden":"border-0 px-3 py-1 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring flex-1 ease-linear transition-all duration-150 relative"} />
+                            <div className={edit&&gamasurfUpdate.motivasi===""?"text-red-600 absolute right-0.5 h-full flex justify-center items-center":"hidden"}>
+                                <FontAwesomeIcon icon={faExclamationCircle} />
+                            </div>
                         </div>
-                        <div className="flex flex-col md:flex-row">
+                        <div className="flex flex-col md:flex-row relative">
                             <p className="md:w-1/3 text-lg md:text-base text-gray-900">Ekspetasi</p>
-                            <p>{gamasurf.ekspetasi}</p>
+                            <p className={edit?"hidden":""}>{gamasurf.ekspetasi}</p>
+                            <input value={gamasurfUpdate.ekspetasi} onChange={(e)=>{setGamasurfUpdate({...gamasurfUpdate,ekspetasi:e.target.value})}} type="text" className={!edit?"hidden":"border-0 px-3 py-1 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring flex-1 ease-linear transition-all duration-150 relative"} />
+                            <div className={edit&&gamasurfUpdate.ekspetasi===""?"text-red-600 absolute right-0.5 h-full flex justify-center items-center":"hidden"}>
+                                <FontAwesomeIcon icon={faExclamationCircle} />
+                            </div>
                         </div>
-                        <div className="flex flex-col md:flex-row">
+                        <div className="flex flex-col md:flex-row relative">
                             <p className="md:w-1/3 text-lg md:text-base text-gray-900">Pengalaman</p>
-                            <p>{gamasurf.pengalaman}</p>
-                        </div>
-                        <div className="flex flex-col md:flex-row">
-                            <p className="md:w-1/3 text-lg md:text-base text-gray-900">Info tentang Gamasurf</p>
-                            <p>{gamasurf.info}</p>
+                            <p className={edit?"hidden":""}>{gamasurf.pengalaman}</p>
+                            <input value={gamasurfUpdate.pengalaman} onChange={(e)=>{setGamasurfUpdate({...gamasurfUpdate,pengalaman:e.target.value})}} type="text" className={!edit?"hidden":"border-0 px-3 py-1 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring flex-1 ease-linear transition-all duration-150 relative"} />
+                            <div className={edit&&gamasurfUpdate.pengalaman===""?"text-red-600 absolute right-0.5 h-full flex justify-center items-center":"hidden"}>
+                                <FontAwesomeIcon icon={faExclamationCircle} />
+                            </div>
                         </div>
                         <div className="flex flex-col md:flex-row">
                             <p className="md:w-1/3 text-lg md:text-base text-gray-900">KTM</p>
-                            <img onClick={()=>{changeImg(gamasurf.ktm)}} className="max-w-full w-24 cursor-pointer" alt="ktm" src={gamasurf.ktm} />
+                            <img onClick={()=>{changeImg(`https://sensation.smartsoft.co.id/sensation/storage/app/peserta/ktm/`+gamasurf.ktm+"?"+update)}} className={edit?"hidden":"max-w-full w-24 cursor-pointer"} alt="ktm" src={`https://sensation.smartsoft.co.id/sensation/storage/app/peserta/ktm/`+gamasurf.ktm+"?"+update} />
+                            <div className="flex-1">
+                                <div className={!edit?"hidden":"flex items-center relative flex-1"}>
+                                    <input accept="image/jpg, image/jpeg" ref={gamasurfUpdateKtm} onChange={()=>{gamasurfUpdateKtm.current.files[0]?setGamasurfUpdateKtmVal(gamasurfUpdateKtm.current.files[0].name):setGamasurfUpdateKtmVal("")}} style={{color:"rgb(71,85,105)"}} type="file" className="w-full h-full absolute cursor-pointer opacity-0 inset-0" />
+                                    <input disabled value={gamasurfUpdateKtmVal} style={{color:"rgb(71,85,105)"}} type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded-l text-sm shadow focus:outline-none focus:ring flex-1 ease-linear transition-all duration-150" placeholder="Upload files..." />
+                                    <button type="button" className="bg-blue-500 rounded-r-md px-3 py-3 font-bold text-white text-sm">Upload</button>
+                                </div>
+                                <small className={!edit?"hidden":gamasurfUpdateKtmErr===""?"ml-1 text-gray-700":"ml-1 text-red-500"}><FontAwesomeIcon className={gamasurfUpdateKtmErr===""?"hidden":""} icon={faExclamationCircle} /> {gamasurfUpdateKtmErr===""?"Kosongkan jika tidak mengubah file sebelumnya":gamasurfUpdateKtmErr}</small>
+                            </div>
                         </div>
                         <div className="flex flex-col md:flex-row">
                             <p className="md:w-1/3 text-lg md:text-base text-gray-900">Twibbon</p>
-                            <img onClick={()=>{changeImg(gamasurf.twibbon)}} className="max-w-full w-24 cursor-pointer" alt="twibbon" src={gamasurf.twibbon} />
+                            <img onClick={()=>{changeImg(`https://sensation.smartsoft.co.id/sensation/storage/app/peserta/twibbon/`+gamasurf.twibbon+"?"+update)}} className={edit?"hidden":"max-w-full w-24 cursor-pointer"} alt="twibbon" src={`https://sensation.smartsoft.co.id/sensation/storage/app/peserta/twibbon/`+gamasurf.twibbon+"?"+update} />
+                            <div className="flex-1">
+                                <div className={!edit?"hidden":"flex items-center relative flex-1"}>
+                                    <input accept="image/jpg, image/jpeg" ref={gamasurfUpdateTwibbon} onChange={()=>{gamasurfUpdateTwibbon.current.files[0]?setGamasurfUpdateTwibbonVal(gamasurfUpdateTwibbon.current.files[0].name):setGamasurfUpdateTwibbonVal("")}} style={{color:"rgb(71,85,105)"}} type="file" className="w-full h-full absolute cursor-pointer opacity-0 inset-0" />
+                                    <input disabled value={gamasurfUpdateTwibbonVal} style={{color:"rgb(71,85,105)"}} type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded-l text-sm shadow focus:outline-none focus:ring flex-1 ease-linear transition-all duration-150" placeholder="Upload files..." />
+                                    <button type="button" className="bg-blue-500 rounded-r-md px-3 py-3 font-bold text-white text-sm">Upload</button>
+                                </div>
+                                <small className={!edit?"hidden":gamasurfUpdateTwibbonErr===""?"ml-1 text-gray-700":"ml-1 text-red-500"}><FontAwesomeIcon className={gamasurfUpdateTwibbonErr===""?"hidden":""} icon={faExclamationCircle} /> {gamasurfUpdateTwibbonErr===""?"Kosongkan jika tidak mengubah file sebelumnya":gamasurfUpdateTwibbonErr}</small>
+                            </div>
                         </div>
                         <div className="flex flex-col md:flex-row">
                             <p className="md:w-1/3 text-lg md:text-base text-gray-900">Ide</p>
-                            <a className="hover:text-blue-400" href={gamasurf.ide}>
+                            <a className={edit?"hidden":"hover:text-blue-400"} href={`https://sensation.smartsoft.co.id/sensation/storage/app/peserta/ide/`+gamasurf.ide}>
                                 Klik disini
                             </a>
+                            <div className="flex-1">
+                                <div className={!edit?"hidden":"flex items-center relative flex-1"}>
+                                    <input accept=".pdf" ref={gamasurfUpdateIde} onChange={()=>{gamasurfUpdateIde.current.files[0]?setGamasurfUpdateIdeVal(gamasurfUpdateIde.current.files[0].name):setGamasurfUpdateIdeVal("")}} style={{color:"rgb(71,85,105)"}} type="file" className="w-full h-full absolute cursor-pointer opacity-0 inset-0" />
+                                    <input disabled value={gamasurfUpdateIdeVal} style={{color:"rgb(71,85,105)"}} type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded-l text-sm shadow focus:outline-none focus:ring flex-1 ease-linear transition-all duration-150" placeholder="Upload files..." />
+                                    <button type="button" className="bg-blue-500 rounded-r-md px-3 py-3 font-bold text-white text-sm">Upload</button>
+                                </div>
+                                <small className={!edit?"hidden":gamasurfUpdateIdeErr===""?"ml-1 text-gray-700":"ml-1 text-red-500"}><FontAwesomeIcon className={gamasurfUpdateIdeErr===""?"hidden":""} icon={faExclamationCircle} /> {gamasurfUpdateIdeErr===""?"Kosongkan jika tidak mengubah file sebelumnya":gamasurfUpdateIdeErr}</small>
+                            </div>
                         </div>
                         <div className="flex flex-col md:flex-row">
                             <p className="md:w-1/3 text-lg md:text-base text-gray-900">File Orisinalitas</p>
-                            <a className="hover:text-blue-400" href={gamasurf.orisinalitas}>
+                            <a className={edit?"hidden":"hover:text-blue-400"} href={`https://sensation.smartsoft.co.id/sensation/storage/app/peserta/orisinalitas/`+gamasurf.orisinalitas}>
                                 Klik disini
                             </a>
+                            <div className="flex-1">
+                                <div className={!edit?"hidden":"flex items-center relative flex-1"}>
+                                    <input accept=".pdf" ref={gamasurfUpdateOri} onChange={()=>{gamasurfUpdateOri.current.files[0]?setGamasurfUpdateOriVal(gamasurfUpdateOri.current.files[0].name):setGamasurfUpdateOriVal("")}} style={{color:"rgb(71,85,105)"}} type="file" className="w-full h-full absolute cursor-pointer opacity-0 inset-0" />
+                                    <input disabled value={gamasurfUpdateOriVal} style={{color:"rgb(71,85,105)"}} type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded-l text-sm shadow focus:outline-none focus:ring flex-1 ease-linear transition-all duration-150" placeholder="Upload files..." />
+                                    <button type="button" className="bg-blue-500 rounded-r-md px-3 py-3 font-bold text-white text-sm">Upload</button>
+                                </div>
+                                <small className={!edit?"hidden":gamasurfUpdateOriErr===""?"ml-1 text-gray-700":"ml-1 text-red-500"}><FontAwesomeIcon className={gamasurfUpdateOriErr===""?"hidden":""} icon={faExclamationCircle} /> {gamasurfUpdateOriErr===""?"Kosongkan jika tidak mengubah file sebelumnya":gamasurfUpdateOriErr}</small>
+                            </div>
                         </div>
                     </div>
+                    <button onClick={updatingGamasurf} className={!edit?"hidden":"w-full max-w-xs rounded-md py-2 bg-blue-600 text-white mx-auto mt-7 block hover:bg-blue-500"}>
+                            Submit
+                    </button>
                 </div>
             </div>
 

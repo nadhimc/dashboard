@@ -49,66 +49,74 @@ const GamasurfRegister = ()=>{
     let ide = createRef();
 
     useEffect(()=>{
-        if(twibbon.current.files.length !== 0){
-            if(twibbon.current.files[0].type==="image/jpeg" || twibbon.current.files[0].type==="image/jpg"){
-                if(twibbon.current.files[0].size/1024 <= 512){
-                    setTwibbonErr("")
+        if(twibbon.current){
+            if(twibbon.current.files.length !== 0){
+                if(twibbon.current.files[0].type==="image/jpeg" || twibbon.current.files[0].type==="image/jpg"){
+                    if(twibbon.current.files[0].size/1024 <= 512){
+                        setTwibbonErr("")
+                    }else{
+                        setTwibbonErr("Maksimum ukuran file adalah 512kb")
+                    }
                 }else{
-                    setTwibbonErr("Maksimum ukuran file adalah 512kb")
+                    setTwibbonErr("Ekstensi yang didukung adalah jpeg atau jpg")
                 }
             }else{
-                setTwibbonErr("Ekstensi yang didukung adalah jpeg atau jpg")
+                setTwibbonErr("")
             }
-        }else{
-            setTwibbonErr("")
         }
     },[twibbon,twibbonVal])
 
     useEffect(()=>{
-        if(orisinal.current.files.length !== 0){
-            if(orisinal.current.files[0].type==="application/pdf"){
-                if(orisinal.current.files[0].size/1024/1024 <=3){
-                    setOrisinalErr("")
+        if(orisinal.current){
+            if(orisinal.current.files.length !== 0){
+                if(orisinal.current.files[0].type==="application/pdf"){
+                    if(orisinal.current.files[0].size/1024/1024 <=3){
+                        setOrisinalErr("")
+                    }else{
+                        setOrisinalErr("Maksimum ukuran file adalah 3Mb")
+                    }
                 }else{
-                    setOrisinalErr("Maksimum ukuran file adalah 3Mb")
+                    setOrisinalErr("Ekstensi yang didukung adalah PDF")
                 }
             }else{
-                setOrisinalErr("Ekstensi yang didukung adalah PDF")
+                setOrisinalErr("")
             }
-        }else{
-            setOrisinalErr("")
         }
     },[orisinal,orisinalVal])
 
     useEffect(()=>{
-        if(ktm.current.files.length !== 0){
-            if(ktm.current.files[0].type==="image/jpeg" || ktm.current.files[0].type==="image/jpg"){
-                if(ktm.current.files[0].size/1024 <= 512){
-                    setKtmErr("")
+        if(ktm.current){
+            if(ktm.current.files.length !== 0){
+                if(ktm.current.files[0].type==="image/jpeg" || ktm.current.files[0].type==="image/jpg"){
+                    if(ktm.current.files[0].size/1024 <= 512){
+                        setKtmErr("")
+                    }else{
+                        setKtmErr("Maksimum ukuran file adalah 512kb")
+                    }
                 }else{
-                    setKtmErr("Maksimum ukuran file adalah 512kb")
+                    setKtmErr("Ekstensi yang didukung adalah jpeg atau jpg")
                 }
             }else{
-                setKtmErr("Ekstensi yang didukung adalah jpeg atau jpg")
+                setKtmErr("")
             }
-        }else{
-            setKtmErr("")
         }
     },[ktm,ktmVal])
 
     useEffect(()=>{
-        if(ide.current.files.length !== 0){
-            if(ide.current.files[0].type==="application/pdf"){
-                if(ide.current.files[0].size/1024/1024 <= 5){
-                    setIdeErr("")
+        if(ide.current){
+            if(ide.current.files.length !== 0){
+                if(ide.current.files[0].type==="application/pdf"){
+                    if(ide.current.files[0].size/1024/1024 <= 5){
+                        setIdeErr("")
+                    }else{
+                        setIdeErr("Maksimum ukuran file adalah 5Mb")
+                    }
                 }else{
-                    setIdeErr("Maksimum ukuran file adalah 5Mb")
+                    setIdeErr("Ekstensi yang didukung adalah PDF")
                 }
             }else{
-                setIdeErr("Ekstensi yang didukung adalah PDF")
+                setIdeErr("")
             }
-        }else{
-            setIdeErr("")
         }
     },[ide,ideVal])
 
