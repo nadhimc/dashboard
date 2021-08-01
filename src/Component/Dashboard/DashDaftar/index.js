@@ -273,6 +273,373 @@ const DashDaftar = () => {
         {"id":1,"user_id":18,"nama_team":"Team Tutur","nama_sekolah":"MAN Insan Cendekia Serpong","alamat_sekolah":"Serpong Jaya","nama_pembimbing":"Pak Asep","no_pembimbing":"081224212953","komitmen":"Sangat Berkomitmen","info":"instagram","is_paid":0,"created_at":"2021-07-27T12:11:26.000000Z","updated_at":"2021-07-27T12:11:26.000000Z","member":[{"id":1,"team_id":1,"nama":"Rizkal","jenis_kelamin":"Laki-Laki","kelas":"10","email":"rizkal@gmail.com","no":"082424112212","kartu_pelajar":"peserta/ktm/1_1.jpg","twibbon":"peserta/twibbon/1_1.jpg","is_leader":1,"created_at":"2021-07-27T12:11:26.000000Z","updated_at":"2021-07-27T12:11:26.000000Z"},{"id":2,"team_id":1,"nama":"Ruka","jenis_kelamin":"Perempuan","kelas":"12","email":"ruka@gmail.com","no":"0812312312","kartu_pelajar":"peserta/ktm/1_2.jpg","twibbon":"peserta/twibbon/1_2.jpg","is_leader":0,"created_at":"2021-07-27T12:11:29.000000Z","updated_at":"2021-07-27T12:11:29.000000Z"},{"id":3,"team_id":1,"nama":"Mizuhara","jenis_kelamin":"Perempuan","kelas":"11","email":"mizuzu@gmail.com","no":"081232124124","kartu_pelajar":"peserta/ktm/1_3.jpg","twibbon":"peserta/twibbon/1_3.jpg","is_leader":0,"created_at":"2021-07-27T12:11:29.000000Z","updated_at":"2021-07-27T12:11:29.000000Z"}]}
     )
 
+    const [nasecUpdate, setNasecUpdate] = useState(
+        {"id":1,"user_id":18,"nama_team":"Team Tutur","nama_sekolah":"MAN Insan Cendekia Serpong","alamat_sekolah":"Serpong Jaya","nama_pembimbing":"Pak Asep","no_pembimbing":"081224212953","komitmen":"Sangat Berkomitmen","info":"instagram","is_paid":0,"created_at":"2021-07-27T12:11:26.000000Z","updated_at":"2021-07-27T12:11:26.000000Z","member":[{"id":1,"team_id":1,"nama":"Rizkal","jenis_kelamin":"Laki-Laki","kelas":"10","email":"rizkal@gmail.com","no":"082424112212","kartu_pelajar":"peserta/ktm/1_1.jpg","twibbon":"peserta/twibbon/1_1.jpg","is_leader":1,"created_at":"2021-07-27T12:11:26.000000Z","updated_at":"2021-07-27T12:11:26.000000Z"},{"id":2,"team_id":1,"nama":"Ruka","jenis_kelamin":"Perempuan","kelas":"12","email":"ruka@gmail.com","no":"0812312312","kartu_pelajar":"peserta/ktm/1_2.jpg","twibbon":"peserta/twibbon/1_2.jpg","is_leader":0,"created_at":"2021-07-27T12:11:29.000000Z","updated_at":"2021-07-27T12:11:29.000000Z"},{"id":3,"team_id":1,"nama":"Mizuhara","jenis_kelamin":"Perempuan","kelas":"11","email":"mizuzu@gmail.com","no":"081232124124","kartu_pelajar":"peserta/ktm/1_3.jpg","twibbon":"peserta/twibbon/1_3.jpg","is_leader":0,"created_at":"2021-07-27T12:11:29.000000Z","updated_at":"2021-07-27T12:11:29.000000Z"}]}
+    )
+
+    let nasecUpdateFirstForm = new FormData()
+    let nasecUpdateSecondForm = new FormData()
+    let nasecUpdateThirdForm = new FormData()
+
+    const nasecUpdateFirstTwibbon = createRef()
+    const [nasecUpdateFirstTwibbonVal, setNasecUpdateFirstTwibbonVal] = useState("")
+    const [nasecUpdateFirstTwibbonErr, setNasecUpdateFirstTwibbonErr] = useState("")
+
+    useEffect(() => {
+        if(nasecUpdateFirstTwibbon.current){
+            if(nasecUpdateFirstTwibbon.current.files.length !== 0){
+                if(nasecUpdateFirstTwibbon.current.files[0].type==="image/jpeg" || nasecUpdateFirstTwibbon.current.files[0].type==="image/jpg"){
+                    if(nasecUpdateFirstTwibbon.current.files[0].size/1024 <= 512){
+                        setNasecUpdateFirstTwibbonErr("")
+                    }else{
+                        setNasecUpdateFirstTwibbonErr("Maksimum ukuran file adalah 512kb")
+                    }
+                }else{
+                    setNasecUpdateFirstTwibbonErr("Ekstensi yang didukung adalah jpeg atau jpg")
+                }
+            }else{
+                setNasecUpdateFirstTwibbonErr("")
+            }
+        }
+    }, [nasecUpdateFirstTwibbon,nasecUpdateFirstTwibbonVal])
+
+    const nasecUpdateSecondTwibbon = createRef()
+    const [nasecUpdateSecondTwibbonVal, setNasecUpdateSecondTwibbonVal] = useState("")
+    const [nasecUpdateSecondTwibbonErr, setNasecUpdateSecondTwibbonErr] = useState("")
+
+    useEffect(() => {
+        if(nasecUpdateSecondTwibbon.current){
+            if(nasecUpdateSecondTwibbon.current.files.length !== 0){
+                if(nasecUpdateSecondTwibbon.current.files[0].type==="image/jpeg" || nasecUpdateSecondTwibbon.current.files[0].type==="image/jpg"){
+                    if(nasecUpdateSecondTwibbon.current.files[0].size/1024 <= 512){
+                        setNasecUpdateSecondTwibbonErr("")
+                    }else{
+                        setNasecUpdateSecondTwibbonErr("Maksimum ukuran file adalah 512kb")
+                    }
+                }else{
+                    setNasecUpdateSecondTwibbonErr("Ekstensi yang didukung adalah jpeg atau jpg")
+                }
+            }else{
+                setNasecUpdateSecondTwibbonErr("")
+            }
+        }
+    }, [nasecUpdateSecondTwibbon,nasecUpdateSecondTwibbonVal])
+
+    const nasecUpdateThirdTwibbon = createRef()
+    const [nasecUpdateThirdTwibbonVal, setNasecUpdateThirdTwibbonVal] = useState("")
+    const [nasecUpdateThirdTwibbonErr, setNasecUpdateThirdTwibbonErr] = useState("")
+
+    useEffect(() => {
+        if(nasecUpdateThirdTwibbon.current){
+            if(nasecUpdateThirdTwibbon.current.files.length !== 0){
+                if(nasecUpdateThirdTwibbon.current.files[0].type==="image/jpeg" || nasecUpdateThirdTwibbon.current.files[0].type==="image/jpg"){
+                    if(nasecUpdateThirdTwibbon.current.files[0].size/1024 <= 512){
+                        setNasecUpdateThirdTwibbonErr("")
+                    }else{
+                        setNasecUpdateThirdTwibbonErr("Maksimum ukuran file adalah 512kb")
+                    }
+                }else{
+                    setNasecUpdateThirdTwibbonErr("Ekstensi yang didukung adalah jpeg atau jpg")
+                }
+            }else{
+                setNasecUpdateThirdTwibbonErr("")
+            }
+        }
+    }, [nasecUpdateThirdTwibbon,nasecUpdateThirdTwibbonVal])
+
+    const nasecUpdateFirstKtm = createRef()
+    const [nasecUpdateFirstKtmVal, setNasecUpdateFirstKtmVal] = useState("")
+    const [nasecUpdateFirstKtmErr, setNasecUpdateFirstKtmErr] = useState("")
+
+    useEffect(() => {
+        if(nasecUpdateFirstKtm.current){
+            if(nasecUpdateFirstKtm.current.files.length !== 0){
+                if(nasecUpdateFirstKtm.current.files[0].type==="image/jpeg" || nasecUpdateFirstKtm.current.files[0].type==="image/jpg"){
+                    if(nasecUpdateFirstKtm.current.files[0].size/1024 <= 512){
+                        setNasecUpdateFirstKtmErr("")
+                    }else{
+                        setNasecUpdateFirstKtmErr("Maksimum ukuran file adalah 512kb")
+                    }
+                }else{
+                    setNasecUpdateFirstKtmErr("Ekstensi yang didukung adalah jpeg atau jpg")
+                }
+            }else{
+                setNasecUpdateFirstKtmErr("")
+            }
+        }
+    }, [nasecUpdateFirstKtm,nasecUpdateFirstKtmVal])
+
+    const nasecUpdateSecondKtm = createRef()
+    const [nasecUpdateSecondKtmVal, setNasecUpdateSecondKtmVal] = useState("")
+    const [nasecUpdateSecondKtmErr, setNasecUpdateSecondKtmErr] = useState("")
+
+    useEffect(() => {
+        if(nasecUpdateSecondKtm.current){
+            if(nasecUpdateSecondKtm.current.files.length !== 0){
+                if(nasecUpdateSecondKtm.current.files[0].type==="image/jpeg" || nasecUpdateSecondKtm.current.files[0].type==="image/jpg"){
+                    if(nasecUpdateSecondKtm.current.files[0].size/1024 <= 512){
+                        setNasecUpdateSecondKtmErr("")
+                    }else{
+                        setNasecUpdateSecondKtmErr("Maksimum ukuran file adalah 512kb")
+                    }
+                }else{
+                    setNasecUpdateSecondKtmErr("Ekstensi yang didukung adalah jpeg atau jpg")
+                }
+            }else{
+                setNasecUpdateSecondKtmErr("")
+            }
+        }
+    }, [nasecUpdateSecondKtm,nasecUpdateSecondKtmVal])
+
+    const nasecUpdateThirdKtm = createRef()
+    const [nasecUpdateThirdKtmVal, setNasecUpdateThirdKtmVal] = useState("")
+    const [nasecUpdateThirdKtmErr, setNasecUpdateThirdKtmErr] = useState("")
+
+    useEffect(() => {
+        if(nasecUpdateThirdKtm.current){
+            if(nasecUpdateThirdKtm.current.files.length !== 0){
+                if(nasecUpdateThirdKtm.current.files[0].type==="image/jpeg" || nasecUpdateThirdKtm.current.files[0].type==="image/jpg"){
+                    if(nasecUpdateThirdKtm.current.files[0].size/1024 <= 512){
+                        setNasecUpdateThirdKtmErr("")
+                    }else{
+                        setNasecUpdateThirdKtmErr("Maksimum ukuran file adalah 512kb")
+                    }
+                }else{
+                    setNasecUpdateThirdKtmErr("Ekstensi yang didukung adalah jpeg atau jpg")
+                }
+            }else{
+                setNasecUpdateThirdKtmErr("")
+            }
+        }
+    }, [nasecUpdateThirdKtm,nasecUpdateThirdKtmVal])
+
+    // nasec update
+
+    const updatingNasec = ()=>{
+        let error = false
+        if(nasecUpdateFirstTwibbon.current){
+            if(nasecUpdateFirstTwibbon.current.files.length !== 0){
+                if(nasecUpdateFirstTwibbon.current.files[0].type==="image/jpeg" || nasecUpdateFirstTwibbon.current.files[0].type==="image/jpg"){
+                    if(nasecUpdateFirstTwibbon.current.files[0].size/1024 <= 512){
+                        nasecUpdateFirstForm.append("twibbon",nasecUpdateFirstTwibbon.current.files[0])
+                    }else{
+                        error = true
+                    }
+                }else{
+                    error = true
+                }
+            }
+        }
+        console.log(nasecUpdateFirstForm.get("twibbon"))
+
+        if(nasecUpdateFirstKtm.current){
+            if(nasecUpdateFirstKtm.current.files.length !== 0){
+                if(nasecUpdateFirstKtm.current.files[0].type==="image/jpeg" || nasecUpdateFirstKtm.current.files[0].type==="image/jpg"){
+                    if(nasecUpdateFirstKtm.current.files[0].size/1024 <= 512){
+                        nasecUpdateFirstForm.append("kartu_pelajar",nasecUpdateFirstKtm.current.files[0])
+                    }else{
+                        error = true
+                    }
+                }else{
+                    error = true
+                }
+            }
+        }
+
+        if(nasecUpdateSecondTwibbon.current){
+            if(nasecUpdateSecondTwibbon.current.files.length !== 0){
+                if(nasecUpdateSecondTwibbon.current.files[0].type==="image/jpeg" || nasecUpdateSecondTwibbon.current.files[0].type==="image/jpg"){
+                    if(nasecUpdateSecondTwibbon.current.files[0].size/1024 <= 512){
+                        nasecUpdateSecondForm.append("twibbon",nasecUpdateSecondTwibbon.current.files[0])
+                    }else{
+                        error = true
+                    }
+                }else{
+                    error = true
+                }
+            }
+        }
+
+        if(nasecUpdateSecondKtm.current){
+            if(nasecUpdateSecondKtm.current.files.length !== 0){
+                if(nasecUpdateSecondKtm.current.files[0].type==="image/jpeg" || nasecUpdateSecondKtm.current.files[0].type==="image/jpg"){
+                    if(nasecUpdateSecondKtm.current.files[0].size/1024 <= 512){
+                        nasecUpdateSecondForm.append("kartu_pelajar",nasecUpdateSecondKtm.current.files[0])
+                    }else{
+                        error = true
+                    }
+                }else{
+                    error = true
+                }
+            }
+        }
+
+        if(nasecUpdateThirdTwibbon.current){
+            if(nasecUpdateThirdTwibbon.current.files.length !== 0){
+                if(nasecUpdateThirdTwibbon.current.files[0].type==="image/jpeg" || nasecUpdateThirdTwibbon.current.files[0].type==="image/jpg"){
+                    if(nasecUpdateThirdTwibbon.current.files[0].size/1024 <= 512){
+                        nasecUpdateThirdForm.append("twibbon",nasecUpdateThirdTwibbon.current.files[0])
+                    }else{
+                        error = true
+                    }
+                }else{
+                    error = true
+                }
+            }
+        }
+
+        if(nasecUpdateThirdKtm.current){
+            if(nasecUpdateThirdKtm.current.files.length !== 0){
+                if(nasecUpdateThirdKtm.current.files[0].type==="image/jpeg" || nasecUpdateThirdKtm.current.files[0].type==="image/jpg"){
+                    if(nasecUpdateThirdKtm.current.files[0].size/1024 <= 512){
+                        nasecUpdateThirdForm.append("kartu_pelajar",nasecUpdateThirdKtm.current.files[0])
+                    }else{
+                        error = true
+                    }
+                }else{
+                    error = true
+                }
+            }
+        }
+        
+        if(
+            nasecUpdate.nama_team!==""
+            && nasecUpdate.nama_sekolah!==""
+            && nasecUpdate.alamat_sekolah!==""
+            && nasecUpdate.nama_pembimbing!==""
+            && nasecUpdate.no_pembimbing!=="" && validator.isMobilePhone(nasecUpdate.no_pembimbing,"id-ID")
+            // anggota 1
+            && nasecUpdate.member[0].nama!==""
+            && nasecUpdate.member[0].jenis_kelamin!==""
+            && nasecUpdate.member[0].kelas!==""
+            && nasecUpdate.member[0].email!=="" && validator.isEmail(nasecUpdate.member[0].email)
+            && nasecUpdate.member[0].no!=="" && validator.isMobilePhone(nasecUpdate.member[0].no,"id-ID")
+            // anggota 2
+            && nasecUpdate.member[1].nama!==""
+            && nasecUpdate.member[1].jenis_kelamin!==""
+            && nasecUpdate.member[1].kelas!==""
+            && nasecUpdate.member[1].email!=="" && validator.isEmail(nasecUpdate.member[0].email)
+            && nasecUpdate.member[1].no!=="" && validator.isMobilePhone(nasecUpdate.member[0].no,"id-ID")
+            // anggota 3
+            && nasecUpdate.member[2].nama!==""
+            && nasecUpdate.member[2].jenis_kelamin!==""
+            && nasecUpdate.member[2].kelas!==""
+            && nasecUpdate.member[2].email!=="" && validator.isEmail(nasecUpdate.member[0].email)
+            && nasecUpdate.member[2].no!=="" && validator.isMobilePhone(nasecUpdate.member[0].no,"id-ID")
+            && !error
+        ){
+            // jalankan fetch
+            setUploading(true)
+            uploadingNasecTeam()
+        }
+    }
+
+    const uploadingNasecTeam = ()=>{
+        fetch(`${process.env.REACT_APP_APIURL}/users/${localStorage.getItem("id")}/nasec`,{
+            method:"PUT",
+            headers:{
+                'Content-Type': 'application/json',
+                'Authorization' : `Bearer ${localStorage.getItem("key")}`
+            },
+            body:JSON.stringify({
+                nama_team: nasecUpdate.nama_team,
+                nama_sekolah: nasecUpdate.nama_sekolah,
+                alamat_sekolah: nasecUpdate.alamat_sekolah,
+                nama_pembimbing: nasecUpdate.nama_pembimbing,
+                no_pembimbing: nasecUpdate.no_pembimbing,
+                komitmen: nasecUpdate.komitmen,
+                info: nasecUpdate.info
+            })
+        }).then(res=>res.json())
+        .then(
+            (res)=>{
+                console.log(res)
+                uploadingNasecFirstMember()
+            },(err)=>{
+                console.log(err)
+                uploadingNasecFirstMember()
+            }
+        )
+    }
+
+    const uploadingNasecFirstMember = ()=>{
+        console.log(nasecUpdateFirstForm.get("twibbon"))
+        
+        nasecUpdateFirstForm.append("nama",nasecUpdate.member[0].nama)
+        nasecUpdateFirstForm.append("email",nasecUpdate.member[0].email)
+        nasecUpdateFirstForm.append("jenis_kelamin",nasecUpdate.member[0].jenis_kelamin)
+        nasecUpdateFirstForm.append("kelas",nasecUpdate.member[0].kelas)
+        nasecUpdateFirstForm.append("no",nasecUpdate.member[0].no)
+
+        fetch(`${process.env.REACT_APP_APIURL}/nasec/peserta/${nasecUpdate.member[0].id}?_method=put`,{
+            method:"POST",
+            headers:{
+                'Authorization' : `Bearer ${localStorage.getItem("key")}`
+            },
+            body: nasecUpdateFirstForm
+        }).then(res=>res.json())
+        .then(
+            (res)=>{
+                console.log(res)
+                uploadingNasecSecondMember()
+            },(err)=>{
+                console.log(err)
+                uploadingNasecSecondMember()
+            }
+        )
+    }
+
+    const uploadingNasecSecondMember = ()=>{
+        nasecUpdateSecondForm.append("nama",nasecUpdate.member[1].nama)
+        nasecUpdateSecondForm.append("email",nasecUpdate.member[1].email)
+        nasecUpdateSecondForm.append("jenis_kelamin",nasecUpdate.member[1].jenis_kelamin)
+        nasecUpdateSecondForm.append("kelas",nasecUpdate.member[1].kelas)
+        nasecUpdateSecondForm.append("no",nasecUpdate.member[1].no)
+
+        fetch(`${process.env.REACT_APP_APIURL}/nasec/peserta/${nasecUpdate.member[1].id}?_method=put`,{
+            method:"POST",
+            headers:{
+                'Authorization' : `Bearer ${localStorage.getItem("key")}`
+            },
+            body: nasecUpdateSecondForm
+        }).then(res=>res.json())
+        .then(
+            (res)=>{
+                console.log(res)
+                uploadingNasecThirdMember()
+            },(err)=>{
+                console.log(err)
+                uploadingNasecThirdMember()
+            }
+        )
+    }
+
+    const uploadingNasecThirdMember = ()=>{
+        
+        nasecUpdateThirdForm.append("nama",nasecUpdate.member[2].nama)
+        nasecUpdateThirdForm.append("email",nasecUpdate.member[2].email)
+        nasecUpdateThirdForm.append("jenis_kelamin",nasecUpdate.member[2].jenis_kelamin)
+        nasecUpdateThirdForm.append("kelas",nasecUpdate.member[2].kelas)
+        nasecUpdateThirdForm.append("no",nasecUpdate.member[2].no)
+
+        fetch(`${process.env.REACT_APP_APIURL}/nasec/peserta/${nasecUpdate.member[2].id}?_method=put`,{
+            method:"POST",
+            headers:{
+                'Authorization' : `Bearer ${localStorage.getItem("key")}`
+            },
+            body: nasecUpdateThirdForm
+        }).then(res=>res.json())
+        .then(
+            (res)=>{
+                console.log(res)
+                getMyNasec(true)
+            },(err)=>{
+                console.log(err)
+                getMyNasec(true)
+            }
+        )
+    }
+
     const [sent, setSent] = useState({
         nama_lengkap:"",
         email:"",
@@ -343,7 +710,7 @@ const DashDaftar = () => {
         )
     }
 
-    const getMyNasec = ()=>{
+    const getMyNasec = (afteredit=false)=>{
         if(event==="nasec"){
             console.log("get my nasec")
             fetch(`${process.env.REACT_APP_APIURL}/users/${localStorage.getItem("id")}/nasec`,{
@@ -370,7 +737,27 @@ const DashDaftar = () => {
                         "updated_at":res.data.updated_at,
                         "member": res.data.member
                     })
+                    setNasecUpdate({
+                        "id":res.data.id,
+                        "user_id":res.data.user_id,
+                        "nama_team":res.data.nama_team,
+                        "nama_sekolah":res.data.nama_sekolah,
+                        "alamat_sekolah":res.data.alamat_sekolah,
+                        "nama_pembimbing":res.data.nama_pembimbing,
+                        "no_pembimbing":res.data.no_pembimbing,
+                        "komitmen":res.data.komitmen,
+                        "info":res.data.info,
+                        "is_paid":res.data.is_paid,
+                        "created_at":res.data.created_at,
+                        "updated_at":res.data.updated_at,
+                        "member": res.data.member
+                    })
                     setIsLoading(false)
+                    setUpdate(Date.now())
+                    if(afteredit){
+                        setUploading(false)
+                        setEdit(false)
+                    }
                 },(err)=>{
                     console.log(err)
                 }
@@ -694,79 +1081,402 @@ const DashDaftar = () => {
             </div>
 
             {/* Nasec */}
-            <div className={event==="nasec"&&!isLoading?"border rounded-md p-4":"hidden"}>
+            <div className={event==="nasec"&&!isLoading?"border rounded-md p-4 relative":"hidden"}>
+                <div style={{backgroundColor:"rgba(255,255,255,.4)"}} className={uploading?"absolute w-full h-full z-10 flex flex-col space-y-3 items-center justify-center":"hidden"}>
+                    <FontAwesomeIcon className="animate-spin text-6xl" style={{animationDuration:"3s"}} icon={faCog} />
+                    <p className="text-xl font-bold animate-bounce">Uploading</p>
+                </div>
                 <h1 className="text-center text-xl font-bold">Nasec</h1>
-                <button className="py-2 w-full max-w-xs mx-auto block my-2 rounded-md bg-blue-600 text-white hover:bg-blue-500">Edit Document</button>
+                <button onClick={()=>{
+                    setEdit(!edit)
+                    setNasecUpdate(nasec)
+                    }} className={edit?"py-2 w-full max-w-xs mx-auto block mt-3 mb-6 rounded-md bg-red-600 text-white hover:bg-red-500":"py-2 w-full max-w-xs mx-auto block mt-3 mb-6 rounded-md bg-blue-600 text-white hover:bg-blue-500"}>
+                    {edit?"Cancel Edit":"Edit Document"}
+                </button>
                 <div>
                     <div className="flex-1 flex flex-col space-y-4">
-                        <div className="flex flex-col md:flex-row">
+                        <div className="flex flex-col md:flex-row relative">
                             <p className="md:w-1/3 text-lg md:text-base text-gray-900">Nama Team</p>
-                            <p>{nasec.nama_team}</p>
+                            <p className={edit?"hidden":""}>{nasec.nama_team}</p>
+                            <input value={nasecUpdate.nama_team} onChange={(e)=>{setNasecUpdate({...nasecUpdate,nama_team:e.target.value})}} type="text" className={!edit?"hidden":"border-0 px-3 py-1 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring flex-1 ease-linear transition-all duration-150 relative"} />
+                            <div className={edit&&(nasecUpdate.nama_team==="")?"text-red-600 absolute right-0.5 h-full flex justify-center items-center":"hidden"}>
+                                <FontAwesomeIcon icon={faExclamationCircle} />
+                            </div>
                         </div>
-                        <div className="flex flex-col md:flex-row">
+                        <div className="flex flex-col md:flex-row relative">
                             <p className="md:w-1/3 text-lg md:text-base text-gray-900">Nama Sekolah</p>
-                            <p>{nasec.nama_sekolah}</p>
+                            <p className={edit?"hidden":""}>{nasec.nama_sekolah}</p>
+                            <input value={nasecUpdate.nama_sekolah} onChange={(e)=>{setNasecUpdate({...nasecUpdate,nama_sekolah:e.target.value})}} type="text" className={!edit?"hidden":"border-0 px-3 py-1 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring flex-1 ease-linear transition-all duration-150 relative"} />
+                            <div className={edit&&(nasecUpdate.nama_sekolah==="")?"text-red-600 absolute right-0.5 h-full flex justify-center items-center":"hidden"}>
+                                <FontAwesomeIcon icon={faExclamationCircle} />
+                            </div>
                         </div>
-                        <div className="flex flex-col md:flex-row">
+                        <div className="flex flex-col md:flex-row relative">
                             <p className="md:w-1/3 text-lg md:text-base text-gray-900">Alamat Sekolah</p>
-                            <p>{nasec.alamat_sekolah}</p>
+                            <p className={edit?"hidden":""}>{nasec.alamat_sekolah}</p>
+                            <input value={nasecUpdate.alamat_sekolah} onChange={(e)=>{setNasecUpdate({...nasecUpdate,alamat_sekolah:e.target.value})}} type="text" className={!edit?"hidden":"border-0 px-3 py-1 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring flex-1 ease-linear transition-all duration-150 relative"} />
+                            <div className={edit&&(nasecUpdate.alamat_sekolah==="")?"text-red-600 absolute right-0.5 h-full flex justify-center items-center":"hidden"}>
+                                <FontAwesomeIcon icon={faExclamationCircle} />
+                            </div>
                         </div>
-                        <div className="flex flex-col md:flex-row">
+                        <div className="flex flex-col md:flex-row relative">
                             <p className="md:w-1/3 text-lg md:text-base text-gray-900">Nama Pembimbing</p>
-                            <p>{nasec.nama_pembimbing}</p>
+                            <p className={edit?"hidden":""}>{nasec.nama_pembimbing}</p>
+                            <input value={nasecUpdate.nama_pembimbing} onChange={(e)=>{setNasecUpdate({...nasecUpdate,nama_pembimbing:e.target.value})}} type="text" className={!edit?"hidden":"border-0 px-3 py-1 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring flex-1 ease-linear transition-all duration-150 relative"} />
+                            <div className={edit&&(nasecUpdate.nama_pembimbing==="")?"text-red-600 absolute right-0.5 h-full flex justify-center items-center":"hidden"}>
+                                <FontAwesomeIcon icon={faExclamationCircle} />
+                            </div>
                         </div>
-                        <div className="flex flex-col md:flex-row">
+                        <div className="flex flex-col md:flex-row relative">
                             <p className="md:w-1/3 text-lg md:text-base text-gray-900">No Pembimbing</p>
-                            <p>{nasec.no_pembimbing}</p>
+                            <p className={edit?"hidden":""}>{nasec.no_pembimbing}</p>
+                            <input value={nasecUpdate.no_pembimbing} onChange={(e)=>{setNasecUpdate({...nasecUpdate,no_pembimbing:e.target.value})}} type="text" className={!edit?"hidden":"border-0 px-3 py-1 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring flex-1 ease-linear transition-all duration-150 relative"} />
+                            <div className={edit&&(nasecUpdate.no_pembimbing===""||!validator.isMobilePhone(nasecUpdate.no_pembimbing,"id-ID"))?"text-red-600 absolute right-0.5 h-full flex justify-center items-center":"hidden"}>
+                                <FontAwesomeIcon icon={faExclamationCircle} />
+                            </div>
                         </div>
                         <div className="flex flex-col md:flex-row">
-                            <p className="md:w-1/3 text-lg md:text-base text-gray-900">Anggota Pertama{parseInt(nasec.member[0].is_leader)===1?" (Ketua)":""}</p>
-                            <div>
+                            <div className="md:w-1/3 text-lg md:text-base text-gray-900">Anggota Pertama{parseInt(nasec.member[0].is_leader)===1?" (Ketua)":""}</div>
+                            <div className={edit?"hidden":""}>
                                 <p>{nasec.member[0].nama}</p>
                                 <p>{nasec.member[0].email}</p>
                                 <p>{nasec.member[0].jenis_kelamin}</p>
                                 <p>Kelas {nasec.member[0].kelas}</p>
                                 <p>{nasec.member[0].no}</p>
                                 <p className="mb-1">
-                                    <img onClick={()=>{changeImg(`https://sensation.smartsoft.co.id/sensation/storage/app/`+nasec.member[0].kartu_pelajar)}} className="max-w-full w-24 cursor-pointer" alt="ktm" src={`https://sensation.smartsoft.co.id/sensation/storage/app/`+nasec.member[0].kartu_pelajar} />
+                                    <img onClick={()=>{changeImg(`https://sensation.smartsoft.co.id/sensation/storage/app/peserta/kartu_pelajar/`+nasec.member[0].kartu_pelajar+"?"+update)}} className="max-w-full w-24 cursor-pointer" alt="ktm" src={`https://sensation.smartsoft.co.id/sensation/storage/app/peserta/kartu_pelajar/`+nasec.member[0].kartu_pelajar+"?"+update} />
                                 </p>
                                 <p>
-                                    <img onClick={()=>{changeImg(`https://sensation.smartsoft.co.id/sensation/storage/app/`+nasec.member[0].twibbon)}} className="max-w-full w-24 cursor-pointer" alt="ktm" src={`https://sensation.smartsoft.co.id/sensation/storage/app/`+nasec.member[0].twibbon} />
+                                    <img onClick={()=>{changeImg(`https://sensation.smartsoft.co.id/sensation/storage/app/peserta/twibbon/`+nasec.member[0].twibbon+"?"+update)}} className="max-w-full w-24 cursor-pointer" alt="ktm" src={`https://sensation.smartsoft.co.id/sensation/storage/app/peserta/twibbon/`+nasec.member[0].twibbon+"?"+update} />
                                 </p>
+                            </div>
+                            <div className={!edit?"hidden":"flex-1"}>
+                                <div className="flex flex-col flex-1 mb-2">
+                                    <p className="text-sm pl-2 mb-1">Nama</p>
+                                    <div className="relative flex-1">
+                                        <input value={nasecUpdate.member[0].nama} onChange={(e)=>{
+                                            let a = nasecUpdate.member
+                                            a[0].nama = e.target.value
+                                            setNasecUpdate({...nasecUpdate,member: a})
+                                        }} type="text" className={!edit?"hidden":"border-0 px-3 py-1 placeholder-blueGray-300 bg-white rounded text-sm shadow w-full focus:outline-none focus:ring flex-1 ease-linear transition-all duration-150 relative"} />
+                                        <div className={edit&&(nasecUpdate.member[0].nama==="")?"text-red-600 absolute right-0.5 top-0 h-full flex justify-center items-center":"hidden"}>
+                                            <FontAwesomeIcon icon={faExclamationCircle} />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="flex flex-col flex-1 mb-2">
+                                    <p className="text-sm pl-2 mb-1">Email</p>
+                                    <div className="relative flex-1">
+                                        <input value={nasecUpdate.member[0].email} onChange={(e)=>{
+                                            let a = nasecUpdate.member
+                                            a[0].email = e.target.value
+                                            setNasecUpdate({...nasecUpdate,member: a})
+                                        }} type="text" className={!edit?"hidden":"border-0 px-3 py-1 placeholder-blueGray-300 bg-white rounded text-sm shadow w-full focus:outline-none focus:ring flex-1 ease-linear transition-all duration-150 relative"} />
+                                        <div className={edit&&(nasecUpdate.member[0].email==="" || !validator.isEmail(nasecUpdate.member[0].email))?"text-red-600 absolute right-0.5 top-0 h-full flex justify-center items-center":"hidden"}>
+                                            <FontAwesomeIcon icon={faExclamationCircle} />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="flex flex-col flex-1">
+                                    <div className="relative w-full mb-3">
+                                        <div className="flex relative">
+                                        <div style={{left:nasecUpdate.member[0].jenis_kelamin==="Laki-laki"?0:"50%"}} className="w-1/2 rounded-md bg-blue-700 top-0 transition-all duration-300 bottom-0 absolute opacity-40" />
+                                            <button type="button" onClick={()=>{
+                                                let a = nasecUpdate.member
+                                                a[0].jenis_kelamin = "Laki-laki"
+                                                setNasecUpdate({...nasecUpdate,member: a})
+                                            }} className="w-full py-2 bg-white focus:outline-none rounded-l-md">
+                                                Laki-laki
+                                            </button>
+                                            <button type="button" onClick={()=>{
+                                                let a = nasecUpdate.member
+                                                a[0].jenis_kelamin = "Perempuan"
+                                                setNasecUpdate({...nasecUpdate,member: a})
+                                            }} className="w-full py-2 bg-white focus:outline-none rounded-r-md">
+                                                Perempuan
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="flex flex-col flex-1 mb-2">
+                                    <p className="text-sm pl-2 mb-1">Kelas</p>
+                                    <div className="relative flex-1">
+                                        <input value={nasecUpdate.member[0].kelas} onChange={(e)=>{
+                                            let a = nasecUpdate.member
+                                            a[0].kelas = e.target.value
+                                            setNasecUpdate({...nasecUpdate,member: a})
+                                        }} type="text" className={!edit?"hidden":"border-0 px-3 py-1 placeholder-blueGray-300 bg-white rounded text-sm shadow w-full focus:outline-none focus:ring flex-1 ease-linear transition-all duration-150 relative"} />
+                                        <div className={edit&&(nasecUpdate.member[0].kelas==="")?"text-red-600 absolute right-0.5 top-0 h-full flex justify-center items-center":"hidden"}>
+                                            <FontAwesomeIcon icon={faExclamationCircle} />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="flex flex-col flex-1 mb-2">
+                                    <p className="text-sm pl-2 mb-1">Nomor Hp</p>
+                                    <div className="relative flex-1">
+                                        <input value={nasecUpdate.member[0].no} onChange={(e)=>{
+                                            let a = nasecUpdate.member
+                                            a[0].no = e.target.value
+                                            setNasecUpdate({...nasecUpdate,member: a})
+                                        }} type="text" className={!edit?"hidden":"border-0 px-3 py-1 placeholder-blueGray-300 bg-white rounded text-sm shadow w-full focus:outline-none focus:ring flex-1 ease-linear transition-all duration-150 relative"} />
+                                        <div className={edit&&(nasecUpdate.member[0].no===""||!validator.isMobilePhone(nasecUpdate.member[0].no,"id-ID"))?"text-red-600 absolute right-0.5 top-0 h-full flex justify-center items-center":"hidden"}>
+                                            <FontAwesomeIcon icon={faExclamationCircle} />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="flex flex-col flex-1 mb-2">
+                                    <p className="text-sm pl-2 mb-1">Twibbon</p>
+                                    <div className="flex-1">
+                                        <div className={!edit?"hidden":"flex items-center relative flex-1"}>
+                                            <input accept="image/jpg, image/jpeg" ref={nasecUpdateFirstTwibbon} onChange={()=>{nasecUpdateFirstTwibbon.current.files[0]?setNasecUpdateFirstTwibbonVal(nasecUpdateFirstTwibbon.current.files[0].name):setNasecUpdateFirstTwibbonVal("")}} style={{color:"rgb(71,85,105)"}} type="file" className="w-full h-full absolute cursor-pointer opacity-0 inset-0" />
+                                            <input disabled value={nasecUpdateFirstTwibbonVal} style={{color:"rgb(71,85,105)"}} type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded-l text-sm shadow focus:outline-none focus:ring flex-1 ease-linear transition-all duration-150" placeholder="Upload files..." />
+                                            <button type="button" className="bg-blue-500 rounded-r-md px-3 py-3 font-bold text-white text-sm">Upload</button>
+                                        </div>
+                                        <small className={!edit?"hidden":nasecUpdateFirstTwibbonErr===""?"ml-1 text-gray-700":"ml-1 text-red-500"}><FontAwesomeIcon className={nasecUpdateFirstTwibbonErr===""?"hidden":""} icon={faExclamationCircle} /> {nasecUpdateFirstTwibbonErr===""?"Kosongkan jika tidak mengubah file sebelumnya":nasecUpdateFirstTwibbonErr}</small>
+                                    </div>
+                                </div>
+                                <div className="flex flex-col flex-1 mb-2">
+                                    <p className="text-sm pl-2 mb-1">Ktm</p>
+                                    <div className="flex-1">
+                                        <div className={!edit?"hidden":"flex items-center relative flex-1"}>
+                                            <input accept="image/jpg, image/jpeg" ref={nasecUpdateFirstKtm} onChange={()=>{nasecUpdateFirstKtm.current.files[0]?setNasecUpdateFirstKtmVal(nasecUpdateFirstKtm.current.files[0].name):setNasecUpdateFirstKtmVal("")}} style={{color:"rgb(71,85,105)"}} type="file" className="w-full h-full absolute cursor-pointer opacity-0 inset-0" />
+                                            <input disabled value={nasecUpdateFirstKtmVal} style={{color:"rgb(71,85,105)"}} type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded-l text-sm shadow focus:outline-none focus:ring flex-1 ease-linear transition-all duration-150" placeholder="Upload files..." />
+                                            <button type="button" className="bg-blue-500 rounded-r-md px-3 py-3 font-bold text-white text-sm">Upload</button>
+                                        </div>
+                                        <small className={!edit?"hidden":nasecUpdateFirstKtmErr===""?"ml-1 text-gray-700":"ml-1 text-red-500"}><FontAwesomeIcon className={nasecUpdateFirstKtmErr===""?"hidden":""} icon={faExclamationCircle} /> {nasecUpdateFirstKtmErr===""?"Kosongkan jika tidak mengubah file sebelumnya":nasecUpdateFirstKtmErr}</small>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div className="flex flex-col md:flex-row">
                             <p className="md:w-1/3 text-lg md:text-base text-gray-900">Anggota Kedua{parseInt(nasec.member[1].is_leader)===1?" (Ketua)":""}</p>
-                            <div>
+                            <div className={edit?"hidden":""}>
                                 <p>{nasec.member[1].nama}</p>
                                 <p>{nasec.member[1].email}</p>
                                 <p>{nasec.member[1].jenis_kelamin}</p>
                                 <p>Kelas {nasec.member[1].kelas}</p>
                                 <p>{nasec.member[1].no}</p>
                                 <p className="mb-1">
-                                    <img onClick={()=>{changeImg(`https://sensation.smartsoft.co.id/sensation/storage/app/`+nasec.member[1].kartu_pelajar)}} className="max-w-full w-24 cursor-pointer" alt="ktm" src={`https://sensation.smartsoft.co.id/sensation/storage/app/`+nasec.member[1].kartu_pelajar} />
+                                    <img onClick={()=>{changeImg(`https://sensation.smartsoft.co.id/sensation/storage/app/peserta/kartu_pelajar/`+nasec.member[1].kartu_pelajar+"?"+update)}} className="max-w-full w-24 cursor-pointer" alt="ktm" src={`https://sensation.smartsoft.co.id/sensation/storage/app/peserta/kartu_pelajar/`+nasec.member[1].kartu_pelajar+"?"+update} />
                                 </p>
                                 <p>
-                                    <img onClick={()=>{changeImg(`https://sensation.smartsoft.co.id/sensation/storage/app/`+nasec.member[1].twibbon)}} className="max-w-full w-24 cursor-pointer" alt="ktm" src={`https://sensation.smartsoft.co.id/sensation/storage/app/`+nasec.member[1].twibbon} />
+                                    <img onClick={()=>{changeImg(`https://sensation.smartsoft.co.id/sensation/storage/app/peserta/twibbon/`+nasec.member[1].twibbon+"?"+update)}} className="max-w-full w-24 cursor-pointer" alt="ktm" src={`https://sensation.smartsoft.co.id/sensation/storage/app/peserta/twibbon/`+nasec.member[1].twibbon+"?"+update} />
                                 </p>
+                            </div>
+                            <div className={!edit?"hidden":"flex-1"}>
+                                <div className="flex flex-col flex-1 mb-2">
+                                    <p className="text-sm pl-2 mb-1">Nama</p>
+                                    <div className="relative flex-1">
+                                        <input value={nasecUpdate.member[1].nama} onChange={(e)=>{
+                                            let a = nasecUpdate.member
+                                            a[1].nama = e.target.value
+                                            setNasecUpdate({...nasecUpdate,member: a})
+                                        }} type="text" className={!edit?"hidden":"border-0 px-3 py-1 placeholder-blueGray-300 bg-white rounded text-sm shadow w-full focus:outline-none focus:ring flex-1 ease-linear transition-all duration-150 relative"} />
+                                        <div className={edit&&(nasecUpdate.member[1].nama==="")?"text-red-600 absolute right-0.5 top-0 h-full flex justify-center items-center":"hidden"}>
+                                            <FontAwesomeIcon icon={faExclamationCircle} />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="flex flex-col flex-1 mb-2">
+                                    <p className="text-sm pl-2 mb-1">Email</p>
+                                    <div className="relative flex-1">
+                                        <input value={nasecUpdate.member[1].email} onChange={(e)=>{
+                                            let a = nasecUpdate.member
+                                            a[1].email = e.target.value
+                                            setNasecUpdate({...nasecUpdate,member: a})
+                                        }} type="text" className={!edit?"hidden":"border-0 px-3 py-1 placeholder-blueGray-300 bg-white rounded text-sm shadow w-full focus:outline-none focus:ring flex-1 ease-linear transition-all duration-150 relative"} />
+                                        <div className={edit&&(nasecUpdate.member[1].email==="" || !validator.isEmail(nasecUpdate.member[1].email))?"text-red-600 absolute right-0.5 top-0 h-full flex justify-center items-center":"hidden"}>
+                                            <FontAwesomeIcon icon={faExclamationCircle} />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="flex flex-col flex-1">
+                                    <div className="relative w-full mb-3">
+                                        <div className="flex relative">
+                                        <div style={{left:nasecUpdate.member[1].jenis_kelamin==="Laki-laki"?0:"50%"}} className="w-1/2 rounded-md bg-blue-700 top-0 transition-all duration-300 bottom-0 absolute opacity-40" />
+                                            <button type="button" onClick={()=>{
+                                                let a = nasecUpdate.member
+                                                a[1].jenis_kelamin = "Laki-laki"
+                                                setNasecUpdate({...nasecUpdate,member: a})
+                                            }} className="w-full py-2 bg-white focus:outline-none rounded-l-md">
+                                                Laki-laki
+                                            </button>
+                                            <button type="button" onClick={()=>{
+                                                let a = nasecUpdate.member
+                                                a[1].jenis_kelamin = "Perempuan"
+                                                setNasecUpdate({...nasecUpdate,member: a})
+                                            }} className="w-full py-2 bg-white focus:outline-none rounded-r-md">
+                                                Perempuan
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="flex flex-col flex-1 mb-2">
+                                    <p className="text-sm pl-2 mb-1">Kelas</p>
+                                    <div className="relative flex-1">
+                                        <input value={nasecUpdate.member[1].kelas} onChange={(e)=>{
+                                            let a = nasecUpdate.member
+                                            a[1].kelas = e.target.value
+                                            setNasecUpdate({...nasecUpdate,member: a})
+                                        }} type="text" className={!edit?"hidden":"border-0 px-3 py-1 placeholder-blueGray-300 bg-white rounded text-sm shadow w-full focus:outline-none focus:ring flex-1 ease-linear transition-all duration-150 relative"} />
+                                        <div className={edit&&(nasecUpdate.member[1].kelas==="")?"text-red-600 absolute right-0.5 top-0 h-full flex justify-center items-center":"hidden"}>
+                                            <FontAwesomeIcon icon={faExclamationCircle} />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="flex flex-col flex-1 mb-2">
+                                    <p className="text-sm pl-2 mb-1">Nomor Hp</p>
+                                    <div className="relative flex-1">
+                                        <input value={nasecUpdate.member[1].no} onChange={(e)=>{
+                                            let a = nasecUpdate.member
+                                            a[1].no = e.target.value
+                                            setNasecUpdate({...nasecUpdate,member: a})
+                                        }} type="text" className={!edit?"hidden":"border-0 px-3 py-1 placeholder-blueGray-300 bg-white rounded text-sm shadow w-full focus:outline-none focus:ring flex-1 ease-linear transition-all duration-150 relative"} />
+                                        <div className={edit&&(nasecUpdate.member[1].no===""||!validator.isMobilePhone(nasecUpdate.member[1].no,"id-ID"))?"text-red-600 absolute right-0.5 top-0 h-full flex justify-center items-center":"hidden"}>
+                                            <FontAwesomeIcon icon={faExclamationCircle} />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="flex flex-col flex-1 mb-2">
+                                    <p className="text-sm pl-2 mb-1">Twibbon</p>
+                                    <div className="flex-1">
+                                        <div className={!edit?"hidden":"flex items-center relative flex-1"}>
+                                            <input accept="image/jpg, image/jpeg" ref={nasecUpdateSecondTwibbon} onChange={()=>{nasecUpdateSecondTwibbon.current.files[0]?setNasecUpdateSecondTwibbonVal(nasecUpdateSecondTwibbon.current.files[0].name):setNasecUpdateSecondTwibbonVal("")}} style={{color:"rgb(71,85,105)"}} type="file" className="w-full h-full absolute cursor-pointer opacity-0 inset-0" />
+                                            <input disabled value={nasecUpdateSecondTwibbonVal} style={{color:"rgb(71,85,105)"}} type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded-l text-sm shadow focus:outline-none focus:ring flex-1 ease-linear transition-all duration-150" placeholder="Upload files..." />
+                                            <button type="button" className="bg-blue-500 rounded-r-md px-3 py-3 font-bold text-white text-sm">Upload</button>
+                                        </div>
+                                        <small className={!edit?"hidden":nasecUpdateSecondTwibbonErr===""?"ml-1 text-gray-700":"ml-1 text-red-500"}><FontAwesomeIcon className={nasecUpdateSecondTwibbonErr===""?"hidden":""} icon={faExclamationCircle} /> {nasecUpdateSecondTwibbonErr===""?"Kosongkan jika tidak mengubah file sebelumnya":nasecUpdateSecondTwibbonErr}</small>
+                                    </div>
+                                </div>
+                                <div className="flex flex-col flex-1 mb-2">
+                                    <p className="text-sm pl-2 mb-1">Ktm</p>
+                                    <div className="flex-1">
+                                        <div className={!edit?"hidden":"flex items-center relative flex-1"}>
+                                            <input accept="image/jpg, image/jpeg" ref={nasecUpdateSecondKtm} onChange={()=>{nasecUpdateSecondKtm.current.files[0]?setNasecUpdateSecondKtmVal(nasecUpdateSecondKtm.current.files[0].name):setNasecUpdateSecondKtmVal("")}} style={{color:"rgb(71,85,105)"}} type="file" className="w-full h-full absolute cursor-pointer opacity-0 inset-0" />
+                                            <input disabled value={nasecUpdateSecondKtmVal} style={{color:"rgb(71,85,105)"}} type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded-l text-sm shadow focus:outline-none focus:ring flex-1 ease-linear transition-all duration-150" placeholder="Upload files..." />
+                                            <button type="button" className="bg-blue-500 rounded-r-md px-3 py-3 font-bold text-white text-sm">Upload</button>
+                                        </div>
+                                        <small className={!edit?"hidden":nasecUpdateSecondKtmErr===""?"ml-1 text-gray-700":"ml-1 text-red-500"}><FontAwesomeIcon className={nasecUpdateSecondKtmErr===""?"hidden":""} icon={faExclamationCircle} /> {nasecUpdateSecondKtmErr===""?"Kosongkan jika tidak mengubah file sebelumnya":nasecUpdateSecondKtmErr}</small>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div className="flex flex-col md:flex-row">
                             <p className="md:w-1/3 text-lg md:text-base text-gray-900">Anggota Ketiga{parseInt(nasec.member[2].is_leader)===1?" (Ketua)":""}</p>
-                            <div>
+                            <div className={edit?"hidden":""}>
                                 <p>{nasec.member[2].nama}</p>
                                 <p>{nasec.member[2].email}</p>
                                 <p>{nasec.member[2].jenis_kelamin}</p>
                                 <p>Kelas {nasec.member[2].kelas}</p>
                                 <p>{nasec.member[2].no}</p>
                                 <p className="mb-1">
-                                    <img onClick={()=>{changeImg(`https://sensation.smartsoft.co.id/sensation/storage/app/`+nasec.member[2].kartu_pelajar)}} className="max-w-full w-24 cursor-pointer" alt="ktm" src={`https://sensation.smartsoft.co.id/sensation/storage/app/`+nasec.member[2].kartu_pelajar} />
+                                    <img onClick={()=>{changeImg(`https://sensation.smartsoft.co.id/sensation/storage/app/peserta/kartu_pelajar/`+nasec.member[2].kartu_pelajar+"?"+update)}} className="max-w-full w-24 cursor-pointer" alt="ktm" src={`https://sensation.smartsoft.co.id/sensation/storage/app/peserta/kartu_pelajar/`+nasec.member[2].kartu_pelajar+"?"+update} />
                                 </p>
                                 <p>
-                                    <img onClick={()=>{changeImg(`https://sensation.smartsoft.co.id/sensation/storage/app/`+nasec.member[2].twibbon)}} className="max-w-full w-24 cursor-pointer" alt="ktm" src={`https://sensation.smartsoft.co.id/sensation/storage/app/`+nasec.member[2].twibbon} />
+                                    <img onClick={()=>{changeImg(`https://sensation.smartsoft.co.id/sensation/storage/app/peserta/twibbon/`+nasec.member[2].twibbon+"?"+update)}} className="max-w-full w-24 cursor-pointer" alt="ktm" src={`https://sensation.smartsoft.co.id/sensation/storage/app/peserta/twibbon/`+nasec.member[2].twibbon+"?"+update} />
                                 </p>
                             </div>
+                            <div className={!edit?"hidden":"flex-1"}>
+                                <div className="flex flex-col flex-1 mb-2">
+                                    <p className="text-sm pl-2 mb-1">Nama</p>
+                                    <div className="relative flex-1">
+                                        <input value={nasecUpdate.member[2].nama} onChange={(e)=>{
+                                            let a = nasecUpdate.member
+                                            a[2].nama = e.target.value
+                                            setNasecUpdate({...nasecUpdate,member: a})
+                                        }} type="text" className={!edit?"hidden":"border-0 px-3 py-1 placeholder-blueGray-300 bg-white rounded text-sm shadow w-full focus:outline-none focus:ring flex-1 ease-linear transition-all duration-150 relative"} />
+                                        <div className={edit&&(nasecUpdate.member[2].nama==="")?"text-red-600 absolute right-0.5 top-0 h-full flex justify-center items-center":"hidden"}>
+                                            <FontAwesomeIcon icon={faExclamationCircle} />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="flex flex-col flex-1 mb-2">
+                                    <p className="text-sm pl-2 mb-1">Email</p>
+                                    <div className="relative flex-1">
+                                        <input value={nasecUpdate.member[2].email} onChange={(e)=>{
+                                            let a = nasecUpdate.member
+                                            a[2].email = e.target.value
+                                            setNasecUpdate({...nasecUpdate,member: a})
+                                        }} type="text" className={!edit?"hidden":"border-0 px-3 py-1 placeholder-blueGray-300 bg-white rounded text-sm shadow w-full focus:outline-none focus:ring flex-1 ease-linear transition-all duration-150 relative"} />
+                                        <div className={edit&&(nasecUpdate.member[2].email==="" || !validator.isEmail(nasecUpdate.member[2].email))?"text-red-600 absolute right-0.5 top-0 h-full flex justify-center items-center":"hidden"}>
+                                            <FontAwesomeIcon icon={faExclamationCircle} />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="flex flex-col flex-1">
+                                    <div className="relative w-full mb-3">
+                                        <div className="flex relative">
+                                        <div style={{left:nasecUpdate.member[2].jenis_kelamin==="Laki-laki"?0:"50%"}} className="w-1/2 rounded-md bg-blue-700 top-0 transition-all duration-300 bottom-0 absolute opacity-40" />
+                                            <button type="button" onClick={()=>{
+                                                let a = nasecUpdate.member
+                                                a[2].jenis_kelamin = "Laki-laki"
+                                                setNasecUpdate({...nasecUpdate,member: a})
+                                            }} className="w-full py-2 bg-white focus:outline-none rounded-l-md">
+                                                Laki-laki
+                                            </button>
+                                            <button type="button" onClick={()=>{
+                                                let a = nasecUpdate.member
+                                                a[2].jenis_kelamin = "Perempuan"
+                                                setNasecUpdate({...nasecUpdate,member: a})
+                                            }} className="w-full py-2 bg-white focus:outline-none rounded-r-md">
+                                                Perempuan
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="flex flex-col flex-1 mb-2">
+                                    <p className="text-sm pl-2 mb-1">Kelas</p>
+                                    <div className="relative flex-1">
+                                        <input value={nasecUpdate.member[2].kelas} onChange={(e)=>{
+                                            let a = nasecUpdate.member
+                                            a[2].kelas = e.target.value
+                                            setNasecUpdate({...nasecUpdate,member: a})
+                                        }} type="text" className={!edit?"hidden":"border-0 px-3 py-1 placeholder-blueGray-300 bg-white rounded text-sm shadow w-full focus:outline-none focus:ring flex-1 ease-linear transition-all duration-150 relative"} />
+                                        <div className={edit&&(nasecUpdate.member[2].kelas==="")?"text-red-600 absolute right-0.5 top-0 h-full flex justify-center items-center":"hidden"}>
+                                            <FontAwesomeIcon icon={faExclamationCircle} />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="flex flex-col flex-1 mb-2">
+                                    <p className="text-sm pl-2 mb-1">Nomor Hp</p>
+                                    <div className="relative flex-1">
+                                        <input value={nasecUpdate.member[2].no} onChange={(e)=>{
+                                            let a = nasecUpdate.member
+                                            a[2].no = e.target.value
+                                            setNasecUpdate({...nasecUpdate,member: a})
+                                        }} type="text" className={!edit?"hidden":"border-0 px-3 py-1 placeholder-blueGray-300 bg-white rounded text-sm shadow w-full focus:outline-none focus:ring flex-1 ease-linear transition-all duration-150 relative"} />
+                                        <div className={edit&&(nasecUpdate.member[2].no===""||!validator.isMobilePhone(nasecUpdate.member[2].no,"id-ID"))?"text-red-600 absolute right-0.5 top-0 h-full flex justify-center items-center":"hidden"}>
+                                            <FontAwesomeIcon icon={faExclamationCircle} />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="flex flex-col flex-1 mb-2">
+                                    <p className="text-sm pl-2 mb-1">Twibbon</p>
+                                    <div className="flex-1">
+                                        <div className={!edit?"hidden":"flex items-center relative flex-1"}>
+                                            <input accept="image/jpg, image/jpeg" ref={nasecUpdateThirdTwibbon} onChange={()=>{nasecUpdateThirdTwibbon.current.files[0]?setNasecUpdateThirdTwibbonVal(nasecUpdateThirdTwibbon.current.files[0].name):setNasecUpdateThirdTwibbonVal("")}} style={{color:"rgb(71,85,105)"}} type="file" className="w-full h-full absolute cursor-pointer opacity-0 inset-0" />
+                                            <input disabled value={nasecUpdateThirdTwibbonVal} style={{color:"rgb(71,85,105)"}} type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded-l text-sm shadow focus:outline-none focus:ring flex-1 ease-linear transition-all duration-150" placeholder="Upload files..." />
+                                            <button type="button" className="bg-blue-500 rounded-r-md px-3 py-3 font-bold text-white text-sm">Upload</button>
+                                        </div>
+                                        <small className={!edit?"hidden":nasecUpdateThirdTwibbonErr===""?"ml-1 text-gray-700":"ml-1 text-red-500"}><FontAwesomeIcon className={nasecUpdateThirdTwibbonErr===""?"hidden":""} icon={faExclamationCircle} /> {nasecUpdateThirdTwibbonErr===""?"Kosongkan jika tidak mengubah file sebelumnya":nasecUpdateThirdTwibbonErr}</small>
+                                    </div>
+                                </div>
+                                <div className="flex flex-col flex-1 mb-2">
+                                    <p className="text-sm pl-2 mb-1">Ktm</p>
+                                    <div className="flex-1">
+                                        <div className={!edit?"hidden":"flex items-center relative flex-1"}>
+                                            <input accept="image/jpg, image/jpeg" ref={nasecUpdateThirdKtm} onChange={()=>{nasecUpdateThirdKtm.current.files[0]?setNasecUpdateThirdKtmVal(nasecUpdateThirdKtm.current.files[0].name):setNasecUpdateThirdKtmVal("")}} style={{color:"rgb(71,85,105)"}} type="file" className="w-full h-full absolute cursor-pointer opacity-0 inset-0" />
+                                            <input disabled value={nasecUpdateThirdKtmVal} style={{color:"rgb(71,85,105)"}} type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded-l text-sm shadow focus:outline-none focus:ring flex-1 ease-linear transition-all duration-150" placeholder="Upload files..." />
+                                            <button type="button" className="bg-blue-500 rounded-r-md px-3 py-3 font-bold text-white text-sm">Upload</button>
+                                        </div>
+                                        <small className={!edit?"hidden":nasecUpdateThirdKtmErr===""?"ml-1 text-gray-700":"ml-1 text-red-500"}><FontAwesomeIcon className={nasecUpdateThirdKtmErr===""?"hidden":""} icon={faExclamationCircle} /> {nasecUpdateThirdKtmErr===""?"Kosongkan jika tidak mengubah file sebelumnya":nasecUpdateThirdKtmErr}</small>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+                        <button onClick={updatingNasec} className={!edit?"hidden":"w-full max-w-xs rounded-md py-2 bg-blue-600 text-white mx-auto mt-7 block hover:bg-blue-500"}>
+                                    Submit
+                            </button>
                     </div>
                 </div>
             </div>

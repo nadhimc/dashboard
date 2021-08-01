@@ -158,71 +158,27 @@ const GamasurfRegister = ()=>{
         }
     }
 
-    const sendFirstForm = ()=>{
-        setIsUploading(true)
+    const sendForm = ()=>{
 
-        // Send form 1 & 2
-        fetch(`${process.env.REACT_APP_APIURL}/users/${localStorage.getItem("id")}/gamasurf`,{
-            method:"POST",
-            headers:{
-                'Content-Type': 'application/json',
-                'Authorization' : `Bearer ${localStorage.getItem("key")}`
-            },
-            body: JSON.stringify({
-                nama_lengkap : fullname,
-                nama_panggilan: nickname,
-                email: email,
-                asal_univ: univ,
-                asal_daerah: region,
-                no_wa: phone,
-                motivasi: motivasi,
-                ekspetasi: ekspektasi,
-                pengalaman: pengalaman,
-                komitmen: "iya",
-                info: dapatinfo,
-            })
-        }).then(res=>{
-            console.log(res)
-            return res.json()
-        })
-        .then(
-            (res)=>{
-                console.log(res)
-                if(res.meta.code===200){
-                    console.log("fase 1 sukses")
-                    // sendSecondForm()
-                    setIsUploading(false)
-                    setSelesai(true)
-                }else{
-                    console.log("fase 1 error")
-                    setIsUploading(false)
-                    setErrorList([...errorList,res.meta.message])
-                    for(let k in res.errors){
-                        setErrorList([...errorList,...res.errors[k]])
-                    }
-                    setIsErrorList(true)
-                }
-            },
-            (err)=>{
-                console.log(err)
-                setIsUploading(false)
-            }
-        )
-    }
-
-    const sendSecondForm = ()=>{
-        console.log("second phase")
-        console.log("twibbon: ",twibbon)
-        console.log("ktm: ",ktm)
-        console.log("orisinal: ",orisinal)
-        console.log("ide: ",ide)
         let data = new FormData()
+        data.append("nama_lengkap",fullname)
+        data.append("nama_panggilan",nickname)
+        data.append("email",email)
+        data.append("asal_univ",univ)
+        data.append("asal_daerah",region)
+        data.append("no_wa",phone)
+        data.append("motivasi",motivasi)
+        data.append("ekspetasi",ekspektasi)
+        data.append("pengalaman",pengalaman)
+        data.append("komitmen","iya")
+        data.append("info",dapatinfo)
+
         data.append('twibbon',twibbon.current.files[0])
         data.append('ktm',ktm.current.files[0])
         data.append('orisinalitas',orisinal.current.files[0])
         data.append('ide',ide.current.files[0])
 
-        fetch(`${process.env.REACT_APP_APIURL}/users/${localStorage.getItem("id")}/gamasurf/upload`,{
+        fetch(`${process.env.REACT_APP_APIURL}/users/${localStorage.getItem("id")}/gamasurf`,{
             method:"POST",
             headers:{
                 'Authorization' : `Bearer ${localStorage.getItem("key")}`
@@ -238,7 +194,8 @@ const GamasurfRegister = ()=>{
                 if(res.meta.code===200){
                     // Sukses Fase 2
                     console.log("sukses fase 2")
-                    sendFirstForm()
+                    setIsUploading(false)
+                    setSelesai(true)
                 }else{
                     // gagal
                     setIsUploading(false)
@@ -303,8 +260,9 @@ const GamasurfRegister = ()=>{
                                 && ide.current.files[0].size/1024/1024 <=5
                             ){
                                 console.log("Lolos semua")
+                                setIsUploading(true)
                                 setIsError(false)
-                                sendSecondForm()
+                                sendForm()
                             }else{
                                 // Form 3 tidak Lolos
                                 setIsError(true)
