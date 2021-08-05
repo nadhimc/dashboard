@@ -49,9 +49,7 @@ const DashNasec = ()=>{
                     Back
                 </Link>
             </div>
-            <div>
-                <Link to="/nasec" className="block text-center w-full bg-blue-600 rounded-md py-2 font-bold text-lg text-white hover:bg-blue-500">Join</Link>
-            </div>
+            
             <div className="rounded-md p-6 border border-gray-400">
                 <p className="text-xl font-bold text-center lg:text-left">NaSec (National Sharia Economics Championship)</p>
                 <div className="flex mt-5 lg:space-x-7 space-y-5 lg:space-y-0 flex-col lg:flex-row">
@@ -73,11 +71,12 @@ const DashNasec = ()=>{
                 <div className="rounded-md p-5 border border-gray-400 flex-1 h-full">
                     <p className="text-center text-lg font-bold">Timeline</p>
                     <div className="flex flex-col space-y-3 mt-4">
-                        {TimelineData.map((data) => {
+                    <p className="text-center">COMING SOON!</p>
+                        {/* {TimelineData.map((data) => {
                             return (
                                 <TimelineItem data={data}/>
                             )
-                        })}
+                        })} */}
                         {/* <div>
                             <p className="text-base md:text-lg">Pendaftaran</p>
                             <p className="text-sm md:text-base">20 Juli 2021 - 23 Juli 2021</p>
@@ -92,6 +91,10 @@ const DashNasec = ()=>{
                         </div> */}
                     </div>
                 </div>
+            </div>
+            <div>
+                {/* <Link to="/nasec" className="block text-center w-full bg-blue-600 rounded-md py-2 font-bold text-lg text-white hover:bg-blue-500">Daftar</Link> */}
+                <a className="block text-center w-full bg-gray-400 rounded-md py-2 font-bold text-lg text-white">Cooming Soon</a>
             </div>
         </div>
     )

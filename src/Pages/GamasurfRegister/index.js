@@ -403,13 +403,13 @@ const GamasurfRegister = ()=>{
                                     <div className={form===2?"block":"hidden"}>
                                         <div className="relative w-full mb-3">
                                             <label style={{color:"rgb(71,85,105)"}} className="block uppercase text-xs font-bold mb-2">
-                                                Apa motivasi mengikuti Gamasurf?
+                                                Apa motivasi mengikuti Gamasurf? (Max. {motivasi.length}/250 kata)
                                             </label>
                                             <textarea onChange={(e)=>setmotivasi(e.target.value)} value={motivasi} style={{color:"rgb(71,85,105)"}} type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Motivasi" />
                                         </div>
                                         <div className="relative w-full mb-3">
                                             <label style={{color:"rgb(71,85,105)"}} className="block uppercase text-xs font-bold mb-2">
-                                                Apa ekspektasi yang didapatkan setelah mengikuti Gamasurf?
+                                                Apa ekspektasi yang diharapkan setelah mengikuti Gamasurf? (Max. {ekspektasi.length}/250 kata)
                                             </label>
                                             <textarea onChange={(e)=>setekspektasi(e.target.value)} value={ekspektasi} style={{color:"rgb(71,85,105)"}} type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Ekspektasi" />
                                         </div>
