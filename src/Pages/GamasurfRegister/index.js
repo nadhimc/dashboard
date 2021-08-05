@@ -501,7 +501,7 @@ const GamasurfRegister = ()=>{
                                                 Ide Penelitian (pdf)
                                             </label>
                                             <div className="flex items-center relative">
-                                                <input accept=".pdf" ref={ide} onChange={()=>{ide.current.files[0]?setIdeVal(ide.current.files[0].name):setIdeVal("")}} style={{color:"rgb(71,85,105)"}} type="file" className="absolute cursor-pointer opacity-0 inset-0" placeholder="Nama Lengkap" />
+                                                <input accept=".pdf" ref={ide} onChange={()=>{ide.current.files[0]?setIdeVal(ide.current.files[0].name):setIdeVal("")}} style={{color:"rgb(71,85,105)"}} type="file" className="w-full h-full absolute cursor-pointer opacity-0 inset-0" placeholder="Nama Lengkap" />
                                                 <input value={ideVal} disabled style={{color:"rgb(71,85,105)"}} type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded-l text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Upload files..." />
                                                 <button type="button" className="bg-blue-500 rounded-r-md px-3 py-3 font-bold text-white text-sm">Upload</button>
                                             </div>
