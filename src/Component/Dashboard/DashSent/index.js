@@ -16,11 +16,11 @@ const DashSent = ()=>{
                 <Link to="/sent" className="block text-center w-full bg-blue-600 rounded-md py-2 font-bold text-lg text-white hover:bg-blue-500">Join</Link>
             </div>
             <div className="rounded-md p-6 border border-gray-400">
-                <p className="text-xl font-bold text-center lg:text-left">NaSec (National .....)</p>
+                <p className="text-xl font-bold text-center lg:text-left">SENT (Sharia Economic National Talk Show)</p>
                 <div className="flex mt-5 lg:space-x-7 space-y-5 lg:space-y-0 flex-col lg:flex-row">
                     <img style={{minWidth:"30%"}} className="w-full max-w-sm lg:w-1/4 mx-auto" alt="logo" src={Sent} />
                     <p className="text-justify">
-                    National Sharia Economics Championship (NaSEC) adalah perlombaan mengenai Ekonomi Islam yang diselenggarakan oleh SEF (Shariah Economics Forum) UGM dan JMME (Jamaah Mahasiswa Muslim Ekonomi) FEB UGM. Perlombaan ini bertujuan untuk menguji kemampuan seluruh peserta atas penguasaan materi ekonomi Islam serta materi pelajaran ekonomi dan akuntansi SMA. NaSEC dapat diikuti oleh seluruh pelajar SMA atau sederajat di seluruh Indonesia.
+                    Sharia Economic National Talk Show (SENT) merupakan salah satu bagian dari rangkaian acara SENSATION (Sharia Economics Acts In Innovation), acara kolaborasi tahunan yang diselenggarakan oleh Sharia Economics Forum (SEF) UGM dengan Jamaah Mahasiswa Muslim Ekonomi (JMME) FEB UGM. Tahun ini SENT mengusung tema “Optimizing the Role of the Shariah Economy and Finance in the Recovery of the National Economy”. SENT sendiri merupakan seminar nasional yang mengangkat topik Ekonomi Syariah dengan menghadirkan para pembicara yang kompeten di bidangnya serta dipandu oleh seorang moderator andal. Acara ini bertujuan untuk meningkatkan literasi keuangan syariah bagi masyarakat umum di Indonesia. Dikarenakan belum  berakhirnya pandemi pada saat ini, maka acara SENT tahun ini akan dilaksanakan secara daring pada tanggal 13 November 2021.
                     </p>
                 </div>
             </div>

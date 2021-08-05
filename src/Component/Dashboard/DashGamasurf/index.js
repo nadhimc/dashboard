@@ -2,6 +2,42 @@ import { faChevronLeft } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { Link } from "react-router-dom"
 import Gamasurf from "../../../Images/gamasurf.svg"
+const TimelineData = [
+    {
+        "title": "Pendaftaran dan Pengumpulan Persyaratan",
+        "date": "9 Agustus - 18 Agustus 2021"
+    },
+    {
+        "title": "Pengumuman Finalis",
+        "date": "2 Oktober 2021"
+    },
+    {
+        "title": "Pendaftaran Ulang Peserta Lolos",
+        "date": "4 Oktober - 7 Oktober 2021"
+    },
+    {
+        "title": "Orientation",
+        "date": "20 January - 21 January"
+    },
+    {
+        "title": "Pelaksanaan 6th Gamasurf",
+        "date": "20 January - 21 January"
+    },
+    {
+        "title": "Awarding",
+        "date": "20 January - 21 January"
+    },
+
+]
+
+const TimelineItem = ({data}) => {
+    return (
+        <div>
+            <p className="text-base md:text-lg">{data.title}</p>
+            <p className="text-sm md:text-base">{data.date}</p>
+        </div>
+    )
+}
 
 const DashGamasurf = ()=>{
     return(
@@ -20,7 +56,7 @@ const DashGamasurf = ()=>{
                 <div className="flex mt-5 lg:space-x-7 space-y-5 lg:space-y-0 flex-col lg:flex-row">
                     <img style={{minWidth:"30%"}} className="w-full max-w-sm lg:w-1/4 mx-auto" alt="logo" src={Gamasurf} />
                     <p className="text-justify">
-                    National Sharia Economics Championship (NaSEC) adalah perlombaan mengenai Ekonomi Islam yang diselenggarakan oleh SEF (Shariah Economics Forum) UGM dan JMME (Jamaah Mahasiswa Muslim Ekonomi) FEB UGM. Perlombaan ini bertujuan untuk menguji kemampuan seluruh peserta atas penguasaan materi ekonomi Islam serta materi pelajaran ekonomi dan akuntansi SMA. NaSEC dapat diikuti oleh seluruh pelajar SMA atau sederajat di seluruh Indonesia.
+                    Acara 6th Gamasurf (Gadjah Mada Shariah Economics and Business Undergraduate Research Festival) merupakan suatu festival riset tingkat nasional. Acara ini diselenggarakan untuk meningkatkan kapabilitas riset mahasiswa/i dari berbagai perguruan tinggi se-Indonesia. Rangkaian acara 6th GAMASURF 2021 meliputi, Orientation, Nurture Camp, Workshop, Group Presentation, dan Shariah Economics National Talk Show (SENT).
                     </p>
                 </div>
             </div>
@@ -36,18 +72,11 @@ const DashGamasurf = ()=>{
                 <div className="rounded-md p-5 border border-gray-400 flex-1 h-full">
                     <p className="text-center text-lg font-bold">Timeline</p>
                     <div className="flex flex-col space-y-3 mt-4">
-                        <div>
-                            <p className="text-base md:text-lg">Pendaftaran</p>
-                            <p className="text-sm md:text-base">20 Juli 2021 - 23 Juli 2021</p>
-                        </div>
-                        <div>
-                            <p className="text-base md:text-lg">Pendaftaran</p>
-                            <p className="text-sm md:text-base">20 Juli 2021 - 23 Juli 2021</p>
-                        </div>
-                        <div>
-                            <p className="text-base md:text-lg">Pendaftaran</p>
-                            <p className="text-sm md:text-base">20 Juli 2021 - 23 Juli 2021</p>
-                        </div>
+                        {TimelineData.map((data) => {
+                            return (
+                                <TimelineItem data={data}/>
+                            )
+                        })}
                     </div>
                 </div>
             </div>
