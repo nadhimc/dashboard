@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import validator from 'validator';
+import logo from './../../Images/logo.png'
 
 const Login = ()=>{
 
@@ -90,10 +91,10 @@ const Login = ()=>{
                     <div className="w-full lg:w-4/12 px-4">
                         <div style={{backgroundColor:"#e2e8f0"}} className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg border-0">
                             <div className="rounded-t mb-0 px-6 py-6">
-                                <div className="text-center mb-3">
+                                {/* <div className="text-center mb-3">
                                     <h6 style={{color:"rgb(100,116,139)"}} className="text-sm font-bold">Sign in with</h6>
-                                </div>
-                                <div className="btn-wrapper text-center">
+                                </div> */}
+                                {/* <div className="btn-wrapper text-center">
                                     <button style={{color:"rgb(51,65,85)"}} className="bg-white active:bg-blueGray-50 text-blueGray-700 font-normal px-4 py-2 rounded outline-none focus:outline-none mr-2 mb-1 uppercase shadow hover:shadow-md inline-flex items-center font-bold text-xs ease-linear transition-all duration-150" type="button">
                                         <img alt="..." className="w-5 mr-1" src="https://www.creative-tim.com/learning-lab/tailwind-starter-kit/img/github.svg" />
                                         Github
@@ -102,12 +103,12 @@ const Login = ()=>{
                                         <img alt="..." className="w-5 mr-1" src="https://www.creative-tim.com/learning-lab/tailwind-starter-kit/img/google.svg" />
                                         Google
                                     </button>
-                                </div>
+                                </div> */}
                                 <hr style={{borderColor:"rgb(203,213,225)"}} className="mt-6 border-b-1" />
                             </div>
                             <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
-                                <div style={{color:"rgb(148,163,184)"}} className="text-center mb-3 font-bold">
-                                    <small>Or sign in with credentials</small>
+                                <div style={{color:"rgb(148,163,184)"}} className="text-center flex justify-center mb-3 font-bold">
+                                    <img src={logo}/>
                                 </div>
                                 <div className={isError?"py-2 w-full my-3 bg-red-500 text-white text-center rounded-md":"hidden"}>
                                     Please check your email and password

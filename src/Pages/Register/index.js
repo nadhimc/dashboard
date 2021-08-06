@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { Redirect, Link } from "react-router-dom"
 import validator from 'validator';
-
+import logo from './../../Images/logo.png'
 
 const Register = ()=>{
 
@@ -111,7 +111,7 @@ const Register = ()=>{
                     <div className="w-full lg:w-4/12 px-4">
                         <div style={{backgroundColor:"#e2e8f0"}} className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg border-0">
                             <div className="rounded-t mb-0 px-6 py-6">
-                                <div className="text-center mb-3">
+                                {/* <div className="text-center mb-3">
                                     <h6 style={{color:"rgb(100,116,139)"}} className="text-sm font-bold">Sign up with</h6>
                                 </div>
                                 <div className="btn-wrapper text-center">
@@ -123,12 +123,12 @@ const Register = ()=>{
                                         <img alt="..." className="w-5 mr-1" src="https://www.creative-tim.com/learning-lab/tailwind-starter-kit/img/google.svg" />
                                         Google
                                     </button>
-                                </div>
-                                <hr style={{borderColor:"rgb(203,213,225)"}} className="mt-6 border-b-1" />
+                                </div> */}
+                                {/* <hr style={{borderColor:"rgb(203,213,225)"}} className="mt-6 border-b-1" /> */}
                             </div>
                             <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
-                                <div style={{color:"rgb(148,163,184)"}} className="text-center mb-3 font-bold">
-                                    <small>Or sign up with credentials</small>
+                                <div style={{color:"rgb(148,163,184)"}} className="text-center flex justify-center mb-3 font-bold">
+                                    <img src={logo}/>
                                 </div>
                                 <div className={isError?"py-2 w-full my-3 bg-red-500 text-white text-center rounded-md":"hidden"}>
                                     {errorMsg}

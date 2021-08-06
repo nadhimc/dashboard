@@ -17,19 +17,19 @@ const DashEvents = ()=>{
                         See
                     </Link>
                 </div>
-                <div className="rounded-md shadow-md p-8 flex justify-between items-center flex-col space-y-4" style={{backgroundColor:"#F5DF7E"}}>
+                <div className="rounded-md shadow-md p-8 flex justify-between items-center flex-col space-y-4" style={{backgroundColor:"#4DDBEB"}}>
                     <div className="flex-1 flex justify-center items-center">
                         <img alt="Gamasurf" className="w-48" src={Gamasurf} />
                     </div>
-                    <Link to="/dashboard/gamasurf" className="text-center bg-white w-full py-2 font-bold text-lg rounded-lg" style={{color:"#F5DF7E"}}>
+                    <Link to="/dashboard/gamasurf" className="text-center bg-white w-full py-2 font-bold text-lg rounded-lg" style={{color:"#4DDBEB"}}>
                         See
                     </Link>
                 </div>
-                <div className="rounded-md shadow-md p-8 flex justify-between items-center flex-col space-y-4" style={{backgroundColor:"#4DDBEB"}}>
+                <div className="rounded-md shadow-md p-8 flex justify-between items-center flex-col space-y-4" style={{backgroundColor:"#F5DF7E"}}>
                     <div className="flex-1 flex justify-center items-center"> 
                         <img alt="Sent" className="w-48" src={Sent} />
                     </div>
-                    <Link to="/dashboard/sent" className="text-center bg-white w-full py-2 font-bold text-lg rounded-lg" style={{color:"#4DDBEB"}}>
+                    <Link to="/dashboard/sent" className="text-center bg-white w-full py-2 font-bold text-lg rounded-lg" style={{color:"#F5DF7E"}}>
                         See
                     </Link>
                 </div>
