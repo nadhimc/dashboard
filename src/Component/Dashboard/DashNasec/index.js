@@ -4,41 +4,41 @@ import { Link } from "react-router-dom"
 import Nasec from "../../../Images/nasec.svg"
 
 
-const TimelineData = [
-    {
-        "title": "Pendaftaran",
-        "date": "20 January - 21 January"
-    },
-    {
-        "title": "Online Qualification",
-        "date": "20 January - 21 January"
-    },
-    {
-        "title": "Semifinal Round",
-        "date": "20 January - 21 January"
-    },
-    {
-        "title": "Final Round",
-        "date": "20 January - 21 January"
-    },
-    {
-        "title": "NaSEC Gathering and Technical Meeting",
-        "date": "20 January - 21 January"
-    },
-    {
-        "title": "Sarasehan Daring",
-        "date": "20 January - 21 January"
-    },
+// const TimelineData = [
+//     {
+//         "title": "Pendaftaran",
+//         "date": "20 January - 21 January"
+//     },
+//     {
+//         "title": "Online Qualification",
+//         "date": "20 January - 21 January"
+//     },
+//     {
+//         "title": "Semifinal Round",
+//         "date": "20 January - 21 January"
+//     },
+//     {
+//         "title": "Final Round",
+//         "date": "20 January - 21 January"
+//     },
+//     {
+//         "title": "NaSEC Gathering and Technical Meeting",
+//         "date": "20 January - 21 January"
+//     },
+//     {
+//         "title": "Sarasehan Daring",
+//         "date": "20 January - 21 January"
+//     },
 
-]
-const TimelineItem = ({data}) => {
-    return (
-        <div>
-            <p className="text-base md:text-lg">{data.title}</p>
-            <p className="text-sm md:text-base">{data.date}</p>
-        </div>
-    )
-}
+// ]
+// const TimelineItem = ({data}) => {
+//     return (
+//         <div>
+//             <p className="text-base md:text-lg">{data.title}</p>
+//             <p className="text-sm md:text-base">{data.date}</p>
+//         </div>
+//     )
+// }
 
 const DashNasec = ()=>{
     return(
@@ -94,7 +94,8 @@ const DashNasec = ()=>{
             </div>
             <div>
                 {/* <Link to="/nasec" className="block text-center w-full bg-blue-600 rounded-md py-2 font-bold text-lg text-white hover:bg-blue-500">Daftar</Link> */}
-                <a className="block text-center w-full bg-gray-400 rounded-md py-2 font-bold text-lg text-white">Cooming Soon</a>
+                {/* <a href="#" className="block text-center w-full bg-gray-400 rounded-md py-2 font-bold text-lg text-white">Cooming Soon</a> */}
+                <button className="block text-center w-full bg-gray-400 rounded-md py-2 font-bold text-lg text-white">Cooming Soon</button>
             </div>
         </div>
     )

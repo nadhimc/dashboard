@@ -65,9 +65,11 @@ const DashGamasurf = ()=>{
                 <div className="rounded-md p-5 border border-gray-400 w-full flex flex-col lg:w-2/5">
                     <p className="text-center text-lg font-bold">Download</p>
                     <div className="flex flex-col flex-1 justify-center space-y-3 mt-4 ">  
-                        <a href="" className="py-2 font-bold text-center rounded-md bg-green-500 hover:opacity-80 text-white">FAQ</a>   
-                        <a href="" className="py-2 font-bold text-center rounded-md bg-green-500 hover:opacity-80 text-white">Guidebook</a>
-                        <a href="https://drive.google.com/drive/folders/1eRFO2pwyrZoa0ceI8KBFmlk0bUT6Igp3" target="_blank" className="py-2 font-bold text-center rounded-md bg-green-500 hover:opacity-80 text-white">Required Files</a>
+                        {/* <a href="#" className="py-2 font-bold text-center rounded-md bg-green-500 hover:opacity-80 text-white">FAQ</a>    */}
+                        <button className="py-2 font-bold text-center rounded-md bg-green-500 hover:opacity-80 text-white">FAQ</button>   
+                        {/* <a href="#" className="py-2 font-bold text-center rounded-md bg-green-500 hover:opacity-80 text-white">Guidebook</a> */}
+                        <button className="py-2 font-bold text-center rounded-md bg-green-500 hover:opacity-80 text-white">Guidebook</button>
+                        <a rel="noreferrer" href="https://drive.google.com/drive/folders/1eRFO2pwyrZoa0ceI8KBFmlk0bUT6Igp3" target="_blank" className="py-2 font-bold text-center rounded-md bg-green-500 hover:opacity-80 text-white">Required Files</a>
                     </div>
                 </div>
                 <div className="rounded-md p-5 border border-gray-400 flex-1 h-full">

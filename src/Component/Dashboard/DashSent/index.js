@@ -51,7 +51,8 @@ const DashSent = ()=>{
             </div>
             <div>
                 {/* <Link to="/sent" className="block text-center w-full bg-blue-600 rounded-md py-2 font-bold text-lg text-white hover:bg-blue-500">Daftar</Link> */}
-                <a className="block text-center w-full bg-gray-400 rounded-md py-2 font-bold text-lg text-white">Cooming Soon</a>
+                {/* <a href="#" className="block text-center w-full bg-gray-400 rounded-md py-2 font-bold text-lg text-white">Cooming Soon</a> */}
+                <button className="block text-center w-full bg-gray-400 rounded-md py-2 font-bold text-lg text-white">Cooming Soon</button>
             </div>
         </div>
     )

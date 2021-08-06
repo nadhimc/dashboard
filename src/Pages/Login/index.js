@@ -108,7 +108,7 @@ const Login = ()=>{
                             </div>
                             <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
                                 <div style={{color:"rgb(148,163,184)"}} className="text-center flex justify-center mb-3 font-bold">
-                                    <img src={logo}/>
+                                    <img alt="logo" src={logo}/>
                                 </div>
                                 <div className={isError?"py-2 w-full my-3 bg-red-500 text-white text-center rounded-md":"hidden"}>
                                     Please check your email and password
