@@ -20,17 +20,7 @@ function App() {
     <Router>
       <Switch>
         <Route exact path="/">
-          <div className="min-w-screen min-h-screen bg-blue-200 flex justify-center items-center md:space-x-10 space-y-5 md:space-y-0 flex-col md:flex-row">
-              <Link className="px-6 font-bold text-white py-2 rounded-lg bg-green-800 hover:bg-green-600" to="/login">
-                Login
-              </Link>
-              <Link className="px-6 font-bold text-white py-2 rounded-lg bg-green-800 hover:bg-green-600" to="/register">
-                Register
-              </Link>
-              <Link className="px-6 font-bold text-white py-2 rounded-lg bg-green-800 hover:bg-green-600" to="/dashboard">
-                Dashboard
-              </Link>
-          </div>
+          <Login />
         </Route>
         <Route path="/login">
           <Login />
