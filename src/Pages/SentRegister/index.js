@@ -27,11 +27,11 @@ const SentRegister = ()=>{
         ){
             if(!isLoading){
                 setIsLoading(true)
-                fetch(`${process.env.REACT_APP_APIURL}/users/${localStorage.getItem("id")}/sent`,{
+                fetch(`${process.env.REACT_APP_APIURL}/sent`,{
                     method:"POST",
                     headers:{
                         'Content-Type': 'application/json',
-                        'Authorization' : `Bearer ${localStorage.getItem("key")}`
+                        // 'Authorization' : `Bearer ${localStorage.getItem("key")}`
                     },
                     body: JSON.stringify({
                         nama_lengkap : fullname,
@@ -58,25 +58,25 @@ const SentRegister = ()=>{
         }
     }
 
-    const cekRegistered = ()=>{
-        fetch(`${process.env.REACT_APP_APIURL}/users/${localStorage.getItem("id")}/isregistered`,{
-            headers:{
-                'Content-Type': 'application/json',
-                'Authorization' : `Bearer ${localStorage.getItem("key")}`
-            }
-        }).then(res=>res.json())
-        .then(
-            (res)=>{
-                console.log(res)
-                if(res.meta.code===401 || (res.meta.code===200 && res.data!==false)){
-                    setSelesai(true)
-                }
-            },
-            (err)=>{
-                console.log(err)
-            }
-        )
-    }
+    // const cekRegistered = ()=>{
+    //     fetch(`${process.env.REACT_APP_APIURL}/users/${localStorage.getItem("id")}/isregistered`,{
+    //         headers:{
+    //             'Content-Type': 'application/json',
+    //             'Authorization' : `Bearer ${localStorage.getItem("key")}`
+    //         }
+    //     }).then(res=>res.json())
+    //     .then(
+    //         (res)=>{
+    //             console.log(res)
+    //             if(res.meta.code===401 || (res.meta.code===200 && res.data!==false)){
+    //                 setSelesai(true)
+    //             }
+    //         },
+    //         (err)=>{
+    //             console.log(err)
+    //         }
+    //     )
+    // }
 
     useEffect(()=>{
         if(localStorage.getItem("key") && localStorage.getItem("id")  && localStorage.getItem("user") && localStorage.getItem("role")){
@@ -85,12 +85,12 @@ const SentRegister = ()=>{
             setSelesai(true)
             setKeDash(true)
         }
-        cekRegistered()
+        // cekRegistered()
     },[])
 
     if(selesai){
         setTimeout(()=>{setKeDash(true)},5000)
-        if(keDash){
+        if(keDash && false){
             return(
                 <Redirect to="/dashboard" />
             )
