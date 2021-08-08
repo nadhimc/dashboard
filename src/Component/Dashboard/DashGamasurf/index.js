@@ -5,7 +5,7 @@ import Gamasurf from "../../../Images/gamasurf.svg"
 const TimelineData = [
     {
         "title": "Pendaftaran dan Pengumpulan Persyaratan",
-        "date": "9 Agustus - 18 Agustus 2021"
+        "date": "9 Agustus - 18 September 2021"
     },
     {
         "title": "Pengumuman Finalis",
@@ -66,9 +66,9 @@ const DashGamasurf = ()=>{
                     <p className="text-center text-lg font-bold">Download</p>
                     <div className="flex flex-col flex-1 justify-center space-y-3 mt-4 ">  
                         {/* <a href="#" className="py-2 font-bold text-center rounded-md bg-green-500 hover:opacity-80 text-white">FAQ</a>    */}
-                        <button className="py-2 font-bold text-center rounded-md bg-green-500 hover:opacity-80 text-white">FAQ</button>   
+                        <a rel="noreferrer" href="https://drive.google.com/file/d/1rp_utmqmArdaZ4kGuK1TLjpzzYTGIr3g/view?usp=sharing" target="_blank" className="py-2 font-bold text-center rounded-md bg-green-500 hover:opacity-80 text-white">FAQ</a>   
                         {/* <a href="#" className="py-2 font-bold text-center rounded-md bg-green-500 hover:opacity-80 text-white">Guidebook</a> */}
-                        <button className="py-2 font-bold text-center rounded-md bg-green-500 hover:opacity-80 text-white">Guidebook</button>
+                        <a href="https://drive.google.com/file/d/1O0Dr1P4_NIIMM6uC4NWYR7SAWTiwxS6e/view?usp=sharing" className="py-2 font-bold text-center rounded-md bg-green-500 hover:opacity-80 text-white">Guidebook</a>
                         <a rel="noreferrer" href="https://drive.google.com/drive/folders/1eRFO2pwyrZoa0ceI8KBFmlk0bUT6Igp3" target="_blank" className="py-2 font-bold text-center rounded-md bg-green-500 hover:opacity-80 text-white">Required Files</a>
                     </div>
                 </div>
