@@ -51,14 +51,14 @@ const GamasurfRegister = ()=>{
     useEffect(()=>{
         if(twibbon.current){
             if(twibbon.current.files.length !== 0){
-                if(twibbon.current.files[0].type==="image/jpeg" || twibbon.current.files[0].type==="image/jpg"){
+                if(twibbon.current.files[0].type==="image/jpeg" || twibbon.current.files[0].type==="image/jpg" || twibbon.current.files[0].type==="image/png"){
                     if(twibbon.current.files[0].size/1024 <= 512){
                         setTwibbonErr("")
                     }else{
                         setTwibbonErr("Maksimum ukuran file adalah 512kb")
                     }
                 }else{
-                    setTwibbonErr("Ekstensi yang didukung adalah jpeg atau jpg")
+                    setTwibbonErr("Ekstensi yang didukung adalah jpeg,jpg, dan png")
                 }
             }else{
                 setTwibbonErr("")
@@ -87,14 +87,14 @@ const GamasurfRegister = ()=>{
     useEffect(()=>{
         if(ktm.current){
             if(ktm.current.files.length !== 0){
-                if(ktm.current.files[0].type==="image/jpeg" || ktm.current.files[0].type==="image/jpg"){
+                if(ktm.current.files[0].type==="image/jpeg" || ktm.current.files[0].type==="image/jpg" || ktm.current.files[0].type==="image/png"){
                     if(ktm.current.files[0].size/1024 <= 512){
                         setKtmErr("")
                     }else{
                         setKtmErr("Maksimum ukuran file adalah 512kb")
                     }
                 }else{
-                    setKtmErr("Ekstensi yang didukung adalah jpeg atau jpg")
+                    setKtmErr("Ekstensi yang didukung adalah jpeg,jpg, dan png")
                 }
             }else{
                 setKtmErr("")
@@ -249,9 +249,9 @@ const GamasurfRegister = ()=>{
                             && ide.current.files.length !== 0 )
                         ){
                             if(
-                                (twibbon.current.files[0].type==="image/jpeg" || twibbon.current.files[0].type==="image/jpg")     // twibbon
+                                (twibbon.current.files[0].type==="image/jpeg" || twibbon.current.files[0].type==="image/jpg" || twibbon.current.files[0].type==="image/png")     // twibbon
                                 && (orisinal.current.files[0].type==="application/pdf")        // orisinal
-                                && (ktm.current.files[0].type==="image/jpeg" || ktm.current.files[0].type==="image/jpg")         // ktm
+                                && (ktm.current.files[0].type==="image/jpeg" || ktm.current.files[0].type==="image/jpg" || ktm.current.files[0].type==="image/png")         // ktm
                                 && (ide.current.files[0].type==="application/pdf")        // ide
                                 // filesize
                                 && twibbon.current.files[0].size/1024 <= 512
@@ -459,10 +459,10 @@ const GamasurfRegister = ()=>{
                                     <div className={form===3?"block":"hidden"}>
                                         <div className="relative w-full mb-3">
                                             <label style={{color:"rgb(71,85,105)"}} className="block uppercase text-xs font-bold mb-2">
-                                                Screenshot Twibbon (tag sensation dan 3 teman) (jpg/jpeg)
+                                                Screenshot Twibbon (tag sensation dan 3 teman) (jpg/jpeg/png)
                                             </label>
                                             <div className="flex items-center relative">
-                                                <input accept="image/jpg, image/jpeg" ref={twibbon} onChange={()=>{twibbon.current.files[0]?setTwibbonVal(twibbon.current.files[0].name):setTwibbonVal("")}} style={{color:"rgb(71,85,105)"}} type="file" className="w-full h-full absolute cursor-pointer opacity-0 inset-0" placeholder="Nama Lengkap" />
+                                                <input accept="image/jpg, image/jpeg, image/png" ref={twibbon} onChange={()=>{twibbon.current.files[0]?setTwibbonVal(twibbon.current.files[0].name):setTwibbonVal("")}} style={{color:"rgb(71,85,105)"}} type="file" className="w-full h-full absolute cursor-pointer opacity-0 inset-0" placeholder="Nama Lengkap" />
                                                 <input disabled value={twibbonVal} style={{color:"rgb(71,85,105)"}} type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded-l text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Upload files..." />
                                                 <button type="button" className="bg-blue-500 rounded-r-md px-3 py-3 font-bold text-white text-sm">Upload</button>
                                             </div>
@@ -485,10 +485,10 @@ const GamasurfRegister = ()=>{
                                         </div>
                                         <div className="relative w-full mb-3">
                                             <label style={{color:"rgb(71,85,105)"}} className="block uppercase text-xs font-bold mb-2">
-                                                KTM/Surat Keterangan Pengganti KTM/Surat Keterangan Aktif (jpg/jpeg)
+                                                KTM/Surat Keterangan Pengganti KTM/Surat Keterangan Aktif (jpg/jpeg/png)
                                             </label>
                                             <div className="flex items-center relative">
-                                                <input accept="image/jpg, image/jpeg" ref={ktm} onChange={()=>{ktm.current.files[0]?setKtmVal(ktm.current.files[0].name):setKtmVal("")}} style={{color:"rgb(71,85,105)"}} type="file" className="w-full h-full absolute cursor-pointer opacity-0 inset-0" placeholder="Nama Lengkap" />
+                                                <input accept="image/jpg, image/jpeg, image/png" ref={ktm} onChange={()=>{ktm.current.files[0]?setKtmVal(ktm.current.files[0].name):setKtmVal("")}} style={{color:"rgb(71,85,105)"}} type="file" className="w-full h-full absolute cursor-pointer opacity-0 inset-0" placeholder="Nama Lengkap" />
                                                 <input value={ktmVal} disabled style={{color:"rgb(71,85,105)"}} type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded-l text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Upload files..." />
                                                 <button type="button" className="bg-blue-500 rounded-r-md px-3 py-3 font-bold text-white text-sm">Upload</button>
                                             </div>

@@ -49,14 +49,14 @@ const DashDaftar = () => {
     useEffect(() => {
         if(gamasurfUpdateTwibbon.current){
             if(gamasurfUpdateTwibbon.current.files.length !== 0){
-                if(gamasurfUpdateTwibbon.current.files[0].type==="image/jpeg" || gamasurfUpdateTwibbon.current.files[0].type==="image/jpg"){
+                if(gamasurfUpdateTwibbon.current.files[0].type==="image/jpeg" || gamasurfUpdateTwibbon.current.files[0].type==="image/jpg" || gamasurfUpdateTwibbon.current.files[0].type==="image/png"){
                     if(gamasurfUpdateTwibbon.current.files[0].size/1024 <= 512){
                         setGamasurfUpdateTwibbonErr("")
                     }else{
                         setGamasurfUpdateTwibbonErr("Maksimum ukuran file adalah 512kb")
                     }
                 }else{
-                    setGamasurfUpdateTwibbonErr("Ekstensi yang didukung adalah jpeg atau jpg")
+                    setGamasurfUpdateTwibbonErr("Ekstensi yang didukung adalah jpeg, jpg, atau png")
                 }
             }else{
                 setGamasurfUpdateTwibbonErr("")
@@ -70,14 +70,14 @@ const DashDaftar = () => {
     useEffect(() => {
         if(gamasurfUpdateKtm.current){
             if(gamasurfUpdateKtm.current.files.length !== 0){
-                if(gamasurfUpdateKtm.current.files[0].type==="image/jpeg" || gamasurfUpdateKtm.current.files[0].type==="image/jpg"){
+                if(gamasurfUpdateKtm.current.files[0].type==="image/jpeg" || gamasurfUpdateKtm.current.files[0].type==="image/jpg" || gamasurfUpdateKtm.current.files[0].type==="image/png"){
                     if(gamasurfUpdateKtm.current.files[0].size/1024 <= 512){
                         setGamasurfUpdateKtmErr("")
                     }else{
                         setGamasurfUpdateKtmErr("Maksimum ukuran file adalah 512kb")
                     }
                 }else{
-                    setGamasurfUpdateKtmErr("Ekstensi yang didukung adalah jpeg atau jpg")
+                    setGamasurfUpdateKtmErr("Ekstensi yang didukung adalah jpeg, jpg, atau png")
                 }
             }else{
                 setGamasurfUpdateKtmErr("")
@@ -186,7 +186,7 @@ const DashDaftar = () => {
         }
         if(gamasurfUpdateTwibbon.current){
             if(gamasurfUpdateTwibbon.current.files.length !== 0){
-                if(gamasurfUpdateTwibbon.current.files[0].type==="image/jpeg" || gamasurfUpdateTwibbon.current.files[0].type==="image/jpg"){
+                if(gamasurfUpdateTwibbon.current.files[0].type==="image/jpeg" || gamasurfUpdateTwibbon.current.files[0].type==="image/jpg" || gamasurfUpdateTwibbon.current.files[0].type==="image/png"){
                     if(gamasurfUpdateTwibbon.current.files[0].size/1024 <= 512){
                         data.append("twibbon",gamasurfUpdateTwibbon.current.files[0])
                     }else{
@@ -199,7 +199,7 @@ const DashDaftar = () => {
         }
         if(gamasurfUpdateKtm.current){
             if(gamasurfUpdateKtm.current.files.length !== 0){
-                if(gamasurfUpdateKtm.current.files[0].type==="image/jpeg" || gamasurfUpdateKtm.current.files[0].type==="image/jpg"){
+                if(gamasurfUpdateKtm.current.files[0].type==="image/jpeg" || gamasurfUpdateKtm.current.files[0].type==="image/jpg" || gamasurfUpdateKtm.current.files[0].type==="image/png"){
                     if(gamasurfUpdateKtm.current.files[0].size/1024 <= 512){
                         data.append("ktm",gamasurfUpdateKtm.current.files[0])
                     }else{
@@ -288,14 +288,14 @@ const DashDaftar = () => {
     useEffect(() => {
         if(nasecUpdateFirstTwibbon.current){
             if(nasecUpdateFirstTwibbon.current.files.length !== 0){
-                if(nasecUpdateFirstTwibbon.current.files[0].type==="image/jpeg" || nasecUpdateFirstTwibbon.current.files[0].type==="image/jpg"){
+                if(nasecUpdateFirstTwibbon.current.files[0].type==="image/jpeg" || nasecUpdateFirstTwibbon.current.files[0].type==="image/jpg" || nasecUpdateFirstTwibbon.current.files[0].type==="image/png"){
                     if(nasecUpdateFirstTwibbon.current.files[0].size/1024 <= 512){
                         setNasecUpdateFirstTwibbonErr("")
                     }else{
                         setNasecUpdateFirstTwibbonErr("Maksimum ukuran file adalah 512kb")
                     }
                 }else{
-                    setNasecUpdateFirstTwibbonErr("Ekstensi yang didukung adalah jpeg atau jpg")
+                    setNasecUpdateFirstTwibbonErr("Ekstensi yang didukung adalah jpeg, jpg, atau png")
                 }
             }else{
                 setNasecUpdateFirstTwibbonErr("")
@@ -310,14 +310,14 @@ const DashDaftar = () => {
     useEffect(() => {
         if(nasecUpdateSecondTwibbon.current){
             if(nasecUpdateSecondTwibbon.current.files.length !== 0){
-                if(nasecUpdateSecondTwibbon.current.files[0].type==="image/jpeg" || nasecUpdateSecondTwibbon.current.files[0].type==="image/jpg"){
+                if(nasecUpdateSecondTwibbon.current.files[0].type==="image/jpeg" || nasecUpdateSecondTwibbon.current.files[0].type==="image/jpg" || nasecUpdateSecondTwibbon.current.files[0].type==="image/png"){
                     if(nasecUpdateSecondTwibbon.current.files[0].size/1024 <= 512){
                         setNasecUpdateSecondTwibbonErr("")
                     }else{
                         setNasecUpdateSecondTwibbonErr("Maksimum ukuran file adalah 512kb")
                     }
                 }else{
-                    setNasecUpdateSecondTwibbonErr("Ekstensi yang didukung adalah jpeg atau jpg")
+                    setNasecUpdateSecondTwibbonErr("Ekstensi yang didukung adalah jpeg, jpg, atau png")
                 }
             }else{
                 setNasecUpdateSecondTwibbonErr("")
@@ -332,14 +332,14 @@ const DashDaftar = () => {
     useEffect(() => {
         if(nasecUpdateThirdTwibbon.current){
             if(nasecUpdateThirdTwibbon.current.files.length !== 0){
-                if(nasecUpdateThirdTwibbon.current.files[0].type==="image/jpeg" || nasecUpdateThirdTwibbon.current.files[0].type==="image/jpg"){
+                if(nasecUpdateThirdTwibbon.current.files[0].type==="image/jpeg" || nasecUpdateThirdTwibbon.current.files[0].type==="image/jpg" || nasecUpdateThirdTwibbon.current.files[0].type==="image/png"){
                     if(nasecUpdateThirdTwibbon.current.files[0].size/1024 <= 512){
                         setNasecUpdateThirdTwibbonErr("")
                     }else{
                         setNasecUpdateThirdTwibbonErr("Maksimum ukuran file adalah 512kb")
                     }
                 }else{
-                    setNasecUpdateThirdTwibbonErr("Ekstensi yang didukung adalah jpeg atau jpg")
+                    setNasecUpdateThirdTwibbonErr("Ekstensi yang didukung adalah jpeg, jpg, atau png")
                 }
             }else{
                 setNasecUpdateThirdTwibbonErr("")
@@ -354,14 +354,14 @@ const DashDaftar = () => {
     useEffect(() => {
         if(nasecUpdateFirstKtm.current){
             if(nasecUpdateFirstKtm.current.files.length !== 0){
-                if(nasecUpdateFirstKtm.current.files[0].type==="image/jpeg" || nasecUpdateFirstKtm.current.files[0].type==="image/jpg"){
+                if(nasecUpdateFirstKtm.current.files[0].type==="image/jpeg" || nasecUpdateFirstKtm.current.files[0].type==="image/jpg" || nasecUpdateFirstKtm.current.files[0].type==="image/png"){
                     if(nasecUpdateFirstKtm.current.files[0].size/1024 <= 512){
                         setNasecUpdateFirstKtmErr("")
                     }else{
                         setNasecUpdateFirstKtmErr("Maksimum ukuran file adalah 512kb")
                     }
                 }else{
-                    setNasecUpdateFirstKtmErr("Ekstensi yang didukung adalah jpeg atau jpg")
+                    setNasecUpdateFirstKtmErr("Ekstensi yang didukung adalah jpeg, jpg, atau png")
                 }
             }else{
                 setNasecUpdateFirstKtmErr("")
@@ -376,14 +376,14 @@ const DashDaftar = () => {
     useEffect(() => {
         if(nasecUpdateSecondKtm.current){
             if(nasecUpdateSecondKtm.current.files.length !== 0){
-                if(nasecUpdateSecondKtm.current.files[0].type==="image/jpeg" || nasecUpdateSecondKtm.current.files[0].type==="image/jpg"){
+                if(nasecUpdateSecondKtm.current.files[0].type==="image/jpeg" || nasecUpdateSecondKtm.current.files[0].type==="image/jpg" || nasecUpdateSecondKtm.current.files[0].type==="image/png"){
                     if(nasecUpdateSecondKtm.current.files[0].size/1024 <= 512){
                         setNasecUpdateSecondKtmErr("")
                     }else{
                         setNasecUpdateSecondKtmErr("Maksimum ukuran file adalah 512kb")
                     }
                 }else{
-                    setNasecUpdateSecondKtmErr("Ekstensi yang didukung adalah jpeg atau jpg")
+                    setNasecUpdateSecondKtmErr("Ekstensi yang didukung adalah jpeg, jpg, atau png")
                 }
             }else{
                 setNasecUpdateSecondKtmErr("")
@@ -398,14 +398,14 @@ const DashDaftar = () => {
     useEffect(() => {
         if(nasecUpdateThirdKtm.current){
             if(nasecUpdateThirdKtm.current.files.length !== 0){
-                if(nasecUpdateThirdKtm.current.files[0].type==="image/jpeg" || nasecUpdateThirdKtm.current.files[0].type==="image/jpg"){
+                if(nasecUpdateThirdKtm.current.files[0].type==="image/jpeg" || nasecUpdateThirdKtm.current.files[0].type==="image/jpg" || nasecUpdateThirdKtm.current.files[0].type==="image/png"){
                     if(nasecUpdateThirdKtm.current.files[0].size/1024 <= 512){
                         setNasecUpdateThirdKtmErr("")
                     }else{
                         setNasecUpdateThirdKtmErr("Maksimum ukuran file adalah 512kb")
                     }
                 }else{
-                    setNasecUpdateThirdKtmErr("Ekstensi yang didukung adalah jpeg atau jpg")
+                    setNasecUpdateThirdKtmErr("Ekstensi yang didukung adalah jpeg, jpg, atau png")
                 }
             }else{
                 setNasecUpdateThirdKtmErr("")
@@ -419,7 +419,7 @@ const DashDaftar = () => {
         let error = false
         if(nasecUpdateFirstTwibbon.current){
             if(nasecUpdateFirstTwibbon.current.files.length !== 0){
-                if(nasecUpdateFirstTwibbon.current.files[0].type==="image/jpeg" || nasecUpdateFirstTwibbon.current.files[0].type==="image/jpg"){
+                if(nasecUpdateFirstTwibbon.current.files[0].type==="image/jpeg" || nasecUpdateFirstTwibbon.current.files[0].type==="image/jpg" || nasecUpdateFirstTwibbon.current.files[0].type==="image/png"){
                     if(nasecUpdateFirstTwibbon.current.files[0].size/1024 <= 512){
                         nasecUpdateFirstForm.append("twibbon",nasecUpdateFirstTwibbon.current.files[0])
                     }else{
@@ -434,7 +434,7 @@ const DashDaftar = () => {
 
         if(nasecUpdateFirstKtm.current){
             if(nasecUpdateFirstKtm.current.files.length !== 0){
-                if(nasecUpdateFirstKtm.current.files[0].type==="image/jpeg" || nasecUpdateFirstKtm.current.files[0].type==="image/jpg"){
+                if(nasecUpdateFirstKtm.current.files[0].type==="image/jpeg" || nasecUpdateFirstKtm.current.files[0].type==="image/jpg" || nasecUpdateFirstKtm.current.files[0].type==="image/png"){
                     if(nasecUpdateFirstKtm.current.files[0].size/1024 <= 512){
                         nasecUpdateFirstForm.append("kartu_pelajar",nasecUpdateFirstKtm.current.files[0])
                     }else{
@@ -448,7 +448,7 @@ const DashDaftar = () => {
 
         if(nasecUpdateSecondTwibbon.current){
             if(nasecUpdateSecondTwibbon.current.files.length !== 0){
-                if(nasecUpdateSecondTwibbon.current.files[0].type==="image/jpeg" || nasecUpdateSecondTwibbon.current.files[0].type==="image/jpg"){
+                if(nasecUpdateSecondTwibbon.current.files[0].type==="image/jpeg" || nasecUpdateSecondTwibbon.current.files[0].type==="image/jpg" || nasecUpdateSecondTwibbon.current.files[0].type==="image/png"){
                     if(nasecUpdateSecondTwibbon.current.files[0].size/1024 <= 512){
                         nasecUpdateSecondForm.append("twibbon",nasecUpdateSecondTwibbon.current.files[0])
                     }else{
@@ -462,7 +462,7 @@ const DashDaftar = () => {
 
         if(nasecUpdateSecondKtm.current){
             if(nasecUpdateSecondKtm.current.files.length !== 0){
-                if(nasecUpdateSecondKtm.current.files[0].type==="image/jpeg" || nasecUpdateSecondKtm.current.files[0].type==="image/jpg"){
+                if(nasecUpdateSecondKtm.current.files[0].type==="image/jpeg" || nasecUpdateSecondKtm.current.files[0].type==="image/jpg" || nasecUpdateSecondKtm.current.files[0].type==="image/png"){
                     if(nasecUpdateSecondKtm.current.files[0].size/1024 <= 512){
                         nasecUpdateSecondForm.append("kartu_pelajar",nasecUpdateSecondKtm.current.files[0])
                     }else{
@@ -476,7 +476,7 @@ const DashDaftar = () => {
 
         if(nasecUpdateThirdTwibbon.current){
             if(nasecUpdateThirdTwibbon.current.files.length !== 0){
-                if(nasecUpdateThirdTwibbon.current.files[0].type==="image/jpeg" || nasecUpdateThirdTwibbon.current.files[0].type==="image/jpg"){
+                if(nasecUpdateThirdTwibbon.current.files[0].type==="image/jpeg" || nasecUpdateThirdTwibbon.current.files[0].type==="image/jpg" || nasecUpdateThirdTwibbon.current.files[0].type==="image/png"){
                     if(nasecUpdateThirdTwibbon.current.files[0].size/1024 <= 512){
                         nasecUpdateThirdForm.append("twibbon",nasecUpdateThirdTwibbon.current.files[0])
                     }else{
@@ -490,7 +490,7 @@ const DashDaftar = () => {
 
         if(nasecUpdateThirdKtm.current){
             if(nasecUpdateThirdKtm.current.files.length !== 0){
-                if(nasecUpdateThirdKtm.current.files[0].type==="image/jpeg" || nasecUpdateThirdKtm.current.files[0].type==="image/jpg"){
+                if(nasecUpdateThirdKtm.current.files[0].type==="image/jpeg" || nasecUpdateThirdKtm.current.files[0].type==="image/jpg" || nasecUpdateThirdKtm.current.files[0].type==="image/png"){
                     if(nasecUpdateThirdKtm.current.files[0].size/1024 <= 512){
                         nasecUpdateThirdForm.append("kartu_pelajar",nasecUpdateThirdKtm.current.files[0])
                     }else{
@@ -1026,7 +1026,7 @@ const DashDaftar = () => {
                             <img onClick={()=>{changeImg(`https://sensation.smartsoft.co.id/sensation/storage/app/peserta/ktm/`+gamasurf.ktm+"?"+update)}} className={edit?"hidden":"max-w-full w-24 cursor-pointer"} alt="ktm" src={`https://sensation.smartsoft.co.id/sensation/storage/app/peserta/ktm/`+gamasurf.ktm+"?"+update} />
                             <div className="flex-1">
                                 <div className={!edit?"hidden":"flex items-center relative flex-1"}>
-                                    <input accept="image/jpg, image/jpeg" ref={gamasurfUpdateKtm} onChange={()=>{gamasurfUpdateKtm.current.files[0]?setGamasurfUpdateKtmVal(gamasurfUpdateKtm.current.files[0].name):setGamasurfUpdateKtmVal("")}} style={{color:"rgb(71,85,105)"}} type="file" className="w-full h-full absolute cursor-pointer opacity-0 inset-0" />
+                                    <input accept="image/jpg, image/jpeg, image/png" ref={gamasurfUpdateKtm} onChange={()=>{gamasurfUpdateKtm.current.files[0]?setGamasurfUpdateKtmVal(gamasurfUpdateKtm.current.files[0].name):setGamasurfUpdateKtmVal("")}} style={{color:"rgb(71,85,105)"}} type="file" className="w-full h-full absolute cursor-pointer opacity-0 inset-0" />
                                     <input disabled value={gamasurfUpdateKtmVal} style={{color:"rgb(71,85,105)"}} type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded-l text-sm shadow focus:outline-none focus:ring flex-1 ease-linear transition-all duration-150" placeholder="Upload files..." />
                                     <button type="button" className="bg-blue-500 rounded-r-md px-3 py-3 font-bold text-white text-sm">Upload</button>
                                 </div>
@@ -1038,7 +1038,7 @@ const DashDaftar = () => {
                             <img onClick={()=>{changeImg(`https://sensation.smartsoft.co.id/sensation/storage/app/peserta/twibbon/`+gamasurf.twibbon+"?"+update)}} className={edit?"hidden":"max-w-full w-24 cursor-pointer"} alt="twibbon" src={`https://sensation.smartsoft.co.id/sensation/storage/app/peserta/twibbon/`+gamasurf.twibbon+"?"+update} />
                             <div className="flex-1">
                                 <div className={!edit?"hidden":"flex items-center relative flex-1"}>
-                                    <input accept="image/jpg, image/jpeg" ref={gamasurfUpdateTwibbon} onChange={()=>{gamasurfUpdateTwibbon.current.files[0]?setGamasurfUpdateTwibbonVal(gamasurfUpdateTwibbon.current.files[0].name):setGamasurfUpdateTwibbonVal("")}} style={{color:"rgb(71,85,105)"}} type="file" className="w-full h-full absolute cursor-pointer opacity-0 inset-0" />
+                                    <input accept="image/jpg, image/jpeg, image/png" ref={gamasurfUpdateTwibbon} onChange={()=>{gamasurfUpdateTwibbon.current.files[0]?setGamasurfUpdateTwibbonVal(gamasurfUpdateTwibbon.current.files[0].name):setGamasurfUpdateTwibbonVal("")}} style={{color:"rgb(71,85,105)"}} type="file" className="w-full h-full absolute cursor-pointer opacity-0 inset-0" />
                                     <input disabled value={gamasurfUpdateTwibbonVal} style={{color:"rgb(71,85,105)"}} type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded-l text-sm shadow focus:outline-none focus:ring flex-1 ease-linear transition-all duration-150" placeholder="Upload files..." />
                                     <button type="button" className="bg-blue-500 rounded-r-md px-3 py-3 font-bold text-white text-sm">Upload</button>
                                 </div>
@@ -1228,7 +1228,7 @@ const DashDaftar = () => {
                                     <p className="text-sm pl-2 mb-1">Twibbon</p>
                                     <div className="flex-1">
                                         <div className={!edit?"hidden":"flex items-center relative flex-1"}>
-                                            <input accept="image/jpg, image/jpeg" ref={nasecUpdateFirstTwibbon} onChange={()=>{nasecUpdateFirstTwibbon.current.files[0]?setNasecUpdateFirstTwibbonVal(nasecUpdateFirstTwibbon.current.files[0].name):setNasecUpdateFirstTwibbonVal("")}} style={{color:"rgb(71,85,105)"}} type="file" className="w-full h-full absolute cursor-pointer opacity-0 inset-0" />
+                                            <input accept="image/jpg, image/jpeg, image/png" ref={nasecUpdateFirstTwibbon} onChange={()=>{nasecUpdateFirstTwibbon.current.files[0]?setNasecUpdateFirstTwibbonVal(nasecUpdateFirstTwibbon.current.files[0].name):setNasecUpdateFirstTwibbonVal("")}} style={{color:"rgb(71,85,105)"}} type="file" className="w-full h-full absolute cursor-pointer opacity-0 inset-0" />
                                             <input disabled value={nasecUpdateFirstTwibbonVal} style={{color:"rgb(71,85,105)"}} type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded-l text-sm shadow focus:outline-none focus:ring flex-1 ease-linear transition-all duration-150" placeholder="Upload files..." />
                                             <button type="button" className="bg-blue-500 rounded-r-md px-3 py-3 font-bold text-white text-sm">Upload</button>
                                         </div>
@@ -1239,7 +1239,7 @@ const DashDaftar = () => {
                                     <p className="text-sm pl-2 mb-1">Ktm</p>
                                     <div className="flex-1">
                                         <div className={!edit?"hidden":"flex items-center relative flex-1"}>
-                                            <input accept="image/jpg, image/jpeg" ref={nasecUpdateFirstKtm} onChange={()=>{nasecUpdateFirstKtm.current.files[0]?setNasecUpdateFirstKtmVal(nasecUpdateFirstKtm.current.files[0].name):setNasecUpdateFirstKtmVal("")}} style={{color:"rgb(71,85,105)"}} type="file" className="w-full h-full absolute cursor-pointer opacity-0 inset-0" />
+                                            <input accept="image/jpg, image/jpeg, image/png" ref={nasecUpdateFirstKtm} onChange={()=>{nasecUpdateFirstKtm.current.files[0]?setNasecUpdateFirstKtmVal(nasecUpdateFirstKtm.current.files[0].name):setNasecUpdateFirstKtmVal("")}} style={{color:"rgb(71,85,105)"}} type="file" className="w-full h-full absolute cursor-pointer opacity-0 inset-0" />
                                             <input disabled value={nasecUpdateFirstKtmVal} style={{color:"rgb(71,85,105)"}} type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded-l text-sm shadow focus:outline-none focus:ring flex-1 ease-linear transition-all duration-150" placeholder="Upload files..." />
                                             <button type="button" className="bg-blue-500 rounded-r-md px-3 py-3 font-bold text-white text-sm">Upload</button>
                                         </div>
@@ -1341,7 +1341,7 @@ const DashDaftar = () => {
                                     <p className="text-sm pl-2 mb-1">Twibbon</p>
                                     <div className="flex-1">
                                         <div className={!edit?"hidden":"flex items-center relative flex-1"}>
-                                            <input accept="image/jpg, image/jpeg" ref={nasecUpdateSecondTwibbon} onChange={()=>{nasecUpdateSecondTwibbon.current.files[0]?setNasecUpdateSecondTwibbonVal(nasecUpdateSecondTwibbon.current.files[0].name):setNasecUpdateSecondTwibbonVal("")}} style={{color:"rgb(71,85,105)"}} type="file" className="w-full h-full absolute cursor-pointer opacity-0 inset-0" />
+                                            <input accept="image/jpg, image/jpeg, image/png" ref={nasecUpdateSecondTwibbon} onChange={()=>{nasecUpdateSecondTwibbon.current.files[0]?setNasecUpdateSecondTwibbonVal(nasecUpdateSecondTwibbon.current.files[0].name):setNasecUpdateSecondTwibbonVal("")}} style={{color:"rgb(71,85,105)"}} type="file" className="w-full h-full absolute cursor-pointer opacity-0 inset-0" />
                                             <input disabled value={nasecUpdateSecondTwibbonVal} style={{color:"rgb(71,85,105)"}} type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded-l text-sm shadow focus:outline-none focus:ring flex-1 ease-linear transition-all duration-150" placeholder="Upload files..." />
                                             <button type="button" className="bg-blue-500 rounded-r-md px-3 py-3 font-bold text-white text-sm">Upload</button>
                                         </div>
@@ -1352,7 +1352,7 @@ const DashDaftar = () => {
                                     <p className="text-sm pl-2 mb-1">Ktm</p>
                                     <div className="flex-1">
                                         <div className={!edit?"hidden":"flex items-center relative flex-1"}>
-                                            <input accept="image/jpg, image/jpeg" ref={nasecUpdateSecondKtm} onChange={()=>{nasecUpdateSecondKtm.current.files[0]?setNasecUpdateSecondKtmVal(nasecUpdateSecondKtm.current.files[0].name):setNasecUpdateSecondKtmVal("")}} style={{color:"rgb(71,85,105)"}} type="file" className="w-full h-full absolute cursor-pointer opacity-0 inset-0" />
+                                            <input accept="image/jpg, image/jpeg, image/png" ref={nasecUpdateSecondKtm} onChange={()=>{nasecUpdateSecondKtm.current.files[0]?setNasecUpdateSecondKtmVal(nasecUpdateSecondKtm.current.files[0].name):setNasecUpdateSecondKtmVal("")}} style={{color:"rgb(71,85,105)"}} type="file" className="w-full h-full absolute cursor-pointer opacity-0 inset-0" />
                                             <input disabled value={nasecUpdateSecondKtmVal} style={{color:"rgb(71,85,105)"}} type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded-l text-sm shadow focus:outline-none focus:ring flex-1 ease-linear transition-all duration-150" placeholder="Upload files..." />
                                             <button type="button" className="bg-blue-500 rounded-r-md px-3 py-3 font-bold text-white text-sm">Upload</button>
                                         </div>
@@ -1454,7 +1454,7 @@ const DashDaftar = () => {
                                     <p className="text-sm pl-2 mb-1">Twibbon</p>
                                     <div className="flex-1">
                                         <div className={!edit?"hidden":"flex items-center relative flex-1"}>
-                                            <input accept="image/jpg, image/jpeg" ref={nasecUpdateThirdTwibbon} onChange={()=>{nasecUpdateThirdTwibbon.current.files[0]?setNasecUpdateThirdTwibbonVal(nasecUpdateThirdTwibbon.current.files[0].name):setNasecUpdateThirdTwibbonVal("")}} style={{color:"rgb(71,85,105)"}} type="file" className="w-full h-full absolute cursor-pointer opacity-0 inset-0" />
+                                            <input accept="image/jpg, image/jpeg, image/png" ref={nasecUpdateThirdTwibbon} onChange={()=>{nasecUpdateThirdTwibbon.current.files[0]?setNasecUpdateThirdTwibbonVal(nasecUpdateThirdTwibbon.current.files[0].name):setNasecUpdateThirdTwibbonVal("")}} style={{color:"rgb(71,85,105)"}} type="file" className="w-full h-full absolute cursor-pointer opacity-0 inset-0" />
                                             <input disabled value={nasecUpdateThirdTwibbonVal} style={{color:"rgb(71,85,105)"}} type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded-l text-sm shadow focus:outline-none focus:ring flex-1 ease-linear transition-all duration-150" placeholder="Upload files..." />
                                             <button type="button" className="bg-blue-500 rounded-r-md px-3 py-3 font-bold text-white text-sm">Upload</button>
                                         </div>
@@ -1465,7 +1465,7 @@ const DashDaftar = () => {
                                     <p className="text-sm pl-2 mb-1">Ktm</p>
                                     <div className="flex-1">
                                         <div className={!edit?"hidden":"flex items-center relative flex-1"}>
-                                            <input accept="image/jpg, image/jpeg" ref={nasecUpdateThirdKtm} onChange={()=>{nasecUpdateThirdKtm.current.files[0]?setNasecUpdateThirdKtmVal(nasecUpdateThirdKtm.current.files[0].name):setNasecUpdateThirdKtmVal("")}} style={{color:"rgb(71,85,105)"}} type="file" className="w-full h-full absolute cursor-pointer opacity-0 inset-0" />
+                                            <input accept="image/jpg, image/jpeg, image/png" ref={nasecUpdateThirdKtm} onChange={()=>{nasecUpdateThirdKtm.current.files[0]?setNasecUpdateThirdKtmVal(nasecUpdateThirdKtm.current.files[0].name):setNasecUpdateThirdKtmVal("")}} style={{color:"rgb(71,85,105)"}} type="file" className="w-full h-full absolute cursor-pointer opacity-0 inset-0" />
                                             <input disabled value={nasecUpdateThirdKtmVal} style={{color:"rgb(71,85,105)"}} type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded-l text-sm shadow focus:outline-none focus:ring flex-1 ease-linear transition-all duration-150" placeholder="Upload files..." />
                                             <button type="button" className="bg-blue-500 rounded-r-md px-3 py-3 font-bold text-white text-sm">Upload</button>
                                         </div>

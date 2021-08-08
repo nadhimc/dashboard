@@ -35,14 +35,14 @@ const NasecRegister = ()=>{
     useEffect(()=>{
         if(firstTwibbon.current){
             if(firstTwibbon.current.files.length !== 0){
-                if(firstTwibbon.current.files[0].type==="image/jpeg" || firstTwibbon.current.files[0].type==="image/jpg"){
+                if(firstTwibbon.current.files[0].type==="image/jpeg" || firstTwibbon.current.files[0].type==="image/jpg" || firstTwibbon.current.files[0].type==="image/png"){
                     if(firstTwibbon.current.files[0].size/1024 <= 512){
                         setFirstTwibbonErr("")
                     }else{
                         setFirstTwibbonErr("Maksimum ukuran file adalah 512kb")
                     }
                 }else{
-                    setFirstTwibbonErr("Ekstensi yang didukung adalah jpeg atau jpg")
+                    setFirstTwibbonErr("Ekstensi yang didukung adalah jpeg, jpg, dan png")
                 }
             }else{
                 setFirstTwibbonErr("")
@@ -53,14 +53,14 @@ const NasecRegister = ()=>{
     useEffect(()=>{
         if(firstKtm.current){
             if(firstKtm.current.files.length !== 0){
-                if(firstKtm.current.files[0].type==="image/jpeg" || firstKtm.current.files[0].type==="image/jpg"){
+                if(firstKtm.current.files[0].type==="image/jpeg" || firstKtm.current.files[0].type==="image/jpg" || firstKtm.current.files[0].type==="image/png"){
                     if(firstKtm.current.files[0].size/1024 <= 512){
                         setFirstKtmErr("")
                     }else{
                         setFirstKtmErr("Maksimum ukuran file adalah 512kb")
                     }
                 }else{
-                    setFirstKtmErr("Ekstensi yang didukung adalah jpeg atau jpg")
+                    setFirstKtmErr("Ekstensi yang didukung adalah jpeg, jpg, dan png")
                 }
             }else{
                 setFirstKtmErr("")
@@ -85,14 +85,14 @@ const NasecRegister = ()=>{
     useEffect(()=>{
         if(secondTwibbon.current){
             if(secondTwibbon.current.files.length !== 0){
-                if(secondTwibbon.current.files[0].type==="image/jpeg" || secondTwibbon.current.files[0].type==="image/jpg"){
+                if(secondTwibbon.current.files[0].type==="image/jpeg" || secondTwibbon.current.files[0].type==="image/jpg" || secondTwibbon.current.files[0].type==="image/png"){
                     if(secondTwibbon.current.files[0].size/1024 <= 512){
                         setSecondTwibbonErr("")
                     }else{
                         setSecondTwibbonErr("Maksimum ukuran file adalah 512kb")
                     }
                 }else{
-                    setSecondTwibbonErr("Ekstensi yang didukung adalah jpeg atau jpg")
+                    setSecondTwibbonErr("Ekstensi yang didukung adalah jpeg, jpg, dan png")
                 }
             }else{
                 setSecondTwibbonErr("")
@@ -103,14 +103,14 @@ const NasecRegister = ()=>{
     useEffect(()=>{
         if(secondKtm.current){
             if(secondKtm.current.files.length !== 0){
-                if(secondKtm.current.files[0].type==="image/jpeg" || secondKtm.current.files[0].type==="image/jpg"){
+                if(secondKtm.current.files[0].type==="image/jpeg" || secondKtm.current.files[0].type==="image/jpg" || secondKtm.current.files[0].type==="image/png"){
                     if(secondKtm.current.files[0].size/1024 <= 512){
                         setSecondKtmErr("")
                     }else{
                         setSecondKtmErr("Maksimum ukuran file adalah 512kb")
                     }
                 }else{
-                    setSecondKtmErr("Ekstensi yang didukung adalah jpeg atau jpg")
+                    setSecondKtmErr("Ekstensi yang didukung adalah jpeg, jpg, dan png")
                 }
             }else{
                 setSecondKtmErr("")
@@ -135,14 +135,14 @@ const NasecRegister = ()=>{
     useEffect(()=>{
         if(thirdTwibbon.current){
             if(thirdTwibbon.current.files.length !== 0){
-                if(thirdTwibbon.current.files[0].type==="image/jpeg" || thirdTwibbon.current.files[0].type==="image/jpg"){
+                if(thirdTwibbon.current.files[0].type==="image/jpeg" || thirdTwibbon.current.files[0].type==="image/jpg" || thirdTwibbon.current.files[0].type==="image/png"){
                     if(thirdTwibbon.current.files[0].size/1024 <= 512){
                         setThirdTwibbonErr("")
                     }else{
                         setThirdTwibbonErr("Maksimum ukuran file adalah 512kb")
                     }
                 }else{
-                    setThirdTwibbonErr("Ekstensi yang didukung adalah jpeg atau jpg")
+                    setThirdTwibbonErr("Ekstensi yang didukung adalah jpeg,jpg, dan png")
                 }
             }else{
                 setThirdTwibbonErr("")
@@ -153,14 +153,14 @@ const NasecRegister = ()=>{
     useEffect(()=>{
         if(thirdKtm.current){
             if(thirdKtm.current.files.length !== 0){
-                if(thirdKtm.current.files[0].type==="image/jpeg" || thirdKtm.current.files[0].type==="image/jpg"){
+                if(thirdKtm.current.files[0].type==="image/jpeg" || thirdKtm.current.files[0].type==="image/jpg" || thirdKtm.current.files[0].type==="image/png"){
                     if(thirdKtm.current.files[0].size/1024 <= 512){
                         setThirdKtmErr("")
                     }else{
                         setThirdKtmErr("Maksimum ukuran file adalah 512kb")
                     }
                 }else{
-                    setThirdKtmErr("Ekstensi yang didukung adalah jpeg atau jpg")
+                    setThirdKtmErr("Ekstensi yang didukung adalah jpeg, jpg, dan png")
                 }
             }else{
                 setThirdKtmErr("")
@@ -269,9 +269,9 @@ const NasecRegister = ()=>{
             ){
                 // Lolos setengah Page 2
                 if(
-                    (firstTwibbon.current.files[0].type==="image/jpeg" || firstTwibbon.current.files[0].type==="image/jpg")
+                    (firstTwibbon.current.files[0].type==="image/jpeg" || firstTwibbon.current.files[0].type==="image/jpg" || firstTwibbon.current.files[0].type==="image/png")
                     && firstTwibbon.current.files[0].size/1024 < 512
-                    && (firstKtm.current.files[0].type==="image/jpeg" || firstKtm.current.files[0].type==="image/jpg")
+                    && (firstKtm.current.files[0].type==="image/jpeg" || firstKtm.current.files[0].type==="image/jpg" || firstKtm.current.files[0].type==="image/png")
                     && firstKtm.current.files[0].size/1024 < 512
                 ){
                     console.log("lolos 2")
@@ -286,9 +286,9 @@ const NasecRegister = ()=>{
                     ){
                         // Lolos setengah Page 3
                         if(
-                            (secondTwibbon.current.files[0].type==="image/jpeg" || secondTwibbon.current.files[0].type==="image/jpg")
+                            (secondTwibbon.current.files[0].type==="image/jpeg" || secondTwibbon.current.files[0].type==="image/jpg" || secondTwibbon.current.files[0].type==="image/png")
                             && secondTwibbon.current.files[0].size/1024 < 512
-                            && (secondKtm.current.files[0].type==="image/jpeg" || secondKtm.current.files[0].type==="image/jpg")
+                            && (secondKtm.current.files[0].type==="image/jpeg" || secondKtm.current.files[0].type==="image/jpg" || secondKtm.current.files[0].type==="image/png")
                             && firstKtm.current.files[0].size/1024 < 512
                         ){
                             console.log("lolos 3")
@@ -303,9 +303,9 @@ const NasecRegister = ()=>{
                             ){
                                 // Lolos setengah Page 4
                                 if(
-                                    (thirdTwibbon.current.files[0].type==="image/jpeg" || thirdTwibbon.current.files[0].type==="image/jpg")
+                                    (thirdTwibbon.current.files[0].type==="image/jpeg" || thirdTwibbon.current.files[0].type==="image/jpg" || thirdTwibbon.current.files[0].type==="image/png")
                                     && thirdTwibbon.current.files[0].size/1024 < 512
-                                    && (thirdKtm.current.files[0].type==="image/jpeg" || thirdKtm.current.files[0].type==="image/jpg")
+                                    && (thirdKtm.current.files[0].type==="image/jpeg" || thirdKtm.current.files[0].type==="image/jpg" || thirdKtm.current.files[0].type==="image/png")
                                     && thirdKtm.current.files[0].size/1024 < 512
                                 ){
                                     // Lolos Page 4
@@ -553,10 +553,10 @@ const NasecRegister = ()=>{
                                             </div>
                                             <div className="relative w-full mb-3">
                                                 <label style={{color:"rgb(71,85,105)"}} className="block uppercase text-xs font-bold mb-2">
-                                                    Screenshot Twibbon (tag sensation dan 3 teman) (jpg/jpeg)
+                                                    Screenshot Twibbon (tag sensation dan 3 teman) (jpg/jpeg/png)
                                                 </label>
                                                 <div className="flex items-center relative">
-                                                    <input accept="image/jpg, image/jpeg" ref={firstTwibbon} onChange={()=>{firstTwibbon.current.files[0]?setFirstTwibbonVal(firstTwibbon.current.files[0].name):setFirstTwibbonVal("")}} style={{color:"rgb(71,85,105)"}} type="file" className="w-full h-full absolute cursor-pointer opacity-0 inset-0" placeholder="Nama Lengkap" />
+                                                    <input accept="image/jpg, image/jpeg, image/png" ref={firstTwibbon} onChange={()=>{firstTwibbon.current.files[0]?setFirstTwibbonVal(firstTwibbon.current.files[0].name):setFirstTwibbonVal("")}} style={{color:"rgb(71,85,105)"}} type="file" className="w-full h-full absolute cursor-pointer opacity-0 inset-0" placeholder="Nama Lengkap" />
                                                     <input disabled value={firstTwibbonVal} style={{color:"rgb(71,85,105)"}} type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded-l text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Upload files..." />
                                                     <button type="button" className="bg-blue-500 rounded-r-md px-3 py-3 font-bold text-white text-sm">Upload</button>
                                                 </div>
@@ -566,10 +566,10 @@ const NasecRegister = ()=>{
                                             </div>
                                             <div className="relative w-full mb-3">
                                                 <label style={{color:"rgb(71,85,105)"}} className="block uppercase text-xs font-bold mb-2">
-                                                    KTM/Surat Keterangan Pengganti KTM/Surat Keterangan Aktif (jpg/jpeg)
+                                                    KTM/Surat Keterangan Pengganti KTM/Surat Keterangan Aktif (jpg/jpeg/png)
                                                 </label>
                                                 <div className="flex items-center relative">
-                                                    <input accept="image/jpg, image/jpeg" ref={firstKtm} onChange={()=>{firstKtm.current.files[0]?setFirstKtmVal(firstKtm.current.files[0].name):setFirstKtmVal("")}} style={{color:"rgb(71,85,105)"}} type="file" className="w-full h-full absolute cursor-pointer opacity-0 inset-0" placeholder="Nama Lengkap" />
+                                                    <input accept="image/jpg, image/jpeg, image/png" ref={firstKtm} onChange={()=>{firstKtm.current.files[0]?setFirstKtmVal(firstKtm.current.files[0].name):setFirstKtmVal("")}} style={{color:"rgb(71,85,105)"}} type="file" className="w-full h-full absolute cursor-pointer opacity-0 inset-0" placeholder="Nama Lengkap" />
                                                     <input value={firstKtmVal} disabled style={{color:"rgb(71,85,105)"}} type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded-l text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Upload files..." />
                                                     <button type="button" className="bg-blue-500 rounded-r-md px-3 py-3 font-bold text-white text-sm">Upload</button>
                                                 </div>
@@ -652,10 +652,10 @@ const NasecRegister = ()=>{
                                             </div>
                                             <div className="relative w-full mb-3">
                                                 <label style={{color:"rgb(71,85,105)"}} className="block uppercase text-xs font-bold mb-2">
-                                                    Screenshot Twibbon (tag sensation dan 3 teman) (jpg/jpeg)
+                                                    Screenshot Twibbon (tag sensation dan 3 teman) (jpg/jpeg/png)
                                                 </label>
                                                 <div className="flex items-center relative">
-                                                    <input accept="image/jpg, image/jpeg" ref={secondTwibbon} onChange={()=>{secondTwibbon.current.files[0]?setSecondTwibbonVal(secondTwibbon.current.files[0].name):setSecondTwibbonVal("")}} style={{color:"rgb(71,85,105)"}} type="file" className="w-full h-full absolute cursor-pointer opacity-0 inset-0" placeholder="Nama Lengkap" />
+                                                    <input accept="image/jpg, image/jpe, image/png" ref={secondTwibbon} onChange={()=>{secondTwibbon.current.files[0]?setSecondTwibbonVal(secondTwibbon.current.files[0].name):setSecondTwibbonVal("")}} style={{color:"rgb(71,85,105)"}} type="file" className="w-full h-full absolute cursor-pointer opacity-0 inset-0" placeholder="Nama Lengkap" />
                                                     <input disabled value={secondTwibbonVal} style={{color:"rgb(71,85,105)"}} type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded-l text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Upload files..." />
                                                     <button type="button" className="bg-blue-500 rounded-r-md px-3 py-3 font-bold text-white text-sm">Upload</button>
                                                 </div>
@@ -665,10 +665,10 @@ const NasecRegister = ()=>{
                                             </div>
                                             <div className="relative w-full mb-3">
                                                 <label style={{color:"rgb(71,85,105)"}} className="block uppercase text-xs font-bold mb-2">
-                                                    KTM/Surat Keterangan Pengganti KTM/Surat Keterangan Aktif (jpg/jpeg)
+                                                    KTM/Surat Keterangan Pengganti KTM/Surat Keterangan Aktif (jpg/jpeg/png)
                                                 </label>
                                                 <div className="flex items-center relative">
-                                                    <input accept="image/jpg, image/jpeg" ref={secondKtm} onChange={()=>{secondKtm.current.files[0]?setSecondKtmVal(secondKtm.current.files[0].name):setSecondKtmVal("")}} style={{color:"rgb(71,85,105)"}} type="file" className="w-full h-full absolute cursor-pointer opacity-0 inset-0" placeholder="Nama Lengkap" />
+                                                    <input accept="image/jpg, image/jpeg, image/png" ref={secondKtm} onChange={()=>{secondKtm.current.files[0]?setSecondKtmVal(secondKtm.current.files[0].name):setSecondKtmVal("")}} style={{color:"rgb(71,85,105)"}} type="file" className="w-full h-full absolute cursor-pointer opacity-0 inset-0" placeholder="Nama Lengkap" />
                                                     <input value={secondKtmVal} disabled style={{color:"rgb(71,85,105)"}} type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded-l text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Upload files..." />
                                                     <button type="button" className="bg-blue-500 rounded-r-md px-3 py-3 font-bold text-white text-sm">Upload</button>
                                                 </div>
@@ -751,10 +751,10 @@ const NasecRegister = ()=>{
                                             </div>
                                             <div className="relative w-full mb-3">
                                                 <label style={{color:"rgb(71,85,105)"}} className="block uppercase text-xs font-bold mb-2">
-                                                    Screenshot Twibbon (tag sensation dan 3 teman) (jpg/jpeg)
+                                                    Screenshot Twibbon (tag sensation dan 3 teman) (jpg/jpeg/png)
                                                 </label>
                                                 <div className="flex items-center relative">
-                                                    <input accept="image/jpg, image/jpeg" ref={thirdTwibbon} onChange={()=>{thirdTwibbon.current.files[0]?setThirdTwibbonVal(thirdTwibbon.current.files[0].name):setThirdTwibbonVal("")}} style={{color:"rgb(71,85,105)"}} type="file" className="w-full h-full absolute cursor-pointer opacity-0 inset-0" placeholder="Nama Lengkap" />
+                                                    <input accept="image/jpg, image/jpeg, image/png" ref={thirdTwibbon} onChange={()=>{thirdTwibbon.current.files[0]?setThirdTwibbonVal(thirdTwibbon.current.files[0].name):setThirdTwibbonVal("")}} style={{color:"rgb(71,85,105)"}} type="file" className="w-full h-full absolute cursor-pointer opacity-0 inset-0" placeholder="Nama Lengkap" />
                                                     <input disabled value={thirdTwibbonVal} style={{color:"rgb(71,85,105)"}} type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded-l text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Upload files..." />
                                                     <button type="button" className="bg-blue-500 rounded-r-md px-3 py-3 font-bold text-white text-sm">Upload</button>
                                                 </div>
@@ -764,10 +764,10 @@ const NasecRegister = ()=>{
                                             </div>
                                             <div className="relative w-full mb-3">
                                                 <label style={{color:"rgb(71,85,105)"}} className="block uppercase text-xs font-bold mb-2">
-                                                    KTM/Surat Keterangan Pengganti KTM/Surat Keterangan Aktif (jpg/jpeg)
+                                                    KTM/Surat Keterangan Pengganti KTM/Surat Keterangan Aktif (jpg/jpeg/png)
                                                 </label>
                                                 <div className="flex items-center relative">
-                                                    <input accept="image/jpg, image/jpeg" ref={thirdKtm} onChange={()=>{thirdKtm.current.files[0]?setThirdKtmVal(thirdKtm.current.files[0].name):setThirdKtmVal("")}} style={{color:"rgb(71,85,105)"}} type="file" className="w-full h-full absolute cursor-pointer opacity-0 inset-0" placeholder="Nama Lengkap" />
+                                                    <input accept="image/jpg, image/jpeg, image/png" ref={thirdKtm} onChange={()=>{thirdKtm.current.files[0]?setThirdKtmVal(thirdKtm.current.files[0].name):setThirdKtmVal("")}} style={{color:"rgb(71,85,105)"}} type="file" className="w-full h-full absolute cursor-pointer opacity-0 inset-0" placeholder="Nama Lengkap" />
                                                     <input value={thirdKtmVal} disabled style={{color:"rgb(71,85,105)"}} type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded-l text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Upload files..." />
                                                     <button type="button" className="bg-blue-500 rounded-r-md px-3 py-3 font-bold text-white text-sm">Upload</button>
                                                 </div>
