@@ -459,11 +459,7 @@ const GamasurfRegister = ()=>{
                                     <div className={form===3?"block":"hidden"}>
                                         <div className="relative w-full mb-3">
                                             <label style={{color:"rgb(71,85,105)"}} className="block uppercase text-xs font-bold mb-2">
-<<<<<<< HEAD
                                                 Screenshot Twibbon (tag sensation dan 3 teman) (jpg/jpeg/png)
-=======
-                                                Screenshot Twibbon (tag sensation dan 3 teman) (jpg/jpeg, max.1 MB)
->>>>>>> e77a2d6ed6970edf3eb8d275b4be53d957820218
                                             </label>
                                             <div className="flex items-center relative">
                                                 <input accept="image/jpg, image/jpeg, image/png" ref={twibbon} onChange={()=>{twibbon.current.files[0]?setTwibbonVal(twibbon.current.files[0].name):setTwibbonVal("")}} style={{color:"rgb(71,85,105)"}} type="file" className="w-full h-full absolute cursor-pointer opacity-0 inset-0" placeholder="Nama Lengkap" />
@@ -489,11 +485,7 @@ const GamasurfRegister = ()=>{
                                         </div>
                                         <div className="relative w-full mb-3">
                                             <label style={{color:"rgb(71,85,105)"}} className="block uppercase text-xs font-bold mb-2">
-<<<<<<< HEAD
                                                 KTM/Surat Keterangan Pengganti KTM/Surat Keterangan Aktif (jpg/jpeg/png)
-=======
-                                                KTM/Surat Keterangan Pengganti KTM/Surat Keterangan Aktif (jpg/jpeg, max.1 MB)
->>>>>>> e77a2d6ed6970edf3eb8d275b4be53d957820218
                                             </label>
                                             <div className="flex items-center relative">
                                                 <input accept="image/jpg, image/jpeg, image/png" ref={ktm} onChange={()=>{ktm.current.files[0]?setKtmVal(ktm.current.files[0].name):setKtmVal("")}} style={{color:"rgb(71,85,105)"}} type="file" className="w-full h-full absolute cursor-pointer opacity-0 inset-0" placeholder="Nama Lengkap" />
