@@ -459,7 +459,7 @@ const GamasurfRegister = ()=>{
                                     <div className={form===3?"block":"hidden"}>
                                         <div className="relative w-full mb-3">
                                             <label style={{color:"rgb(71,85,105)"}} className="block uppercase text-xs font-bold mb-2">
-                                                Screenshot Twibbon (tag sensation dan 3 teman) (jpg/jpeg)
+                                                Screenshot Twibbon (tag sensation dan 3 teman) (jpg/jpeg, max.1 MB)
                                             </label>
                                             <div className="flex items-center relative">
                                                 <input accept="image/jpg, image/jpeg" ref={twibbon} onChange={()=>{twibbon.current.files[0]?setTwibbonVal(twibbon.current.files[0].name):setTwibbonVal("")}} style={{color:"rgb(71,85,105)"}} type="file" className="w-full h-full absolute cursor-pointer opacity-0 inset-0" placeholder="Nama Lengkap" />
@@ -472,7 +472,7 @@ const GamasurfRegister = ()=>{
                                         </div>
                                         <div className="relative w-full mb-3">
                                             <label style={{color:"rgb(71,85,105)"}} className="block uppercase text-xs font-bold mb-2">
-                                                Surat Pernyataan Orisinalitas (pdf)
+                                                Surat Pernyataan Orisinalitas (pdf, max.3 MB)
                                             </label>
                                             <div className="flex items-center relative">
                                                 <input accept=".pdf" ref={orisinal} onChange={()=>{orisinal.current.files[0]?setOrisinalVal(orisinal.current.files[0].name):setOrisinalVal("")}} style={{color:"rgb(71,85,105)"}} type="file" className="w-full h-full absolute cursor-pointer opacity-0 inset-0" placeholder="Nama Lengkap" />
@@ -485,7 +485,7 @@ const GamasurfRegister = ()=>{
                                         </div>
                                         <div className="relative w-full mb-3">
                                             <label style={{color:"rgb(71,85,105)"}} className="block uppercase text-xs font-bold mb-2">
-                                                KTM/Surat Keterangan Pengganti KTM/Surat Keterangan Aktif (jpg/jpeg)
+                                                KTM/Surat Keterangan Pengganti KTM/Surat Keterangan Aktif (jpg/jpeg, max.1 MB)
                                             </label>
                                             <div className="flex items-center relative">
                                                 <input accept="image/jpg, image/jpeg" ref={ktm} onChange={()=>{ktm.current.files[0]?setKtmVal(ktm.current.files[0].name):setKtmVal("")}} style={{color:"rgb(71,85,105)"}} type="file" className="w-full h-full absolute cursor-pointer opacity-0 inset-0" placeholder="Nama Lengkap" />
@@ -498,7 +498,7 @@ const GamasurfRegister = ()=>{
                                         </div>
                                         <div className="relative w-full mb-3">
                                             <label style={{color:"rgb(71,85,105)"}} className="block uppercase text-xs font-bold mb-2">
-                                                Ide Penelitian (pdf)
+                                                Ide Penelitian (pdf, max.5 MB)
                                             </label>
                                             <div className="flex items-center relative">
                                                 <input accept=".pdf" ref={ide} onChange={()=>{ide.current.files[0]?setIdeVal(ide.current.files[0].name):setIdeVal("")}} style={{color:"rgb(71,85,105)"}} type="file" className="w-full h-full absolute cursor-pointer opacity-0 inset-0" placeholder="Nama Lengkap" />
