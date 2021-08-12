@@ -22,6 +22,7 @@ const GamasurfRegister = ()=>{
     const [nickname, setnickname] = useState("")
     const [email, setemail] = useState(localStorage.getItem("user")?localStorage.getItem("user"):"")
     const [univ, setuniv] = useState("")
+    const [angkatan, setAngkatan] = useState("")
     const [region, setregion] = useState("")
     const [phone, setphone] = useState("")
 
@@ -32,6 +33,7 @@ const GamasurfRegister = ()=>{
     const [pengalaman, setpengalaman] = useState("")
     const [komitmen, setKomitmen] = useState(false)
     const [dapatinfo, setdapatinfo] = useState("Poster Instagram")
+    const [software, setSoftware] = useState(false);
 
 
     // Form Page 3
@@ -172,7 +174,9 @@ const GamasurfRegister = ()=>{
         data.append("pengalaman",pengalaman)
         data.append("komitmen","iya")
         data.append("info",dapatinfo)
-
+        data.append('angkatan', angkatan)
+        
+        data.append("software", (software === true) ? 'iya' : 'tidak')
         data.append('twibbon',twibbon.current.files[0])
         data.append('ktm',ktm.current.files[0])
         data.append('orisinalitas',orisinal.current.files[0])
@@ -227,6 +231,7 @@ const GamasurfRegister = ()=>{
                     && validator.isEmail(email) // email
                     && univ !== "" // univ
                     && region !== "" // region
+                    && angkatan !== ""
                     && validator.isMobilePhone(phone,"id-ID") // phone
                 ){
                     // Form 1 Lolos
@@ -382,6 +387,12 @@ const GamasurfRegister = ()=>{
                                         </div>
                                         <div className="relative w-full mb-3">
                                             <label style={{color:"rgb(71,85,105)"}} className="block uppercase text-xs font-bold mb-2">
+                                                Angkatan
+                                            </label>
+                                            <input onChange={(e)=>setAngkatan(e.target.value)} value={angkatan} name="fullname" style={{color:"rgb(71,85,105)"}} type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Angkatan" />
+                                        </div>
+                                        <div className="relative w-full mb-3">
+                                            <label style={{color:"rgb(71,85,105)"}} className="block uppercase text-xs font-bold mb-2">
                                                 Asal Daerah
                                             </label>
                                             <input onChange={(e)=>setregion(e.target.value)} value={region} name="region" style={{color:"rgb(71,85,105)"}} type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Asal Daerah" />
@@ -452,6 +463,20 @@ const GamasurfRegister = ()=>{
                                                 <option value="Broadcast">Broadcast</option>
                                                 <option value="Lain-lain">Lain-lain</option>
                                             </select>
+                                        </div>
+                                        <div className="relative w-full mb-3">
+                                            <label style={{color:"rgb(71,85,105)"}} className="block uppercase text-xs font-bold mb-2">
+                                                Sudah pernah menggunakan software olah data?
+                                            </label>
+                                            <div className="flex relative">
+                                                <div style={{left: software ? 0:"50%"}} className="w-1/2 rounded-md bg-blue-700 top-0 transition-all duration-300 bottom-0 absolute opacity-40" />
+                                                <button type="button" onClick={()=>{setSoftware(true)}} className="w-full py-2 bg-white focus:outline-none rounded-l-md">
+                                                    Sudah
+                                                </button>
+                                                <button type="button" onClick={()=>{setSoftware(false)}} className="w-full py-2 bg-white focus:outline-none rounded-r-md">
+                                                   Belum
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
 
