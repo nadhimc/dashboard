@@ -21,6 +21,29 @@ const DashDaftar = () => {
 
     const [event, setEvent] = useState("")
 
+    const [buktiVal, setBuktiVal] = useState("")
+    const [buktiErr, setBuktiErr] = useState("")
+
+    let bukti = createRef();
+
+    useEffect(()=>{
+        if(bukti.current){
+            if(bukti.current.files.length !== 0){
+                if(bukti.current.files[0].type==="image/jpeg" || bukti.current.files[0].type==="image/jpg" || bukti.current.files[0].type==="image/png"){
+                    if(bukti.current.files[0].size/1024 <= 512){
+                        setBuktiErr("")
+                    }else{
+                        setBuktiErr("Maksimum ukuran file adalah 512kb")
+                    }
+                }else{
+                    setBuktiErr("Ekstensi yang didukung adalah jpeg,jpg, dan png")
+                }
+            }else{
+                setBuktiErr("")
+            }
+        }
+    },[bukti,buktiVal])
+
     const [gamasurf, setGamasurf] = useState({      
         "id":0,
         "user_id":0,
@@ -277,6 +300,7 @@ const DashDaftar = () => {
         {"id":1,"user_id":18,"nama_team":"Team Tutur","nama_sekolah":"MAN Insan Cendekia Serpong","alamat_sekolah":"Serpong Jaya","nama_pembimbing":"Pak Asep","no_pembimbing":"081224212953","komitmen":"Sangat Berkomitmen","info":"instagram","is_paid":0,"created_at":"2021-07-27T12:11:26.000000Z","updated_at":"2021-07-27T12:11:26.000000Z","member":[{"id":1,"team_id":1,"nama":"Rizkal","jenis_kelamin":"Laki-Laki","kelas":"10","email":"rizkal@gmail.com","no":"082424112212","kartu_pelajar":"peserta/ktm/1_1.jpg","twibbon":"peserta/twibbon/1_1.jpg","is_leader":1,"created_at":"2021-07-27T12:11:26.000000Z","updated_at":"2021-07-27T12:11:26.000000Z"},{"id":2,"team_id":1,"nama":"Ruka","jenis_kelamin":"Perempuan","kelas":"12","email":"ruka@gmail.com","no":"0812312312","kartu_pelajar":"peserta/ktm/1_2.jpg","twibbon":"peserta/twibbon/1_2.jpg","is_leader":0,"created_at":"2021-07-27T12:11:29.000000Z","updated_at":"2021-07-27T12:11:29.000000Z"},{"id":3,"team_id":1,"nama":"Mizuhara","jenis_kelamin":"Perempuan","kelas":"11","email":"mizuzu@gmail.com","no":"081232124124","kartu_pelajar":"peserta/ktm/1_3.jpg","twibbon":"peserta/twibbon/1_3.jpg","is_leader":0,"created_at":"2021-07-27T12:11:29.000000Z","updated_at":"2021-07-27T12:11:29.000000Z"}]}
     )
 
+    let nasecTeamForm = new FormData()
     let nasecUpdateFirstForm = new FormData()
     let nasecUpdateSecondForm = new FormData()
     let nasecUpdateThirdForm = new FormData()
@@ -446,6 +470,8 @@ const DashDaftar = () => {
             }
         }
 
+
+
         if(nasecUpdateSecondTwibbon.current){
             if(nasecUpdateSecondTwibbon.current.files.length !== 0){
                 if(nasecUpdateSecondTwibbon.current.files[0].type==="image/jpeg" || nasecUpdateSecondTwibbon.current.files[0].type==="image/jpg" || nasecUpdateSecondTwibbon.current.files[0].type==="image/png"){
@@ -501,6 +527,20 @@ const DashDaftar = () => {
                 }
             }
         }
+
+        if(bukti.current){
+            if(bukti.current.files.length !== 0){
+                if(bukti.current.files[0].type==="image/jpeg" || bukti.current.files[0].type==="image/jpg" || bukti.current.files[0].type==="image/png"){
+                    if(bukti.current.files[0].size/1024 <= 512){
+                        nasecTeamForm.append("bukti",bukti.current.files[0])
+                    }else{
+                        error = true
+                    }
+                }else{
+                    error = true
+                }
+            }
+        }
         
         if(
             nasecUpdate.nama_team!==""
@@ -535,21 +575,20 @@ const DashDaftar = () => {
     }
 
     const uploadingNasecTeam = ()=>{
+        nasecTeamForm.append("nama_team",nasecUpdate.nama_team)
+        nasecTeamForm.append("nama_sekolah",nasecUpdate.nama_sekolah)
+        nasecTeamForm.append("alamat_sekolah",nasecUpdate.alamat_sekolah)
+        nasecTeamForm.append("nama_pembimbing",nasecUpdate.nama_pembimbing)
+        nasecTeamForm.append("no_pembimbing",nasecUpdate.no_pembimbing)
+        nasecTeamForm.append("komitmen",nasecUpdate.komitmen)
+        nasecTeamForm.append("info",nasecUpdate.info)
         fetch(`${process.env.REACT_APP_APIURL}/users/${localStorage.getItem("id")}/nasec`,{
             method:"PUT",
             headers:{
-                'Content-Type': 'application/json',
+                // 'Content-Type': 'application/json',
                 'Authorization' : `Bearer ${localStorage.getItem("key")}`
             },
-            body:JSON.stringify({
-                nama_team: nasecUpdate.nama_team,
-                nama_sekolah: nasecUpdate.nama_sekolah,
-                alamat_sekolah: nasecUpdate.alamat_sekolah,
-                nama_pembimbing: nasecUpdate.nama_pembimbing,
-                no_pembimbing: nasecUpdate.no_pembimbing,
-                komitmen: nasecUpdate.komitmen,
-                info: nasecUpdate.info
-            })
+            body:nasecTeamForm
         }).then(res=>res.json())
         .then(
             (res)=>{
@@ -731,6 +770,7 @@ const DashDaftar = () => {
                         "nama_pembimbing":res.data.nama_pembimbing,
                         "no_pembimbing":res.data.no_pembimbing,
                         "komitmen":res.data.komitmen,
+                        "bukti":res.data.bukti,
                         "info":res.data.info,
                         "is_paid":res.data.is_paid,
                         "created_at":res.data.created_at,
@@ -746,6 +786,7 @@ const DashDaftar = () => {
                         "nama_pembimbing":res.data.nama_pembimbing,
                         "no_pembimbing":res.data.no_pembimbing,
                         "komitmen":res.data.komitmen,
+                        "bukti":res.data.bukti,
                         "info":res.data.info,
                         "is_paid":res.data.is_paid,
                         "created_at":res.data.created_at,
@@ -1133,6 +1174,18 @@ const DashDaftar = () => {
                             <input value={nasecUpdate.no_pembimbing} onChange={(e)=>{setNasecUpdate({...nasecUpdate,no_pembimbing:e.target.value})}} type="text" className={!edit?"hidden":"border-0 px-3 py-1 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring flex-1 ease-linear transition-all duration-150 relative"} />
                             <div className={edit&&(nasecUpdate.no_pembimbing===""||!validator.isMobilePhone(nasecUpdate.no_pembimbing,"id-ID"))?"text-red-600 absolute right-0.5 h-full flex justify-center items-center":"hidden"}>
                                 <FontAwesomeIcon icon={faExclamationCircle} />
+                            </div>
+                        </div>
+                        <div className="flex flex-col md:flex-row">
+                            <p className="md:w-1/3 text-lg md:text-base text-gray-900">Bukti Pembayaran</p>
+                            <img onClick={()=>{changeImg(`https://sensation.smartsoft.co.id/sensation/storage/app/team/bukti/`+nasec.bukti+"?"+update)}} className={edit?"hidden":"max-w-full w-24 cursor-pointer"} alt="bukti" src={`https://sensation.smartsoft.co.id/sensation/storage/app/team/bukti/`+nasec.bukti+"?"+update} />
+                            <div className="flex-1">
+                                <div className={!edit?"hidden":"flex items-center relative flex-1"}>
+                                    <input accept="image/jpg, image/jpeg, image/png" ref={bukti} onChange={()=>{bukti.current.files[0]?setBuktiVal(bukti.current.files[0].name):setBuktiVal("")}} style={{color:"rgb(71,85,105)"}} type="file" className="w-full h-full absolute cursor-pointer opacity-0 inset-0" />
+                                    <input disabled value={buktiVal} style={{color:"rgb(71,85,105)"}} type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded-l text-sm shadow focus:outline-none focus:ring flex-1 ease-linear transition-all duration-150" placeholder="Upload files..." />
+                                    <button type="button" className="bg-blue-500 rounded-r-md px-3 py-3 font-bold text-white text-sm">Upload</button>
+                                </div>
+                                <small className={!edit?"hidden":buktiErr===""?"ml-1 text-gray-700":"ml-1 text-red-500"}><FontAwesomeIcon className={buktiErr===""?"hidden":""} icon={faExclamationCircle} /> {buktiErr===""?"Kosongkan jika tidak mengubah file sebelumnya":buktiErr}</small>
                             </div>
                         </div>
                         <div className="flex flex-col md:flex-row">

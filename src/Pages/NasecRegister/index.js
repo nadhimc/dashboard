@@ -168,6 +168,28 @@ const NasecRegister = ()=>{
         }
     },[thirdKtm,thirdKtmVal])
 
+    const [buktiVal, setBuktiVal] = useState("")
+    const [buktiErr, setBuktiErr] = useState("")
+    let bukti = createRef();
+
+    useEffect(()=>{
+        if(bukti.current){
+            if(bukti.current.files.length !== 0){
+                if(bukti.current.files[0].type==="image/jpeg" || bukti.current.files[0].type==="image/jpg" || bukti.current.files[0].type==="image/png"){
+                    if(bukti.current.files[0].size/1024 <= 512){
+                        setBuktiErr("")
+                    }else{
+                        setBuktiErr("Maksimum ukuran file adalah 512kb")
+                    }
+                }else{
+                    setBuktiErr("Ekstensi yang didukung adalah jpeg,jpg, dan png")
+                }
+            }else{
+                setBuktiErr("")
+            }
+        }
+    },[bukti,buktiVal])
+
 
     const [page, setPage] = useState(1)
     const [isLoading, setIsLoading] = useState(false)
@@ -187,6 +209,7 @@ const NasecRegister = ()=>{
         data.append("no_pembimbing",noPembimbing)
         data.append("komitmen",komitmen?"Iya":"Tidak")
         data.append("info",info)
+        data.append("bukti",bukti.current.files[0])
 
         // form 2
         data.append("nama_1",firstName)
@@ -255,6 +278,7 @@ const NasecRegister = ()=>{
             && pembimbing !== ""
             && noPembimbing !== "" && validator.isMobilePhone(noPembimbing,"id-ID")
             && komitmen
+            && bukti.current.files.length > 0
             && info !== ""
         ){
             console.log("lolos 1")
@@ -270,7 +294,9 @@ const NasecRegister = ()=>{
                 // Lolos setengah Page 2
                 if(
                     (firstTwibbon.current.files[0].type==="image/jpeg" || firstTwibbon.current.files[0].type==="image/jpg" || firstTwibbon.current.files[0].type==="image/png")
+                    &&(bukti.current.files[0].type==="image/jpeg" || bukti.current.files[0].type==="image/jpg" || bukti.current.files[0].type==="image/png")
                     && firstTwibbon.current.files[0].size/1024 < 512
+                    && bukti.current.files[0].size/1024 < 512
                     && (firstKtm.current.files[0].type==="image/jpeg" || firstKtm.current.files[0].type==="image/jpg" || firstKtm.current.files[0].type==="image/png")
                     && firstKtm.current.files[0].size/1024 < 512
                 ){
@@ -469,7 +495,7 @@ const NasecRegister = ()=>{
                                         </div>
                                         <div className="relative w-full mb-3">
                                                 <label style={{color:"rgb(71,85,105)"}} className="block uppercase text-xs font-bold mb-2">
-                                                    Tahu Sent darimana?
+                                                    Tahu Nasec darimana?
                                                 </label>
                                                 {/* <input style={{color:"rgb(71,85,105)"}} type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Asal Daerah" /> */}
                                                 <select onChange={(e)=>{setInfo(e.target.value)}} value={info} style={{color:"rgb(71,85,105)"}} type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
@@ -479,6 +505,19 @@ const NasecRegister = ()=>{
                                                     <option value="Twibbon Instagram">Twibbon Instagram</option>
                                                     <option value="Lain-lain">Lain-lain</option>
                                                 </select>
+                                        </div>
+                                        <div className="relative w-full mb-3">
+                                            <label style={{color:"rgb(71,85,105)"}} className="block uppercase text-xs font-bold mb-2">
+                                                Bukti Pembayaran (jpg/jpeg/png)
+                                            </label>
+                                            <div className="flex items-center relative">
+                                                <input accept="image/jpg, image/jpeg, image/png" ref={bukti} onChange={()=>{bukti.current.files[0]?setBuktiVal(bukti.current.files[0].name):setBuktiVal("")}} style={{color:"rgb(71,85,105)"}} type="file" className="w-full h-full absolute cursor-pointer opacity-0 inset-0" placeholder="Nama Lengkap" />
+                                                <input value={buktiVal} disabled style={{color:"rgb(71,85,105)"}} type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded-l text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Upload files..." />
+                                                <button type="button" className="bg-blue-500 rounded-r-md px-3 py-3 font-bold text-white text-sm">Upload</button>
+                                            </div>
+                                            <small className={buktiErr===""?"hidden":"text-sm text-red-500 font-semibold text-blueGray-600"}>
+                                                {buktiErr}
+                                            </small>
                                         </div>
                                     </div>
                                     {/* Peserta pertama */}
