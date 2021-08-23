@@ -195,7 +195,7 @@ const AdmPesGamasurf = ()=>{
                                 <tr className="border-b border-gray-200 hover:bg-gray-100">
                                     <td className="py-3 px-6">File ide</td>
                                     <td className="py-3 px-6">
-                                        <a className="hover:text-blue-400" target="_blank" href={`https://sensation.smartsoft.co.id/sensation/storage/app/peserta/ide/`+modalData.ide}>
+                                        <a className="hover:text-blue-400" rel="noopener noreferrer" target="_blank" href={`https://sensation.smartsoft.co.id/sensation/storage/app/peserta/ide/`+modalData.ide}>
                                             Klik disini
                                         </a>
                                     </td>
@@ -203,7 +203,7 @@ const AdmPesGamasurf = ()=>{
                                 <tr className="border-b border-gray-200 hover:bg-gray-100">
                                     <td className="py-3 px-6">File orisinalitas</td>
                                     <td className="py-3 px-6">
-                                        <a className="hover:text-blue-400" target="_blank" href={`https://sensation.smartsoft.co.id/sensation/storage/app/peserta/orisinalitas/`+modalData.orisinalitas}>
+                                        <a className="hover:text-blue-400" rel="noopener noreferrer" target="_blank" href={`https://sensation.smartsoft.co.id/sensation/storage/app/peserta/orisinalitas/`+modalData.orisinalitas}>
                                             Klik disini
                                         </a>
                                     </td>
