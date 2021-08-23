@@ -17,10 +17,12 @@ const AdmPesGamasurf = ()=>{
         "user_id":0,
         "nama_lengkap":"",
         "nama_panggilan":"",
+        "angkatan": "",
         "email":"",
         "asal_univ":"",
         "asal_daerah":"",
         "no_wa":"",
+        "software": "",
         "motivasi":"",
         "ekspetasi":"",
         "pengalaman":"",
@@ -135,6 +137,14 @@ const AdmPesGamasurf = ()=>{
                                     <td className="py-3 px-6">: {modalData.nama_panggilan}</td>
                                 </tr>
                                 <tr className="border-b border-gray-200 hover:bg-gray-100">
+                                    <td className="py-3 px-6">Angkatan</td>
+                                    <td className="py-3 px-6">: {modalData.angkatan}</td>
+                                </tr>
+                                <tr className="border-b border-gray-200 hover:bg-gray-100">
+                                    <td className="py-3 px-6">No Wa</td>
+                                    <td className="py-3 px-6">: {modalData.no_wa}</td>
+                                </tr>
+                                <tr className="border-b border-gray-200 hover:bg-gray-100">
                                     <td className="py-3 px-6">Email</td>
                                     <td className="py-3 px-6">: {modalData.email}</td>
                                 </tr>
@@ -149,6 +159,10 @@ const AdmPesGamasurf = ()=>{
                                 <tr className="border-b border-gray-200 hover:bg-gray-100">
                                     <td className="py-3 px-6">No Handphone</td>
                                     <td className="py-3 px-6">: {modalData.no_wa}</td>
+                                </tr>
+                                <tr className="border-b border-gray-200 hover:bg-gray-100">
+                                    <td className="py-3 px-6">Software</td>
+                                    <td className="py-3 px-6">: {modalData.software}</td>
                                 </tr>
                                 <tr className="border-b border-gray-200 hover:bg-gray-100">
                                     <td className="py-3 px-6">Motivasi</td>
@@ -169,19 +183,19 @@ const AdmPesGamasurf = ()=>{
                                 <tr className="border-b border-gray-200 hover:bg-gray-100">
                                     <td className="py-3 px-6">KTM</td>
                                     <td className="py-3 px-6">
-                                        <img onClick={()=>{setModalImg(modalData.ktm)}} className="max-w-full w-24 cursor-pointer" alt="ktm" src={modalData.ktm} />
+                                        <img onClick={()=>{setModalImg(`https://sensation.smartsoft.co.id/sensation/storage/app/peserta/ktm/`+modalData.ktm)}} className="max-w-full w-24 cursor-pointer" alt="ktm" src={`https://sensation.smartsoft.co.id/sensation/storage/app/peserta/ktm/`+modalData.ktm} />
                                     </td>
                                 </tr>
                                 <tr className="border-b border-gray-200 hover:bg-gray-100">
                                     <td className="py-3 px-6">Twibbon</td>
                                     <td className="py-3 px-6">
-                                        <img onClick={()=>{setModalImg(modalData.twibbon)}} className="max-w-full w-24 cursor-pointer" alt="twibbon" src={modalData.twibbon} />
+                                        <img onClick={()=>{setModalImg(`https://sensation.smartsoft.co.id/sensation/storage/app/peserta/twibbon/`+modalData.twibbon)}} className="max-w-full w-24 cursor-pointer" alt="twibbon" src={`https://sensation.smartsoft.co.id/sensation/storage/app/peserta/twibbon/`+modalData.twibbon} />
                                     </td>
                                 </tr>
                                 <tr className="border-b border-gray-200 hover:bg-gray-100">
                                     <td className="py-3 px-6">File ide</td>
                                     <td className="py-3 px-6">
-                                        <a className="hover:text-blue-400" href={modalData.ide}>
+                                        <a className="hover:text-blue-400" target="_blank" href={`https://sensation.smartsoft.co.id/sensation/storage/app/peserta/ide/`+modalData.ide}>
                                             Klik disini
                                         </a>
                                     </td>
@@ -189,7 +203,7 @@ const AdmPesGamasurf = ()=>{
                                 <tr className="border-b border-gray-200 hover:bg-gray-100">
                                     <td className="py-3 px-6">File orisinalitas</td>
                                     <td className="py-3 px-6">
-                                        <a className="hover:text-blue-400" href={modalData.orisinalitas}>
+                                        <a className="hover:text-blue-400" target="_blank" href={`https://sensation.smartsoft.co.id/sensation/storage/app/peserta/orisinalitas/`+modalData.orisinalitas}>
                                             Klik disini
                                         </a>
                                     </td>
