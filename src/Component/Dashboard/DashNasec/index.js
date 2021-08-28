@@ -63,8 +63,8 @@ const DashNasec = ()=>{
                 <div className="rounded-md p-5 border border-gray-400 w-full flex flex-col lg:w-2/5">
                     <p className="text-center text-lg font-bold">Guide</p>
                     <div className="flex flex-col flex-1 justify-center space-y-3 mt-4 ">
-                        <button className="py-2 font-bold rounded-md bg-green-500 hover:opacity-80 text-white">Booklet</button>
-                        <button className="py-2 font-bold rounded-md bg-green-500 hover:opacity-80 text-white">Twibbon</button>
+                        <a href="https://drive.google.com/file/d/1W60T3lgJJ_GPLoWmH56xcFwMe3EZ1hBz/view?usp=sharing" className="py-2 text-center font-bold rounded-md bg-green-500 hover:opacity-80 text-white">Booklet</a>
+                        <a href="https://drive.google.com/file/d/1CTevO8BvRaNamTjnF_Q0DkLQoyiM5eMN/view?usp=sharing" className="py-2 text-center font-bold rounded-md bg-green-500 hover:opacity-80 text-white">Twibbon</a>
                         <button className="py-2 font-bold rounded-md bg-green-500 hover:opacity-80 text-white">Tata Cara Pendaftaran</button>
                     </div>
                 </div>
