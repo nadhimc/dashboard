@@ -36,10 +36,10 @@ const NasecRegister = ()=>{
         if(firstTwibbon.current){
             if(firstTwibbon.current.files.length !== 0){
                 if(firstTwibbon.current.files[0].type==="image/jpeg" || firstTwibbon.current.files[0].type==="image/jpg" || firstTwibbon.current.files[0].type==="image/png"){
-                    if(firstTwibbon.current.files[0].size/1024 <= 512){
+                    if(firstTwibbon.current.files[0].size/1024/1024 <= 2){
                         setFirstTwibbonErr("")
                     }else{
-                        setFirstTwibbonErr("Maksimum ukuran file adalah 512kb")
+                        setFirstTwibbonErr("Maksimum ukuran file adalah 2 Mb")
                     }
                 }else{
                     setFirstTwibbonErr("Ekstensi yang didukung adalah jpeg, jpg, dan png")
@@ -54,10 +54,10 @@ const NasecRegister = ()=>{
         if(firstKtm.current){
             if(firstKtm.current.files.length !== 0){
                 if(firstKtm.current.files[0].type==="image/jpeg" || firstKtm.current.files[0].type==="image/jpg" || firstKtm.current.files[0].type==="image/png"){
-                    if(firstKtm.current.files[0].size/1024 <= 512){
+                    if(firstKtm.current.files[0].size/1024/1024 <= 2){
                         setFirstKtmErr("")
                     }else{
-                        setFirstKtmErr("Maksimum ukuran file adalah 512kb")
+                        setFirstKtmErr("Maksimum ukuran file adalah 2 Mb")
                     }
                 }else{
                     setFirstKtmErr("Ekstensi yang didukung adalah jpeg, jpg, dan png")
@@ -86,10 +86,10 @@ const NasecRegister = ()=>{
         if(secondTwibbon.current){
             if(secondTwibbon.current.files.length !== 0){
                 if(secondTwibbon.current.files[0].type==="image/jpeg" || secondTwibbon.current.files[0].type==="image/jpg" || secondTwibbon.current.files[0].type==="image/png"){
-                    if(secondTwibbon.current.files[0].size/1024 <= 512){
+                    if(secondTwibbon.current.files[0].size/1024/1024 <= 2){
                         setSecondTwibbonErr("")
                     }else{
-                        setSecondTwibbonErr("Maksimum ukuran file adalah 512kb")
+                        setSecondTwibbonErr("Maksimum ukuran file adalah 2 Mb")
                     }
                 }else{
                     setSecondTwibbonErr("Ekstensi yang didukung adalah jpeg, jpg, dan png")
@@ -104,10 +104,10 @@ const NasecRegister = ()=>{
         if(secondKtm.current){
             if(secondKtm.current.files.length !== 0){
                 if(secondKtm.current.files[0].type==="image/jpeg" || secondKtm.current.files[0].type==="image/jpg" || secondKtm.current.files[0].type==="image/png"){
-                    if(secondKtm.current.files[0].size/1024 <= 512){
+                    if(secondKtm.current.files[0].size/1024/1024 <= 2){
                         setSecondKtmErr("")
                     }else{
-                        setSecondKtmErr("Maksimum ukuran file adalah 512kb")
+                        setSecondKtmErr("Maksimum ukuran file adalah 2 Mb")
                     }
                 }else{
                     setSecondKtmErr("Ekstensi yang didukung adalah jpeg, jpg, dan png")
@@ -136,10 +136,10 @@ const NasecRegister = ()=>{
         if(thirdTwibbon.current){
             if(thirdTwibbon.current.files.length !== 0){
                 if(thirdTwibbon.current.files[0].type==="image/jpeg" || thirdTwibbon.current.files[0].type==="image/jpg" || thirdTwibbon.current.files[0].type==="image/png"){
-                    if(thirdTwibbon.current.files[0].size/1024 <= 512){
+                    if(thirdTwibbon.current.files[0].size/1024/1024 <= 2){
                         setThirdTwibbonErr("")
                     }else{
-                        setThirdTwibbonErr("Maksimum ukuran file adalah 512kb")
+                        setThirdTwibbonErr("Maksimum ukuran file adalah 2 Mb")
                     }
                 }else{
                     setThirdTwibbonErr("Ekstensi yang didukung adalah jpeg,jpg, dan png")
@@ -154,10 +154,10 @@ const NasecRegister = ()=>{
         if(thirdKtm.current){
             if(thirdKtm.current.files.length !== 0){
                 if(thirdKtm.current.files[0].type==="image/jpeg" || thirdKtm.current.files[0].type==="image/jpg" || thirdKtm.current.files[0].type==="image/png"){
-                    if(thirdKtm.current.files[0].size/1024 <= 512){
+                    if(thirdKtm.current.files[0].size/1024/1024 <= 2){
                         setThirdKtmErr("")
                     }else{
-                        setThirdKtmErr("Maksimum ukuran file adalah 512kb")
+                        setThirdKtmErr("Maksimum ukuran file adalah 2 Mb")
                     }
                 }else{
                     setThirdKtmErr("Ekstensi yang didukung adalah jpeg, jpg, dan png")
@@ -176,10 +176,10 @@ const NasecRegister = ()=>{
         if(bukti.current){
             if(bukti.current.files.length !== 0){
                 if(bukti.current.files[0].type==="image/jpeg" || bukti.current.files[0].type==="image/jpg" || bukti.current.files[0].type==="image/png"){
-                    if(bukti.current.files[0].size/1024 <= 512){
+                    if(bukti.current.files[0].size/1024/1024 <= 2){
                         setBuktiErr("")
                     }else{
-                        setBuktiErr("Maksimum ukuran file adalah 512kb")
+                        setBuktiErr("Maksimum ukuran file adalah 2 Mb")
                     }
                 }else{
                     setBuktiErr("Ekstensi yang didukung adalah jpeg,jpg, dan png")
@@ -295,10 +295,10 @@ const NasecRegister = ()=>{
                 if(
                     (firstTwibbon.current.files[0].type==="image/jpeg" || firstTwibbon.current.files[0].type==="image/jpg" || firstTwibbon.current.files[0].type==="image/png")
                     &&(bukti.current.files[0].type==="image/jpeg" || bukti.current.files[0].type==="image/jpg" || bukti.current.files[0].type==="image/png")
-                    && firstTwibbon.current.files[0].size/1024 < 512
-                    && bukti.current.files[0].size/1024 < 512
+                    && firstTwibbon.current.files[0].size/1024/1024 < 2
+                    && bukti.current.files[0].size/1024/1024 < 2
                     && (firstKtm.current.files[0].type==="image/jpeg" || firstKtm.current.files[0].type==="image/jpg" || firstKtm.current.files[0].type==="image/png")
-                    && firstKtm.current.files[0].size/1024 < 512
+                    && firstKtm.current.files[0].size/1024/1024 < 2
                 ){
                     console.log("lolos 2")
                     // Lolos Page 2
@@ -313,9 +313,9 @@ const NasecRegister = ()=>{
                         // Lolos setengah Page 3
                         if(
                             (secondTwibbon.current.files[0].type==="image/jpeg" || secondTwibbon.current.files[0].type==="image/jpg" || secondTwibbon.current.files[0].type==="image/png")
-                            && secondTwibbon.current.files[0].size/1024 < 512
+                            && secondTwibbon.current.files[0].size/1024/1024 < 2
                             && (secondKtm.current.files[0].type==="image/jpeg" || secondKtm.current.files[0].type==="image/jpg" || secondKtm.current.files[0].type==="image/png")
-                            && firstKtm.current.files[0].size/1024 < 512
+                            && firstKtm.current.files[0].size/1024/1024 < 2
                         ){
                             console.log("lolos 3")
                             // Lolos Page 3
@@ -330,9 +330,9 @@ const NasecRegister = ()=>{
                                 // Lolos setengah Page 4
                                 if(
                                     (thirdTwibbon.current.files[0].type==="image/jpeg" || thirdTwibbon.current.files[0].type==="image/jpg" || thirdTwibbon.current.files[0].type==="image/png")
-                                    && thirdTwibbon.current.files[0].size/1024 < 512
+                                    && thirdTwibbon.current.files[0].size/1024/1024 < 2
                                     && (thirdKtm.current.files[0].type==="image/jpeg" || thirdKtm.current.files[0].type==="image/jpg" || thirdKtm.current.files[0].type==="image/png")
-                                    && thirdKtm.current.files[0].size/1024 < 512
+                                    && thirdKtm.current.files[0].size/1024/1024 < 2
                                 ){
                                     // Lolos Page 4
                                     if(!isLoading){
