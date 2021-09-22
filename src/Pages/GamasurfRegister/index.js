@@ -232,7 +232,7 @@ const GamasurfRegister = ()=>{
                     && univ !== "" // univ
                     && region !== "" // region
                     && angkatan !== ""
-                    && validator.isMobilePhone(phone,"id-ID") // phone
+                    && phone!=="" // phone
                 ){
                     // Form 1 Lolos
                     // console.log("form 1 Lolos")
@@ -402,11 +402,6 @@ const GamasurfRegister = ()=>{
                                                 Nomor Handphone (Wa Aktif)
                                             </label>
                                             <input onChange={(e)=>setphone(e.target.value)} value={phone} name="phone" style={{color:"rgb(71,85,105)"}} type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Nomor Handphone (Wa Aktif)" />
-                                            <small style={{color:"rgb(71,85,105)"}} className={
-                                            (phone==="" || validator.isMobilePhone(phone,"id-ID"))?
-                                            "hidden":
-                                            "text-sm font-semibold text-blueGray-600"
-                                            }>harus diisi dengan nomor handphone</small>
                                         </div>
                                     </div>
 
