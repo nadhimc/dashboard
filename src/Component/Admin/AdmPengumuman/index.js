@@ -75,6 +75,10 @@ const AdmPengumuman = ()=>{
     }
 
     useEffect(() => {
+        setModalUser([])
+    }, [modalPengumuman])
+
+    useEffect(() => {
         console.log("get peserta")
         getPeserta()
         getUser()
@@ -157,8 +161,8 @@ const AdmPengumuman = ()=>{
         <div>
 
             {/* Modal */}
-            <div onClick={(e)=>{if(e.target.dataset.modal==="bg"){document.body.classList.remove("overflow-y-hidden");setModalPengumuman(false)}}} data-modal="bg" style={{backgroundColor:"rgba(0,0,0,.3)"}} className={modalPengumuman?"w-full h-full min-h-screen inset-0 absolute z-50 flex justify-center items-center transition-all duration-500 transform":"w-full h-full min-h-screen inset-0 absolute z-50 flex justify-center items-center transition-all duration-500 transform scale-0 translate-x-full opacity-0"}>
-                <div className="bg-white rounded-md p-5 w-full max-w-lg relative">
+            <div onClick={(e)=>{if(e.target.dataset.modal==="bg"){document.body.classList.remove("overflow-y-hidden");setModalPengumuman(false)}}} data-modal="bg" style={{backgroundColor:"rgba(0,0,0,.3)"}} className={modalPengumuman?"w-full h-full min-h-screen overflow-y-auto inset-0 absolute z-50 py-10 transition-all duration-500 transform":"w-full h-full min-h-screen inset-0 absolute z-50 transition-all duration-500 transform scale-0 translate-x-full opacity-0"}>
+                <div className="bg-white rounded-md p-5 w-full max-w-lg relative mx-auto">
                     {/* Header */}
                     <button onClick={()=>{document.body.classList.remove("overflow-y-hidden");setModalPengumuman(false)}} type="button" className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 absolute top-0.5 right-0.5">
                         <span className="sr-only">Close menu</span>
