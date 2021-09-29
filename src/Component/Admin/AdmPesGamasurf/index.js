@@ -73,8 +73,6 @@ const AdmPesGamasurf = ()=>{
     useEffect(() => {
         console.log("get peserta")
         getPeserta();
-        console.log('====PESERTA====');
-        console.log(peserta);
     }, [])
 
     const detailPeserta = (det)=>{
