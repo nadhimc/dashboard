@@ -1,6 +1,12 @@
 import { faChevronLeft, faChevronRight, faTimes } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useState, useEffect } from "react"
+import ReactExport from "react-export-excel";
+import moment from "moment";
+
+const ExcelFile = ReactExport.ExcelFile;
+const ExcelSheet = ReactExport.ExcelFile.ExcelSheet;
+const ExcelColumn = ReactExport.ExcelFile.ExcelColumn;
 
 const AdmPesGamasurf = ()=>{
 
@@ -66,7 +72,7 @@ const AdmPesGamasurf = ()=>{
 
     useEffect(() => {
         console.log("get peserta")
-        getPeserta()
+        getPeserta();
     }, [])
 
     const detailPeserta = (det)=>{
@@ -110,6 +116,32 @@ const AdmPesGamasurf = ()=>{
         }
     }
 
+    const downloadFile = () => {
+        return (
+            <ExcelFile filename={moment().format("YYYY-MM-DD") + '-Gamasurf'} element={<button className="py-2 px-3 mb-2 bg-secondary text-black">Download All Data</button>}>
+                <ExcelSheet data={peserta} name="Peserta Gamasurf">
+                    <ExcelColumn label="Nama" value={(col) => col.nama_lengkap}/>
+                    <ExcelColumn label="Angkatan" value="angkatan"/>
+                    <ExcelColumn label="Universitas" value="asal_univ"/>
+                    <ExcelColumn label="Email" value="email"/>
+                    <ExcelColumn label="No Wa" value="no_wa"/>
+                    <ExcelColumn label="Ide"
+                        value={(col) => 'https://sensation.smartsoft.co.id/sensation/storage/app/peserta/ide/' + col.ide}
+                    />
+                    <ExcelColumn label="Orisinalitas"
+                        value={(col) => 'https://sensation.smartsoft.co.id/sensation/storage/app/peserta/orisinalitas/' + col.orisinalitas}
+                    />
+                    <ExcelColumn label="Twibbon"
+                        value={(col) => 'https://sensation.smartsoft.co.id/sensation/storage/app/peserta/twibbon/' + col.twibbon}
+                    />
+                    <ExcelColumn label="KTM"
+                        value={(col) => 'https://sensation.smartsoft.co.id/sensation/storage/app/peserta/ktm/' + col.ktm}
+                    />
+                </ExcelSheet>
+            </ExcelFile>
+        )
+    }
+    
     return(
         <div>
 
@@ -228,6 +260,7 @@ const AdmPesGamasurf = ()=>{
 
 
             <h1 className="text-2xl mb-4">Peserta Gamasurf</h1>
+            {downloadFile()}
             <div className="flex justify-end mb-3">
                 <input value={search} onChange={(e)=>{setPage(1);setSearch(e.target.value)}} type="text" placeholder="Search..." className="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring ease-linear transition-all duration-150" />
             </div>
