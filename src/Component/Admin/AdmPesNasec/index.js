@@ -1,6 +1,12 @@
 import { faChevronLeft, faChevronRight, faTimes } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useState, useEffect } from "react"
+import ReactExport from "react-export-excel";
+import moment from "moment";
+
+const ExcelFile = ReactExport.ExcelFile;
+const ExcelSheet = ReactExport.ExcelFile.ExcelSheet;
+const ExcelColumn = ReactExport.ExcelFile.ExcelColumn;
 
 const AdmPesNasec = ()=>{
 
@@ -117,6 +123,67 @@ const AdmPesNasec = ()=>{
         ){
             return item
         }
+    }
+
+    const downloadFile = () => {
+        return (
+            <ExcelFile filename={moment().format("YYYY-MM-DD") + '-Nasec'} element={<button className="py-2 px-3 mb-2 bg-secondary text-black">Download All Data</button>}>
+                <ExcelSheet data={peserta} name="Peserta Nasec">
+                    <ExcelColumn label="Nama Team" value={(col) => col.nama_team}/>
+                    <ExcelColumn label="Sekolah" value="nama_sekolah"/>
+                    <ExcelColumn label="Nama Pembimbing" value="nama_pembimbing"/>
+                    <ExcelColumn label="No Pembimbing" value="no_pembimbing"/>
+                    <ExcelColumn label="Bukti"
+                        value={(col) => 'https://sensation.smartsoft.co.id/sensation/storage/app/team/bukti/' + col.bukti}
+                    />
+                    <ExcelColumn label="Anggota 1"
+                        value={(col) => col.member[0].nama}
+                    />
+                    <ExcelColumn label="Jenis Kelamin 1"
+                        value={(col) => col.member[0].jenis_kelamin}
+                    />
+                    <ExcelColumn label="Kelas 1"
+                        value={(col) => col.member[0].kelas}
+                    />
+                    <ExcelColumn label="Email 1"
+                        value={(col) => col.member[0].email}
+                    />
+                    <ExcelColumn label="No. HP 1"
+                        value={(col) => col.member[0].no}
+                    />
+                    <ExcelColumn label="Anggota 2"
+                        value={(col) => col.member[1].nama}
+                    />
+                    <ExcelColumn label="Jenis Kelamin 2"
+                        value={(col) => col.member[1].jenis_kelamin}
+                    />
+                    <ExcelColumn label="Kelas 2"
+                        value={(col) => col.member[1].kelas}
+                    />
+                    <ExcelColumn label="Email 2"
+                        value={(col) => col.member[1].email}
+                    />
+                    <ExcelColumn label="No. HP 2"
+                        value={(col) => col.member[1].no}
+                    />
+                    <ExcelColumn label="Anggota 3"
+                        value={(col) => col.member[2].nama}
+                    />
+                    <ExcelColumn label="Jenis Kelamin 3"
+                        value={(col) => col.member[2].jenis_kelamin}
+                    />
+                    <ExcelColumn label="Kelas 3"
+                        value={(col) => col.member[2].kelas}
+                    />
+                    <ExcelColumn label="Email 3"
+                        value={(col) => col.member[2].email}
+                    />
+                    <ExcelColumn label="No. HP 3"
+                        value={(col) => col.member[2].no}
+                    />
+                </ExcelSheet>
+            </ExcelFile>
+        )
     }
 
     return(
@@ -237,6 +304,7 @@ const AdmPesNasec = ()=>{
 
 
             <h1 className="text-2xl mb-4">Peserta Nasec</h1>
+            {downloadFile()}
             <div className="flex justify-end mb-3">
                 <input value={search} onChange={(e)=>{setPage(1);setSearch(e.target.value)}} type="text" placeholder="Search..." className="border-0 px-3 py-3 bg-white rounded text-sm shadow focus:outline-none focus:ring ease-linear transition-all duration-150" />
             </div>
