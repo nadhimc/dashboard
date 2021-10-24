@@ -1,7 +1,7 @@
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState, useEffect } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import validator from 'validator';
 import Sent from "../../Images/sent.svg"
 
@@ -27,7 +27,7 @@ const SentRegister = ()=>{
         ){
             if(!isLoading){
                 setIsLoading(true)
-                fetch(`${process.env.REACT_APP_APIURL}/sent`,{
+                fetch(`${process.env.REACT_APP_APIURL}/users/sent`,{
                     method:"POST",
                     headers:{
                         'Content-Type': 'application/json',
@@ -79,12 +79,12 @@ const SentRegister = ()=>{
     // }
 
     useEffect(()=>{
-        if(localStorage.getItem("key") && localStorage.getItem("id")  && localStorage.getItem("user") && localStorage.getItem("role")){
-            console.log("Loged in")
-        }else{
-            setSelesai(true)
-            setKeDash(true)
-        }
+        // if(localStorage.getItem("key") && localStorage.getItem("id")  && localStorage.getItem("user") && localStorage.getItem("role")){
+        //     console.log("Loged in")
+        // }else{
+        //     setSelesai(true)
+        //     setKeDash(true)
+        // }
         // cekRegistered()
     },[])
 
@@ -104,11 +104,9 @@ const SentRegister = ()=>{
                 <div className="w-10/12 max-w-lg bg-white rounded-md p-5">
                     <h3 style={{color:"rgb(71,85,105)"}} className="text-lg font-bold text-center">Terima kasih sudah mendaftar Sent</h3>
                     <FontAwesomeIcon icon={faCheckCircle} className="text-7xl text-green-400 text-center block mx-auto my-8" />
-                    <h3 style={{color:"rgb(71,85,105)"}} className="text-lg font-bold text-center">
-                        <Link to="/dashboard">
-                        Kamu akan diarahkan ke Dashboard, atau klik link ini jika tidak berhasil diarahkan
-                        </Link>
-                    </h3>
+                    <p style={{color:"rgb(71,85,105)"}} className="font-bold text-center">
+                        Untuk informasi lebih lanjut terkait webinar SENT, Peserta diharapkan <a href="https://chat.whatsapp.com/CmKw7HBWPAI7y6IRqlXNGV" className="hover:opacity-60">Join Grup WhatsApp dengan menekan tautan ini</a>
+                    </p>
                 </div>
             </div>
             <div className="container mx-auto px-4 h-screen">
