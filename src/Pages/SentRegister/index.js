@@ -158,7 +158,7 @@ const SentRegister = ()=>{
                                     </div>
                                     <div className="relative w-full mb-3">
                                             <label style={{color:"rgb(71,85,105)"}} className="block uppercase text-xs font-bold mb-2">
-                                                Tahu Sent darimana?
+                                                Mengetahui Sent darimana?
                                             </label>
                                             {/* <input style={{color:"rgb(71,85,105)"}} type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Asal Daerah" /> */}
                                             <select onChange={(e)=>{setInfo(e.target.value)}} value={info} style={{color:"rgb(71,85,105)"}} type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
