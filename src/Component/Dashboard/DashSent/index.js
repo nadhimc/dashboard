@@ -47,7 +47,7 @@ const DashSent = ()=>{
                     <div className="flex flex-col flex-1 justify-center space-y-3 mt-4 ">
                         {/* <button className="py-2 font-bold rounded-md bg-green-500 hover:opacity-80 text-white">Booklet</button>
                         <button className="py-2 font-bold rounded-md bg-green-500 hover:opacity-80 text-white">Twibbon</button> */}
-                        <a href="https://www.sensationugm.com/caradaftar" className="py-2 font-bold rounded-md bg-green-500 hover:opacity-80 text-white">Tata Cara Pendaftaran</a>
+                        <a href="https://www.sensationugm.com/caradaftar" className="py-2 font-bold text-center rounded-md bg-green-500 hover:opacity-80 text-white" target="blank">Tata Cara Pendaftaran</a>   
                     </div>
                 </div>
                 <div className="rounded-md p-5 border border-gray-400 flex-1 h-full">

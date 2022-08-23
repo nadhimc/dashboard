@@ -25,7 +25,7 @@ const GamasurfRegister = ()=>{
     const [angkatan, setAngkatan] = useState("")
     const [region, setregion] = useState("")
     const [phone, setphone] = useState("")
-
+    const [ide, setIde] = useState("")
 
     // Form Page 2
     const [motivasi, setmotivasi] = useState("")
@@ -40,15 +40,15 @@ const GamasurfRegister = ()=>{
     // const [twibbonVal, setTwibbonVal] = useState("")
     // const [twibbonErr, setTwibbonErr] = useState("")
     // let twibbon = createRef();
-    const [orisinalVal, setOrisinalVal] = useState("")
-    const [orisinalErr, setOrisinalErr] = useState("")
-    let orisinal = createRef();
+    // const [orisinalVal, setOrisinalVal] = useState("")
+    // const [orisinalErr, setOrisinalErr] = useState("")
+    // let orisinal = createRef();
     const [ktmVal, setKtmVal] = useState("")
     const [ktmErr, setKtmErr] = useState("")
     let ktm = createRef();
-    const [ideVal, setIdeVal] = useState("")
-    const [ideErr, setIdeErr] = useState("")
-    let ide = createRef();
+    // const [ideVal, setIdeVal] = useState("")
+    // const [ideErr, setIdeErr] = useState("")
+    // let ide = createRef();
 
     // useEffect(()=>{
     //     if(twibbon.current){
@@ -68,23 +68,23 @@ const GamasurfRegister = ()=>{
     //     }
     // },[twibbon,twibbonVal])
 
-    useEffect(()=>{
-        if(orisinal.current){
-            if(orisinal.current.files.length !== 0){
-                if(orisinal.current.files[0].type==="application/pdf"){
-                    if(orisinal.current.files[0].size/1024/1024 <=3){
-                        setOrisinalErr("")
-                    }else{
-                        setOrisinalErr("Maksimum ukuran file adalah 3Mb")
-                    }
-                }else{
-                    setOrisinalErr("Ekstensi yang didukung adalah PDF")
-                }
-            }else{
-                setOrisinalErr("")
-            }
-        }
-    },[orisinal,orisinalVal])
+    // useEffect(()=>{
+    //     if(orisinal.current){
+    //         if(orisinal.current.files.length !== 0){
+    //             if(orisinal.current.files[0].type==="application/pdf"){
+    //                 if(orisinal.current.files[0].size/1024/1024 <=3){
+    //                     setOrisinalErr("")
+    //                 }else{
+    //                     setOrisinalErr("Maksimum ukuran file adalah 3Mb")
+    //                 }
+    //             }else{
+    //                 setOrisinalErr("Ekstensi yang didukung adalah PDF")
+    //             }
+    //         }else{
+    //             setOrisinalErr("")
+    //         }
+    //     }
+    // },[orisinal,orisinalVal])
 
     useEffect(()=>{
         if(ktm.current){
@@ -104,23 +104,23 @@ const GamasurfRegister = ()=>{
         }
     },[ktm,ktmVal])
 
-    useEffect(()=>{
-        if(ide.current){
-            if(ide.current.files.length !== 0){
-                if(ide.current.files[0].type==="application/pdf"){
-                    if(ide.current.files[0].size/1024/1024 <= 5){
-                        setIdeErr("")
-                    }else{
-                        setIdeErr("Maksimum ukuran file adalah 5Mb")
-                    }
-                }else{
-                    setIdeErr("Ekstensi yang didukung adalah PDF")
-                }
-            }else{
-                setIdeErr("")
-            }
-        }
-    },[ide,ideVal])
+    // useEffect(()=>{
+    //     if(ide.current){
+    //         if(ide.current.files.length !== 0){
+    //             if(ide.current.files[0].type==="application/pdf"){
+    //                 if(ide.current.files[0].size/1024/1024 <= 5){
+    //                     setIdeErr("")
+    //                 }else{
+    //                     setIdeErr("Maksimum ukuran file adalah 5Mb")
+    //                 }
+    //             }else{
+    //                 setIdeErr("Ekstensi yang didukung adalah PDF")
+    //             }
+    //         }else{
+    //             setIdeErr("")
+    //         }
+    //     }
+    // },[ide,ideVal])
 
     const cekRegistered = ()=>{
         fetch(`${process.env.REACT_APP_APIURL}/users/${localStorage.getItem("id")}/isregistered`,{
@@ -175,12 +175,12 @@ const GamasurfRegister = ()=>{
         data.append("komitmen","iya")
         data.append("info",dapatinfo)
         data.append('angkatan', angkatan)
-        
+        data.append('ide', ide)
         data.append("software", (software === true) ? 'iya' : 'tidak')
         // data.append('twibbon',twibbon.current.files[0])
         data.append('ktm',ktm.current.files[0])
-        data.append('orisinalitas',orisinal.current.files[0])
-        data.append('ide',ide.current.files[0])
+        // data.append('orisinalitas',orisinal.current.files[0])
+        // data.append('ide',ide.current.files[0])
 
         fetch(`${process.env.REACT_APP_APIURL}/users/${localStorage.getItem("id")}/gamasurf`,{
             method:"POST",
@@ -245,23 +245,21 @@ const GamasurfRegister = ()=>{
                         && dapatinfo !== ""        // dapatinfo
                     ){
                         // Lolos Form 2
-                        console.log(orisinal.current.files.length)
+                        
                         // Cek FOrm 3
                         if(
-                            ( orisinal.current.files.length !== 0
-                            && ktm.current.files.length !== 0
-                            && ide.current.files.length !== 0 )
+                            (  ktm.current.files.length !== 0 )
                         ){
                             if(
                                 // (twibbon.current.files[0].type==="image/jpeg" || twibbon.current.files[0].type==="image/jpg" || twibbon.current.files[0].type==="image/png")     // twibbon
-                                (orisinal.current.files[0].type==="application/pdf")        // orisinal
-                                && (ktm.current.files[0].type==="image/jpeg" || ktm.current.files[0].type==="image/jpg" || ktm.current.files[0].type==="image/png")         // ktm
-                                && (ide.current.files[0].type==="application/pdf")        // ide
+                                // (orisinal.current.files[0].type==="application/pdf")        // orisinal
+                                 (ktm.current.files[0].type==="image/jpeg" || ktm.current.files[0].type==="image/jpg" || ktm.current.files[0].type==="image/png")         // ktm
+                                // && (ide.current.files[0].type==="application/pdf")        // ide
                                 // filesize
                                 // && twibbon.current.files[0].size/1024 <= 512
-                                && orisinal.current.files[0].size/1024/1024 <=3
+                                // && orisinal.current.files[0].size/1024/1024 <=3
                                 && ktm.current.files[0].size/1024 <= 512
-                                && ide.current.files[0].size/1024/1024 <=5
+                                // && ide.current.files[0].size/1024/1024 <=5
                             ){
                                 console.log("Lolos semua")
                                 setIsUploading(true)
@@ -492,7 +490,7 @@ const GamasurfRegister = ()=>{
                                                 {twibbonErr}
                                             </small>
                                         </div> */}
-                                        <div className="relative w-full mb-3">
+                                        {/* <div className="relative w-full mb-3">
                                             <label style={{color:"rgb(71,85,105)"}} className="block uppercase text-xs font-bold mb-2">
                                                 Surat Pernyataan Orisinalitas (pdf, max.3 MB)
                                             </label>
@@ -504,7 +502,7 @@ const GamasurfRegister = ()=>{
                                             <small style={{color:"rgb(71,85,105)"}} className={orisinalErr===""?"hidden":"text-sm font-semibold text-blueGray-600"}>
                                                 {orisinalErr}
                                             </small>
-                                        </div>
+                                        </div> */}
                                         <div className="relative w-full mb-3">
                                             <label style={{color:"rgb(71,85,105)"}} className="block uppercase text-xs font-bold mb-2">
                                                 KTM/Surat Keterangan Pengganti KTM/Surat Keterangan Aktif (jpg/jpeg/png)
@@ -520,7 +518,13 @@ const GamasurfRegister = ()=>{
                                         </div>
                                         <div className="relative w-full mb-3">
                                             <label style={{color:"rgb(71,85,105)"}} className="block uppercase text-xs font-bold mb-2">
-                                                Ide Penelitian (pdf, max.5 MB)
+                                                Judul Ide Penelitian
+                                            </label>
+                                            <textarea onChange={(e)=>setIde(e.target.value)} value={ide} style={{color:"rgb(71,85,105)"}} type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Judul Ide Penelitian" />
+                                        </div>
+                                        {/* <div className="relative w-full mb-3">
+                                            <label style={{color:"rgb(71,85,105)"}} className="block uppercase text-xs font-bold mb-2">
+                                                Judul Ide Penelitian (pdf, max.5 MB)
                                             </label>
                                             <div className="flex items-center relative">
                                                 <input accept=".pdf" ref={ide} onChange={()=>{ide.current.files[0]?setIdeVal(ide.current.files[0].name):setIdeVal("")}} style={{color:"rgb(71,85,105)"}} type="file" className="w-full h-full absolute cursor-pointer opacity-0 inset-0" placeholder="Nama Lengkap" />
@@ -530,7 +534,7 @@ const GamasurfRegister = ()=>{
                                             <small style={{color:"rgb(71,85,105)"}} className={ideErr===""?"hidden":"text-sm font-semibold text-blueGray-600"}>
                                                 {ideErr}
                                             </small>
-                                        </div>
+                                        </div> */}
                                     </div>
 
 

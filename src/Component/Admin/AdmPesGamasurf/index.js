@@ -126,10 +126,10 @@ const AdmPesGamasurf = ()=>{
                     <ExcelColumn label="Email" value="email"/>
                     <ExcelColumn label="No Wa" value="no_wa"/>
                     <ExcelColumn label="Ide"
-                        value={(col) => 'https://sensation.smartsoft.co.id/sensation/storage/app/peserta/ide/' + col.ide}
+                        value={(col) => col.ide}
                     />
                     <ExcelColumn label="Orisinalitas"
-                        value={(col) => 'https://sensation.smartsoft.co.id/sensation/storage/app/peserta/orisinalitas/' + col.orisinalitas}
+                        value={(col) => col.orisinalitas}
                     />
                     <ExcelColumn label="Twibbon"
                         value={(col) => 'https://sensation.smartsoft.co.id/sensation/storage/app/peserta/twibbon/' + col.twibbon}
@@ -225,21 +225,19 @@ const AdmPesGamasurf = ()=>{
                                     </td>
                                 </tr>
                                 <tr className="border-b border-gray-200 hover:bg-gray-100">
-                                    <td className="py-3 px-6">File ide</td>
+                                    <td className="py-3 px-6">Judul Ide Penelitian</td>
                                     <td className="py-3 px-6">
-                                        <a className="hover:text-blue-400" rel="noopener noreferrer" target="_blank" href={`https://sensation.smartsoft.co.id/sensation/storage/app/peserta/ide/`+modalData.ide}>
-                                            Klik disini
-                                        </a>
+                                        {modalData.ide}
                                     </td>
                                 </tr>
-                                <tr className="border-b border-gray-200 hover:bg-gray-100">
-                                    <td className="py-3 px-6">File orisinalitas</td>
+                                {/* <tr className="border-b border-gray-200 hover:bg-gray-100">
+                                    <td className="py-3 px-6">Orisinalitas</td>
                                     <td className="py-3 px-6">
                                         <a className="hover:text-blue-400" rel="noopener noreferrer" target="_blank" href={`https://sensation.smartsoft.co.id/sensation/storage/app/peserta/orisinalitas/`+modalData.orisinalitas}>
                                             Klik disini
                                         </a>
                                     </td>
-                                </tr>
+                                </tr> */}
                             </tbody>
                         </table>
                     </div>
