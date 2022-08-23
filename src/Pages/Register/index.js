@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { Redirect, Link } from "react-router-dom"
 import validator from 'validator';
-import logo from './../../Images/logo.png'
+import logo from './../../Images/sensation2022.png'
 
 const Register = ()=>{
 

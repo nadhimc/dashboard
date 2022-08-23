@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState, createRef, useEffect } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import validator from 'validator';
-import Nasec from "../../Images/nasec.svg"
+import Nasec from "../../Images/nasec2022.png"
 
 
 const NasecRegister = ()=>{
@@ -25,30 +25,30 @@ const NasecRegister = ()=>{
     const [firstKelas, setFirstKelas] = useState("")
     const [firstEmail, setFirstEmail] = useState("")
     const [firstNomor, setFirstNomor] = useState("")
-    const [firstTwibbonVal, setFirstTwibbonVal] = useState("")
-    const [firstTwibbonErr, setFirstTwibbonErr] = useState("")
-    let firstTwibbon = createRef();
+    // const [firstTwibbonVal, setFirstTwibbonVal] = useState("")
+    // const [firstTwibbonErr, setFirstTwibbonErr] = useState("")
+    // let firstTwibbon = createRef();
     const [firstKtmVal, setFirstKtmVal] = useState("")
     const [firstKtmErr, setFirstKtmErr] = useState("")
     let firstKtm = createRef();
 
-    useEffect(()=>{
-        if(firstTwibbon.current){
-            if(firstTwibbon.current.files.length !== 0){
-                if(firstTwibbon.current.files[0].type==="image/jpeg" || firstTwibbon.current.files[0].type==="image/jpg" || firstTwibbon.current.files[0].type==="image/png"){
-                    if(firstTwibbon.current.files[0].size/1024/1024 <= 2){
-                        setFirstTwibbonErr("")
-                    }else{
-                        setFirstTwibbonErr("Maksimum ukuran file adalah 2 Mb")
-                    }
-                }else{
-                    setFirstTwibbonErr("Ekstensi yang didukung adalah jpeg, jpg, dan png")
-                }
-            }else{
-                setFirstTwibbonErr("")
-            }
-        }
-    },[firstTwibbon,firstTwibbonVal])
+    // useEffect(()=>{
+    //     if(firstTwibbon.current){
+    //         if(firstTwibbon.current.files.length !== 0){
+    //             if(firstTwibbon.current.files[0].type==="image/jpeg" || firstTwibbon.current.files[0].type==="image/jpg" || firstTwibbon.current.files[0].type==="image/png"){
+    //                 if(firstTwibbon.current.files[0].size/1024/1024 <= 2){
+    //                     setFirstTwibbonErr("")
+    //                 }else{
+    //                     setFirstTwibbonErr("Maksimum ukuran file adalah 2 Mb")
+    //                 }
+    //             }else{
+    //                 setFirstTwibbonErr("Ekstensi yang didukung adalah jpeg, jpg, dan png")
+    //             }
+    //         }else{
+    //             setFirstTwibbonErr("")
+    //         }
+    //     }
+    // },[firstTwibbon,firstTwibbonVal])
 
     useEffect(()=>{
         if(firstKtm.current){
@@ -75,30 +75,30 @@ const NasecRegister = ()=>{
     const [secondKelas, setSecondKelas] = useState("")
     const [secondEmail, setSecondEmail] = useState("")
     const [secondNomor, setSecondNomor] = useState("")
-    const [secondTwibbonVal, setSecondTwibbonVal] = useState("")
-    const [secondTwibbonErr, setSecondTwibbonErr] = useState("")
-    let secondTwibbon = createRef();
+    // const [secondTwibbonVal, setSecondTwibbonVal] = useState("")
+    // const [secondTwibbonErr, setSecondTwibbonErr] = useState("")
+    // let secondTwibbon = createRef();
     const [secondKtmVal, setSecondKtmVal] = useState("")
     const [secondKtmErr, setSecondKtmErr] = useState("")
     let secondKtm = createRef();
 
-    useEffect(()=>{
-        if(secondTwibbon.current){
-            if(secondTwibbon.current.files.length !== 0){
-                if(secondTwibbon.current.files[0].type==="image/jpeg" || secondTwibbon.current.files[0].type==="image/jpg" || secondTwibbon.current.files[0].type==="image/png"){
-                    if(secondTwibbon.current.files[0].size/1024/1024 <= 2){
-                        setSecondTwibbonErr("")
-                    }else{
-                        setSecondTwibbonErr("Maksimum ukuran file adalah 2 Mb")
-                    }
-                }else{
-                    setSecondTwibbonErr("Ekstensi yang didukung adalah jpeg, jpg, dan png")
-                }
-            }else{
-                setSecondTwibbonErr("")
-            }
-        }
-    },[secondTwibbon,secondTwibbonVal])
+    // useEffect(()=>{
+    //     if(secondTwibbon.current){
+    //         if(secondTwibbon.current.files.length !== 0){
+    //             if(secondTwibbon.current.files[0].type==="image/jpeg" || secondTwibbon.current.files[0].type==="image/jpg" || secondTwibbon.current.files[0].type==="image/png"){
+    //                 if(secondTwibbon.current.files[0].size/1024/1024 <= 2){
+    //                     setSecondTwibbonErr("")
+    //                 }else{
+    //                     setSecondTwibbonErr("Maksimum ukuran file adalah 2 Mb")
+    //                 }
+    //             }else{
+    //                 setSecondTwibbonErr("Ekstensi yang didukung adalah jpeg, jpg, dan png")
+    //             }
+    //         }else{
+    //             setSecondTwibbonErr("")
+    //         }
+    //     }
+    // },[secondTwibbon,secondTwibbonVal])
 
     useEffect(()=>{
         if(secondKtm.current){
@@ -125,30 +125,30 @@ const NasecRegister = ()=>{
     const [thirdKelas, setThirdKelas] = useState("")
     const [thirdEmail, setThirdEmail] = useState("")
     const [thirdNomor, setThirdNomor] = useState("")
-    const [thirdTwibbonVal, setThirdTwibbonVal] = useState("")
-    const [thirdTwibbonErr, setThirdTwibbonErr] = useState("")
-    let thirdTwibbon = createRef();
+    // const [thirdTwibbonVal, setThirdTwibbonVal] = useState("")
+    // const [thirdTwibbonErr, setThirdTwibbonErr] = useState("")
+    // let thirdTwibbon = createRef();
     const [thirdKtmVal, setThirdKtmVal] = useState("")
     const [thirdKtmErr, setThirdKtmErr] = useState("")
     let thirdKtm = createRef();
 
-    useEffect(()=>{
-        if(thirdTwibbon.current){
-            if(thirdTwibbon.current.files.length !== 0){
-                if(thirdTwibbon.current.files[0].type==="image/jpeg" || thirdTwibbon.current.files[0].type==="image/jpg" || thirdTwibbon.current.files[0].type==="image/png"){
-                    if(thirdTwibbon.current.files[0].size/1024/1024 <= 2){
-                        setThirdTwibbonErr("")
-                    }else{
-                        setThirdTwibbonErr("Maksimum ukuran file adalah 2 Mb")
-                    }
-                }else{
-                    setThirdTwibbonErr("Ekstensi yang didukung adalah jpeg,jpg, dan png")
-                }
-            }else{
-                setThirdTwibbonErr("")
-            }
-        }
-    },[thirdTwibbon,thirdTwibbonVal])
+    // useEffect(()=>{
+    //     if(thirdTwibbon.current){
+    //         if(thirdTwibbon.current.files.length !== 0){
+    //             if(thirdTwibbon.current.files[0].type==="image/jpeg" || thirdTwibbon.current.files[0].type==="image/jpg" || thirdTwibbon.current.files[0].type==="image/png"){
+    //                 if(thirdTwibbon.current.files[0].size/1024/1024 <= 2){
+    //                     setThirdTwibbonErr("")
+    //                 }else{
+    //                     setThirdTwibbonErr("Maksimum ukuran file adalah 2 Mb")
+    //                 }
+    //             }else{
+    //                 setThirdTwibbonErr("Ekstensi yang didukung adalah jpeg,jpg, dan png")
+    //             }
+    //         }else{
+    //             setThirdTwibbonErr("")
+    //         }
+    //     }
+    // },[thirdTwibbon,thirdTwibbonVal])
 
     useEffect(()=>{
         if(thirdKtm.current){
@@ -218,7 +218,7 @@ const NasecRegister = ()=>{
         data.append("email_1",firstEmail)
         data.append("no_1",firstNomor)
         data.append("kartu_pelajar_1",firstKtm.current.files[0])
-        data.append("twibbon_1",firstTwibbon.current.files[0])
+        // data.append("twibbon_1",firstTwibbon.current.files[0])
         data.append("is_leader_1",firstLeader?"1":"0")
 
         // form 3
@@ -228,7 +228,7 @@ const NasecRegister = ()=>{
         data.append("email_2",secondEmail)
         data.append("no_2",secondNomor)
         data.append("kartu_pelajar_2",secondKtm.current.files[0])
-        data.append("twibbon_2",secondTwibbon.current.files[0])
+        // data.append("twibbon_2",secondTwibbon.current.files[0])
         data.append("is_leader_2",secondLeader?"1":"0")
 
         // form 4
@@ -238,7 +238,7 @@ const NasecRegister = ()=>{
         data.append("email_3",thirdEmail)
         data.append("no_3",thirdNomor)
         data.append("kartu_pelajar_3",thirdKtm.current.files[0])
-        data.append("twibbon_3",thirdTwibbon.current.files[0])
+        // data.append("twibbon_3",thirdTwibbon.current.files[0])
         data.append("is_leader_3",thirdLeader?"1":"0")
 
         // console.log(data.get("twibbon_1"))
@@ -288,14 +288,15 @@ const NasecRegister = ()=>{
                 && firstKelas !== ""
                 && firstEmail !== "" && validator.isEmail(firstEmail)
                 && firstNomor !== "" && (validator.isMobilePhone(firstNomor,"id-ID") || firstNomor === "-")
-                && firstTwibbon.current.files.length > 0
+                // && firstTwibbon.current.files.length > 0
                 && firstKtm.current.files.length > 0
             ){
                 // Lolos setengah Page 2
                 if(
-                    (firstTwibbon.current.files[0].type==="image/jpeg" || firstTwibbon.current.files[0].type==="image/jpg" || firstTwibbon.current.files[0].type==="image/png")
-                    &&(bukti.current.files[0].type==="image/jpeg" || bukti.current.files[0].type==="image/jpg" || bukti.current.files[0].type==="image/png")
-                    && firstTwibbon.current.files[0].size/1024/1024 < 2
+                    // (firstTwibbon.current.files[0].type==="image/jpeg" || firstTwibbon.current.files[0].type==="image/jpg" || firstTwibbon.current.files[0].type==="image/png")
+                    // &&
+                    (bukti.current.files[0].type==="image/jpeg" || bukti.current.files[0].type==="image/jpg" || bukti.current.files[0].type==="image/png")
+                    // && firstTwibbon.current.files[0].size/1024/1024 < 2
                     && bukti.current.files[0].size/1024/1024 < 2
                     && (firstKtm.current.files[0].type==="image/jpeg" || firstKtm.current.files[0].type==="image/jpg" || firstKtm.current.files[0].type==="image/png")
                     && firstKtm.current.files[0].size/1024/1024 < 2
@@ -307,14 +308,15 @@ const NasecRegister = ()=>{
                         && secondKelas !== ""
                         && secondEmail !== "" && validator.isEmail(secondEmail)
                         && secondNomor !== "" && (validator.isMobilePhone(secondNomor,"id-ID") || secondNomor==="-" )
-                        && secondTwibbon.current.files.length > 0
+                        // && secondTwibbon.current.files.length > 0
                         && secondKtm.current.files.length > 0
                     ){
                         // Lolos setengah Page 3
                         if(
-                            (secondTwibbon.current.files[0].type==="image/jpeg" || secondTwibbon.current.files[0].type==="image/jpg" || secondTwibbon.current.files[0].type==="image/png")
-                            && secondTwibbon.current.files[0].size/1024/1024 < 2
-                            && (secondKtm.current.files[0].type==="image/jpeg" || secondKtm.current.files[0].type==="image/jpg" || secondKtm.current.files[0].type==="image/png")
+                            // (secondTwibbon.current.files[0].type==="image/jpeg" || secondTwibbon.current.files[0].type==="image/jpg" || secondTwibbon.current.files[0].type==="image/png")
+                            // && secondTwibbon.current.files[0].size/1024/1024 < 2
+                            // && 
+                            (secondKtm.current.files[0].type==="image/jpeg" || secondKtm.current.files[0].type==="image/jpg" || secondKtm.current.files[0].type==="image/png")
                             && firstKtm.current.files[0].size/1024/1024 < 2
                         ){
                             console.log("lolos 3")
@@ -324,14 +326,14 @@ const NasecRegister = ()=>{
                                 && thirdKelas !== ""
                                 && thirdEmail !== "" && validator.isEmail(thirdEmail)
                                 && thirdNomor !== "" && (validator.isMobilePhone(thirdNomor,"id-ID") || thirdNomor==="-")
-                                && thirdTwibbon.current.files.length > 0
+                                // && thirdTwibbon.current.files.length > 0
                                 && thirdKtm.current.files.length > 0
                             ){
                                 // Lolos setengah Page 4
                                 if(
-                                    (thirdTwibbon.current.files[0].type==="image/jpeg" || thirdTwibbon.current.files[0].type==="image/jpg" || thirdTwibbon.current.files[0].type==="image/png")
-                                    && thirdTwibbon.current.files[0].size/1024/1024 < 2
-                                    && (thirdKtm.current.files[0].type==="image/jpeg" || thirdKtm.current.files[0].type==="image/jpg" || thirdKtm.current.files[0].type==="image/png")
+                                    // (thirdTwibbon.current.files[0].type==="image/jpeg" || thirdTwibbon.current.files[0].type==="image/jpg" || thirdTwibbon.current.files[0].type==="image/png")
+                                    // && thirdTwibbon.current.files[0].size/1024/1024 < 2
+                                    (thirdKtm.current.files[0].type==="image/jpeg" || thirdKtm.current.files[0].type==="image/jpg" || thirdKtm.current.files[0].type==="image/png")
                                     && thirdKtm.current.files[0].size/1024/1024 < 2
                                 ){
                                     // Lolos Page 4
@@ -431,7 +433,9 @@ const NasecRegister = ()=>{
                     <div className="w-full lg:w-4/12 px-4">
                         <div style={{backgroundColor:"#e2e8f0"}} className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg border-0">
                             <div className="flex justify-center items-center py-4">
-                                <img alt="Nasec" src={Nasec} />
+                                <img alt="Nasec" src={Nasec}
+                                width={150}
+                                />
                             </div>
                             <div className="flex-auto px-4 lg:px-10 pb-10">             
                                 <div className={isError?"py-2 w-full my-3 bg-red-500 text-white text-center rounded-md":"hidden"}>
@@ -590,7 +594,7 @@ const NasecRegister = ()=>{
                                             "text-sm font-semibold text-blueGray-600"
                                             }>Diisi dengan no HP</small>
                                             </div>
-                                            <div className="relative w-full mb-3">
+                                            {/* <div className="relative w-full mb-3">
                                                 <label style={{color:"rgb(71,85,105)"}} className="block uppercase text-xs font-bold mb-2">
                                                     Screenshot Twibbon (tag sensation dan 3 teman) (jpg/jpeg/png)
                                                 </label>
@@ -602,7 +606,7 @@ const NasecRegister = ()=>{
                                                 <small style={{color:"rgb(71,85,105)"}} className={firstTwibbonErr===""?"hidden":"text-sm font-semibold text-blueGray-600"}>
                                                     {firstTwibbonErr}
                                                 </small>
-                                            </div>
+                                            </div> */}
                                             <div className="relative w-full mb-3">
                                                 <label style={{color:"rgb(71,85,105)"}} className="block uppercase text-xs font-bold mb-2">
                                                     KTM/Surat Keterangan Pengganti KTM/Surat Keterangan Aktif (jpg/jpeg/png)
@@ -689,7 +693,7 @@ const NasecRegister = ()=>{
                                             "text-sm font-semibold text-blueGray-600"
                                             }>Diisi dengan no HP</small>
                                             </div>
-                                            <div className="relative w-full mb-3">
+                                            {/* <div className="relative w-full mb-3">
                                                 <label style={{color:"rgb(71,85,105)"}} className="block uppercase text-xs font-bold mb-2">
                                                     Screenshot Twibbon (tag sensation dan 3 teman) (jpg/jpeg/png)
                                                 </label>
@@ -701,7 +705,7 @@ const NasecRegister = ()=>{
                                                 <small style={{color:"rgb(71,85,105)"}} className={secondTwibbonErr===""?"hidden":"text-sm font-semibold text-blueGray-600"}>
                                                     {secondTwibbonErr}
                                                 </small>
-                                            </div>
+                                            </div> */}
                                             <div className="relative w-full mb-3">
                                                 <label style={{color:"rgb(71,85,105)"}} className="block uppercase text-xs font-bold mb-2">
                                                     KTM/Surat Keterangan Pengganti KTM/Surat Keterangan Aktif (jpg/jpeg/png)
@@ -788,7 +792,7 @@ const NasecRegister = ()=>{
                                             "text-sm font-semibold text-blueGray-600"
                                             }>Diisi dengan no HP</small>
                                             </div>
-                                            <div className="relative w-full mb-3">
+                                            {/* <div className="relative w-full mb-3">
                                                 <label style={{color:"rgb(71,85,105)"}} className="block uppercase text-xs font-bold mb-2">
                                                     Screenshot Twibbon (tag sensation dan 3 teman) (jpg/jpeg/png)
                                                 </label>
@@ -800,7 +804,7 @@ const NasecRegister = ()=>{
                                                 <small style={{color:"rgb(71,85,105)"}} className={thirdTwibbonErr===""?"hidden":"text-sm font-semibold text-blueGray-600"}>
                                                     {thirdTwibbonErr}
                                                 </small>
-                                            </div>
+                                            </div> */}
                                             <div className="relative w-full mb-3">
                                                 <label style={{color:"rgb(71,85,105)"}} className="block uppercase text-xs font-bold mb-2">
                                                     KTM/Surat Keterangan Pengganti KTM/Surat Keterangan Aktif (jpg/jpeg/png)

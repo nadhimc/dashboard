@@ -2,7 +2,7 @@ import { faBars, faUser, faCalendar, faHome, faIdCard, faSignOutAlt, faTimes } f
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { Link } from "react-router-dom"
 import React, { useState } from "react"
-import Logo from "../../../Images/logo.png"
+import Logo from "../../../Images/sensation2022.png"
 import "./index.css"
 
 const Header = ()=>{

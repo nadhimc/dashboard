@@ -1,5 +1,5 @@
 import { createRef, useState, useEffect } from "react"
-import Gamasurf from "../../Images/gamasurf.svg"
+import Gamasurf from "../../Images/gamasurf2022.png"
 import validator from 'validator';
 import { Link, Redirect } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -37,9 +37,9 @@ const GamasurfRegister = ()=>{
 
 
     // Form Page 3
-    const [twibbonVal, setTwibbonVal] = useState("")
-    const [twibbonErr, setTwibbonErr] = useState("")
-    let twibbon = createRef();
+    // const [twibbonVal, setTwibbonVal] = useState("")
+    // const [twibbonErr, setTwibbonErr] = useState("")
+    // let twibbon = createRef();
     const [orisinalVal, setOrisinalVal] = useState("")
     const [orisinalErr, setOrisinalErr] = useState("")
     let orisinal = createRef();
@@ -50,23 +50,23 @@ const GamasurfRegister = ()=>{
     const [ideErr, setIdeErr] = useState("")
     let ide = createRef();
 
-    useEffect(()=>{
-        if(twibbon.current){
-            if(twibbon.current.files.length !== 0){
-                if(twibbon.current.files[0].type==="image/jpeg" || twibbon.current.files[0].type==="image/jpg" || twibbon.current.files[0].type==="image/png"){
-                    if(twibbon.current.files[0].size/1024 <= 512){
-                        setTwibbonErr("")
-                    }else{
-                        setTwibbonErr("Maksimum ukuran file adalah 512kb")
-                    }
-                }else{
-                    setTwibbonErr("Ekstensi yang didukung adalah jpeg,jpg, dan png")
-                }
-            }else{
-                setTwibbonErr("")
-            }
-        }
-    },[twibbon,twibbonVal])
+    // useEffect(()=>{
+    //     if(twibbon.current){
+    //         if(twibbon.current.files.length !== 0){
+    //             if(twibbon.current.files[0].type==="image/jpeg" || twibbon.current.files[0].type==="image/jpg" || twibbon.current.files[0].type==="image/png"){
+    //                 if(twibbon.current.files[0].size/1024 <= 512){
+    //                     setTwibbonErr("")
+    //                 }else{
+    //                     setTwibbonErr("Maksimum ukuran file adalah 512kb")
+    //                 }
+    //             }else{
+    //                 setTwibbonErr("Ekstensi yang didukung adalah jpeg,jpg, dan png")
+    //             }
+    //         }else{
+    //             setTwibbonErr("")
+    //         }
+    //     }
+    // },[twibbon,twibbonVal])
 
     useEffect(()=>{
         if(orisinal.current){
@@ -177,7 +177,7 @@ const GamasurfRegister = ()=>{
         data.append('angkatan', angkatan)
         
         data.append("software", (software === true) ? 'iya' : 'tidak')
-        data.append('twibbon',twibbon.current.files[0])
+        // data.append('twibbon',twibbon.current.files[0])
         data.append('ktm',ktm.current.files[0])
         data.append('orisinalitas',orisinal.current.files[0])
         data.append('ide',ide.current.files[0])
@@ -248,18 +248,17 @@ const GamasurfRegister = ()=>{
                         console.log(orisinal.current.files.length)
                         // Cek FOrm 3
                         if(
-                            (twibbon.current.files.length !== 0
-                            && orisinal.current.files.length !== 0
+                            ( orisinal.current.files.length !== 0
                             && ktm.current.files.length !== 0
                             && ide.current.files.length !== 0 )
                         ){
                             if(
-                                (twibbon.current.files[0].type==="image/jpeg" || twibbon.current.files[0].type==="image/jpg" || twibbon.current.files[0].type==="image/png")     // twibbon
-                                && (orisinal.current.files[0].type==="application/pdf")        // orisinal
+                                // (twibbon.current.files[0].type==="image/jpeg" || twibbon.current.files[0].type==="image/jpg" || twibbon.current.files[0].type==="image/png")     // twibbon
+                                (orisinal.current.files[0].type==="application/pdf")        // orisinal
                                 && (ktm.current.files[0].type==="image/jpeg" || ktm.current.files[0].type==="image/jpg" || ktm.current.files[0].type==="image/png")         // ktm
                                 && (ide.current.files[0].type==="application/pdf")        // ide
                                 // filesize
-                                && twibbon.current.files[0].size/1024 <= 512
+                                // && twibbon.current.files[0].size/1024 <= 512
                                 && orisinal.current.files[0].size/1024/1024 <=3
                                 && ktm.current.files[0].size/1024 <= 512
                                 && ide.current.files[0].size/1024/1024 <=5
@@ -338,7 +337,10 @@ const GamasurfRegister = ()=>{
                     <div className="w-full lg:w-4/12 px-4 py-4 md:py-0">
                         <div style={{backgroundColor:"#e2e8f0"}} className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg border-0">
                             <div className="flex justify-center items-center py-4">
-                                <img alt="Gamasurf" src={Gamasurf} />
+                                <img alt="Gamasurf" 
+                                src={Gamasurf}
+                                width={150}
+                                />
                             </div>
                             <div className="flex justify-center items-center mb-4 relative">
                                 <button onClick={()=>{setForm(1)}} className="p-2 bg-green-400 text-white rounded-md">1</button>
@@ -477,7 +479,7 @@ const GamasurfRegister = ()=>{
 
                                     {/* Pertanyaan 3 */}
                                     <div className={form===3?"block":"hidden"}>
-                                        <div className="relative w-full mb-3">
+                                        {/* <div className="relative w-full mb-3">
                                             <label style={{color:"rgb(71,85,105)"}} className="block uppercase text-xs font-bold mb-2">
                                                 Screenshot Twibbon (tag sensation dan 3 teman) (jpg/jpeg/png)
                                             </label>
@@ -489,7 +491,7 @@ const GamasurfRegister = ()=>{
                                             <small style={{color:"rgb(71,85,105)"}} className={twibbonErr===""?"hidden":"text-sm font-semibold text-blueGray-600"}>
                                                 {twibbonErr}
                                             </small>
-                                        </div>
+                                        </div> */}
                                         <div className="relative w-full mb-3">
                                             <label style={{color:"rgb(71,85,105)"}} className="block uppercase text-xs font-bold mb-2">
                                                 Surat Pernyataan Orisinalitas (pdf, max.3 MB)

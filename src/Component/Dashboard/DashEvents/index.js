@@ -1,5 +1,5 @@
-import Nasec from "../../../Images/nasec.svg"
-import Gamasurf from "../../../Images/gamasurf.svg"
+import Nasec from "../../../Images/nasec2022.png"
+import Gamasurf from "../../../Images/gamasurf2022.png"
 import Sent from "../../../Images/sent.svg"
 import { Link } from "react-router-dom"
 

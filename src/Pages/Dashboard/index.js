@@ -2,7 +2,7 @@ import { faBars, faUser, faCalendar, faHome, faIdCard, faSignOutAlt, faTimes } f
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { Link, Redirect, useParams } from "react-router-dom"
 import React, { useEffect, useState } from "react"
-import Logo from "../../Images/logo.png"
+import Logo from "../../Images/sensation2022.png"
 import DashHome from "../../Component/Dashboard/DashHome"
 import DashProfile from "../../Component/Dashboard/DashProfile"
 import DashEvents from "../../Component/Dashboard/DashEvents"

@@ -66,26 +66,26 @@ const DashDaftar = () => {
         "updated_at":"2021-07-26T12:34:50.000000Z"
     })
 
-    const gamasurfUpdateTwibbon = createRef()
-    const [gamasurfUpdateTwibbonVal, setGamasurfUpdateTwibbonVal] = useState("")
-    const [gamasurfUpdateTwibbonErr, setGamasurfUpdateTwibbonErr] = useState("")
-    useEffect(() => {
-        if(gamasurfUpdateTwibbon.current){
-            if(gamasurfUpdateTwibbon.current.files.length !== 0){
-                if(gamasurfUpdateTwibbon.current.files[0].type==="image/jpeg" || gamasurfUpdateTwibbon.current.files[0].type==="image/jpg" || gamasurfUpdateTwibbon.current.files[0].type==="image/png"){
-                    if(gamasurfUpdateTwibbon.current.files[0].size/1024 <= 512){
-                        setGamasurfUpdateTwibbonErr("")
-                    }else{
-                        setGamasurfUpdateTwibbonErr("Maksimum ukuran file adalah 512kb")
-                    }
-                }else{
-                    setGamasurfUpdateTwibbonErr("Ekstensi yang didukung adalah jpeg, jpg, atau png")
-                }
-            }else{
-                setGamasurfUpdateTwibbonErr("")
-            }
-        }
-    }, [gamasurfUpdateTwibbon,gamasurfUpdateTwibbonVal])
+    // const gamasurfUpdateTwibbon = createRef()
+    // const [gamasurfUpdateTwibbonVal, setGamasurfUpdateTwibbonVal] = useState("")
+    // const [gamasurfUpdateTwibbonErr, setGamasurfUpdateTwibbonErr] = useState("")
+    // useEffect(() => {
+    //     if(gamasurfUpdateTwibbon.current){
+    //         if(gamasurfUpdateTwibbon.current.files.length !== 0){
+    //             if(gamasurfUpdateTwibbon.current.files[0].type==="image/jpeg" || gamasurfUpdateTwibbon.current.files[0].type==="image/jpg" || gamasurfUpdateTwibbon.current.files[0].type==="image/png"){
+    //                 if(gamasurfUpdateTwibbon.current.files[0].size/1024 <= 512){
+    //                     setGamasurfUpdateTwibbonErr("")
+    //                 }else{
+    //                     setGamasurfUpdateTwibbonErr("Maksimum ukuran file adalah 512kb")
+    //                 }
+    //             }else{
+    //                 setGamasurfUpdateTwibbonErr("Ekstensi yang didukung adalah jpeg, jpg, atau png")
+    //             }
+    //         }else{
+    //             setGamasurfUpdateTwibbonErr("")
+    //         }
+    //     }
+    // }, [gamasurfUpdateTwibbon,gamasurfUpdateTwibbonVal])
 
     const gamasurfUpdateKtm = createRef()
     const [gamasurfUpdateKtmVal, setGamasurfUpdateKtmVal] = useState("")
@@ -207,19 +207,19 @@ const DashDaftar = () => {
         }else{
             error = true
         }
-        if(gamasurfUpdateTwibbon.current){
-            if(gamasurfUpdateTwibbon.current.files.length !== 0){
-                if(gamasurfUpdateTwibbon.current.files[0].type==="image/jpeg" || gamasurfUpdateTwibbon.current.files[0].type==="image/jpg" || gamasurfUpdateTwibbon.current.files[0].type==="image/png"){
-                    if(gamasurfUpdateTwibbon.current.files[0].size/1024 <= 512){
-                        data.append("twibbon",gamasurfUpdateTwibbon.current.files[0])
-                    }else{
-                        error = true
-                    }
-                }else{
-                    error = true
-                }
-            }
-        }
+        // if(gamasurfUpdateTwibbon.current){
+        //     if(gamasurfUpdateTwibbon.current.files.length !== 0){
+        //         if(gamasurfUpdateTwibbon.current.files[0].type==="image/jpeg" || gamasurfUpdateTwibbon.current.files[0].type==="image/jpg" || gamasurfUpdateTwibbon.current.files[0].type==="image/png"){
+        //             if(gamasurfUpdateTwibbon.current.files[0].size/1024 <= 512){
+        //                 data.append("twibbon",gamasurfUpdateTwibbon.current.files[0])
+        //             }else{
+        //                 error = true
+        //             }
+        //         }else{
+        //             error = true
+        //         }
+        //     }
+        // }
         if(gamasurfUpdateKtm.current){
             if(gamasurfUpdateKtm.current.files.length !== 0){
                 if(gamasurfUpdateKtm.current.files[0].type==="image/jpeg" || gamasurfUpdateKtm.current.files[0].type==="image/jpg" || gamasurfUpdateKtm.current.files[0].type==="image/png"){
@@ -263,9 +263,9 @@ const DashDaftar = () => {
 
         if(!error){
             setUploading(true)
-            setGamasurfUpdateTwibbonVal("")
-            gamasurfUpdateTwibbon.current = null
-            setGamasurfUpdateTwibbonErr("")
+            // setGamasurfUpdateTwibbonVal("")
+            // gamasurfUpdateTwibbon.current = null
+            // setGamasurfUpdateTwibbonErr("")
             setGamasurfUpdateKtmVal("")
             gamasurfUpdateKtm.current = null
             setGamasurfUpdateKtmErr("")
@@ -305,71 +305,71 @@ const DashDaftar = () => {
     let nasecUpdateSecondForm = new FormData()
     let nasecUpdateThirdForm = new FormData()
 
-    const nasecUpdateFirstTwibbon = createRef()
-    const [nasecUpdateFirstTwibbonVal, setNasecUpdateFirstTwibbonVal] = useState("")
-    const [nasecUpdateFirstTwibbonErr, setNasecUpdateFirstTwibbonErr] = useState("")
+    // const nasecUpdateFirstTwibbon = createRef()
+    // const [nasecUpdateFirstTwibbonVal, setNasecUpdateFirstTwibbonVal] = useState("")
+    // const [nasecUpdateFirstTwibbonErr, setNasecUpdateFirstTwibbonErr] = useState("")
 
-    useEffect(() => {
-        if(nasecUpdateFirstTwibbon.current){
-            if(nasecUpdateFirstTwibbon.current.files.length !== 0){
-                if(nasecUpdateFirstTwibbon.current.files[0].type==="image/jpeg" || nasecUpdateFirstTwibbon.current.files[0].type==="image/jpg" || nasecUpdateFirstTwibbon.current.files[0].type==="image/png"){
-                    if(nasecUpdateFirstTwibbon.current.files[0].size/1024 <= 512){
-                        setNasecUpdateFirstTwibbonErr("")
-                    }else{
-                        setNasecUpdateFirstTwibbonErr("Maksimum ukuran file adalah 512kb")
-                    }
-                }else{
-                    setNasecUpdateFirstTwibbonErr("Ekstensi yang didukung adalah jpeg, jpg, atau png")
-                }
-            }else{
-                setNasecUpdateFirstTwibbonErr("")
-            }
-        }
-    }, [nasecUpdateFirstTwibbon,nasecUpdateFirstTwibbonVal])
+    // useEffect(() => {
+    //     if(nasecUpdateFirstTwibbon.current){
+    //         if(nasecUpdateFirstTwibbon.current.files.length !== 0){
+    //             if(nasecUpdateFirstTwibbon.current.files[0].type==="image/jpeg" || nasecUpdateFirstTwibbon.current.files[0].type==="image/jpg" || nasecUpdateFirstTwibbon.current.files[0].type==="image/png"){
+    //                 if(nasecUpdateFirstTwibbon.current.files[0].size/1024 <= 512){
+    //                     setNasecUpdateFirstTwibbonErr("")
+    //                 }else{
+    //                     setNasecUpdateFirstTwibbonErr("Maksimum ukuran file adalah 512kb")
+    //                 }
+    //             }else{
+    //                 setNasecUpdateFirstTwibbonErr("Ekstensi yang didukung adalah jpeg, jpg, atau png")
+    //             }
+    //         }else{
+    //             setNasecUpdateFirstTwibbonErr("")
+    //         }
+    //     }
+    // }, [nasecUpdateFirstTwibbon,nasecUpdateFirstTwibbonVal])
 
-    const nasecUpdateSecondTwibbon = createRef()
-    const [nasecUpdateSecondTwibbonVal, setNasecUpdateSecondTwibbonVal] = useState("")
-    const [nasecUpdateSecondTwibbonErr, setNasecUpdateSecondTwibbonErr] = useState("")
+    // const nasecUpdateSecondTwibbon = createRef()
+    // const [nasecUpdateSecondTwibbonVal, setNasecUpdateSecondTwibbonVal] = useState("")
+    // const [nasecUpdateSecondTwibbonErr, setNasecUpdateSecondTwibbonErr] = useState("")
 
-    useEffect(() => {
-        if(nasecUpdateSecondTwibbon.current){
-            if(nasecUpdateSecondTwibbon.current.files.length !== 0){
-                if(nasecUpdateSecondTwibbon.current.files[0].type==="image/jpeg" || nasecUpdateSecondTwibbon.current.files[0].type==="image/jpg" || nasecUpdateSecondTwibbon.current.files[0].type==="image/png"){
-                    if(nasecUpdateSecondTwibbon.current.files[0].size/1024 <= 512){
-                        setNasecUpdateSecondTwibbonErr("")
-                    }else{
-                        setNasecUpdateSecondTwibbonErr("Maksimum ukuran file adalah 512kb")
-                    }
-                }else{
-                    setNasecUpdateSecondTwibbonErr("Ekstensi yang didukung adalah jpeg, jpg, atau png")
-                }
-            }else{
-                setNasecUpdateSecondTwibbonErr("")
-            }
-        }
-    }, [nasecUpdateSecondTwibbon,nasecUpdateSecondTwibbonVal])
+    // useEffect(() => {
+    //     if(nasecUpdateSecondTwibbon.current){
+    //         if(nasecUpdateSecondTwibbon.current.files.length !== 0){
+    //             if(nasecUpdateSecondTwibbon.current.files[0].type==="image/jpeg" || nasecUpdateSecondTwibbon.current.files[0].type==="image/jpg" || nasecUpdateSecondTwibbon.current.files[0].type==="image/png"){
+    //                 if(nasecUpdateSecondTwibbon.current.files[0].size/1024 <= 512){
+    //                     setNasecUpdateSecondTwibbonErr("")
+    //                 }else{
+    //                     setNasecUpdateSecondTwibbonErr("Maksimum ukuran file adalah 512kb")
+    //                 }
+    //             }else{
+    //                 setNasecUpdateSecondTwibbonErr("Ekstensi yang didukung adalah jpeg, jpg, atau png")
+    //             }
+    //         }else{
+    //             setNasecUpdateSecondTwibbonErr("")
+    //         }
+    //     }
+    // }, [nasecUpdateSecondTwibbon,nasecUpdateSecondTwibbonVal])
 
-    const nasecUpdateThirdTwibbon = createRef()
-    const [nasecUpdateThirdTwibbonVal, setNasecUpdateThirdTwibbonVal] = useState("")
-    const [nasecUpdateThirdTwibbonErr, setNasecUpdateThirdTwibbonErr] = useState("")
+    // const nasecUpdateThirdTwibbon = createRef()
+    // const [nasecUpdateThirdTwibbonVal, setNasecUpdateThirdTwibbonVal] = useState("")
+    // const [nasecUpdateThirdTwibbonErr, setNasecUpdateThirdTwibbonErr] = useState("")
 
-    useEffect(() => {
-        if(nasecUpdateThirdTwibbon.current){
-            if(nasecUpdateThirdTwibbon.current.files.length !== 0){
-                if(nasecUpdateThirdTwibbon.current.files[0].type==="image/jpeg" || nasecUpdateThirdTwibbon.current.files[0].type==="image/jpg" || nasecUpdateThirdTwibbon.current.files[0].type==="image/png"){
-                    if(nasecUpdateThirdTwibbon.current.files[0].size/1024 <= 512){
-                        setNasecUpdateThirdTwibbonErr("")
-                    }else{
-                        setNasecUpdateThirdTwibbonErr("Maksimum ukuran file adalah 512kb")
-                    }
-                }else{
-                    setNasecUpdateThirdTwibbonErr("Ekstensi yang didukung adalah jpeg, jpg, atau png")
-                }
-            }else{
-                setNasecUpdateThirdTwibbonErr("")
-            }
-        }
-    }, [nasecUpdateThirdTwibbon,nasecUpdateThirdTwibbonVal])
+    // useEffect(() => {
+    //     if(nasecUpdateThirdTwibbon.current){
+    //         if(nasecUpdateThirdTwibbon.current.files.length !== 0){
+    //             if(nasecUpdateThirdTwibbon.current.files[0].type==="image/jpeg" || nasecUpdateThirdTwibbon.current.files[0].type==="image/jpg" || nasecUpdateThirdTwibbon.current.files[0].type==="image/png"){
+    //                 if(nasecUpdateThirdTwibbon.current.files[0].size/1024 <= 512){
+    //                     setNasecUpdateThirdTwibbonErr("")
+    //                 }else{
+    //                     setNasecUpdateThirdTwibbonErr("Maksimum ukuran file adalah 512kb")
+    //                 }
+    //             }else{
+    //                 setNasecUpdateThirdTwibbonErr("Ekstensi yang didukung adalah jpeg, jpg, atau png")
+    //             }
+    //         }else{
+    //             setNasecUpdateThirdTwibbonErr("")
+    //         }
+    //     }
+    // }, [nasecUpdateThirdTwibbon,nasecUpdateThirdTwibbonVal])
 
     const nasecUpdateFirstKtm = createRef()
     const [nasecUpdateFirstKtmVal, setNasecUpdateFirstKtmVal] = useState("")
@@ -441,20 +441,20 @@ const DashDaftar = () => {
 
     const updatingNasec = ()=>{
         let error = false
-        if(nasecUpdateFirstTwibbon.current){
-            if(nasecUpdateFirstTwibbon.current.files.length !== 0){
-                if(nasecUpdateFirstTwibbon.current.files[0].type==="image/jpeg" || nasecUpdateFirstTwibbon.current.files[0].type==="image/jpg" || nasecUpdateFirstTwibbon.current.files[0].type==="image/png"){
-                    if(nasecUpdateFirstTwibbon.current.files[0].size/1024 <= 512){
-                        nasecUpdateFirstForm.append("twibbon",nasecUpdateFirstTwibbon.current.files[0])
-                    }else{
-                        error = true
-                    }
-                }else{
-                    error = true
-                }
-            }
-        }
-        console.log(nasecUpdateFirstForm.get("twibbon"))
+        // if(nasecUpdateFirstTwibbon.current){
+        //     if(nasecUpdateFirstTwibbon.current.files.length !== 0){
+        //         if(nasecUpdateFirstTwibbon.current.files[0].type==="image/jpeg" || nasecUpdateFirstTwibbon.current.files[0].type==="image/jpg" || nasecUpdateFirstTwibbon.current.files[0].type==="image/png"){
+        //             if(nasecUpdateFirstTwibbon.current.files[0].size/1024 <= 512){
+        //                 nasecUpdateFirstForm.append("twibbon",nasecUpdateFirstTwibbon.current.files[0])
+        //             }else{
+        //                 error = true
+        //             }
+        //         }else{
+        //             error = true
+        //         }
+        //     }
+        // }
+        // console.log(nasecUpdateFirstForm.get("twibbon"))
 
         if(nasecUpdateFirstKtm.current){
             if(nasecUpdateFirstKtm.current.files.length !== 0){
@@ -472,19 +472,19 @@ const DashDaftar = () => {
 
 
 
-        if(nasecUpdateSecondTwibbon.current){
-            if(nasecUpdateSecondTwibbon.current.files.length !== 0){
-                if(nasecUpdateSecondTwibbon.current.files[0].type==="image/jpeg" || nasecUpdateSecondTwibbon.current.files[0].type==="image/jpg" || nasecUpdateSecondTwibbon.current.files[0].type==="image/png"){
-                    if(nasecUpdateSecondTwibbon.current.files[0].size/1024 <= 512){
-                        nasecUpdateSecondForm.append("twibbon",nasecUpdateSecondTwibbon.current.files[0])
-                    }else{
-                        error = true
-                    }
-                }else{
-                    error = true
-                }
-            }
-        }
+        // if(nasecUpdateSecondTwibbon.current){
+        //     if(nasecUpdateSecondTwibbon.current.files.length !== 0){
+        //         if(nasecUpdateSecondTwibbon.current.files[0].type==="image/jpeg" || nasecUpdateSecondTwibbon.current.files[0].type==="image/jpg" || nasecUpdateSecondTwibbon.current.files[0].type==="image/png"){
+        //             if(nasecUpdateSecondTwibbon.current.files[0].size/1024 <= 512){
+        //                 nasecUpdateSecondForm.append("twibbon",nasecUpdateSecondTwibbon.current.files[0])
+        //             }else{
+        //                 error = true
+        //             }
+        //         }else{
+        //             error = true
+        //         }
+        //     }
+        // }
 
         if(nasecUpdateSecondKtm.current){
             if(nasecUpdateSecondKtm.current.files.length !== 0){
@@ -500,19 +500,19 @@ const DashDaftar = () => {
             }
         }
 
-        if(nasecUpdateThirdTwibbon.current){
-            if(nasecUpdateThirdTwibbon.current.files.length !== 0){
-                if(nasecUpdateThirdTwibbon.current.files[0].type==="image/jpeg" || nasecUpdateThirdTwibbon.current.files[0].type==="image/jpg" || nasecUpdateThirdTwibbon.current.files[0].type==="image/png"){
-                    if(nasecUpdateThirdTwibbon.current.files[0].size/1024 <= 512){
-                        nasecUpdateThirdForm.append("twibbon",nasecUpdateThirdTwibbon.current.files[0])
-                    }else{
-                        error = true
-                    }
-                }else{
-                    error = true
-                }
-            }
-        }
+        // if(nasecUpdateThirdTwibbon.current){
+        //     if(nasecUpdateThirdTwibbon.current.files.length !== 0){
+        //         if(nasecUpdateThirdTwibbon.current.files[0].type==="image/jpeg" || nasecUpdateThirdTwibbon.current.files[0].type==="image/jpg" || nasecUpdateThirdTwibbon.current.files[0].type==="image/png"){
+        //             if(nasecUpdateThirdTwibbon.current.files[0].size/1024 <= 512){
+        //                 nasecUpdateThirdForm.append("twibbon",nasecUpdateThirdTwibbon.current.files[0])
+        //             }else{
+        //                 error = true
+        //             }
+        //         }else{
+        //             error = true
+        //         }
+        //     }
+        // }
 
         if(nasecUpdateThirdKtm.current){
             if(nasecUpdateThirdKtm.current.files.length !== 0){
@@ -582,8 +582,8 @@ const DashDaftar = () => {
         nasecTeamForm.append("no_pembimbing",nasecUpdate.no_pembimbing)
         nasecTeamForm.append("komitmen",nasecUpdate.komitmen)
         nasecTeamForm.append("info",nasecUpdate.info)
-        fetch(`${process.env.REACT_APP_APIURL}/users/${localStorage.getItem("id")}/nasec`,{
-            method:"PUT",
+        fetch(`${process.env.REACT_APP_APIURL}/users/${localStorage.getItem("id")}/nasec?_method=put`,{
+            method:"POST",
             headers:{
                 // 'Content-Type': 'application/json',
                 'Authorization' : `Bearer ${localStorage.getItem("key")}`
@@ -602,7 +602,7 @@ const DashDaftar = () => {
     }
 
     const uploadingNasecFirstMember = ()=>{
-        console.log(nasecUpdateFirstForm.get("twibbon"))
+        // console.log(nasecUpdateFirstForm.get("twibbon"))
         
         nasecUpdateFirstForm.append("nama",nasecUpdate.member[0].nama)
         nasecUpdateFirstForm.append("email",nasecUpdate.member[0].email)
@@ -973,9 +973,9 @@ const DashDaftar = () => {
                     {setEdit(!edit)}
                     else{
                         setEdit(!edit)
-                        setGamasurfUpdateTwibbonVal("")
-                        gamasurfUpdateTwibbon.current = null
-                        setGamasurfUpdateTwibbonErr("")
+                        // setGamasurfUpdateTwibbonVal("")
+                        // gamasurfUpdateTwibbon.current = null
+                        // setGamasurfUpdateTwibbonErr("")
                         setGamasurfUpdateKtmVal("")
                         gamasurfUpdateKtm.current = null
                         setGamasurfUpdateKtmErr("")
@@ -1074,7 +1074,7 @@ const DashDaftar = () => {
                                 <small className={!edit?"hidden":gamasurfUpdateKtmErr===""?"ml-1 text-gray-700":"ml-1 text-red-500"}><FontAwesomeIcon className={gamasurfUpdateKtmErr===""?"hidden":""} icon={faExclamationCircle} /> {gamasurfUpdateKtmErr===""?"Kosongkan jika tidak mengubah file sebelumnya":gamasurfUpdateKtmErr}</small>
                             </div>
                         </div>
-                        <div className="flex flex-col md:flex-row">
+                        {/* <div className="flex flex-col md:flex-row">
                             <p className="md:w-1/3 text-lg md:text-base text-gray-900">Twibbon</p>
                             <img onClick={()=>{changeImg(`https://sensation.smartsoft.co.id/sensation/storage/app/peserta/twibbon/`+gamasurf.twibbon+"?"+update)}} className={edit?"hidden":"max-w-full w-24 cursor-pointer"} alt="twibbon" src={`https://sensation.smartsoft.co.id/sensation/storage/app/peserta/twibbon/`+gamasurf.twibbon+"?"+update} />
                             <div className="flex-1">
@@ -1085,7 +1085,7 @@ const DashDaftar = () => {
                                 </div>
                                 <small className={!edit?"hidden":gamasurfUpdateTwibbonErr===""?"ml-1 text-gray-700":"ml-1 text-red-500"}><FontAwesomeIcon className={gamasurfUpdateTwibbonErr===""?"hidden":""} icon={faExclamationCircle} /> {gamasurfUpdateTwibbonErr===""?"Kosongkan jika tidak mengubah file sebelumnya":gamasurfUpdateTwibbonErr}</small>
                             </div>
-                        </div>
+                        </div> */}
                         <div className="flex flex-col md:flex-row">
                             <p className="md:w-1/3 text-lg md:text-base text-gray-900">Ide</p>
                             <a className={edit?"hidden":"hover:text-blue-400"} href={`https://sensation.smartsoft.co.id/sensation/storage/app/peserta/ide/`+gamasurf.ide}>
@@ -1199,9 +1199,9 @@ const DashDaftar = () => {
                                 <p className="mb-1">
                                     <img onClick={()=>{changeImg(`https://sensation.smartsoft.co.id/sensation/storage/app/peserta/kartu_pelajar/`+nasec.member[0].kartu_pelajar+"?"+update)}} className="max-w-full w-24 cursor-pointer" alt="ktm" src={`https://sensation.smartsoft.co.id/sensation/storage/app/peserta/kartu_pelajar/`+nasec.member[0].kartu_pelajar+"?"+update} />
                                 </p>
-                                <p>
+                                {/* <p>
                                     <img onClick={()=>{changeImg(`https://sensation.smartsoft.co.id/sensation/storage/app/peserta/twibbon/`+nasec.member[0].twibbon+"?"+update)}} className="max-w-full w-24 cursor-pointer" alt="ktm" src={`https://sensation.smartsoft.co.id/sensation/storage/app/peserta/twibbon/`+nasec.member[0].twibbon+"?"+update} />
-                                </p>
+                                </p> */}
                             </div>
                             <div className={!edit?"hidden":"flex-1"}>
                                 <div className="flex flex-col flex-1 mb-2">
@@ -1277,7 +1277,7 @@ const DashDaftar = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="flex flex-col flex-1 mb-2">
+                                {/* <div className="flex flex-col flex-1 mb-2">
                                     <p className="text-sm pl-2 mb-1">Twibbon</p>
                                     <div className="flex-1">
                                         <div className={!edit?"hidden":"flex items-center relative flex-1"}>
@@ -1287,7 +1287,7 @@ const DashDaftar = () => {
                                         </div>
                                         <small className={!edit?"hidden":nasecUpdateFirstTwibbonErr===""?"ml-1 text-gray-700":"ml-1 text-red-500"}><FontAwesomeIcon className={nasecUpdateFirstTwibbonErr===""?"hidden":""} icon={faExclamationCircle} /> {nasecUpdateFirstTwibbonErr===""?"Kosongkan jika tidak mengubah file sebelumnya":nasecUpdateFirstTwibbonErr}</small>
                                     </div>
-                                </div>
+                                </div> */}
                                 <div className="flex flex-col flex-1 mb-2">
                                     <p className="text-sm pl-2 mb-1">Ktm</p>
                                     <div className="flex-1">
@@ -1312,9 +1312,9 @@ const DashDaftar = () => {
                                 <p className="mb-1">
                                     <img onClick={()=>{changeImg(`https://sensation.smartsoft.co.id/sensation/storage/app/peserta/kartu_pelajar/`+nasec.member[1].kartu_pelajar+"?"+update)}} className="max-w-full w-24 cursor-pointer" alt="ktm" src={`https://sensation.smartsoft.co.id/sensation/storage/app/peserta/kartu_pelajar/`+nasec.member[1].kartu_pelajar+"?"+update} />
                                 </p>
-                                <p>
+                                {/* <p>
                                     <img onClick={()=>{changeImg(`https://sensation.smartsoft.co.id/sensation/storage/app/peserta/twibbon/`+nasec.member[1].twibbon+"?"+update)}} className="max-w-full w-24 cursor-pointer" alt="ktm" src={`https://sensation.smartsoft.co.id/sensation/storage/app/peserta/twibbon/`+nasec.member[1].twibbon+"?"+update} />
-                                </p>
+                                </p> */}
                             </div>
                             <div className={!edit?"hidden":"flex-1"}>
                                 <div className="flex flex-col flex-1 mb-2">
@@ -1390,7 +1390,7 @@ const DashDaftar = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="flex flex-col flex-1 mb-2">
+                                {/* <div className="flex flex-col flex-1 mb-2">
                                     <p className="text-sm pl-2 mb-1">Twibbon</p>
                                     <div className="flex-1">
                                         <div className={!edit?"hidden":"flex items-center relative flex-1"}>
@@ -1400,7 +1400,7 @@ const DashDaftar = () => {
                                         </div>
                                         <small className={!edit?"hidden":nasecUpdateSecondTwibbonErr===""?"ml-1 text-gray-700":"ml-1 text-red-500"}><FontAwesomeIcon className={nasecUpdateSecondTwibbonErr===""?"hidden":""} icon={faExclamationCircle} /> {nasecUpdateSecondTwibbonErr===""?"Kosongkan jika tidak mengubah file sebelumnya":nasecUpdateSecondTwibbonErr}</small>
                                     </div>
-                                </div>
+                                </div> */}
                                 <div className="flex flex-col flex-1 mb-2">
                                     <p className="text-sm pl-2 mb-1">Ktm</p>
                                     <div className="flex-1">
@@ -1425,9 +1425,9 @@ const DashDaftar = () => {
                                 <p className="mb-1">
                                     <img onClick={()=>{changeImg(`https://sensation.smartsoft.co.id/sensation/storage/app/peserta/kartu_pelajar/`+nasec.member[2].kartu_pelajar+"?"+update)}} className="max-w-full w-24 cursor-pointer" alt="ktm" src={`https://sensation.smartsoft.co.id/sensation/storage/app/peserta/kartu_pelajar/`+nasec.member[2].kartu_pelajar+"?"+update} />
                                 </p>
-                                <p>
+                                {/* <p>
                                     <img onClick={()=>{changeImg(`https://sensation.smartsoft.co.id/sensation/storage/app/peserta/twibbon/`+nasec.member[2].twibbon+"?"+update)}} className="max-w-full w-24 cursor-pointer" alt="ktm" src={`https://sensation.smartsoft.co.id/sensation/storage/app/peserta/twibbon/`+nasec.member[2].twibbon+"?"+update} />
-                                </p>
+                                </p> */}
                             </div>
                             <div className={!edit?"hidden":"flex-1"}>
                                 <div className="flex flex-col flex-1 mb-2">
@@ -1503,7 +1503,7 @@ const DashDaftar = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="flex flex-col flex-1 mb-2">
+                                {/* <div className="flex flex-col flex-1 mb-2">
                                     <p className="text-sm pl-2 mb-1">Twibbon</p>
                                     <div className="flex-1">
                                         <div className={!edit?"hidden":"flex items-center relative flex-1"}>
@@ -1513,7 +1513,7 @@ const DashDaftar = () => {
                                         </div>
                                         <small className={!edit?"hidden":nasecUpdateThirdTwibbonErr===""?"ml-1 text-gray-700":"ml-1 text-red-500"}><FontAwesomeIcon className={nasecUpdateThirdTwibbonErr===""?"hidden":""} icon={faExclamationCircle} /> {nasecUpdateThirdTwibbonErr===""?"Kosongkan jika tidak mengubah file sebelumnya":nasecUpdateThirdTwibbonErr}</small>
                                     </div>
-                                </div>
+                                </div> */}
                                 <div className="flex flex-col flex-1 mb-2">
                                     <p className="text-sm pl-2 mb-1">Ktm</p>
                                     <div className="flex-1">

@@ -2,7 +2,7 @@ import { faBars, faUser, faSignOutAlt, faTimes  } from "@fortawesome/free-solid-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { Link, Redirect, useParams } from "react-router-dom"
 import React, { useState } from "react"
-import Logo from "../../Images/logo.png"
+import Logo from "../../Images/sensation2022.png"
 import AdmHome from "../../Component/Admin/AdmHome"
 import "./index.css"
 import AdmPesGamasurf from "../../Component/Admin/AdmPesGamasurf"

@@ -1,44 +1,55 @@
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { Link } from "react-router-dom"
-import Nasec from "../../../Images/nasec.svg"
+import Nasec from "../../../Images/nasec2022.png"
 
 
-// const TimelineData = [
-//     {
-//         "title": "Pendaftaran",
-//         "date": "20 January - 21 January"
-//     },
-//     {
-//         "title": "Online Qualification",
-//         "date": "20 January - 21 January"
-//     },
-//     {
-//         "title": "Semifinal Round",
-//         "date": "20 January - 21 January"
-//     },
-//     {
-//         "title": "Final Round",
-//         "date": "20 January - 21 January"
-//     },
-//     {
-//         "title": "NaSEC Gathering and Technical Meeting",
-//         "date": "20 January - 21 January"
-//     },
-//     {
-//         "title": "Sarasehan Daring",
-//         "date": "20 January - 21 January"
-//     },
-
-// ]
-// const TimelineItem = ({data}) => {
-//     return (
-//         <div>
-//             <p className="text-base md:text-lg">{data.title}</p>
-//             <p className="text-sm md:text-base">{data.date}</p>
-//         </div>
-//     )
-// }
+const TimelineData = [
+    {
+        "title": "Pendaftaran",
+        "date": "22 Agustus 2022 - 12 September 2022"
+    },
+    {
+        "title": "Online Qualification",
+        "date": "24 September 2022"
+    },
+    {
+        "title": "Pengumuman Lolos Kualifikasi",
+        "date": "30 September 2022"
+    },
+    {
+        "title": "Pendaftaran Ulang Peserta Lolos",
+        "date": "03 Oktober 2022 - 06 Oktober 2022"
+    },
+    {
+        "title": "Technical Meeting",
+        "date": "16 Oktober 2022"
+    },
+    {
+        "title": "Semifinal",
+        "date": "21 Oktober 2022"
+    },
+    {
+        "title": "Sarasehan",
+        "date": "23 Oktober 2022"
+    },
+    {
+        "title": "Final",
+        "date": "29 Oktober 2022"
+    },
+    {
+        "title": "Seminar Participation and Awarding",
+        "date": "13 November 2022"
+    },
+]
+const TimelineItem = ({data}) => {
+    return (
+        <div>
+            <p className="text-base md:text-lg">{data.title}</p>
+            <p className="text-sm md:text-base">{data.date}</p>
+        </div>
+    )
+}
 
 const DashNasec = ()=>{
     return(
@@ -63,20 +74,19 @@ const DashNasec = ()=>{
                 <div className="rounded-md p-5 border border-gray-400 w-full flex flex-col lg:w-2/5">
                     <p className="text-center text-lg font-bold">Guide</p>
                     <div className="flex flex-col flex-1 justify-center space-y-3 mt-4 ">
-                        <a href="https://drive.google.com/file/d/1W60T3lgJJ_GPLoWmH56xcFwMe3EZ1hBz/view?usp=sharing" className="py-2 text-center font-bold rounded-md bg-green-500 hover:opacity-80 text-white">Booklet</a>
-                        <a href="https://drive.google.com/file/d/1CTevO8BvRaNamTjnF_Q0DkLQoyiM5eMN/view?usp=sharing" className="py-2 text-center font-bold rounded-md bg-green-500 hover:opacity-80 text-white">Twibbon</a>
+                        {/* <a href="https://drive.google.com/file/d/1W60T3lgJJ_GPLoWmH56xcFwMe3EZ1hBz/view?usp=sharing" className="py-2 text-center font-bold rounded-md bg-green-500 hover:opacity-80 text-white">Booklet</a> */}
+                        {/* <a href="https://drive.google.com/file/d/1CTevO8BvRaNamTjnF_Q0DkLQoyiM5eMN/view?usp=sharing" className="py-2 text-center font-bold rounded-md bg-green-500 hover:opacity-80 text-white">Twibbon</a> */}
                         <button className="py-2 font-bold rounded-md bg-green-500 hover:opacity-80 text-white">Tata Cara Pendaftaran</button>
                     </div>
                 </div>
                 <div className="rounded-md p-5 border border-gray-400 flex-1 h-full">
                     <p className="text-center text-lg font-bold">Timeline</p>
                     <div className="flex flex-col space-y-3 mt-4">
-                    <p className="text-center">COMING SOON!</p>
-                        {/* {TimelineData.map((data) => {
+                        {TimelineData.map((data) => {
                             return (
                                 <TimelineItem data={data}/>
                             )
-                        })} */}
+                        })}
                         {/* <div>
                             <p className="text-base md:text-lg">Pendaftaran</p>
                             <p className="text-sm md:text-base">20 Juli 2021 - 23 Juli 2021</p>

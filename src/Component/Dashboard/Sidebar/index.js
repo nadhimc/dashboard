@@ -1,7 +1,7 @@
 import {  faCalendar, faHome, faIdCard, faSignOutAlt, faTimes } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { Link } from "react-router-dom"
-import Logo from "../../../Images/logo.png"
+import Logo from "../../../Images/sensation2022.png"
 
 const Sidebar = ()=>{
     return(
