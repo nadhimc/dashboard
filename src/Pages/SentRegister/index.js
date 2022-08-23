@@ -1,6 +1,6 @@
-import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+import { faCheckCircle, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, createRef } from 'react';
 import { Redirect } from 'react-router-dom';
 import validator from 'validator';
 import Sent from "../../Images/sent.svg"
@@ -16,6 +16,12 @@ const SentRegister = ()=>{
     const [isError, setIsError] = useState(false)
     const [selesai, setSelesai] = useState(false)
     const [keDash, setKeDash] = useState(false)
+    const [isUploading, setIsUploading] = useState(false)
+    const [isErrorList, setIsErrorList] = useState(false)
+    const [errorList, setErrorList] = useState([])
+    const [buktiVal, setBuktiVal] = useState("")
+    const [buktiErr, setBuktiErr] = useState("")
+    let bukti = createRef();
 
     const onSubmit = (e)=>{
         e.preventDefault()
@@ -27,25 +33,43 @@ const SentRegister = ()=>{
         ){
             if(!isLoading){
                 setIsLoading(true)
+
+                let data = new FormData()
+                data.append("nama_lengkap", fullname)
+                data.append("email", email)
+                data.append("asal_institusi", univ)
+                data.append("status", status)
+                data.append("info", info)
+                data.append('bukti', bukti.current.files[0])
+
                 fetch(`${process.env.REACT_APP_APIURL}/users/sent`,{
                     method:"POST",
                     headers:{
-                        'Content-Type': 'application/json',
                         // 'Authorization' : `Bearer ${localStorage.getItem("key")}`
                     },
-                    body: JSON.stringify({
-                        nama_lengkap : fullname,
-                        email: email,
-                        asal_institusi: univ,
-                        status: status,
-                        info: info,
-                    })
+                    body: data
                 }).then(res=>res.json())
                 .then(
                     (res)=>{
                         console.log(res)
-                        setIsLoading(false)
-                        setSelesai(true)
+                        if(res.meta.code===200){
+                            // Sukses Fase 2
+                            console.log("sukses fase 2")
+                            setIsUploading(false)
+                            setSelesai(true)
+                        }else{
+                            // gagal
+                            setIsUploading(false)
+                            for(let k in res.errors){
+                                setErrorList([...errorList,...res.errors[k]])
+                            }
+                            setIsErrorList(true)
+                            setIsLoading(false)
+                            setSelesai(false)
+                            console.log("fase 2 gagal")
+                        }
+                        // setIsLoading(false)
+                        // setSelesai(true)
                     },
                     (err)=>{
                         console.log(err)
@@ -57,6 +81,7 @@ const SentRegister = ()=>{
             setIsError(true)
         }
     }
+
 
     // const cekRegistered = ()=>{
     //     fetch(`${process.env.REACT_APP_APIURL}/users/${localStorage.getItem("id")}/isregistered`,{
@@ -77,7 +102,24 @@ const SentRegister = ()=>{
     //         }
     //     )
     // }
-
+    useEffect(()=>{
+        if(bukti.current){
+            if(bukti.current.files.length !== 0){
+                if(bukti.current.files[0].type==="image/jpeg" || bukti.current.files[0].type==="image/jpg" || bukti.current.files[0].type==="image/png"){
+                    if(bukti.current.files[0].size/1024 <= 1000){
+                        setBuktiErr("")
+                    }else{
+                        setBuktiErr("Maksimum ukuran file adalah 1000kb/1mb")
+                    }
+                }else{
+                    setBuktiErr("Ekstensi yang didukung adalah jpeg,jpg, dan png")
+                }
+            }else{
+                setBuktiErr("")
+            }
+        }
+    },[bukti,buktiVal])
+    
     useEffect(()=>{
         // if(localStorage.getItem("key") && localStorage.getItem("id")  && localStorage.getItem("user") && localStorage.getItem("role")){
         //     console.log("Loged in")
@@ -169,6 +211,19 @@ const SentRegister = ()=>{
                                                 <option value="Lain-lain">Lain-lain</option>
                                             </select>
                                     </div>
+                                    <div className="relative w-full mb-3">
+                                            <label style={{color:"rgb(71,85,105)"}} className="block uppercase text-xs font-bold mb-2">
+                                                Bukti Pembayaran (Rp 45.000) (jpg/jpeg/png)
+                                            </label>
+                                            <div className="flex items-center relative">
+                                                <input accept="image/jpg, image/jpeg, image/png" ref={bukti} onChange={()=>{bukti.current.files[0]?setBuktiVal(bukti.current.files[0].name):setBuktiVal("")}} style={{color:"rgb(71,85,105)"}} type="file" className="w-full h-full absolute cursor-pointer opacity-0 inset-0" placeholder="Nama Lengkap" />
+                                                <input value={buktiVal} disabled style={{color:"rgb(71,85,105)"}} type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 bg-white rounded-l text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Upload files..." />
+                                                <button type="button" className="bg-blue-500 rounded-r-md px-3 py-3 font-bold text-white text-sm">Upload</button>
+                                            </div>
+                                            <small style={{color:"rgb(71,85,105)"}} className={buktiErr===""?"hidden":"text-sm font-semibold text-blueGray-600"}>
+                                                {buktiErr}
+                                            </small>
+                                        </div>
                                     <div className="text-center mt-6 relative">
                                         <div className={isLoading?"w-full h-full absolute inset-0 opacity-0":"hidden"} />
                                         <button style={{backgroundColor:"rgb(30,41,59)"}} className=
@@ -183,6 +238,27 @@ const SentRegister = ()=>{
                         </div>
                     </div>
                 </div>
+                <div style={{backgroundColor:"rgba(0,0,0,.3)"}} className={isErrorList?"absolute w-full h-full inset-0 z-50 flex justify-center items-center transition-all transform duration-500":"absolute w-full h-full inset-0 z-50 flex justify-center items-center transition-all transform duration-500 scale-0 translate-y-full"}>
+                <div className="w-10/12 max-w-lg bg-white rounded-md p-5 pt-3">
+                    <div className="flex justify-end">
+                        <button onClick={()=>{setIsErrorList(false)}} className="block px-2 pt-0 hover:opacity-40 transform translate-x-1/2">
+                            <FontAwesomeIcon className="text-xl" icon={faTimes} />
+                        </button>
+                    </div>
+                    <h5 className="text-xl text-center mb-4">Error List</h5>
+                    <div className="flex flex-col space-y-3">
+                    {
+                        errorList.map((item)=>{
+                            return(
+                                <div className="bg-red-400 text-white p-3 rounded-md">
+                                    <p>{item}</p>
+                                </div>
+                            )
+                        })
+                    }
+                    </div>
+                </div>
+            </div>
             </div>
         </div>
     )

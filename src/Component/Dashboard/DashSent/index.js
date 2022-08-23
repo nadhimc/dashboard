@@ -3,6 +3,26 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { Link } from "react-router-dom"
 import Sent from "../../../Images/sent.svg"
 
+const TimelineData = [
+    {
+        "title": "Pendaftaran",
+        "date": "22 Agustus 2022 - 12 November 2022",
+    },
+    {
+        "title": "Pelaksanaan Webinar SENT",
+        "date": "13 November 2022",
+    }
+]
+
+const TimelineItem = ({data}) => {
+    return (
+        <div>
+            <p className="text-base md:text-lg">{data.title}</p>
+            <p className="text-sm md:text-base">{data.date}</p>
+        </div>
+    )
+}
+
 const DashSent = ()=>{
     return(
         <div className="flex flex-col space-y-4">
@@ -25,15 +45,19 @@ const DashSent = ()=>{
                 <div className="rounded-md p-5 border border-gray-400 w-full flex flex-col lg:w-2/5">
                     <p className="text-center text-lg font-bold">Guide</p>
                     <div className="flex flex-col flex-1 justify-center space-y-3 mt-4 ">
-                        <button className="py-2 font-bold rounded-md bg-green-500 hover:opacity-80 text-white">Booklet</button>
-                        <button className="py-2 font-bold rounded-md bg-green-500 hover:opacity-80 text-white">Twibbon</button>
-                        <button className="py-2 font-bold rounded-md bg-green-500 hover:opacity-80 text-white">Tata Cara Pendaftaran</button>
+                        {/* <button className="py-2 font-bold rounded-md bg-green-500 hover:opacity-80 text-white">Booklet</button>
+                        <button className="py-2 font-bold rounded-md bg-green-500 hover:opacity-80 text-white">Twibbon</button> */}
+                        <a href="https://www.sensationugm.com/caradaftar" className="py-2 font-bold rounded-md bg-green-500 hover:opacity-80 text-white">Tata Cara Pendaftaran</a>
                     </div>
                 </div>
                 <div className="rounded-md p-5 border border-gray-400 flex-1 h-full">
                     <p className="text-center text-lg font-bold">Timeline</p>
                     <div className="flex flex-col space-y-3 mt-4">
-                        <p className="text-center">COMING SOON!</p>
+                        {TimelineData.map((data) => {
+                            return (
+                                <TimelineItem data={data}/>
+                            )
+                        })}
                         {/* <div>
                             <p className="text-base md:text-lg">Pendaftaran</p>
                             <p className="text-sm md:text-base">20 Juli 2021 - 23 Juli 2021</p>
