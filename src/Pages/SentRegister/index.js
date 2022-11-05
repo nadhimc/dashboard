@@ -147,7 +147,7 @@ const SentRegister = ()=>{
                     <h3 style={{color:"rgb(71,85,105)"}} className="text-lg font-bold text-center">Terima kasih sudah mendaftar Sent</h3>
                     <FontAwesomeIcon icon={faCheckCircle} className="text-7xl text-green-400 text-center block mx-auto my-8" />
                     <p style={{color:"rgb(71,85,105)"}} className="font-bold text-center">
-                        Untuk informasi lebih lanjut terkait webinar SENT, Peserta diharapkan <a href="https://chat.whatsapp.com/G0P9dCxWKPa2q6aec9ZsWg" className="hover:opacity-60">Join Grup WhatsApp dengan menekan tautan ini</a>
+                        Untuk informasi lebih lanjut terkait webinar SENT, Peserta diharapkan <a href="https://chat.whatsapp.com/G0P9dCxWKPa2q6aec9ZsWg" className="hover:opacity-60 text-blue-300 underline">Join Grup WhatsApp dengan menekan tautan ini</a>
                     </p>
                 </div>
             </div>
