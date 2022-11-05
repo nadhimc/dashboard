@@ -147,7 +147,7 @@ const SentRegister = ()=>{
                     <h3 style={{color:"rgb(71,85,105)"}} className="text-lg font-bold text-center">Terima kasih sudah mendaftar Sent</h3>
                     <FontAwesomeIcon icon={faCheckCircle} className="text-7xl text-green-400 text-center block mx-auto my-8" />
                     <p style={{color:"rgb(71,85,105)"}} className="font-bold text-center">
-                        Untuk informasi lebih lanjut terkait webinar SENT, Peserta diharapkan <a href="https://chat.whatsapp.com/CmKw7HBWPAI7y6IRqlXNGV" className="hover:opacity-60">Join Grup WhatsApp dengan menekan tautan ini</a>
+                        Untuk informasi lebih lanjut terkait webinar SENT, Peserta diharapkan <a href="https://chat.whatsapp.com/G0P9dCxWKPa2q6aec9ZsWg" className="hover:opacity-60">Join Grup WhatsApp dengan menekan tautan ini</a>
                     </p>
                 </div>
             </div>
@@ -213,7 +213,7 @@ const SentRegister = ()=>{
                                     </div>
                                     <div className="relative w-full mb-3">
                                             <label style={{color:"rgb(71,85,105)"}} className="block uppercase text-xs font-bold mb-2">
-                                                Bukti Pembayaran (Rp 45.000) (jpg/jpeg/png)
+                                                Bukti Pembayaran (Rp 15.000) (jpg/jpeg/png)
                                             </label>
                                             <div className="flex items-center relative">
                                                 <input accept="image/jpg, image/jpeg, image/png" ref={bukti} onChange={()=>{bukti.current.files[0]?setBuktiVal(bukti.current.files[0].name):setBuktiVal("")}} style={{color:"rgb(71,85,105)"}} type="file" className="w-full h-full absolute cursor-pointer opacity-0 inset-0" placeholder="Nama Lengkap" />
