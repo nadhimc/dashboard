@@ -1,4 +1,4 @@
-import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons"
+import { faChevronLeft, faChevronRight, faTimes } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useState, useEffect } from "react"
 
@@ -11,6 +11,8 @@ const AdmPesSent = ()=>{
     const itemsInPage = 10;
 
     const [peserta, setPeserta] = useState([])
+
+    const [modalImg, setModalImg] = useState("")
 
     const getPeserta = ()=>{
         fetch(`${process.env.REACT_APP_APIURL}/sent`,{
@@ -49,6 +51,13 @@ const AdmPesSent = ()=>{
                     <td className="py-3 px-6 text-center">{item.nama_lengkap}</td>
                     <td className="py-3 px-6 text-center">{item.email}</td>
                     <td className="py-3 px-6 text-center">{item.asal_institusi}</td>
+                    <td className="py-3 px-6 text-center">
+                        <img 
+                        className="cursor-pointer max-w-full w-24"
+                        onClick={() => setModalImg(`https://sensation.smartsoft.co.id/sensation/storage/app/peserta/bukti/${item.bukti}`)}
+                        src={`https://sensation.smartsoft.co.id/sensation/storage/app/peserta/bukti/${item.bukti}`} 
+                        />
+                    </td>
                     <td className="py-3 px-6 text-center">{item.status}</td>
                     <td className="py-3 px-6 text-center">{item.info}</td>
                 </tr>
@@ -84,6 +93,7 @@ const AdmPesSent = ()=>{
                             <th className="py-3 px-6 text-center">Nama</th>
                             <th className="py-3 px-6 text-center">Email</th>
                             <th className="py-3 px-6 text-center">Universitas</th>
+                            <th className="py-3 px-6 text-center">Bukti</th>
                             <th className="py-3 px-6 text-center">Status</th>
                             <th className="py-3 px-6 text-center">Info</th>
                         </tr>
@@ -127,6 +137,17 @@ const AdmPesSent = ()=>{
                 <button className={page>=(Math.ceil(peserta.filter(filterFunc).length/itemsInPage))?"hidden":"py-2 rounded-md bg-blue-300 px-4 hover:bg-green-300"} onClick={()=>{if(page<Math.ceil(peserta.length/itemsInPage)){setPage(page+1)}}}>
                     <FontAwesomeIcon icon={faChevronRight} />
                 </button>
+            </div>
+
+            {/* IMAGE MODAL */}
+            <div onClick={(e)=>{if(e.target.dataset.modal==="img"){setModalImg("")}}} data-modal="img" style={{backgroundColor:"rgba(0,0,0,.3)"}} className={!modalImg?"hidden":"absolute w-full h-full z-50 inset-0 min-w-screen min-h-screen flex justify-center items-center"}>
+                <div className="relative">
+                    <button data-modal="img" onClick={()=>{setModalImg("")}} type="button" className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 -top-0.5 right-0.5 -translate-y-full transform translate-x-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 absolute">
+                        <span className="sr-only">Close menu</span>
+                        <FontAwesomeIcon icon={faTimes} />
+                    </button>
+                    <img alt="" style={{maxWidth:"80vw", maxHeight:"80vh"}} src={modalImg!==""?modalImg:null} />
+                </div>
             </div>
         </div>
     )
